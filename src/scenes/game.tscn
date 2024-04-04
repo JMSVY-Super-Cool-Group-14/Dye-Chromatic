@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=9 format=3 uid="uid://cdbtgk1s6v0xp"]
 
-[ext_resource type="Texture2D" uid="uid://cy3ycxo17j8gx" path="res://assets/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
+[ext_resource type="Texture2D" uid="uid://cy3ycxo17j8gx" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ldp0g"]
+[ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
+[ext_resource type="Script" path="res://scripts/StateMachine/startState.gd" id="3_6d48n"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="5_370t1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dm3c"]
 texture = ExtResource("1_ihwfy")
@@ -79,6 +82,13 @@ sources/0 = SubResource("TileSetAtlasSource_2dm3c")
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ldp0g")
 
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("2_1y0vn")
+current_state = NodePath("Start")
+
+[node name="Start" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_6d48n")
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(193, 127)
 tile_set = SubResource("TileSet_ddfwl")
@@ -88,3 +98,4 @@ layer_0/tile_data = PackedInt32Array(-1, 0, 4, 65535, 0, 5, 131071, 131072, 7, -
 [node name="Player" parent="." instance=ExtResource("2_mpbna")]
 position = Vector2(198, 134)
 scale = Vector2(0.2, 0.2)
+script = ExtResource("5_370t1")
