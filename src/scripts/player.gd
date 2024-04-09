@@ -46,4 +46,3 @@ func key_move():
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	print("Keys velocity:", velocity)
