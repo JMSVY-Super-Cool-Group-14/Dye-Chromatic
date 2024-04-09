@@ -1,0 +1,607 @@
+{
+	"textures": [
+		{
+			"image": "mc_basic.png",
+			"size": {
+				"w": 1647,
+				"h": 973
+			},
+			"sprites": [
+				{
+					"filename": "walk_s1.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 167,
+						"h": 312
+					},
+					"margin": {
+						"x": 46,
+						"y": 44,
+						"w": 75,
+						"h": 63
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_s4.png",
+					"region": {
+						"x": 170,
+						"y": 1,
+						"w": 143,
+						"h": 312
+					},
+					"margin": {
+						"x": 46,
+						"y": 45,
+						"w": 99,
+						"h": 63
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_s5.png",
+					"region": {
+						"x": 315,
+						"y": 1,
+						"w": 156,
+						"h": 316
+					},
+					"margin": {
+						"x": 47,
+						"y": 41,
+						"w": 86,
+						"h": 59
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "stand1.PNG",
+					"region": {
+						"x": 473,
+						"y": 1,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "stand2.PNG",
+					"region": {
+						"x": 624,
+						"y": 1,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "stand3.PNG",
+					"region": {
+						"x": 775,
+						"y": 1,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "stand4.PNG",
+					"region": {
+						"x": 926,
+						"y": 1,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_b1.png",
+					"region": {
+						"x": 1077,
+						"y": 1,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 43,
+						"y": 39,
+						"w": 93,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_b4.png",
+					"region": {
+						"x": 1228,
+						"y": 1,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 43,
+						"y": 39,
+						"w": 93,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_s2.png",
+					"region": {
+						"x": 1379,
+						"y": 1,
+						"w": 144,
+						"h": 317
+					},
+					"margin": {
+						"x": 46,
+						"y": 39,
+						"w": 98,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_s8.png",
+					"region": {
+						"x": 1,
+						"y": 315,
+						"w": 146,
+						"h": 317
+					},
+					"margin": {
+						"x": 44,
+						"y": 41,
+						"w": 96,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walkD3.PNG",
+					"region": {
+						"x": 149,
+						"y": 315,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walkD6.PNG",
+					"region": {
+						"x": 300,
+						"y": 319,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_d1.png",
+					"region": {
+						"x": 451,
+						"y": 320,
+						"w": 149,
+						"h": 318
+					},
+					"margin": {
+						"x": 44,
+						"y": 38,
+						"w": 93,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_d2.png",
+					"region": {
+						"x": 602,
+						"y": 320,
+						"w": 149,
+						"h": 318
+					},
+					"margin": {
+						"x": 44,
+						"y": 38,
+						"w": 93,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_up1.png",
+					"region": {
+						"x": 753,
+						"y": 320,
+						"w": 150,
+						"h": 318
+					},
+					"margin": {
+						"x": 43,
+						"y": 38,
+						"w": 92,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_s3.png",
+					"region": {
+						"x": 905,
+						"y": 320,
+						"w": 143,
+						"h": 318
+					},
+					"margin": {
+						"x": 46,
+						"y": 39,
+						"w": 99,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_s6.png",
+					"region": {
+						"x": 1050,
+						"y": 320,
+						"w": 143,
+						"h": 318
+					},
+					"margin": {
+						"x": 47,
+						"y": 40,
+						"w": 99,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_up2.png",
+					"region": {
+						"x": 1195,
+						"y": 320,
+						"w": 149,
+						"h": 319
+					},
+					"margin": {
+						"x": 44,
+						"y": 38,
+						"w": 93,
+						"h": 56
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walkD4.PNG",
+					"region": {
+						"x": 1346,
+						"y": 320,
+						"w": 149,
+						"h": 319
+					},
+					"margin": {
+						"x": 86,
+						"y": 39,
+						"w": 177,
+						"h": 68
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walkD1.PNG",
+					"region": {
+						"x": 1497,
+						"y": 320,
+						"w": 149,
+						"h": 320
+					},
+					"margin": {
+						"x": 85,
+						"y": 41,
+						"w": 177,
+						"h": 67
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_b6.png",
+					"region": {
+						"x": 1,
+						"y": 634,
+						"w": 151,
+						"h": 320
+					},
+					"margin": {
+						"x": 42,
+						"y": 42,
+						"w": 91,
+						"h": 55
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_b2.png",
+					"region": {
+						"x": 154,
+						"y": 638,
+						"w": 150,
+						"h": 321
+					},
+					"margin": {
+						"x": 43,
+						"y": 42,
+						"w": 92,
+						"h": 54
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walkD2.PNG",
+					"region": {
+						"x": 306,
+						"y": 640,
+						"w": 149,
+						"h": 322
+					},
+					"margin": {
+						"x": 85,
+						"y": 41,
+						"w": 177,
+						"h": 65
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_b3.png",
+					"region": {
+						"x": 457,
+						"y": 640,
+						"w": 152,
+						"h": 323
+					},
+					"margin": {
+						"x": 41,
+						"y": 41,
+						"w": 90,
+						"h": 52
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walkD5.PNG",
+					"region": {
+						"x": 611,
+						"y": 640,
+						"w": 149,
+						"h": 323
+					},
+					"margin": {
+						"x": 86,
+						"y": 39,
+						"w": 177,
+						"h": 64
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_s7.png",
+					"region": {
+						"x": 762,
+						"y": 640,
+						"w": 144,
+						"h": 325
+					},
+					"margin": {
+						"x": 44,
+						"y": 33,
+						"w": 98,
+						"h": 50
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_b5.png",
+					"region": {
+						"x": 908,
+						"y": 640,
+						"w": 151,
+						"h": 326
+					},
+					"margin": {
+						"x": 42,
+						"y": 42,
+						"w": 91,
+						"h": 49
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_s1.png",
+					"region": {
+						"x": 1061,
+						"y": 641,
+						"w": 191,
+						"h": 329
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 51,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_s3.png",
+					"region": {
+						"x": 1254,
+						"y": 641,
+						"w": 178,
+						"h": 329
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 64,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_s2.png",
+					"region": {
+						"x": 1434,
+						"y": 642,
+						"w": 189,
+						"h": 330
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 53,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:fa37f7a4b2ed3ba1ceef8235810912ba:dc0026627ac66b23862aa6ba56c45c24:a06ac48535f6eeb7bbfc58965cbf637f$"
+	}
+}
