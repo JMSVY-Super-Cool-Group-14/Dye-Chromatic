@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.1.0</string>
+        <string>7.2.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -155,7 +155,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>5</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
@@ -173,27 +173,27 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../download/attack/attack_down/attack_d1.png</key>
-            <key type="filename">../../download/attack/attack_down/attack_d2.png</key>
-            <key type="filename">../../download/attack/attack_side/attack_s1.png</key>
-            <key type="filename">../../download/attack/attack_side/attack_s2.png</key>
-            <key type="filename">../../download/attack/attack_side/attack_s3.png</key>
-            <key type="filename">../../download/attack/attack_up/attack_up1.png</key>
-            <key type="filename">../../download/attack/attack_up/attack_up2.png</key>
-            <key type="filename">../../download/walk/walk_back/walk_b1.png</key>
-            <key type="filename">../../download/walk/walk_back/walk_b2.png</key>
-            <key type="filename">../../download/walk/walk_back/walk_b3.png</key>
-            <key type="filename">../../download/walk/walk_back/walk_b4.png</key>
-            <key type="filename">../../download/walk/walk_back/walk_b5.png</key>
-            <key type="filename">../../download/walk/walk_back/walk_b6.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s1.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s2.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s3.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s4.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s5.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s6.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s7.png</key>
-            <key type="filename">../../download/walk/walk_side/walk_s8.png</key>
+            <key type="filename">attack/attack_down/attack_d1.png</key>
+            <key type="filename">attack/attack_down/attack_d2.png</key>
+            <key type="filename">attack/attack_side/attack_s1.png</key>
+            <key type="filename">attack/attack_side/attack_s2.png</key>
+            <key type="filename">attack/attack_side/attack_s3.png</key>
+            <key type="filename">attack/attack_up/attack_up1.png</key>
+            <key type="filename">attack/attack_up/attack_up2.png</key>
+            <key type="filename">walk/walk_back/walk_b1.png</key>
+            <key type="filename">walk/walk_back/walk_b2.png</key>
+            <key type="filename">walk/walk_back/walk_b3.png</key>
+            <key type="filename">walk/walk_back/walk_b4.png</key>
+            <key type="filename">walk/walk_back/walk_b5.png</key>
+            <key type="filename">walk/walk_back/walk_b6.png</key>
+            <key type="filename">walk/walk_side/walk_s1.png</key>
+            <key type="filename">walk/walk_side/walk_s2.png</key>
+            <key type="filename">walk/walk_side/walk_s3.png</key>
+            <key type="filename">walk/walk_side/walk_s4.png</key>
+            <key type="filename">walk/walk_side/walk_s5.png</key>
+            <key type="filename">walk/walk_side/walk_s6.png</key>
+            <key type="filename">walk/walk_side/walk_s7.png</key>
+            <key type="filename">walk/walk_side/walk_s8.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -208,16 +208,16 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../download/stand/stand1.PNG</key>
-            <key type="filename">../../download/stand/stand2.PNG</key>
-            <key type="filename">../../download/stand/stand3.PNG</key>
-            <key type="filename">../../download/stand/stand4.PNG</key>
-            <key type="filename">../../download/walk/walk_down/walkD1.PNG</key>
-            <key type="filename">../../download/walk/walk_down/walkD2.PNG</key>
-            <key type="filename">../../download/walk/walk_down/walkD3.PNG</key>
-            <key type="filename">../../download/walk/walk_down/walkD4.PNG</key>
-            <key type="filename">../../download/walk/walk_down/walkD5.PNG</key>
-            <key type="filename">../../download/walk/walk_down/walkD6.PNG</key>
+            <key type="filename">stand/stand1.PNG</key>
+            <key type="filename">stand/stand2.PNG</key>
+            <key type="filename">stand/stand3.PNG</key>
+            <key type="filename">stand/stand4.PNG</key>
+            <key type="filename">walk/walk_down/walkD1.PNG</key>
+            <key type="filename">walk/walk_down/walkD2.PNG</key>
+            <key type="filename">walk/walk_down/walkD3.PNG</key>
+            <key type="filename">walk/walk_down/walkD4.PNG</key>
+            <key type="filename">walk/walk_down/walkD5.PNG</key>
+            <key type="filename">walk/walk_down/walkD6.PNG</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -239,34 +239,9 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../../download/stand</filename>
-                    <filename>../../download/walk/walk_down/walkD1.PNG</filename>
-                    <filename>../../download/walk/walk_down/walkD2.PNG</filename>
-                    <filename>../../download/walk/walk_down/walkD3.PNG</filename>
-                    <filename>../../download/walk/walk_down/walkD4.PNG</filename>
-                    <filename>../../download/walk/walk_down/walkD5.PNG</filename>
-                    <filename>../../download/walk/walk_down/walkD6.PNG</filename>
-                    <filename>../../download/walk/walk_back/walk_b1.png</filename>
-                    <filename>../../download/walk/walk_back/walk_b2.png</filename>
-                    <filename>../../download/walk/walk_back/walk_b3.png</filename>
-                    <filename>../../download/walk/walk_back/walk_b4.png</filename>
-                    <filename>../../download/walk/walk_back/walk_b5.png</filename>
-                    <filename>../../download/walk/walk_back/walk_b6.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s1.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s2.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s3.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s4.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s5.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s6.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s7.png</filename>
-                    <filename>../../download/walk/walk_side/walk_s8.png</filename>
-                    <filename>../../download/attack/attack_down/attack_d1.png</filename>
-                    <filename>../../download/attack/attack_down/attack_d2.png</filename>
-                    <filename>../../download/attack/attack_side/attack_s1.png</filename>
-                    <filename>../../download/attack/attack_side/attack_s3.png</filename>
-                    <filename>../../download/attack/attack_up/attack_up1.png</filename>
-                    <filename>../../download/attack/attack_up/attack_up2.png</filename>
-                    <filename>../../download/attack/attack_side/attack_s2.png</filename>
+                    <filename>attack</filename>
+                    <filename>stand</filename>
+                    <filename>walk</filename>
                 </array>
             </struct>
         </map>

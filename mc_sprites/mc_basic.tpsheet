@@ -3,15 +3,15 @@
 		{
 			"image": "mc_basic.png",
 			"size": {
-				"w": 1647,
-				"h": 973
+				"w": 1730,
+				"h": 997
 			},
 			"sprites": [
 				{
-					"filename": "walk_s1.png",
+					"filename": "walk_side/walk_s1.png",
 					"region": {
-						"x": 1,
-						"y": 1,
+						"x": 5,
+						"y": 5,
 						"w": 167,
 						"h": 312
 					},
@@ -27,10 +27,10 @@
 					}
 				},
 				{
-					"filename": "walk_s4.png",
+					"filename": "walk_side/walk_s4.png",
 					"region": {
-						"x": 170,
-						"y": 1,
+						"x": 182,
+						"y": 5,
 						"w": 143,
 						"h": 312
 					},
@@ -46,10 +46,10 @@
 					}
 				},
 				{
-					"filename": "walk_s5.png",
+					"filename": "walk_side/walk_s5.png",
 					"region": {
-						"x": 315,
-						"y": 1,
+						"x": 335,
+						"y": 5,
 						"w": 156,
 						"h": 316
 					},
@@ -67,8 +67,8 @@
 				{
 					"filename": "stand1.PNG",
 					"region": {
-						"x": 473,
-						"y": 1,
+						"x": 501,
+						"y": 5,
 						"w": 149,
 						"h": 317
 					},
@@ -86,8 +86,8 @@
 				{
 					"filename": "stand2.PNG",
 					"region": {
-						"x": 624,
-						"y": 1,
+						"x": 660,
+						"y": 5,
 						"w": 149,
 						"h": 317
 					},
@@ -105,8 +105,8 @@
 				{
 					"filename": "stand3.PNG",
 					"region": {
-						"x": 775,
-						"y": 1,
+						"x": 819,
+						"y": 5,
 						"w": 149,
 						"h": 317
 					},
@@ -124,8 +124,8 @@
 				{
 					"filename": "stand4.PNG",
 					"region": {
-						"x": 926,
-						"y": 1,
+						"x": 978,
+						"y": 5,
 						"w": 149,
 						"h": 317
 					},
@@ -141,10 +141,10 @@
 					}
 				},
 				{
-					"filename": "walk_b1.png",
+					"filename": "walk_back/walk_b1.png",
 					"region": {
-						"x": 1077,
-						"y": 1,
+						"x": 1137,
+						"y": 5,
 						"w": 149,
 						"h": 317
 					},
@@ -160,10 +160,10 @@
 					}
 				},
 				{
-					"filename": "walk_b4.png",
+					"filename": "walk_back/walk_b4.png",
 					"region": {
-						"x": 1228,
-						"y": 1,
+						"x": 1296,
+						"y": 5,
 						"w": 149,
 						"h": 317
 					},
@@ -179,10 +179,48 @@
 					}
 				},
 				{
-					"filename": "walk_s2.png",
+					"filename": "walk_down/walkD3.PNG",
 					"region": {
-						"x": 1379,
-						"y": 1,
+						"x": 1455,
+						"y": 5,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_down/walkD6.PNG",
+					"region": {
+						"x": 5,
+						"y": 327,
+						"w": 149,
+						"h": 317
+					},
+					"margin": {
+						"x": 86,
+						"y": 37,
+						"w": 177,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "walk_side/walk_s2.png",
+					"region": {
+						"x": 164,
+						"y": 327,
 						"w": 144,
 						"h": 317
 					},
@@ -198,10 +236,10 @@
 					}
 				},
 				{
-					"filename": "walk_s8.png",
+					"filename": "walk_side/walk_s8.png",
 					"region": {
-						"x": 1,
-						"y": 315,
+						"x": 318,
+						"y": 331,
 						"w": 146,
 						"h": 317
 					},
@@ -217,48 +255,10 @@
 					}
 				},
 				{
-					"filename": "walkD3.PNG",
+					"filename": "attack_down/attack_d1.png",
 					"region": {
-						"x": 149,
-						"y": 315,
-						"w": 149,
-						"h": 317
-					},
-					"margin": {
-						"x": 86,
-						"y": 37,
-						"w": 177,
-						"h": 70
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "walkD6.PNG",
-					"region": {
-						"x": 300,
-						"y": 319,
-						"w": 149,
-						"h": 317
-					},
-					"margin": {
-						"x": 86,
-						"y": 37,
-						"w": 177,
-						"h": 70
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "attack_d1.png",
-					"region": {
-						"x": 451,
-						"y": 320,
+						"x": 474,
+						"y": 332,
 						"w": 149,
 						"h": 318
 					},
@@ -274,10 +274,10 @@
 					}
 				},
 				{
-					"filename": "attack_d2.png",
+					"filename": "attack_down/attack_d2.png",
 					"region": {
-						"x": 602,
-						"y": 320,
+						"x": 633,
+						"y": 332,
 						"w": 149,
 						"h": 318
 					},
@@ -293,10 +293,10 @@
 					}
 				},
 				{
-					"filename": "attack_up1.png",
+					"filename": "attack_up/attack_up1.png",
 					"region": {
-						"x": 753,
-						"y": 320,
+						"x": 792,
+						"y": 332,
 						"w": 150,
 						"h": 318
 					},
@@ -312,10 +312,10 @@
 					}
 				},
 				{
-					"filename": "walk_s3.png",
+					"filename": "walk_side/walk_s3.png",
 					"region": {
-						"x": 905,
-						"y": 320,
+						"x": 952,
+						"y": 332,
 						"w": 143,
 						"h": 318
 					},
@@ -331,10 +331,10 @@
 					}
 				},
 				{
-					"filename": "walk_s6.png",
+					"filename": "walk_side/walk_s6.png",
 					"region": {
-						"x": 1050,
-						"y": 320,
+						"x": 1105,
+						"y": 332,
 						"w": 143,
 						"h": 318
 					},
@@ -350,10 +350,10 @@
 					}
 				},
 				{
-					"filename": "attack_up2.png",
+					"filename": "attack_up/attack_up2.png",
 					"region": {
-						"x": 1195,
-						"y": 320,
+						"x": 1258,
+						"y": 332,
 						"w": 149,
 						"h": 319
 					},
@@ -369,10 +369,10 @@
 					}
 				},
 				{
-					"filename": "walkD4.PNG",
+					"filename": "walk_down/walkD4.PNG",
 					"region": {
-						"x": 1346,
-						"y": 320,
+						"x": 1417,
+						"y": 332,
 						"w": 149,
 						"h": 319
 					},
@@ -388,10 +388,10 @@
 					}
 				},
 				{
-					"filename": "walkD1.PNG",
+					"filename": "walk_down/walkD1.PNG",
 					"region": {
-						"x": 1497,
-						"y": 320,
+						"x": 1576,
+						"y": 332,
 						"w": 149,
 						"h": 320
 					},
@@ -407,10 +407,10 @@
 					}
 				},
 				{
-					"filename": "walk_b6.png",
+					"filename": "walk_back/walk_b6.png",
 					"region": {
-						"x": 1,
-						"y": 634,
+						"x": 5,
+						"y": 654,
 						"w": 151,
 						"h": 320
 					},
@@ -426,10 +426,10 @@
 					}
 				},
 				{
-					"filename": "walk_b2.png",
+					"filename": "walk_back/walk_b2.png",
 					"region": {
-						"x": 154,
-						"y": 638,
+						"x": 166,
+						"y": 658,
 						"w": 150,
 						"h": 321
 					},
@@ -445,10 +445,10 @@
 					}
 				},
 				{
-					"filename": "walkD2.PNG",
+					"filename": "walk_down/walkD2.PNG",
 					"region": {
-						"x": 306,
-						"y": 640,
+						"x": 326,
+						"y": 660,
 						"w": 149,
 						"h": 322
 					},
@@ -464,10 +464,10 @@
 					}
 				},
 				{
-					"filename": "walk_b3.png",
+					"filename": "walk_back/walk_b3.png",
 					"region": {
-						"x": 457,
-						"y": 640,
+						"x": 485,
+						"y": 660,
 						"w": 152,
 						"h": 323
 					},
@@ -483,10 +483,10 @@
 					}
 				},
 				{
-					"filename": "walkD5.PNG",
+					"filename": "walk_down/walkD5.PNG",
 					"region": {
-						"x": 611,
-						"y": 640,
+						"x": 647,
+						"y": 660,
 						"w": 149,
 						"h": 323
 					},
@@ -502,10 +502,10 @@
 					}
 				},
 				{
-					"filename": "walk_s7.png",
+					"filename": "walk_side/walk_s7.png",
 					"region": {
-						"x": 762,
-						"y": 640,
+						"x": 806,
+						"y": 660,
 						"w": 144,
 						"h": 325
 					},
@@ -521,10 +521,10 @@
 					}
 				},
 				{
-					"filename": "walk_b5.png",
+					"filename": "walk_back/walk_b5.png",
 					"region": {
-						"x": 908,
-						"y": 640,
+						"x": 960,
+						"y": 660,
 						"w": 151,
 						"h": 326
 					},
@@ -540,10 +540,10 @@
 					}
 				},
 				{
-					"filename": "attack_s1.png",
+					"filename": "attack_side/attack_s1.png",
 					"region": {
-						"x": 1061,
-						"y": 641,
+						"x": 1121,
+						"y": 661,
 						"w": 191,
 						"h": 329
 					},
@@ -559,10 +559,10 @@
 					}
 				},
 				{
-					"filename": "attack_s3.png",
+					"filename": "attack_side/attack_s3.png",
 					"region": {
-						"x": 1254,
-						"y": 641,
+						"x": 1322,
+						"y": 661,
 						"w": 178,
 						"h": 329
 					},
@@ -578,10 +578,10 @@
 					}
 				},
 				{
-					"filename": "attack_s2.png",
+					"filename": "attack_side/attack_s2.png",
 					"region": {
-						"x": 1434,
-						"y": 642,
+						"x": 1510,
+						"y": 662,
 						"w": 189,
 						"h": 330
 					},
@@ -602,6 +602,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "1.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:fa37f7a4b2ed3ba1ceef8235810912ba:dc0026627ac66b23862aa6ba56c45c24:a06ac48535f6eeb7bbfc58965cbf637f$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b58f1f45d101dcb7243feb4aaf7fb039:58e8eb0d80b024224b7b35f792570887:a06ac48535f6eeb7bbfc58965cbf637f$"
 	}
 }
