@@ -20,7 +20,7 @@ func _process(delta):
 		key_move()
 	
 	
-	if velocity.length() <= 0 && isAttacking==false:
+	if velocity.length() <= 0:
 		$AnimatedSprite2D.animation = "idle"
 	
 	position += velocity * delta * speed
@@ -49,18 +49,20 @@ func key_move():
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-
+		
 func _input(event):
-	if (event is InputEventKey):
+	if fsm.get_controller():
+		pass
+		#add controller stick aim
+	else:
 		if event.is_action_pressed("ranged_attack"):
 			var mouse_pos = get_global_mouse_position()
 			fire_projectile(mouse_pos)
-
+			
+		
 func fire_projectile(target_pos: Vector2):
 	var projectile = projectile_scene.instantiate()
 	add_child(projectile)
 	projectile.global_position = global_position
 	var direction = (target_pos - global_position).normalized()
 	projectile.set_direction(direction)
-	
-	
