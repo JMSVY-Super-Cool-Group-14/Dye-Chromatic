@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=37 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://berd3yam28a56" path="res://assets/sprites/standing/standing_1.png" id="2_5d2or"]
 [ext_resource type="Texture2D" uid="uid://deme1yjqmj46w" path="res://assets/sprites/standing/standing_2.png" id="3_15n33"]
@@ -51,6 +51,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"melee_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"melee_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"melee_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"melee_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -162,12 +182,15 @@ animations = [{
 radius = 214.0
 height = 1020.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugejp"]
+
 [node name="Player" type="Area2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_bgi2u")
-animation = &"walk_right"
+animation = &"melee_right"
+frame_progress = 0.427961
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.90735e-06, -1.90735e-06)
@@ -177,3 +200,10 @@ shape = SubResource("CapsuleShape2D_ewgi6")
 [node name="PlayerCam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 script = ExtResource("34_oibyl")
+
+[node name="MeleeRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
+scale = Vector2(8.68829, 5.42599)
+shape = SubResource("CapsuleShape2D_ugejp")
+disabled = true
