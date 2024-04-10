@@ -30,5 +30,5 @@ func _on_body_entered(body):
 
 	if body.is_in_group("enemy"):
 		print("enemy hit!")
-		# body.health -= damage
+		# insert call to enemy take damage function
 		queue_free()	#remove projectile instance
