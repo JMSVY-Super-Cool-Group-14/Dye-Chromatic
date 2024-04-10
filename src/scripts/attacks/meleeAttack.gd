@@ -2,6 +2,7 @@ extends Area2D
 
 var lifespan = 0.10
 var existenceTime = 0
+@onready var fsm = $"../../FiniteStateMachine"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -16,6 +17,10 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
+		if fsm.get_controller():
+			Input.start_joy_vibration(0, 1, 1, 0.15)
 		print("enemy hit melee!")
 		# insert call to enemy.takedamage function
 
+func set_colour(colour: Color):
+	$Sprite2D.self_modulate = colour
