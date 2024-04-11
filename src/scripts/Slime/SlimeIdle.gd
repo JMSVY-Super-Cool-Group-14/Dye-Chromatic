@@ -5,15 +5,14 @@ extends State
 
 var move_dir : Vector2
 var wander_time : float
-
+@onready var player = get_node("../../../Player")
 
 
 func random_wander():
 	move_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	wander_time = randf_range(1, 3)
-	print("Wander")
 	
-func _ennter_state():
+func _enter_state():
 	random_wander()
 	
 func _state_update(delta : float):
@@ -26,7 +25,13 @@ func _state_update(delta : float):
 func _state_physics_update(delta : float):
 	if Slime:
 		Slime.velocity = move_dir * move_speed
-		
+	
+	if player != null:
+		var direction = player.global_position - Slime.global_position
+	
+		if direction.length() < 30:
+			print("In range")
+			get_node("..")._change_state($"../Chase")
 	
 
 	

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cdbtgk1s6v0xp"]
 
-[ext_resource type="Texture2D" uid="uid://5a35ndni53nl" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
+[ext_resource type="Texture2D" uid="uid://1wijyuteg8kk" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ldp0g"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Slime.tscn" id="2_h5rq2"]
-[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
+[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/Player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/startState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="5_370t1"]
 
