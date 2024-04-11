@@ -4,8 +4,10 @@ var projectile_velocity = Vector2.ZERO
 var speed = 100
 var range = 100
 var start_pos = Vector2.ZERO
-var damage = 50
+var damage = 30
 var pos
+var angle
+
 @onready var fsm = $"../../FiniteStateMachine"
 
 
@@ -15,6 +17,8 @@ func _ready():
 	pos = start_pos
 
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	pos += projectile_velocity * delta
@@ -22,10 +26,13 @@ func _process(delta: float):
 	# it also iterates with the player's position.
 	# This allows projectiles movement to be independent
 	global_position = pos
+
 	if (global_position.distance_to(start_pos) > range):
 		queue_free()
 		
 func set_direction(direction: Vector2):
+
+	self.global_rotation = direction.angle()
 
 	projectile_velocity = direction.normalized() * speed
 	
@@ -36,6 +43,7 @@ func _on_body_entered(body):
 			Input.start_joy_vibration(0, 1, 1, 0.15)
 		print("enemy hit!")
 		# insert call to enemy take damage function
+		#body.take_fixed_damage(damage)
 		queue_free()	#remove projectile instance
 
 func set_colour(colour: Color):
