@@ -6,7 +6,7 @@ class_name SlimeAttack
 @export var attack_dmg := 1.0
 
 
-@onready var player =  get_node("../../../Player")
+@onready var player = get_node("../../../Player")
 var cooldown = false
 var timer = null
 

@@ -1,7 +1,7 @@
 extends Area2D
 
 var start_pos
-var teleport_range = 50
+var teleport_range = 75
 var lifespan = 0.2
 var time_passed = 0
 @onready var player = $"../"

@@ -122,7 +122,7 @@ func fire_projectile(target_pos: Vector2, colour: String):
 	add_child(projectile)
 	projectile.set_colour(colourWheel[colour])
 	projectile.global_position = global_position
-
+	slow(0.7, 0.1)
 	if fsm.get_controller():
 		projectile.set_direction(target_pos)
 	else:
@@ -133,6 +133,7 @@ func melee_attack(colour: String):
 	print("attempting melee " + colour)
 	var melee_strike = melee_scene.instantiate()
 	add_child(melee_strike)
+	slow(0.9, 0.3)
 	melee_strike.set_angle(facingDirection)
 	melee_strike.set_colour(colourWheel[colour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
@@ -165,6 +166,12 @@ func colour_special():
 			magenta_special.teleport(facingDirection)
 		"cyan":
 			print("cyanSpecial")
+
+func slow(slow_amount: float, slow_duration: float):
+	var original_speed = speed
+	speed = speed * abs(1 - slow_amount)
+	await get_tree().create_timer(slow_duration).timeout
+	speed = original_speed
 
 func take_fixed_damage(damage: int):
 	hp -= damage
