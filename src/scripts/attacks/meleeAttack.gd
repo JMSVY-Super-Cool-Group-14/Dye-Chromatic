@@ -1,12 +1,16 @@
 extends Area2D
 
+var original_speed = 100
+var melee_slowdown = 10
 var lifespan = 0.10
 var existenceTime = 0
 var damage = 50
 @onready var fsm = $"../../FiniteStateMachine"
+#@onready var player = $"../Player"
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

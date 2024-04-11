@@ -31,9 +31,7 @@ func _process(delta: float):
 		queue_free()
 		
 func set_direction(direction: Vector2):
-
 	self.global_rotation = direction.angle()
-
 	projectile_velocity = direction.normalized() * speed
 	
 func _on_body_entered(body):
