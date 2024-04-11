@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://cudnkh4q0wqm2"]
+[gd_scene load_steps=32 format=3 uid="uid://cudnkh4q0wqm2"]
 
 [ext_resource type="Script" path="res://scripts/Slime/Slime.gd" id="1_xq5uw"]
-[ext_resource type="Texture2D" uid="uid://d4fkbxkq1l7q8" path="res://assets/legacy/slime.png" id="2_ml24s"]
+[ext_resource type="Texture2D" uid="uid://do72n2a2cwvvc" path="res://assets/legacy/slime.png" id="2_ml24s"]
 [ext_resource type="Script" path="res://scenes/SlimeStateMachine.gd" id="3_jmprd"]
 [ext_resource type="Script" path="res://scripts/Slime/SlimeIdle.gd" id="4_oge4w"]
+[ext_resource type="Script" path="res://scenes/SlimeAttack.gd" id="5_gt5dj"]
 [ext_resource type="Script" path="res://scenes/SlimeChase.gd" id="5_h3vwk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vqlx"]
@@ -219,3 +220,10 @@ move_speed = 5.0
 [node name="Chase" type="Node" parent="State Machine" node_paths=PackedStringArray("Slime")]
 script = ExtResource("5_h3vwk")
 Slime = NodePath("../..")
+
+[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("Slime")]
+script = ExtResource("5_gt5dj")
+Slime = NodePath("../..")
+
+[connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="Hit Box" to="State Machine/Attack" method="_on_hit_box_body_exited"]

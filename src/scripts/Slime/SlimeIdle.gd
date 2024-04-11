@@ -29,9 +29,12 @@ func _state_physics_update(delta : float):
 	if player != null:
 		var direction = player.global_position - Slime.global_position
 	
-		if direction.length() < 30:
+		if direction.length() < 50:
 			print("In range")
 			get_node("..")._change_state($"../Chase")
+		
+		if direction.length() <= 10:
+			get_node("..")._change_state($"../Attack")
 	
 
 	
