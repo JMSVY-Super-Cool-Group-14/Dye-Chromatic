@@ -133,7 +133,7 @@ func melee_attack(colour: String):
 	print("attempting melee " + colour)
 	var melee_strike = melee_scene.instantiate()
 	add_child(melee_strike)
-	slow(0.9, 0.3)
+	slow(0.9, 0.2)
 	melee_strike.set_angle(facingDirection)
 	melee_strike.set_colour(colourWheel[colour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
