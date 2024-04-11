@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://7rewesabgcvf"]
+
+[ext_resource type="Script" path="res://scripts/attacks/special_magenta.gd" id="1_hsf6f"]
+[ext_resource type="Texture2D" uid="uid://cy8hohs3qab0y" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Shadow.png" id="1_ovdwd"]
+
+[node name="Area2D" type="Area2D"]
+modulate = Color(0.627451, 0, 0.627451, 1)
+self_modulate = Color(0.556863, 0, 0.556863, 1)
+visibility_layer = 3
+script = ExtResource("1_hsf6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.992157, 0, 0.992157, 1)
+texture = ExtResource("1_ovdwd")
+region_enabled = true
+region_rect = Rect2(162, 162, 32, 32)
