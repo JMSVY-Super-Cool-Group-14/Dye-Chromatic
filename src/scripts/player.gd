@@ -48,7 +48,7 @@ func _process(delta):
 	rightActivated = Input.is_action_pressed("right_colour")
 	set_colour(leftActivated, rightActivated)
 	
-	# Idle animation and facing direction check
+	# Facing direction check
 	if velocity.length() <= 0 && !isAttacking:
 		$AnimatedSprite2D.animation = "idle"
 	else:
@@ -58,16 +58,6 @@ func _process(delta):
 	position += velocity * delta * speed
 	position = position.clamp(Vector2.ZERO, get_viewport_rect().size)
 	
-	# Walking animation
-	if velocity.x > 0:
-		$AnimatedSprite2D.animation = "walk_right"
-	elif velocity.x < 0:
-		$AnimatedSprite2D.animation = "walk_left"
-	elif velocity.y > 0:
-		$AnimatedSprite2D.animation = "walk_down"
-	elif velocity.y < 0:
-		$AnimatedSprite2D.animation = "walk_up"
-		
 func start(pos):
 	position = pos
 	show()
