@@ -1,0 +1,265 @@
+{
+	"textures": [
+		{
+			"image": "mc_attack.png",
+			"size": {
+				"w": 478,
+				"h": 1672
+			},
+			"sprites": [
+				{
+					"filename": "attack_side/attack_s1.png",
+					"region": {
+						"x": 5,
+						"y": 5,
+						"w": 191,
+						"h": 329
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 51,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_side/attack_s2.png",
+					"region": {
+						"x": 206,
+						"y": 5,
+						"w": 189,
+						"h": 330
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 53,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_side/attack_s3.png",
+					"region": {
+						"x": 5,
+						"y": 344,
+						"w": 178,
+						"h": 329
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 64,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "melee_attack/m_attack_s2.png",
+					"region": {
+						"x": 193,
+						"y": 345,
+						"w": 168,
+						"h": 330
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 74,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_up/attack_up1.png",
+					"region": {
+						"x": 5,
+						"y": 683,
+						"w": 150,
+						"h": 318
+					},
+					"margin": {
+						"x": 43,
+						"y": 38,
+						"w": 92,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "melee_attack/m_attack_u1.png",
+					"region": {
+						"x": 165,
+						"y": 685,
+						"w": 150,
+						"h": 318
+					},
+					"margin": {
+						"x": 43,
+						"y": 38,
+						"w": 92,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "melee_attack/m_attack_u2.png",
+					"region": {
+						"x": 5,
+						"y": 1011,
+						"w": 150,
+						"h": 318
+					},
+					"margin": {
+						"x": 43,
+						"y": 38,
+						"w": 92,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "melee_attack/m_attack_s1.png",
+					"region": {
+						"x": 325,
+						"y": 685,
+						"w": 140,
+						"h": 329
+					},
+					"margin": {
+						"x": 48,
+						"y": 31,
+						"w": 102,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_up/attack_up2.png",
+					"region": {
+						"x": 165,
+						"y": 1013,
+						"w": 149,
+						"h": 319
+					},
+					"margin": {
+						"x": 44,
+						"y": 38,
+						"w": 93,
+						"h": 56
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_down/attack_d1.png",
+					"region": {
+						"x": 5,
+						"y": 1339,
+						"w": 149,
+						"h": 318
+					},
+					"margin": {
+						"x": 44,
+						"y": 38,
+						"w": 93,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "attack_down/attack_d2.png",
+					"region": {
+						"x": 324,
+						"y": 1024,
+						"w": 149,
+						"h": 318
+					},
+					"margin": {
+						"x": 44,
+						"y": 38,
+						"w": 93,
+						"h": 57
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "melee_attack/m_attack_d2.png",
+					"region": {
+						"x": 164,
+						"y": 1342,
+						"w": 149,
+						"h": 316
+					},
+					"margin": {
+						"x": 44,
+						"y": 40,
+						"w": 93,
+						"h": 59
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "melee_attack/m_atatck_d1.png",
+					"region": {
+						"x": 323,
+						"y": 1352,
+						"w": 149,
+						"h": 315
+					},
+					"margin": {
+						"x": 44,
+						"y": 39,
+						"w": 93,
+						"h": 60
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:6dca747465287790887a85ef40638107:a1fd08d1540e079cc60b6f486a8fdf93:1db438910501ae984563a584f261026f$"
+	}
+}

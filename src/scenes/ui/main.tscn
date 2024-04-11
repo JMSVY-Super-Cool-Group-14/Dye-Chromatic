@@ -1,0 +1,154 @@
+[gd_scene load_steps=4 format=3 uid="uid://bho251jfd673i"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_7l160"]
+[ext_resource type="AudioStream" uid="uid://buhr7prl4yr74" path="res://assets/audio/sfx/bop.mp3" id="2_ja5u1"]
+[ext_resource type="PackedScene" uid="uid://d1a3wnx2wk3ms" path="res://scenes/ui/options.tscn" id="3_fy3ta"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_7l160")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ja5u1")
+bus = &"Effects"
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -62.5
+offset_right = 46.5
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/Buttons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Dye-Chromatic"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+disabled = true
+text = "Continue"
+
+[node name="NewGame" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Options" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+text = "Options"
+
+[node name="Credits" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitGame" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+text = "Exit Game"
+
+[node name="Options" type="VBoxContainer" parent="Center"]
+visible = false
+layout_mode = 2
+
+[node name="Options" parent="Center/Options" instance=ExtResource("3_fy3ta")]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Center/Options"]
+layout_mode = 2
+text = "Close"
+
+[node name="Credits" type="VBoxContainer" parent="Center"]
+visible = false
+layout_mode = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="Center/Credits"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center/Credits/VScrollBar"]
+layout_mode = 2
+
+[node name="Team" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Team JMSVY Super Cool Group 14"
+horizontal_alignment = 1
+
+[node name="Members" type="HBoxContainer" parent="Center/Credits/VScrollBar/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/Members"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Mert Demirsü
+Simon Hocker
+Vilhelm Norström
+Julia Wang
+Yifan Wu
+"
+
+[node name="Role" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/Members"]
+layout_mode = 2
+text = "1
+2
+3
+4
+5"
+
+[node name="Assets" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Assets"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AssetList" type="HBoxContainer" parent="Center/Credits/VScrollBar/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/AssetList"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "1"
+
+[node name="Link" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/AssetList"]
+layout_mode = 2
+text = "1
+"
+
+[node name="Close" type="Button" parent="Center/Credits"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="mouse_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Center/Buttons/NewGame" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Buttons/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="Center/Buttons/Options" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="Center/Buttons/Credits" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="Center/Buttons/ExitGame" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="mouse_entered" from="Center/Options/Close" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Options/Close" to="." method="_close_screens"]
+[connection signal="mouse_entered" from="Center/Credits/Close" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Credits/Close" to="." method="_close_screens"]
