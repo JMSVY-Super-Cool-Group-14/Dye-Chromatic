@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=10 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Texture2D" uid="uid://dvf3j6bskr8c" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ldp0g"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Slime.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/startState.gd" id="3_6d48n"]
+[ext_resource type="Texture2D" uid="uid://dak3ear334dhd" path="res://assets/levels/hub.png" id="4_yusat"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dm3c"]
 texture = ExtResource("1_ihwfy")
@@ -89,7 +90,21 @@ current_state = NodePath("Start")
 [node name="Start" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_6d48n")
 
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 2048.0
+offset_bottom = 2048.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_yusat")
+
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 z_index = -1
 position = Vector2(193, 127)
 tile_set = SubResource("TileSet_ddfwl")
@@ -102,5 +117,6 @@ position = Vector2(198, 134)
 scale = Vector2(0.4, 0.4)
 
 [node name="Slime" parent="." instance=ExtResource("2_h5rq2")]
+z_index = 1
 position = Vector2(198, 134)
 scale = Vector2(1, 1)

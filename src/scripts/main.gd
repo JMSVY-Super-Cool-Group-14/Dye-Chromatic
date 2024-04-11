@@ -27,12 +27,12 @@ func _on_exit_game_pressed():
 func _close_screens():
 	options.visible = false
 	credits.visible = false
-	visible = true
+	buttons.visible = true
 
 func _on_credits_pressed():
 	credits.visible = true
-	visible = false
+	buttons.visible = false
 
 func _on_options_pressed():
 	options.visible = true
-	visible = false
+	buttons.visible = false

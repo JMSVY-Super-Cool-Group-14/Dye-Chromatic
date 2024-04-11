@@ -90,6 +90,21 @@ animations = [{
 "name": &"melee_up",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"proj_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"proj_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"proj_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("12_f2ly6")
@@ -178,9 +193,8 @@ script = ExtResource("1_p4u05")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_bgi2u")
-animation = &"melee_up"
+animation = &"proj_right"
 autoplay = "idle"
-frame_progress = 0.272254
 script = ExtResource("33_2xkte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

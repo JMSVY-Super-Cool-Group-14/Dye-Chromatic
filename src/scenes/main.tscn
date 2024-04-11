@@ -30,33 +30,33 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Center"]
+visible = false
 layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/Buttons"]
+layout_mode = 2
+text = "Dye-Chromatic"
 
 [node name="Continue" type="Button" parent="Center/Buttons"]
 layout_mode = 2
 disabled = true
 text = "Continue"
-flat = true
 
 [node name="NewGame" type="Button" parent="Center/Buttons"]
 layout_mode = 2
 text = "New Game"
-flat = true
 
 [node name="Credits" type="Button" parent="Center/Buttons"]
 layout_mode = 2
 text = "Credits"
-flat = true
 
 [node name="Options" type="Button" parent="Center/Buttons"]
 layout_mode = 2
 text = "Options"
-flat = true
 
 [node name="ExitGame" type="Button" parent="Center/Buttons"]
 layout_mode = 2
 text = "Exit Game"
-flat = true
 
 [node name="Options" type="VBoxContainer" parent="Center"]
 visible = false
@@ -67,8 +67,65 @@ layout_mode = 2
 text = "Close"
 
 [node name="Credits" type="VBoxContainer" parent="Center"]
-visible = false
 layout_mode = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="Center/Credits"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center/Credits/VScrollBar"]
+layout_mode = 2
+
+[node name="Team" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Team JMSVY Super Cool Group 14"
+horizontal_alignment = 1
+
+[node name="Members" type="HBoxContainer" parent="Center/Credits/VScrollBar/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/Members"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Mert Demirsü
+Simon Hocker
+Vilhelm Norström
+Julia Wang
+Yifan Wu
+"
+
+[node name="Role" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/Members"]
+layout_mode = 2
+text = "1
+2
+3
+4
+5"
+
+[node name="Assets" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Assets"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AssetList" type="HBoxContainer" parent="Center/Credits/VScrollBar/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/AssetList"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "1"
+
+[node name="Link" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/AssetList"]
+layout_mode = 2
+text = "1
+"
 
 [node name="Close" type="Button" parent="Center/Credits"]
 layout_mode = 2
@@ -84,4 +141,6 @@ text = "Close"
 [connection signal="mouse_entered" from="Center/Buttons/ExitGame" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]
 [connection signal="mouse_entered" from="Center/Options/Close" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Options/Close" to="." method="_close_screens"]
 [connection signal="mouse_entered" from="Center/Credits/Close" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Credits/Close" to="." method="_close_screens"]
