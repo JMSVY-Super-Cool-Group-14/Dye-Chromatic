@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceodbxqdq8yve"]
+
+[ext_resource type="Script" path="res://scripts/attacks/Projectile.gd" id="1_fe5u8"]
+[ext_resource type="Texture2D" uid="uid://cy6a0ydujxbws" path="res://assets/legacy/brush.png" id="2_0v3qw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmhvg"]
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_fe5u8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.101)
+texture = ExtResource("2_0v3qw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_fmhvg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
