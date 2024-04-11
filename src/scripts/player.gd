@@ -1,6 +1,11 @@
 extends Area2D
 
 var DELAY = 0.25
+var maxHP = 100
+var hp = 10
+var hpRegen = 5
+var hpRegenDelay = 10
+var timePassed = 0
 var attackDelta = 0
 var meleeRange = 30
 var velocity = Vector2.ZERO
@@ -34,6 +39,14 @@ func _ready():
 func _process(delta):
 	$AnimatedSprite2D.play()
 	attackDelta += delta
+	timePassed += delta
+	
+	if timePassed > hpRegenDelay and hp < maxHP:
+		print("Regenerate health! Health is: ")
+		print(hp)
+		hp += hpRegen
+		timePassed = 0
+	
 	
 	# Movement
 	if fsm.get_controller():
@@ -129,3 +142,11 @@ func set_colour(left, right):
 		currentColour = rightColour
 	else:
 		currentColour = "grey"
+		
+func take_fixed_damage(damage: int):
+	hp -= damage
+
+func take_DOT_damage(damage: float, duration: float):
+	var tick = damage / duration
+	for n in range(0, damage, tick):
+		hp -= tick
