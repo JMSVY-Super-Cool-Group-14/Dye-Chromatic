@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ingjm58w0lb"]
+
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_6jqpd"]
+[ext_resource type="PackedScene" uid="uid://d1a3wnx2wk3ms" path="res://scenes/ui/options.tscn" id="1_ivqsh"]
+
+[node name="PauseMenu" type="Panel"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6jqpd")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_right = 173.0
+offset_bottom = 171.0
+use_top_left = true
+
+[node name="Buttons" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Options" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Resume")
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_right = NodePath("../ExitMenu")
+focus_neighbor_bottom = NodePath("../ExitMenu")
+focus_next = NodePath("../ExitMenu")
+focus_previous = NodePath("../Resume")
+text = "Options"
+
+[node name="ExitMenu" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Options")
+focus_neighbor_top = NodePath("../Options")
+focus_previous = NodePath("../Options")
+text = "Exit to Menu"
+
+[node name="ExitGame" type="Button" parent="Center/Buttons"]
+layout_mode = 2
+text = "Exit Game"
+
+[node name="Options" type="VBoxContainer" parent="Center"]
+visible = false
+layout_mode = 2
+
+[node name="Options" parent="Center/Options" instance=ExtResource("1_ivqsh")]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Center/Options"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="Center/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Center/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Center/Buttons/ExitMenu" to="." method="_on_exit_menu_pressed"]
+[connection signal="pressed" from="Center/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="Center/Options/Close" to="." method="_close_option"]

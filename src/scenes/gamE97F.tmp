@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=11 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Texture2D" uid="uid://dvf3j6bskr8c" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ldp0g"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/StateMachine/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scenes/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Texture2D" uid="uid://dak3ear334dhd" path="res://assets/levels/hub.png" id="4_yusat"]
-[ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dm3c"]
 texture = ExtResource("1_ihwfy")
@@ -85,35 +84,15 @@ sources/0 = SubResource("TileSetAtlasSource_2dm3c")
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ldp0g")
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "root")]
-process_mode = 3
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("2_1y0vn")
 current_state = NodePath("InGame")
-root = NodePath("..")
 
 [node name="Pause" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_h2nxd")
 
 [node name="InGame" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_6d48n")
-
-[node name="GameOver" type="Node" parent="FiniteStateMachine"]
-
-[node name="UI" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("5_kufwq")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-focus_mode = 2
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8

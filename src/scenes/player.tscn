@@ -219,7 +219,7 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_bgi2u")
 animation = &"melee_up"
 autoplay = "idle"
-frame_progress = 0.530401
+frame_progress = 0.0637815
 script = ExtResource("33_pu3a3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
