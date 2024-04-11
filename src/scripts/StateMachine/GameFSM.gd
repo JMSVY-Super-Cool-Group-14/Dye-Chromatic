@@ -8,6 +8,9 @@ func _ready():
 	super()
 	control_avail = Input.get_connected_joypads().size() > 0
 	Input.joy_connection_changed.connect(connection_changed)
+	$Pause.unpause.connect(func(): _change_state($InGame))
+	$"../UI/PauseMenu".unpause.connect(func(): _change_state($InGame))
+	$InGame.pause.connect(func(): _change_state($Pause))
 
 func _change_state(new_state: State):
 	super(new_state)
@@ -18,6 +21,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	super(delta)
+
+func get_hp():
+	pass
 
 func get_controller():
 	return control_avail
