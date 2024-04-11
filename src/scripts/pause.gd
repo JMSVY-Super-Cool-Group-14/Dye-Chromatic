@@ -26,11 +26,5 @@ func _on_options_pressed():
 	buttons.visible = false
 	$"Center/Options/Close".grab_focus()
 
-func _input(event):
-	var current = get_viewport().gui_get_focus_owner()
-	if event is InputEventJoypadButton:
-		if event.button_index == 0 && event.pressed:
-			current.emit_signal("pressed") # emulate button press
-
 func _on_resume_pressed():
 	emit_signal("unpause")
