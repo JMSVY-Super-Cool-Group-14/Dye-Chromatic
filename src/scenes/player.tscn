@@ -217,8 +217,9 @@ script = ExtResource("1_p4u05")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_bgi2u")
-animation = &"melee_down"
+animation = &"melee_up"
 autoplay = "idle"
+frame_progress = 0.530401
 script = ExtResource("33_pu3a3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -17,6 +17,7 @@ func _on_mouse_entered():
 	bop.play(0.0)
 
 func _on_new_game_pressed():
+	Input.start_joy_vibration(0, 1, 1, 0.15)
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 

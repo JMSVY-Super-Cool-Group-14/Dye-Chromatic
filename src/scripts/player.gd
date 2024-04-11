@@ -1,12 +1,9 @@
 extends Area2D
 
-signal melee
-signal projectile
-
 var DELAY = 0.25
 var attackDelta = 0
 var meleeRange = 30
-var velocity
+var velocity = Vector2.ZERO
 var colourWheel = {
 	"grey" : Color(0, 0, 0),
 	"red" : Color(1, 0, 0),
@@ -51,7 +48,9 @@ func _process(delta):
 	set_colour(leftActivated, rightActivated)
 	
 	# Facing direction check
-	if velocity.length() > 0:
+	if velocity.length() <= 0:
+		pass
+	else:
 		facingDirection = velocity
 	
 	# Actual moving of object
@@ -113,7 +112,6 @@ func fire_projectile(target_pos: Vector2, colour: String):
 	else:
 		var direction = (target_pos - global_position).normalized()
 		projectile.set_direction(direction)
-	emit_signal("projectile")
 	
 func melee_attack(colour: String):
 	print("attempting melee " + colour)
@@ -121,7 +119,6 @@ func melee_attack(colour: String):
 	add_child(melee_strike)
 	melee_strike.set_colour(colourWheel[colour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
-	emit_signal("melee")
 	
 func set_colour(left, right):
 	if left and right:
