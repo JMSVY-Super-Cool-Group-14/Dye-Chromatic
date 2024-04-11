@@ -1,9 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://cudnkh4q0wqm2"]
+[gd_scene load_steps=32 format=3 uid="uid://cudnkh4q0wqm2"]
 
 [ext_resource type="Script" path="res://scripts/Slime/Slime.gd" id="1_xq5uw"]
 [ext_resource type="Texture2D" uid="uid://ck87wqrwo5yl2" path="res://assets/legacy/slime.png" id="2_ml24s"]
 [ext_resource type="Script" path="res://scripts/StateMachine/SlimeStateMachine.gd" id="3_tgto2"]
 [ext_resource type="Script" path="res://scripts/Slime/SlimeIdle.gd" id="4_oge4w"]
+[ext_resource type="Script" path="res://scenes/SlimeAttack.gd" id="5_gt5dj"]
+[ext_resource type="Script" path="res://scenes/SlimeChase.gd" id="5_h3vwk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vqlx"]
 atlas = ExtResource("2_ml24s")
@@ -111,7 +113,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bf6ck")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -183,7 +185,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rk53v"]
-radius = 7.0
+radius = 6.00333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mc8br"]
+radius = 8.8
 
 [node name="Slime" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(5, 5)
@@ -191,17 +196,33 @@ script = ExtResource("1_xq5uw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5jic6")
-animation = &"Idle"
+animation = &"Death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_rk53v")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("3_tgto2")
-current_state = NodePath("Node")
+[node name="Hit Box" type="Area2D" parent="."]
 
-[node name="Node" type="Node" parent="State Machine" node_paths=PackedStringArray("Slime")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
+position = Vector2(0.2, 2)
+shape = SubResource("CircleShape2D_mc8br")
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("3_tgto2")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("Slime")]
 script = ExtResource("4_oge4w")
 Slime = NodePath("../..")
 move_speed = 5.0
+
+[node name="Chase" type="Node" parent="State Machine" node_paths=PackedStringArray("Slime")]
+script = ExtResource("5_h3vwk")
+Slime = NodePath("../..")
+
+[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("Slime")]
+script = ExtResource("5_gt5dj")
+Slime = NodePath("../..")
+
+[connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="Hit Box" to="State Machine/Attack" method="_on_hit_box_body_exited"]
