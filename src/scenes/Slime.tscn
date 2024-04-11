@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://cudnkh4q0wqm2"]
 
 [ext_resource type="Script" path="res://scripts/Slime/Slime.gd" id="1_xq5uw"]
-[ext_resource type="Texture2D" uid="uid://ck87wqrwo5yl2" path="res://assets/legacy/slime.png" id="2_ml24s"]
+[ext_resource type="Texture2D" uid="uid://cpo1dchv4wr4w" path="res://assets/legacy/slime.png" id="2_ml24s"]
 [ext_resource type="Script" path="res://scripts/StateMachine/SlimeStateMachine.gd" id="3_tgto2"]
 [ext_resource type="Script" path="res://scripts/Slime/SlimeIdle.gd" id="4_oge4w"]
 

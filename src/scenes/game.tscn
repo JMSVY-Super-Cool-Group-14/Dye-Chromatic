@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=11 format=3 uid="uid://cdbtgk1s6v0xp"]
 
-[ext_resource type="Texture2D" uid="uid://5a35ndni53nl" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_ldp0g"]
+[ext_resource type="Texture2D" uid="uid://dvf3j6bskr8c" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Slime.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
@@ -83,7 +82,6 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2dm3c")
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_ldp0g")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "root")]
 process_mode = 3
