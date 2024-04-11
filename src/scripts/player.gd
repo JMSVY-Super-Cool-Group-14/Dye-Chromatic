@@ -3,7 +3,7 @@ extends Area2D
 var DELAY = 0.25
 var attackDelta = 0
 var meleeRange = 30
-var velocity
+var velocity = Vector2.ZERO
 var colourWheel = {
 	"grey" : Color(0, 0, 0),
 	"red" : Color(1, 0, 0),
@@ -23,7 +23,6 @@ var colourWheel = {
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
 @onready var fsm = $"../FiniteStateMachine"
-var isAttacking = false
 var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 
@@ -37,10 +36,10 @@ func _process(delta):
 	attackDelta += delta
 	
 	# Movement
-	if fsm.get_controller() && !isAttacking:
+	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
-	elif !isAttacking:
+	else:
 		key_move()
 	
 	#Colour Control
@@ -48,9 +47,9 @@ func _process(delta):
 	rightActivated = Input.is_action_pressed("right_colour")
 	set_colour(leftActivated, rightActivated)
 	
-	# Idle animation and facing direction check
-	if velocity.length() <= 0 && !isAttacking:
-		$AnimatedSprite2D.animation = "idle"
+	# Facing direction check
+	if velocity.length() <= 0:
+		pass
 	else:
 		facingDirection = velocity
 	
@@ -58,16 +57,6 @@ func _process(delta):
 	position += velocity * delta * speed
 	position = position.clamp(Vector2.ZERO, get_viewport_rect().size)
 	
-	# Walking animation
-	if velocity.x > 0:
-		$AnimatedSprite2D.animation = "walk_right"
-	elif velocity.x < 0:
-		$AnimatedSprite2D.animation = "walk_left"
-	elif velocity.y > 0:
-		$AnimatedSprite2D.animation = "walk_down"
-	elif velocity.y < 0:
-		$AnimatedSprite2D.animation = "walk_up"
-		
 func start(pos):
 	position = pos
 	show()

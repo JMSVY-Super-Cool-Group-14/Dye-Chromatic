@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://xytp7clp7pbg"]
+
+[ext_resource type="Texture2D" uid="uid://dv6wqdx35jxhb" path="res://assets/sprites/mc_attack.png" id="1_fwx3i"]
+
+[resource]
+atlas = ExtResource("1_fwx3i")
+region = Rect2(5, 1011, 150, 318)
+margin = Rect2(43, 38, 92, 57)

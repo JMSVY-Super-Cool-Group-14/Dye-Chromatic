@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1a3wnx2wk3ms"]
+
+[ext_resource type="Script" path="res://scripts/VolumeSlider.gd" id="1_8fgrt"]
+[ext_resource type="Script" path="res://scripts/AudioOptions.gd" id="2_d6p8m"]
+
+[node name="Options" type="TabContainer"]
+custom_minimum_size = Vector2(500, 500)
+
+[node name="Audio" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Master" type="VBoxContainer" parent="Audio"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Audio/Master"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Master Volume"
+vertical_alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="Audio/Master"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("1_8fgrt")
+bus_name = "Master"
+
+[node name="Music" type="VBoxContainer" parent="Audio"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Audio/Music"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Music Volume"
+vertical_alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="Audio/Music"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("1_8fgrt")
+bus_name = "Music"
+
+[node name="Effects" type="VBoxContainer" parent="Audio"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Audio/Effects"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "SFX Volume"
+vertical_alignment = 2
+
+[node name="EffectSlider" type="HSlider" parent="Audio/Effects"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("1_8fgrt")
+bus_name = "Effects"
+
+[node name="Video" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Video"]
+layout_mode = 2
+script = ExtResource("2_d6p8m")
+
+[node name="CheckBox" type="CheckBox" parent="Video/VBoxContainer"]
+layout_mode = 2
+text = "Full screen"
+
+[connection signal="toggled" from="Video/VBoxContainer/CheckBox" to="Video/VBoxContainer" method="_on_check_box_toggled"]
