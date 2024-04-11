@@ -30,6 +30,7 @@ var colourWheel = {
 @onready var fsm = $"../FiniteStateMachine"
 var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
+var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -101,17 +102,19 @@ func _input(event):
 			elif event.is_action("melee_attack"):
 				melee_attack(currentColour)
 				attackDelta = 0
+			elif event.is_action_pressed("special_attack"):
+				colour_special()
 
 		else:
 			if event.is_action_pressed("ranged_attack"):
 				var mouse_pos = get_global_mouse_position()
 				fire_projectile(mouse_pos, currentColour)
 				attackDelta = 0
-
 			elif event.is_action_pressed("melee_attack"):
 				melee_attack(currentColour)
 				attackDelta = 0
-				
+			elif event.is_action_pressed("special_attack"):
+				colour_special()
 			
 func fire_projectile(target_pos: Vector2, colour: String):
 	print("attempting ranged " + colour)
@@ -144,6 +147,25 @@ func set_colour(left, right):
 	else:
 		currentColour = "grey"
 		
+func colour_special():
+	match currentColour:
+		"grey":
+			print("greySpecial")
+		"red":
+			print("redSpecial")
+		"green":
+			print("greenSpecial")
+		"blue":
+			print("blueSpecial")
+		"yellow":
+			print("yellowSpecial")
+		"magenta":
+			var magenta_special = special_magenta_scene.instantiate()
+			add_child(magenta_special)
+			magenta_special.teleport(facingDirection)
+		"cyan":
+			print("cyanSpecial")
+
 func take_fixed_damage(damage: int):
 	hp -= damage
 
