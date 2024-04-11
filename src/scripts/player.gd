@@ -7,7 +7,7 @@ var hpRegen = 5
 var hpRegenDelay = 10
 var timePassed = 0
 var attackDelta = 0
-var meleeRange = 30
+var meleeRange = 22
 var velocity = Vector2.ZERO
 var colourWheel = {
 	"grey" : Color(0, 0, 0),
@@ -130,6 +130,7 @@ func melee_attack(colour: String):
 	print("attempting melee " + colour)
 	var melee_strike = melee_scene.instantiate()
 	add_child(melee_strike)
+	melee_strike.set_angle(facingDirection)
 	melee_strike.set_colour(colourWheel[colour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
 	
