@@ -1,5 +1,7 @@
 extends Area2D
 
+signal hp_change(hp)
+
 var DELAY = 0.25
 var maxHP = 100
 var hp = 10
@@ -175,8 +177,10 @@ func slow(slow_amount: float, slow_duration: float):
 
 func take_fixed_damage(damage: int):
 	hp -= damage
+	hp_change.emit(hp)
 
 func take_DOT_damage(damage: float, duration: float):
 	var tick = damage / duration
 	for n in range(0, damage, tick):
 		hp -= tick
+		hp_change.emit(hp)

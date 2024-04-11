@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=13 format=3 uid="uid://cdbtgk1s6v0xp"]
 
-[ext_resource type="Texture2D" uid="uid://5a35ndni53nl" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
+[ext_resource type="Texture2D" uid="uid://dvf3j6bskr8c" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Slime.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
-[ext_resource type="Script" path="res://scripts/StateMachine/gameState.gd" id="3_6d48n"]
-[ext_resource type="Script" path="res://scenes/pauseState.gd" id="3_h2nxd"]
-[ext_resource type="Texture2D" uid="uid://d3dfyfrpo5d3h" path="res://assets/levels/hub.png" id="4_yusat"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
+[ext_resource type="Texture2D" uid="uid://dak3ear334dhd" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
+[ext_resource type="Texture2D" uid="uid://bwg0f5q6f7lnq" path="res://assets/legacy/heart32.png" id="6_iepwv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dm3c"]
 texture = ExtResource("1_ihwfy")
@@ -96,6 +98,7 @@ script = ExtResource("3_h2nxd")
 script = ExtResource("3_6d48n")
 
 [node name="GameOver" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_v8r73")
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -112,6 +115,20 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 focus_mode = 2
+
+[node name="Health" type="HBoxContainer" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 57.0
+offset_bottom = 52.0
+
+[node name="Heart" type="TextureRect" parent="UI/Health"]
+layout_mode = 2
+texture = ExtResource("6_iepwv")
+
+[node name="Label" type="Label" parent="UI/Health"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8
