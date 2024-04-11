@@ -90,6 +90,8 @@ current_state = NodePath("Start")
 [node name="Start" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_6d48n")
 
+[node name="Defeat" type="Node" parent="FiniteStateMachine"]
+
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,5 +1,8 @@
 extends Area2D
 
+signal melee
+signal projectile
+
 var DELAY = 0.25
 var attackDelta = 0
 var meleeRange = 30
@@ -23,7 +26,6 @@ var colourWheel = {
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
 @onready var fsm = $"../FiniteStateMachine"
-var isAttacking = false
 var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 
@@ -37,10 +39,10 @@ func _process(delta):
 	attackDelta += delta
 	
 	# Movement
-	if fsm.get_controller() && !isAttacking:
+	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
-	elif !isAttacking:
+	else:
 		key_move()
 	
 	#Colour Control
@@ -49,9 +51,7 @@ func _process(delta):
 	set_colour(leftActivated, rightActivated)
 	
 	# Facing direction check
-	if velocity.length() <= 0 && !isAttacking:
-		$AnimatedSprite2D.animation = "idle"
-	else:
+	if velocity.length() > 0:
 		facingDirection = velocity
 	
 	# Actual moving of object
@@ -113,6 +113,7 @@ func fire_projectile(target_pos: Vector2, colour: String):
 	else:
 		var direction = (target_pos - global_position).normalized()
 		projectile.set_direction(direction)
+	emit_signal("projectile")
 	
 func melee_attack(colour: String):
 	print("attempting melee " + colour)
@@ -120,6 +121,7 @@ func melee_attack(colour: String):
 	add_child(melee_strike)
 	melee_strike.set_colour(colourWheel[colour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
+	emit_signal("melee")
 	
 func set_colour(left, right):
 	if left and right:

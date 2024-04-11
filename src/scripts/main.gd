@@ -7,8 +7,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$"Center/Buttons/NewGame".grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,11 +27,21 @@ func _close_screens():
 	options.visible = false
 	credits.visible = false
 	buttons.visible = true
+	$"Center/Buttons/NewGame".grab_focus()
 
 func _on_credits_pressed():
 	credits.visible = true
 	buttons.visible = false
+	$"Center/Credits/Close".grab_focus()
 
 func _on_options_pressed():
 	options.visible = true
 	buttons.visible = false
+	$"Center/Options/Close".grab_focus()
+
+func _input(event):
+	var current = get_viewport().gui_get_focus_owner()
+	if event is InputEventJoypadButton:
+		if event.button_index == 0 && event.pressed:
+			if current is Button:
+				current.emit_signal("pressed") # emulate button press
