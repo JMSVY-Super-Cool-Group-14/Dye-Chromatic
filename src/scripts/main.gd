@@ -17,6 +17,10 @@ func _process(delta):
 func _on_mouse_entered():
 	bop.play(0.0)
 
+func _on_new_game_pressed():
+	await get_tree().create_timer(0.1).timeout
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
 func _on_exit_game_pressed():
 	get_tree().quit()
 

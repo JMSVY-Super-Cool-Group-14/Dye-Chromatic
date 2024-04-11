@@ -20,6 +20,10 @@ config/icon="res://assets/legacy/brush.png"
 
 project/assembly_name="Dye-Chromatic"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/codeandweb.texturepacker/plugin.cfg")
+
 [input]
 
 move_down={

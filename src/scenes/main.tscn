@@ -13,7 +13,6 @@ offset_bottom = 40.0
 
 [node name="Bop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ofx1n")
-bus = &"Effects"
 
 [node name="Center" type="CenterContainer" parent="."]
 anchors_preset = 8
@@ -77,6 +76,7 @@ text = "Close"
 
 [connection signal="mouse_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/NewGame" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Buttons/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="mouse_entered" from="Center/Buttons/Credits" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Buttons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="mouse_entered" from="Center/Buttons/Options" to="." method="_on_mouse_entered"]
