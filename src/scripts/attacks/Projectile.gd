@@ -31,9 +31,7 @@ func _process(delta: float):
 		queue_free()
 		
 func set_direction(direction: Vector2):
-
 	self.global_rotation = direction.angle()
-
 	projectile_velocity = direction.normalized() * speed
 	
 func _on_body_entered(body):
@@ -43,7 +41,7 @@ func _on_body_entered(body):
 			Input.start_joy_vibration(0, 1, 1, 0.15)
 		print("enemy hit!")
 		# insert call to enemy take damage function
-		#body.take_fixed_damage(damage)
+		body.take_damage(damage)
 		queue_free()	#remove projectile instance
 
 func set_colour(colour: Color):

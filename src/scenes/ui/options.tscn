@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1a3wnx2wk3ms"]
 
-[ext_resource type="Script" path="res://scripts/VolumeSlider.gd" id="1_8fgrt"]
-[ext_resource type="Script" path="res://scripts/AudioOptions.gd" id="2_d6p8m"]
+[ext_resource type="Script" path="res://scripts/ui/VolumeSlider.gd" id="1_tn4p4"]
+[ext_resource type="Script" path="res://scripts/ui/AudioOptions.gd" id="2_28sjw"]
 
 [node name="Options" type="TabContainer"]
-custom_minimum_size = Vector2(500, 500)
+custom_minimum_size = Vector2(300, 300)
+current_tab = 1
 
 [node name="Audio" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="Master" type="VBoxContainer" parent="Audio"]
@@ -23,7 +25,7 @@ vertical_alignment = 2
 layout_mode = 2
 max_value = 1.0
 step = 0.05
-script = ExtResource("1_8fgrt")
+script = ExtResource("1_tn4p4")
 bus_name = "Master"
 
 [node name="Music" type="VBoxContainer" parent="Audio"]
@@ -40,7 +42,7 @@ vertical_alignment = 2
 layout_mode = 2
 max_value = 1.0
 step = 0.05
-script = ExtResource("1_8fgrt")
+script = ExtResource("1_tn4p4")
 bus_name = "Music"
 
 [node name="Effects" type="VBoxContainer" parent="Audio"]
@@ -57,19 +59,31 @@ vertical_alignment = 2
 layout_mode = 2
 max_value = 1.0
 step = 0.05
-script = ExtResource("1_8fgrt")
+script = ExtResource("1_tn4p4")
 bus_name = "Effects"
 
 [node name="Video" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Video"]
 layout_mode = 2
-script = ExtResource("2_d6p8m")
+script = ExtResource("2_28sjw")
 
 [node name="CheckBox" type="CheckBox" parent="Video/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../OptionButton")
+action_mode = 0
 text = "Full screen"
 
-[connection signal="toggled" from="Video/VBoxContainer/CheckBox" to="Video/VBoxContainer" method="_on_check_box_toggled"]
+[node name="OptionButton" type="OptionButton" parent="Video/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CheckBox")
+item_count = 2
+selected = 0
+popup/item_0/text = "1024x600"
+popup/item_0/id = 0
+popup/item_1/text = "2048x1200"
+popup/item_1/id = 1
+
+[connection signal="pressed" from="Video/VBoxContainer/CheckBox" to="Video/VBoxContainer" method="_on_check_box_pressed"]
+[connection signal="item_selected" from="Video/VBoxContainer/OptionButton" to="Video/VBoxContainer" method="_on_option_button_item_selected"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bho251jfd673i"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_7l160"]
+[ext_resource type="Script" path="res://scripts/ui/main.gd" id="1_7l160"]
 [ext_resource type="AudioStream" uid="uid://buhr7prl4yr74" path="res://assets/audio/sfx/bop.mp3" id="2_ja5u1"]
 [ext_resource type="PackedScene" uid="uid://d1a3wnx2wk3ms" path="res://scenes/ui/options.tscn" id="3_fy3ta"]
 
@@ -103,16 +103,15 @@ text = "Mert Demirsü
 Simon Hocker
 Vilhelm Norström
 Julia Wang
-Yifan Wu
-"
+Yifan Wu"
 
 [node name="Role" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/Members"]
 layout_mode = 2
-text = "1
-2
-3
-4
-5"
+text = "Developer
+Developer
+Developer, Music
+Developer, UI Artist
+Art Director, Character Design"
 
 [node name="Assets" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -128,27 +127,44 @@ alignment = 1
 [node name="Name" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/AssetList"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "1"
+text = "Mystic Woods
+TexturePacker"
 
 [node name="Link" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/AssetList"]
 layout_mode = 2
-text = "1
-"
+text = "https://game-endeavor.itch.io/mystic-woods
+https://www.codeandweb.com/texturepacker"
 
 [node name="Close" type="Button" parent="Center/Credits"]
 layout_mode = 2
 text = "Close"
 
+[node name="Version" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "  JMSVY Super Cool Group 14 ver 0.1"
+
+[connection signal="focus_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
+[connection signal="focus_entered" from="Center/Buttons/NewGame" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/NewGame" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Buttons/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="focus_entered" from="Center/Buttons/Options" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/Options" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="Center/Buttons/Credits" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/Credits" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="focus_entered" from="Center/Buttons/ExitGame" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/ExitGame" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="focus_entered" from="Center/Options/Close" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Options/Close" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Options/Close" to="." method="_close_screens"]
+[connection signal="focus_entered" from="Center/Credits/Close" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Credits/Close" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Credits/Close" to="." method="_close_screens"]

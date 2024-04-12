@@ -1,12 +1,16 @@
 extends Area2D
 
+var original_speed = 100
+var melee_slowdown = 10
 var lifespan = 0.10
 var existenceTime = 0
 var damage = 50
 @onready var fsm = $"../../FiniteStateMachine"
+#@onready var player = $"../Player"
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +19,8 @@ func _process(delta):
 	if existenceTime > lifespan:
 		queue_free()
 
+func set_angle(direction: Vector2):
+		self.global_rotation = direction.angle()
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
@@ -22,7 +28,7 @@ func _on_body_entered(body):
 			Input.start_joy_vibration(0, 1, 1, 0.15)
 		print("enemy hit melee!")
 		# insert call to enemy.takedamage function
-		body.take_fixed_damage(damage)
+		body.take_damage(damage)
 
 func set_colour(colour: Color):
 	$Sprite2D.self_modulate = colour
