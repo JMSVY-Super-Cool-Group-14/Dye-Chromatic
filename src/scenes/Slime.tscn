@@ -1,7 +1,9 @@
 [gd_scene load_steps=32 format=3 uid="uid://cudnkh4q0wqm2"]
 
 [ext_resource type="Script" path="res://scripts/Slime/Slime.gd" id="1_xq5uw"]
-[ext_resource type="Texture2D" uid="uid://do72n2a2cwvvc" path="res://assets/legacy/slime.png" id="2_ml24s"]
+
+[ext_resource type="Texture2D" uid="uid://ck87wqrwo5yl2" path="res://assets/legacy/slime.png" id="2_ml24s"]
+
 [ext_resource type="Script" path="res://scripts/StateMachine/SlimeStateMachine.gd" id="3_tgto2"]
 [ext_resource type="Script" path="res://scripts/Slime/SlimeIdle.gd" id="4_oge4w"]
 [ext_resource type="Script" path="res://scripts/Slime/SlimeAttack.gd" id="5_gt5dj"]
@@ -208,8 +210,9 @@ shape = SubResource("CircleShape2D_rk53v")
 position = Vector2(0.2, 2)
 shape = SubResource("CircleShape2D_mc8br")
 
-[node name="State Machine" type="Node" parent="."]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_tgto2")
+current_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("Slime")]
 script = ExtResource("4_oge4w")
