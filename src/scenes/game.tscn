@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=14 format=3 uid="uid://cdbtgk1s6v0xp"]
 
-[ext_resource type="Texture2D" uid="uid://dvf3j6bskr8c" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
+[ext_resource type="Texture2D" uid="uid://dlg5c7ybm1kpe" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Slime.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
-[ext_resource type="Texture2D" uid="uid://dak3ear334dhd" path="res://assets/levels/hub.png" id="4_yusat"]
-[ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
-[ext_resource type="Texture2D" path="res://assets/legacy/heart32.png" id="6_iepwv"]
+[ext_resource type="Texture2D" uid="uid://clvegswixqx61" path="res://assets/levels/hub.png" id="4_yusat"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
+[ext_resource type="Texture2D" uid="uid://bx038iua10hgi" path="res://assets/legacy/heart32.png" id="6_iepwv"]
+[ext_resource type="AudioStream" uid="uid://dwl27j2i1pnt0" path="res://assets/audio/Music/Project.wav" id="11_pvxyw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dm3c"]
 texture = ExtResource("1_ihwfy")
@@ -160,3 +161,8 @@ scale = Vector2(0.4, 0.4)
 z_index = 1
 position = Vector2(198, 134)
 scale = Vector2(1, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pvxyw")
+volume_db = -25.766
+autoplay = true
