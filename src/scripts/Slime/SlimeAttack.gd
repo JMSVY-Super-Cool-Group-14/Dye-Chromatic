@@ -15,8 +15,8 @@ func attack():
 	if !cooldown:
 		print("attack")
 		cooldown = true
-		player.take_fixed_damage(attack_dmg)
 		get_tree().create_timer(attack_speed).timeout.connect(func(): cooldown = false)
+		player.take_fixed_damage(attack_dmg)
 		
 func _enter_state():
 	attack()
