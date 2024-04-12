@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://dak3ear334dhd" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
-[ext_resource type="Texture2D" uid="uid://bwg0f5q6f7lnq" path="res://assets/legacy/heart32.png" id="6_iepwv"]
+[ext_resource type="Texture2D" path="res://assets/legacy/heart32.png" id="6_iepwv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dm3c"]
 texture = ExtResource("1_ihwfy")

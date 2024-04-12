@@ -3,7 +3,7 @@ class_name SlimeAttack
 
 @export var Slime : CharacterBody2D
 @export var attack_speed := 3.0
-@export var attack_dmg := 1.0
+@export var attack_dmg := 2.0
 
 
 @onready var player = get_node("../../../Player")
@@ -15,6 +15,7 @@ func attack():
 	if !cooldown:
 		print("attack")
 		cooldown = true
+		player.take_fixed_damage(attack_dmg)
 		get_tree().create_timer(attack_speed).timeout.connect(func(): cooldown = false)
 		
 func _enter_state():
