@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://7k4h7v7mahql"
+path="res://.godot/imported/mc_attack.tpsheet-22b1822a372f379398bfbc5b5e5e625d.res"
+
+[deps]
+
+files=["res://assets/sprites/mc_attack.sprites/attack_side/attack_s1.tres", "res://assets/sprites/mc_attack.sprites/attack_side/attack_s2.tres", "res://assets/sprites/mc_attack.sprites/attack_side/attack_s3.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_s2.tres", "res://assets/sprites/mc_attack.sprites/attack_up/attack_up1.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_u1.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_u2.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_s1.tres", "res://assets/sprites/mc_attack.sprites/attack_up/attack_up2.tres", "res://assets/sprites/mc_attack.sprites/attack_down/attack_d1.tres", "res://assets/sprites/mc_attack.sprites/attack_down/attack_d2.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_d2.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_atatck_d1.tres"]
+
+source_file="res://assets/sprites/mc_attack.tpsheet"
+dest_files=["res://.godot/imported/mc_attack.tpsheet-22b1822a372f379398bfbc5b5e5e625d.res", "res://assets/sprites/mc_attack.sprites/attack_side/attack_s1.tres", "res://assets/sprites/mc_attack.sprites/attack_side/attack_s2.tres", "res://assets/sprites/mc_attack.sprites/attack_side/attack_s3.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_s2.tres", "res://assets/sprites/mc_attack.sprites/attack_up/attack_up1.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_u1.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_u2.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_s1.tres", "res://assets/sprites/mc_attack.sprites/attack_up/attack_up2.tres", "res://assets/sprites/mc_attack.sprites/attack_down/attack_d1.tres", "res://assets/sprites/mc_attack.sprites/attack_down/attack_d2.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_attack_d2.tres", "res://assets/sprites/mc_attack.sprites/melee_attack/m_atatck_d1.tres"]
+
+[params]
+

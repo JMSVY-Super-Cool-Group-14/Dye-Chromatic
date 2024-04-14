@@ -38,7 +38,7 @@ func get_controller():
 func get_speed():
 	return speed
 
-func connection_changed(device, connected):
+func connection_changed(_device, connected):
 	control_avail = connected
 	print("Connection changed", control_avail)
 
