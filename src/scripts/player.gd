@@ -49,7 +49,7 @@ func _process(delta):
 		print(hp)
 		hp += hpRegen
 		timePassed = 0
-	
+		hp_change.emit(hp)
 	
 	# Movement
 	if fsm.get_controller():
