@@ -28,7 +28,8 @@ func _on_body_entered(body):
 			Input.start_joy_vibration(0, 1, 1, 0.15)
 		print("enemy hit melee!")
 		# insert call to enemy.takedamage function
-		body.take_damage(damage)
+		body.fsm.take_damage(damage)
+		body.recieve_knockeback(self.global_position, damage)
 
 func set_colour(colour: Color):
 	$Sprite2D.self_modulate = colour

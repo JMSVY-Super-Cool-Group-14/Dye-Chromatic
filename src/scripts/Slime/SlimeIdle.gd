@@ -1,6 +1,7 @@
 extends State
+class_name enemyIdle
 
-@export var Slime : CharacterBody2D
+@export var enemy : CharacterBody2D
 @export var move_speed := 10.0
 
 var move_dir : Vector2
@@ -23,18 +24,21 @@ func _state_update(delta : float):
 		random_wander()
 		
 func _state_physics_update(delta : float):
-	if Slime:
-		Slime.velocity = move_dir * move_speed
+	if enemy:
+		enemy.velocity = move_dir * move_speed
 	
 	if player != null:
-		var direction = player.global_position - Slime.global_position
+		var direction = player.global_position - enemy.global_position
+		
+		if $"..".health <= 0:
+			$".."._change_state($"../Death")
 	
 		if direction.length() < 50:
 			print("In range")
-			get_node("..")._change_state($"../Chase")
+			$".."._change_state($"../Chase")
 		
 		if direction.length() <= 10:
-			get_node("..")._change_state($"../Attack")
+			$".."._change_state($"../Attack")
 	
 
 	

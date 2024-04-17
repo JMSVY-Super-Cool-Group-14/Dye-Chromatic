@@ -1,7 +1,7 @@
 extends State
-class_name SlimeChase
+class_name enemyChase
 
-@export var Slime : CharacterBody2D
+@export var enemy : CharacterBody2D
 @export var move_speed := 40.0
 @export var detect_range := 50.0
 
@@ -16,20 +16,20 @@ func _exit_state():
 	
 func _state_physics_update(delta : float):
 	if player != null:
-		var direction = player.global_position - Slime.global_position
-	
-		if direction.length() < detect_range:
-			Slime.velocity = direction.normalized() * move_speed
+		var direction = player.global_position - enemy.global_position
+
+		enemy.velocity = direction.normalized() * move_speed
 		
-		else:
-			Slime.velocity = Vector2.ZERO
+		
+		if $"..".health <= 0:
+			$".."._change_state($"../Death")
 			
-		if direction.length() > 100:
+		if direction.length() > 70:
 			print("Out of range")
-			get_node("..")._change_state($"../Idle")
+			$".."._change_state($"../Idle")
 		
 		if direction.length() <= 10:
 			print("Attack range")
-			get_node("..")._change_state($"../Attack")
+			$".."._change_state($"../Attack")
 		
 

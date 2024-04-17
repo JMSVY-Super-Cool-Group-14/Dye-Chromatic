@@ -140,6 +140,7 @@ func melee_attack(colour: String):
 	melee_strike.set_colour(colourWheel[colour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
 	
+	
 func set_colour(left, right):
 	if left and right:
 		currentColour = colourCombined
