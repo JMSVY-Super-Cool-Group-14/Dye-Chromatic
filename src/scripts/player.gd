@@ -1,18 +1,23 @@
 extends Area2D
 
 signal hp_change(hp)
+signal colour_change(leftColour, rightColour, currentColour)
 
 var DELAY = 0.25
-var maxHP = 100
-var hp = 10
-var hpRegen = 2
-var hpRegenDelay = 10
+@export var maxHP = 100
+@export var hp = 10
+@export var hpRegen = 2
+@export var hpRegenDelay = 10
 var timePassed = 0
 var attackDelta = 0
-var meleeRange = 22
+@export var magentaCooldown = 5
+var magentaDelta = 0 	# set to 5 so it is not on cooldown at start
+@export var meleeRange = 22
 var velocity = Vector2.ZERO
+var leftColourSelect = ["grey", "red", "green", "blue"]
+var rightColourSelect = ["grey", "red", "green", "blue"]
 var colourWheel = {
-	"grey" : Color(0, 0, 0),
+	"grey" : Color(0.5, 0.5, 0.5),
 	"red" : Color(1, 0, 0),
 	"green" : Color(0, 1, 0),
 	"blue" : Color(0, 0, 1),
@@ -20,12 +25,11 @@ var colourWheel = {
 	"magenta" : Color(1, 0, 1), 
 	"cyan" : Color(0, 1, 1)
 		}
-@onready var leftColour = "blue"
-@onready var rightColour = "red"
-@onready var colourCombined = "magenta"
+@onready var leftIndex = 0
+@onready var rightIndex = 0
+@onready var leftColour = "grey"
+@onready var rightColour = "grey"
 @onready var currentColour = "grey"
-@onready var leftActivated = false
-@onready var rightActivated = false
 @onready var rangedTarget = Vector2.ZERO
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
@@ -43,6 +47,7 @@ func _process(delta):
 	$AnimatedSprite2D.play()
 	attackDelta += delta
 	timePassed += delta
+	magentaDelta -= delta
 	
 	if timePassed > hpRegenDelay and hp < maxHP:
 		print("Regenerate health! Health is: ")
@@ -51,17 +56,18 @@ func _process(delta):
 		timePassed = 0
 		hp_change.emit(hp)
 	
+	# Colour Reset
+	if Input.is_action_just_pressed("left_colour"):
+		colour_reset()
+	elif Input.is_action_just_pressed("right_colour"):
+		colour_reset()
+	
 	# Movement
 	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	else:
 		key_move()
-	
-	#Colour Control
-	leftActivated = Input.is_action_pressed("left_colour")
-	rightActivated = Input.is_action_pressed("right_colour")
-	set_colour(leftActivated, rightActivated)
 	
 	# Facing direction check
 	if velocity.length() <= 0:
@@ -89,13 +95,13 @@ func key_move():
 		velocity.y += 1
 		
 func _input(event):
+	# Handle colour input
+	colour_input(event)
 	
-	# Add colour select options here
-	# AKA to change which two colours 
-	# you have equipped
-	
-	# #####################
-	
+	# Handle attack input
+	attack_input(event)
+			
+func attack_input(event):
 	if attackDelta > DELAY:
 		if fsm.get_controller():
 			if event.is_action_pressed("ranged_attack") and rangedTarget!=Vector2.ZERO:
@@ -104,8 +110,9 @@ func _input(event):
 			elif event.is_action("melee_attack"):
 				melee_attack(currentColour)
 				attackDelta = 0
-			elif event.is_action_pressed("special_attack"):
+			elif event.is_action_pressed("special_attack") and magentaDelta <= 0:
 				colour_special()
+				magentaDelta = magentaCooldown
 
 		else:
 			if event.is_action_pressed("ranged_attack"):
@@ -115,9 +122,11 @@ func _input(event):
 			elif event.is_action_pressed("melee_attack"):
 				melee_attack(currentColour)
 				attackDelta = 0
-			elif event.is_action_pressed("special_attack"):
+			elif event.is_action_pressed("special_attack") and magentaDelta <= 0:
 				colour_special()
-			
+				magentaDelta = magentaCooldown
+	
+	
 func fire_projectile(target_pos: Vector2, colour: String):
 	print("attempting ranged " + colour)
 	var projectile = projectile_scene.instantiate()
@@ -140,17 +149,71 @@ func melee_attack(colour: String):
 	melee_strike.set_colour(colourWheel[colour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
 	
+func colour_reset():
+	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
+		return
 	
+	await get_tree().create_timer(0.6).timeout
+	
+	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
+		return
+	elif Input.is_action_pressed("left_colour") and Input.is_action_pressed("right_colour"):
+		leftIndex = 0
+		rightIndex = 0
+		set_colour("grey", "grey")
+	elif Input.is_action_pressed("left_colour"):
+		leftIndex = 0
+		set_colour("grey", rightColour)
+	elif Input.is_action_pressed("right_colour"):
+		rightIndex = 0
+		set_colour(leftColour, "grey")
+
+
+func colour_input(event):
+	# Toggle colours selected
+
+	if event.is_action_pressed("left_colour"):
+		# So we dont have same colour on both sides
+		leftIndex = (leftIndex+1) % 4
+		if leftIndex == rightIndex:	
+			leftIndex = (leftIndex+1) % 4
+			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+		else:
+			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+	elif event.is_action_pressed("right_colour"):
+		# So we dont have same colour on both sides
+		rightIndex = (rightIndex+1) % 4
+		if rightIndex == leftIndex:
+			rightIndex = (rightIndex+1) % 4
+			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+		else:
+			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+
 func set_colour(left, right):
-	if left and right:
-		currentColour = colourCombined
-	elif left:
-		currentColour = leftColour
-	elif right:
+	leftColour = left
+	rightColour = right
+	if leftColour!="grey" and rightColour!="grey":
+		match [leftColour, rightColour]:
+			["red", "green"]:
+				currentColour = "yellow"
+			["red", "blue"]:
+				currentColour = "magenta"
+			["green", "blue"]:
+				currentColour = "cyan"
+			["green", "red"]:
+				currentColour = "yellow"
+			["blue", "red"]:
+				currentColour = "magenta"
+			["blue", "green"]:
+				currentColour = "cyan"
+	elif left=="grey":
 		currentColour = rightColour
-	else:
-		currentColour = "grey"
-		
+	elif right == "grey":
+		currentColour = leftColour
+	
+	colour_change.emit(leftColour, rightColour, currentColour)
+
+
 func colour_special():
 	match currentColour:
 		"grey":
@@ -167,6 +230,7 @@ func colour_special():
 			var magenta_special = special_magenta_scene.instantiate()
 			add_child(magenta_special)
 			magenta_special.teleport(facingDirection)
+			slow(0.5, 0.5)
 		"cyan":
 			print("cyanSpecial")
 

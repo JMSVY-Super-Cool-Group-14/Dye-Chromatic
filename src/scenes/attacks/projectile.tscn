@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ceodbxqdq8yve"]
 
 [ext_resource type="Script" path="res://scripts/attacks/Projectile.gd" id="1_fe5u8"]
-[ext_resource type="Texture2D" uid="uid://gvblh3jp8iq1" path="res://assets/sprites/attacks/ranged/Bullet.png" id="2_6wuob"]
+[ext_resource type="Texture2D" uid="uid://bc645dcpxpvan" path="res://assets/sprites/attacks/ranged/Bullet.png" id="2_6wuob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmhvg"]
 

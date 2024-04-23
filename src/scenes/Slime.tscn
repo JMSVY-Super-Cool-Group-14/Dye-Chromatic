@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://cudnkh4q0wqm2"]
 
 [ext_resource type="Script" path="res://scripts/Slime/Slime.gd" id="1_xq5uw"]
-[ext_resource type="Texture2D" uid="uid://do72n2a2cwvvc" path="res://assets/legacy/slime.png" id="2_ml24s"]
+[ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="2_ml24s"]
 [ext_resource type="Script" path="res://scenes/EnemyAnimatedSprite2D.gd" id="3_e3mww"]
 [ext_resource type="Script" path="res://scripts/StateMachine/SlimeStateMachine.gd" id="3_tgto2"]
 [ext_resource type="Script" path="res://scripts/Slime/SlimeIdle.gd" id="4_oge4w"]

@@ -1,7 +1,7 @@
 extends Area2D
 
 var projectile_velocity = Vector2.ZERO
-var speed = 100
+var speed = 200
 var range = 100
 var start_pos = Vector2.ZERO
 var damage = 30
