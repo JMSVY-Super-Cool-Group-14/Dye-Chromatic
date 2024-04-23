@@ -18,6 +18,7 @@ func _ready():
 	$"../UI/PauseMenu".unpause.connect(func(): _change_state($InGame))
 	$InGame.pause.connect(func(): _change_state($Pause))
 	player.hp_change.connect(hp_changed)
+	player.colour_change.connect(colour_changed)
 
 func _change_state(new_state: State):
 	super(new_state)
@@ -48,3 +49,12 @@ func hp_changed(health:int):
 	if hp <= 0:
 		print("You Died!")
 		_change_state($GameOver)
+
+func colour_changed(left, right, current):
+	var combined = $"../UI/ColourControl/CombinedColour"
+	var leftColour = $"../UI/ColourControl/LeftColour"
+	var rightColour = $"../UI/ColourControl/RightColour"
+	combined.self_modulate = player.colourWheel[current]
+	leftColour.self_modulate = player.colourWheel[left]
+	rightColour.self_modulate = player.colourWheel[right]
+
