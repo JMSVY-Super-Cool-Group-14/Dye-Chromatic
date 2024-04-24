@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://fxja8r3o67iw" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="Texture2D" uid="uid://wiqos5odnqfm" path="res://assets/legacy/heart32.png" id="6_iepwv"]
+[ext_resource type="Texture2D" uid="uid://01uvc6cl7jb" path="res://assets/sprites/UI/colourSelectCircle.png" id="7_45d4h"]
 [ext_resource type="Texture2D" uid="uid://d2va084t32vil" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Stone Ground.png" id="11_qqcxc"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
-[ext_resource type="PackedScene" uid="uid://0bq3mr4k2yu0" path="res://scenes/npc.tscn" id="13_7i4wi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dm3c"]
 texture = ExtResource("1_ihwfy")
@@ -599,6 +599,76 @@ texture = ExtResource("6_iepwv")
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
+[node name="ColourControl" type="TextureRect" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -140.0
+offset_right = 130.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="CombinedColour" type="TextureRect" parent="UI/ColourControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -140.0
+offset_right = 133.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture = ExtResource("7_45d4h")
+expand_mode = 5
+
+[node name="RightColour" type="TextureRect" parent="UI/ColourControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -80.0
+offset_right = 172.558
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(75, 60)
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture = ExtResource("7_45d4h")
+expand_mode = 3
+
+[node name="LeftColour" type="TextureRect" parent="UI/ColourControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -80.0
+offset_right = -15.4418
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(75, 60)
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture = ExtResource("7_45d4h")
+expand_mode = 3
+
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -750,99 +820,95 @@ scale = Vector2(1, 1)
 position = Vector2(665.5, 445)
 scale = Vector2(1, 1)
 
-[node name="Slime28" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(693.7, 446.5)
+[node name="Slime30" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(642.1, 457.6)
 scale = Vector2(1, 1)
 
-[node name="Slime26" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(526.1, 508.4)
+[node name="Slime31" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(650.8, 430)
 scale = Vector2(1, 1)
 
-[node name="Slime25" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(523.4, 525.8)
+[node name="Slime32" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(628.3, 456.1)
 scale = Vector2(1, 1)
 
-[node name="Slime22" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(505.1, 529.1)
+[node name="Slime33" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(634.9, 445.6)
 scale = Vector2(1, 1)
 
-[node name="Slime23" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(503, 507.8)
+[node name="Slime34" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(597.1, 447.1)
 scale = Vector2(1, 1)
 
-[node name="Slime21" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(542.9, 527.6)
+[node name="Slime35" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(595, 425.8)
 scale = Vector2(1, 1)
 
-[node name="Slime20" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(536.3, 538.1)
+[node name="Slime36" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(637.9, 415)
 scale = Vector2(1, 1)
 
-[node name="Slime19" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(558.8, 512)
+[node name="Slime37" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(615.4, 443.8)
 scale = Vector2(1, 1)
 
-[node name="Slime18" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(550.1, 539.6)
+[node name="Slime38" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(618.1, 426.4)
 scale = Vector2(1, 1)
 
-[node name="Slime17" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(573.5, 527)
+[node name="Slime39" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(784.6, 498.5)
 scale = Vector2(1, 1)
 
-[node name="Slime16" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(601.7, 528.5)
+[node name="Slime40" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(792.7, 528.5)
 scale = Vector2(1, 1)
 
-[node name="Slime14" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(429.1, 442)
+[node name="Slime41" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(764.5, 527)
 scale = Vector2(1, 1)
 
-[node name="Slime13" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(426.4, 459.4)
+[node name="Slime42" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(741.1, 539.6)
 scale = Vector2(1, 1)
 
-[node name="Slime12" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(448.9, 430.6)
+[node name="Slime43" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(749.8, 512)
 scale = Vector2(1, 1)
 
-[node name="Slime10" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(408.1, 462.7)
+[node name="Slime44" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(727.3, 538.1)
 scale = Vector2(1, 1)
 
-[node name="Slime9" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(445.9, 461.2)
+[node name="Slime45" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(733.9, 527.6)
 scale = Vector2(1, 1)
 
-[node name="Slime8" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(439.3, 471.7)
+[node name="Slime46" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(696.1, 529.1)
 scale = Vector2(1, 1)
 
-[node name="Slime7" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(461.8, 445.6)
+[node name="Slime47" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(694, 507.8)
 scale = Vector2(1, 1)
 
-[node name="Slime6" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(453.1, 473.2)
+[node name="Slime48" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(736.9, 497)
 scale = Vector2(1, 1)
 
-[node name="Slime5" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(476.5, 460.6)
+[node name="Slime49" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(714.4, 525.8)
 scale = Vector2(1, 1)
 
-[node name="Slime4" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(433, 340)
+[node name="Slime50" parent="." instance=ExtResource("2_h5rq2")]
+position = Vector2(717.1, 508.4)
 scale = Vector2(1, 1)
 
-[node name="Slime2" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-z_index = 1
-position = Vector2(530, 420)
-scale = Vector2(1, 1)
+[node name="enemies" type="Node2D" parent="."]
+position = Vector2(469, -108)
+scale = Vector2(0.3, 0.3)
 
-[node name="Slime" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-z_index = 1
-position = Vector2(397, 381)
-scale = Vector2(1, 1)
-
-[node name="NPC" parent="." instance=ExtResource("13_7i4wi")]
-position = Vector2(190, 312)
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_aedne")
+volume_db = -10.0
+autoplay = true
