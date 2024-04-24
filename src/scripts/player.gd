@@ -186,3 +186,4 @@ func take_DOT_damage(damage: float, duration: float):
 	for n in range(0, damage, tick):
 		hp -= tick
 		hp_change.emit(hp)
+		

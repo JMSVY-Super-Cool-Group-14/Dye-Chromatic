@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lpedh2jwr02a"]
 
 [ext_resource type="Script" path="res://scripts/attacks/meleeAttack.gd" id="1_arnf8"]
-[ext_resource type="Texture2D" uid="uid://djsuacsn36hob" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Props.png" id="1_ayoc5"]
+[ext_resource type="Texture2D" uid="uid://les283jwhy2" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Props.png" id="1_ayoc5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dspy7"]
 radius = 3.85714

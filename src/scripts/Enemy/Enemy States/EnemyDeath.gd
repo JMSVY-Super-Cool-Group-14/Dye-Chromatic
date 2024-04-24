@@ -1,7 +1,7 @@
 extends State
 class_name enemyDeath
 
-@export var enemy : CharacterBody2D
+@onready var enemy = $"../.."
 
 		
 func _enter_state():

@@ -1,13 +1,13 @@
 [gd_scene load_steps=34 format=3 uid="uid://cudnkh4q0wqm2"]
 
-[ext_resource type="Script" path="res://scripts/Slime/Slime.gd" id="1_xq5uw"]
-[ext_resource type="Texture2D" uid="uid://do72n2a2cwvvc" path="res://assets/legacy/slime.png" id="2_ml24s"]
-[ext_resource type="Script" path="res://scenes/EnemyAnimatedSprite2D.gd" id="3_e3mww"]
-[ext_resource type="Script" path="res://scripts/StateMachine/SlimeStateMachine.gd" id="3_tgto2"]
-[ext_resource type="Script" path="res://scripts/Slime/SlimeIdle.gd" id="4_oge4w"]
-[ext_resource type="Script" path="res://scripts/Slime/SlimeAttack.gd" id="5_gt5dj"]
-[ext_resource type="Script" path="res://scripts/Slime/SlimeChase.gd" id="5_h3vwk"]
-[ext_resource type="Script" path="res://scenes/SlimeDeath.gd" id="7_ooypr"]
+[ext_resource type="Script" path="res://scripts/Enemy/Enemy.gd" id="1_xq5uw"]
+[ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="2_ml24s"]
+[ext_resource type="Script" path="res://scripts/Enemy/EnemyAnimatedSprite2D.gd" id="3_e3mww"]
+[ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="4_7htyd"]
+[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyIdle.gd" id="5_edwtq"]
+[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyChase.gd" id="6_7udfh"]
+[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyAttack.gd" id="7_ahfcf"]
+[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyDeath.gd" id="8_ggru3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vqlx"]
 atlas = ExtResource("2_ml24s")
@@ -213,25 +213,21 @@ position = Vector2(0.2, 2)
 shape = SubResource("CircleShape2D_mc8br")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("3_tgto2")
+script = ExtResource("4_7htyd")
 current_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("4_oge4w")
-enemy = NodePath("../..")
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("5_edwtq")
 move_speed = 5.0
 
-[node name="Chase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_h3vwk")
-enemy = NodePath("../..")
+[node name="Chase" type="Node" parent="State Machine"]
+script = ExtResource("6_7udfh")
 
-[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_gt5dj")
-enemy = NodePath("../..")
+[node name="Attack" type="Node" parent="State Machine"]
+script = ExtResource("7_ahfcf")
 
-[node name="Death" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("7_ooypr")
-enemy = NodePath("../..")
+[node name="Death" type="Node" parent="State Machine"]
+script = ExtResource("8_ggru3")
 
 [connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Hit Box" to="State Machine/Attack" method="_on_hit_box_body_exited"]
