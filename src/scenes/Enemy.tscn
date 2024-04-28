@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://cudnkh4q0wqm2"]
+[gd_scene load_steps=40 format=3 uid="uid://cudnkh4q0wqm2"]
 
 [ext_resource type="Script" path="res://scripts/Enemy/Enemy.gd" id="1_xq5uw"]
+[ext_resource type="Shader" path="res://scripts/Enemy/damageShder.gdshader" id="2_b8jfj"]
 [ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="2_ml24s"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyAnimatedSprite2D.gd" id="3_e3mww"]
 [ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="4_7htyd"]
@@ -8,6 +9,12 @@
 [ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyChase.gd" id="6_7udfh"]
 [ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyAttack.gd" id="7_ahfcf"]
 [ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyDeath.gd" id="8_ggru3"]
+[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyStun.gd" id="10_xqlkf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pjsy"]
+resource_local_to_scene = true
+shader = ExtResource("2_b8jfj")
+shader_parameter/quantity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vqlx"]
 atlas = ExtResource("2_ml24s")
@@ -186,6 +193,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_8ieyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_avw83"]
+resource_name = "damage"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.25, 0.3, 0.4, 0.45, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pc2el"]
+_data = {
+"RESET": SubResource("Animation_8ieyw"),
+"damage": SubResource("Animation_avw83")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_rk53v"]
 radius = 6.00333
 
@@ -198,9 +243,17 @@ script = ExtResource("1_xq5uw")
 fsm = NodePath("State Machine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_4pjsy")
 sprite_frames = SubResource("SpriteFrames_5jic6")
 animation = &"Jump"
+frame = 3
+frame_progress = 0.0192241
 script = ExtResource("3_e3mww")
+
+[node name="damage" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_pc2el")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -229,5 +282,10 @@ script = ExtResource("7_ahfcf")
 [node name="Death" type="Node" parent="State Machine"]
 script = ExtResource("8_ggru3")
 
+[node name="Stun" type="Node" parent="State Machine"]
+script = ExtResource("10_xqlkf")
+
 [connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Hit Box" to="State Machine/Attack" method="_on_hit_box_body_exited"]
+[connection signal="took_dmg" from="State Machine" to="." method="_on_state_machine_took_dmg"]
+[connection signal="took_dmg" from="State Machine" to="AnimatedSprite2D" method="_on_state_machine_took_dmg"]

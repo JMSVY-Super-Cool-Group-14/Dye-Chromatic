@@ -9,6 +9,7 @@ var pos
 var angle
 
 @onready var fsm = $"../../FiniteStateMachine"
+var attack_type = "range"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,7 +43,7 @@ func _on_body_entered(body):
 		print("enemy hit!")
 		# insert call to enemy take damage function
 		body.fsm.take_damage(damage)
-		body.recieve_knockeback(projectile_velocity, damage)
+		body.recieve_knockeback(projectile_velocity, damage, attack_type)
 		queue_free()	#remove projectile instance
 
 func set_colour(colour: Color):

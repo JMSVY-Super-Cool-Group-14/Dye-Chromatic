@@ -3,11 +3,9 @@ class_name npc
 
 @export var fsm : FiniteStateMachine
 
+
 var player_can_chat = false
 var player 
-
-
-
 
 func start_interact():
 	fsm._change_state($"StateMachine/Interacting")
@@ -29,18 +27,15 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite2D.play("Idle")
 
-
-
-
-
 func _on_chat_area_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
 		player_can_chat = true
 	
-
 func _on_chat_area_body_exited(body):
 	if body.is_in_group("player"):
 		player_can_chat = false
 		end_interact()
 		
+func _on_dialogue_box_dialogue_done():
+	end_interact()

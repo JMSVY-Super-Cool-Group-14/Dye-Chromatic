@@ -5,12 +5,14 @@ class_name enemy
 
 
 
-func recieve_knockeback(source_pos: Vector2, dmg):
+func recieve_knockeback(source_pos: Vector2, dmg, attack_type):
 	var knockback_dir = source_pos.direction_to(self.global_position)
 	var knockback_strength = 0.1 * dmg
 	var knockback = knockback_dir * knockback_strength
 	
 	global_position += knockback
+	if attack_type == "melee":
+		fsm._change_state($"State Machine/Stun")
 
 func _physics_process(delta):
 	move_and_slide()
@@ -27,5 +29,5 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite2D.play("Idle")
 	
-	
-
+func _on_state_machine_took_dmg():
+	$AnimatedSprite2D/damage.play("damage")
