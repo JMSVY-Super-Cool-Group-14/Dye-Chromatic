@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bpid23vf3dspu" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemy.tscn" id="2_h5rq2"]
-[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/Player.tscn" id="2_mpbna"]
+[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]

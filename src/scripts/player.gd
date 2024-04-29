@@ -4,12 +4,14 @@ signal hp_change(hp)
 signal colour_change(leftColour, rightColour, currentColour)
 
 var DELAY = 0.25
+var colourSwitchDelay = 0.2
 @export var maxHP = 100
 @export var hp = 10
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
 var timePassed = 0
 var attackDelta = 0
+var colourSwitchDelta = 0
 @export var magentaCooldown = 5
 var magentaDelta = 0 	# set to 5 so it is not on cooldown at start
 @export var meleeRange = 22
@@ -48,6 +50,7 @@ func _process(delta):
 	attackDelta += delta
 	timePassed += delta
 	magentaDelta -= delta
+	colourSwitchDelta += delta
 	
 	if timePassed > hpRegenDelay and hp < maxHP:
 		print("Regenerate health! Health is: ")
@@ -153,7 +156,20 @@ func colour_reset():
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
 	
-	await get_tree().create_timer(0.6).timeout
+	# Multiple wait checks for redundancy
+	await get_tree().create_timer(0.2).timeout
+	
+	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
+		return
+	
+	# Multiple wait checks for redundancy
+	await get_tree().create_timer(0.2).timeout
+	
+	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
+		return
+	
+	# Multiple wait checks for redundancy
+	await get_tree().create_timer(0.2).timeout
 	
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
@@ -172,22 +188,24 @@ func colour_reset():
 func colour_input(event):
 	# Toggle colours selected
 
-	if event.is_action_pressed("left_colour"):
-		# So we dont have same colour on both sides
-		leftIndex = (leftIndex+1) % 4
-		if leftIndex == rightIndex:	
+	if colourSwitchDelta > colourSwitchDelay:
+		colourSwitchDelta = 0
+		if event.is_action_pressed("left_colour") :
+			# So we dont have same colour on both sides
 			leftIndex = (leftIndex+1) % 4
-			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
-		else:
-			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
-	elif event.is_action_pressed("right_colour"):
-		# So we dont have same colour on both sides
-		rightIndex = (rightIndex+1) % 4
-		if rightIndex == leftIndex:
+			if leftIndex == rightIndex:	
+				leftIndex = (leftIndex+1) % 4
+				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+			else:
+				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+		elif event.is_action_pressed("right_colour"):
+			# So we dont have same colour on both sides
 			rightIndex = (rightIndex+1) % 4
-			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
-		else:
-			set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+			if rightIndex == leftIndex:
+				rightIndex = (rightIndex+1) % 4
+				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
+			else:
+				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 
 func set_colour(left, right):
 	leftColour = left
