@@ -1,12 +1,16 @@
 extends State
 class_name enemyIdle
 
-@export var enemy : CharacterBody2D
 @export var move_speed := 10.0
+
+@onready var enemy = $"../.."
+@onready var player = $"../../../../Player"
+@onready var sm = $".."
 
 var move_dir : Vector2
 var wander_time : float
-@onready var player = get_node("../../../Player")
+
+
 
 
 func random_wander():
@@ -30,15 +34,15 @@ func _state_physics_update(delta : float):
 	if player != null:
 		var direction = player.global_position - enemy.global_position
 		
-		if $"..".health <= 0:
-			$".."._change_state($"../Death")
+		if sm.health <= 0:
+			sm._change_state($"../Death")
 	
 		if direction.length() < 50:
 			print("In range")
-			$".."._change_state($"../Chase")
+			sm._change_state($"../Chase")
 		
 		if direction.length() <= 10:
-			$".."._change_state($"../Attack")
+			sm._change_state($"../Attack")
 	
 
 	

@@ -1,11 +1,13 @@
 extends State
 class_name enemyChase
 
-@export var enemy : CharacterBody2D
+
 @export var move_speed := 40.0
 @export var detect_range := 50.0
 
-@onready var player =  get_node("../../../Player")
+@onready var enemy = $"../.."
+@onready var player = $"../../../../Player"
+@onready var sm = $".."
 
 
 func _enter_state():
@@ -21,15 +23,15 @@ func _state_physics_update(delta : float):
 		enemy.velocity = direction.normalized() * move_speed
 		
 		
-		if $"..".health <= 0:
-			$".."._change_state($"../Death")
+		if sm.health <= 0:
+			sm._change_state($"../Death")
 			
 		if direction.length() > 70:
 			print("Out of range")
-			$".."._change_state($"../Idle")
+			sm._change_state($"../Idle")
 		
 		if direction.length() <= 10:
 			print("Attack range")
-			$".."._change_state($"../Attack")
+			sm._change_state($"../Attack")
 		
 
