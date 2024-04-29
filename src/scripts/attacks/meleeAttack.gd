@@ -5,6 +5,7 @@ var melee_slowdown = 10
 var lifespan = 0.10
 var existenceTime = 0
 var damage = 50
+var attack_type = "melee"
 @onready var fsm = $"../../FiniteStateMachine"
 #@onready var player = $"../Player"
 # Called when the node enters the scene tree for the first time.
@@ -29,7 +30,7 @@ func _on_body_entered(body):
 		print("enemy hit melee!")
 		# insert call to enemy.takedamage function
 		body.fsm.take_damage(damage)
-		body.recieve_knockeback(self.global_position, damage)
+		body.recieve_knockeback(self.global_position, damage, attack_type)
 
 func set_colour(colour: Color):
 	$Sprite2D.self_modulate = colour
