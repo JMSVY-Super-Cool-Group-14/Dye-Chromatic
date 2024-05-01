@@ -21,7 +21,7 @@ func _enter_state():
 	random_wander()
 	
 func _state_update(delta : float):
-	print(wander_time)
+	#print(wander_time)
 	if wander_time > 0:
 		wander_time -= delta
 	
