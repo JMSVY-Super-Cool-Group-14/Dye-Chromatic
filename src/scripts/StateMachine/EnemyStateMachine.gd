@@ -1,4 +1,5 @@
 extends FiniteStateMachine
+class_name enemyStateMachine
 
 
 @export var health = 100

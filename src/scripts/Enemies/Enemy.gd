@@ -24,7 +24,7 @@ func _physics_process(delta):
 	elif fsm.current_state == fsm.get_child(2):
 		$AnimatedSprite2D.play("Idle")
 	elif velocity.length() > 0:
-		$AnimatedSprite2D.play("walk")
+		$AnimatedSprite2D.play("Walk")
 	
 	else:
 		$AnimatedSprite2D.play("Idle")
