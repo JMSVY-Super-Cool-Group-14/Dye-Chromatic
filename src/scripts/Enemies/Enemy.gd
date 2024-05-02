@@ -5,14 +5,20 @@ class_name enemy
 
 
 
-func recieve_knockeback(source_pos: Vector2, dmg, attack_type):
+func recieve_knockeback(source_pos: Vector2, dmg, attack_type):	
+	
 	var knockback_dir = source_pos.direction_to(self.global_position)
 	var knockback_strength = 0.1 * dmg
 	var knockback = knockback_dir * knockback_strength
 	
+	if attack_type == "wave":
+		print("Wave attack")
+		knockback = knockback_dir * 6
+		fsm._change_state($"State Machine/Stun")
 	global_position += knockback
 	if attack_type == "melee":
 		fsm._change_state($"State Machine/Stun")
+	
 
 func _physics_process(delta):
 	move_and_slide()

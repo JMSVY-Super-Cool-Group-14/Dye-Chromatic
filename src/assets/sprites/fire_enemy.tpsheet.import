@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://bo4c81chbi3ac"
+path="res://.godot/imported/fire_enemy.tpsheet-2a7f9a0ba1e849f4881e51e6a0e67322.res"
+
+[deps]
+
+files=["res://assets/sprites/fire_enemy.sprites/attack/Fire_attack-1.tres", "res://assets/sprites/fire_enemy.sprites/attack/Fire_attack-2.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-1.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-2.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-3.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-4.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-5.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-6.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-7.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-8.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-1.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-2.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-3.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-4.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-5.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-6.tres", "res://assets/sprites/fire_enemy.sprites/still/Fire_still-1.tres", "res://assets/sprites/fire_enemy.sprites/still/Fire_still-2.tres"]
+
+source_file="res://assets/sprites/fire_enemy.tpsheet"
+dest_files=["res://.godot/imported/fire_enemy.tpsheet-2a7f9a0ba1e849f4881e51e6a0e67322.res", "res://assets/sprites/fire_enemy.sprites/attack/Fire_attack-1.tres", "res://assets/sprites/fire_enemy.sprites/attack/Fire_attack-2.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-1.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-2.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-3.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-4.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-5.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-6.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-7.tres", "res://assets/sprites/fire_enemy.sprites/die/Fire_die-8.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-1.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-2.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-3.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-4.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-5.tres", "res://assets/sprites/fire_enemy.sprites/move/Fire_move-6.tres", "res://assets/sprites/fire_enemy.sprites/still/Fire_still-1.tres", "res://assets/sprites/fire_enemy.sprites/still/Fire_still-2.tres"]
+
+[params]
+

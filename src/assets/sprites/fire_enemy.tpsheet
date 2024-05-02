@@ -1,0 +1,324 @@
+{
+	"textures": [
+		{
+			"image": "fire_enemy-0.png",
+			"size": {
+				"w": 1504,
+				"h": 1368
+			},
+			"sprites": [
+				{
+					"filename": "attack/Fire_attack-1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 724,
+						"h": 679
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "attack/Fire_attack-2.png",
+					"region": {
+						"x": 752,
+						"y": 0,
+						"w": 724,
+						"h": 679
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "die/Fire_die-1.png",
+					"region": {
+						"x": 0,
+						"y": 684,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "die/Fire_die-2.png",
+					"region": {
+						"x": 752,
+						"y": 684,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		},
+		{
+			"image": "fire_enemy-1.png",
+			"size": {
+				"w": 1504,
+				"h": 1368
+			},
+			"sprites": [
+				{
+					"filename": "die/Fire_die-3.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "die/Fire_die-4.png",
+					"region": {
+						"x": 752,
+						"y": 0,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "die/Fire_die-5.png",
+					"region": {
+						"x": 0,
+						"y": 684,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "die/Fire_die-6.png",
+					"region": {
+						"x": 752,
+						"y": 684,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		},
+		{
+			"image": "fire_enemy-2.png",
+			"size": {
+				"w": 1504,
+				"h": 1368
+			},
+			"sprites": [
+				{
+					"filename": "die/Fire_die-7.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "die/Fire_die-8.png",
+					"region": {
+						"x": 752,
+						"y": 0,
+						"w": 727,
+						"h": 684
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "move/Fire_move-1.png",
+					"region": {
+						"x": 0,
+						"y": 684,
+						"w": 752,
+						"h": 669
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "move/Fire_move-2.png",
+					"region": {
+						"x": 752,
+						"y": 684,
+						"w": 752,
+						"h": 669
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		},
+		{
+			"image": "fire_enemy-3.png",
+			"size": {
+				"w": 1504,
+				"h": 1368
+			},
+			"sprites": [
+				{
+					"filename": "move/Fire_move-3.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 752,
+						"h": 669
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "move/Fire_move-4.png",
+					"region": {
+						"x": 752,
+						"y": 0,
+						"w": 752,
+						"h": 669
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "move/Fire_move-5.png",
+					"region": {
+						"x": 0,
+						"y": 684,
+						"w": 752,
+						"h": 669
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "move/Fire_move-6.png",
+					"region": {
+						"x": 752,
+						"y": 684,
+						"w": 752,
+						"h": 669
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		},
+		{
+			"image": "fire_enemy-4.png",
+			"size": {
+				"w": 1504,
+				"h": 684
+			},
+			"sprites": [
+				{
+					"filename": "still/Fire_still-1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 724,
+						"h": 679
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "still/Fire_still-2.png",
+					"region": {
+						"x": 752,
+						"y": 0,
+						"w": 724,
+						"h": 679
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:73d51570f16286b009d3f6c52f987995:5b07c7633f3d7c09dcaf3b930b3db929:404e654ea23348eedbe99d672edf932f$"
+	}
+}
