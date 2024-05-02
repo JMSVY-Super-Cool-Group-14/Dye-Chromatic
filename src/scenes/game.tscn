@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://fxja8r3o67iw" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="Texture2D" uid="uid://wiqos5odnqfm" path="res://assets/legacy/heart32.png" id="6_iepwv"]
-[ext_resource type="Texture2D" uid="uid://01uvc6cl7jb" path="res://assets/sprites/UI/colourSelectCircle.png" id="7_45d4h"]
+[ext_resource type="Texture2D" path="res://assets/sprites/UI/colourSelectCircle.png" id="7_45d4h"]
 [ext_resource type="Texture2D" uid="uid://d2va084t32vil" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Stone Ground.png" id="11_qqcxc"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://0bq3mr4k2yu0" path="res://scenes/npc.tscn" id="13_7i4wi"]

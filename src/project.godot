@@ -30,6 +30,10 @@ project/assembly_name="Dye-Chromatic"
 
 enabled=PackedStringArray("res://addons/codeandweb.texturepacker/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={

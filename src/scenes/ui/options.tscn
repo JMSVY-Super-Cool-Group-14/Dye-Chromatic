@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1a3wnx2wk3ms"]
+[gd_scene load_steps=4 format=3 uid="uid://d1a3wnx2wk3ms"]
 
+[ext_resource type="Theme" uid="uid://cheonynu1k4d3" path="res://assets/UI/options.tres" id="1_amv88"]
 [ext_resource type="Script" path="res://scripts/ui/VolumeSlider.gd" id="1_tn4p4"]
 [ext_resource type="Script" path="res://scripts/ui/AudioOptions.gd" id="2_28sjw"]
 
 [node name="Options" type="TabContainer"]
 custom_minimum_size = Vector2(300, 300)
-current_tab = 1
+offset_right = 300.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+theme = ExtResource("1_amv88")
 
 [node name="Audio" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 2
 
 [node name="Master" type="VBoxContainer" parent="Audio"]
@@ -63,6 +66,7 @@ script = ExtResource("1_tn4p4")
 bus_name = "Effects"
 
 [node name="Video" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Video"]

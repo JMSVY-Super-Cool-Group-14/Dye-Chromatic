@@ -1,12 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://bho251jfd673i"]
+[gd_scene load_steps=7 format=3 uid="uid://bho251jfd673i"]
 
 [ext_resource type="Script" path="res://scripts/ui/main.gd" id="1_7l160"]
+[ext_resource type="Texture2D" uid="uid://3mifqk1c2ic3" path="res://assets/UI/Title.png" id="2_cflg0"]
 [ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="2_ja5u1"]
 [ext_resource type="PackedScene" uid="uid://d1a3wnx2wk3ms" path="res://scenes/ui/options.tscn" id="3_fy3ta"]
-[ext_resource type="Theme" uid="uid://84plhwxqoe37" path="res://assets/ui/ui_theme.tres" id="3_plvsi"]
+[ext_resource type="Theme" uid="uid://84plhwxqoe37" path="res://assets/UI/ui_theme.tres" id="4_0cg5a"]
+[ext_resource type="Theme" uid="uid://kgtpsi6v0g3v" path="res://assets/UI/close.tres" id="6_a81vt"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_7l160")
+
+[node name="Title" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1000, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -309.0
+offset_top = 120.0
+offset_right = 1739.0
+offset_bottom = 638.0
+grow_horizontal = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_cflg0")
+expand_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -29,9 +45,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -46.5
-offset_top = -62.5
+offset_top = -20.0
 offset_right = 46.5
-offset_bottom = 62.5
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -39,17 +55,11 @@ size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Center"]
 layout_mode = 2
-theme = ExtResource("3_plvsi")
-
-[node name="Title" type="Label" parent="Center/Buttons"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "Dye-Chromatic"
-horizontal_alignment = 1
+theme = ExtResource("4_0cg5a")
 
 [node name="Continue" type="Button" parent="Center/Buttons"]
 layout_mode = 2
+focus_mode = 0
 disabled = true
 text = "Continue"
 
@@ -78,6 +88,7 @@ layout_mode = 2
 
 [node name="Close" type="Button" parent="Center/Options"]
 layout_mode = 2
+theme = ExtResource("6_a81vt")
 text = "Close"
 
 [node name="Credits" type="VBoxContainer" parent="Center"]
@@ -151,12 +162,12 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = -50.0
+offset_top = -45.0
 offset_right = 295.0
-offset_bottom = -27.0
+offset_bottom = -22.0
 grow_vertical = 0
 mouse_filter = 1
-text = "  JMSVY Super Cool Group 14 ver 0.1"
+text = "ver 0.2"
 
 [connection signal="focus_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
