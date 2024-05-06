@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://cmnedklu3heed"
+path="res://.godot/imported/bear.tpsheet-a2fc162070f68ede7b0e663b2265b65d.res"
+
+[deps]
+
+files=["res://assets/sprites/bear.sprites/Bear-move-2.tres", "res://assets/sprites/bear.sprites/Bear-move-1.tres", "res://assets/sprites/bear.sprites/Bear-still-1.tres", "res://assets/sprites/bear.sprites/Bear-still-2.tres"]
+
+source_file="res://assets/sprites/bear.tpsheet"
+dest_files=["res://.godot/imported/bear.tpsheet-a2fc162070f68ede7b0e663b2265b65d.res", "res://assets/sprites/bear.sprites/Bear-move-2.tres", "res://assets/sprites/bear.sprites/Bear-move-1.tres", "res://assets/sprites/bear.sprites/Bear-still-1.tres", "res://assets/sprites/bear.sprites/Bear-still-2.tres"]
+
+[params]
+

@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://kgtpsi6v0g3v"]
+
+[ext_resource type="Texture2D" uid="uid://biqc4lapfbpbs" path="res://assets/UI/Close_button-2.png" id="1_8cj11"]
+[ext_resource type="Texture2D" uid="uid://dfrbbwbi8dxtf" path="res://assets/UI/Close_button-1.png" id="2_4pwp7"]
+[ext_resource type="Texture2D" uid="uid://rfq3lvjdr58g" path="res://assets/UI/Close_button-3.png" id="3_aukir"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iciw6"]
+texture = ExtResource("1_8cj11")
+texture_margin_top = 10.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uyk5w"]
+texture = ExtResource("2_4pwp7")
+texture_margin_top = 10.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8a0bv"]
+texture = ExtResource("3_aukir")
+texture_margin_top = 10.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 20.0
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.25098, 0.25098, 0.25098, 1)
+Button/colors/font_hover_color = Color(0.25098, 0.25098, 0.25098, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxTexture_iciw6")
+Button/styles/hover = SubResource("StyleBoxTexture_iciw6")
+Button/styles/normal = SubResource("StyleBoxTexture_uyk5w")
+Button/styles/pressed = SubResource("StyleBoxTexture_8a0bv")

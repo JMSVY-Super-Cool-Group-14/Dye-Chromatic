@@ -9,7 +9,7 @@ var pos
 var angle
 
 @onready var fsm = $"../../FiniteStateMachine"
-var attack_type = "wave"
+var attack_type = "blueSpecial"
 
 
 # Called when the node enters the scene tree for the first time.
