@@ -98,6 +98,7 @@ layout_mode = 2
 [node name="VScrollBar" type="ScrollContainer" parent="Center/Credits"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+theme = ExtResource("4_0cg5a")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -134,7 +135,7 @@ Art Director, Character Design"
 [node name="Assets" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Assets"
+text = "Assets & Tools"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -155,6 +156,7 @@ https://www.codeandweb.com/texturepacker"
 
 [node name="Close" type="Button" parent="Center/Credits"]
 layout_mode = 2
+theme = ExtResource("6_a81vt")
 text = "Close"
 
 [node name="Version" type="Label" parent="."]
