@@ -7,16 +7,12 @@ class_name npcIdle
 @onready var player = $"../../../../Player"
 @onready var sm = $".."
 
-var cooldown = false
-
-
 func _enter_state():
-	cooldown = false
-	get_tree().create_timer(walking_break).timeout.connect(func(): cooldown = true)
+	await get_tree().create_timer(walking_break).timeout
+	sm._change_state($"../Walking")
 	
 func _state_update(delta : float):
-	if cooldown:
-		sm._change_state($"../Walking")
+	pass
 		
 func _state_physics_update(delta : float):
 	pass

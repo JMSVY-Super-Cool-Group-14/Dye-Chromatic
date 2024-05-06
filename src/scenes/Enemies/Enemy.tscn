@@ -1,15 +1,16 @@
-[gd_scene load_steps=40 format=3 uid="uid://cudnkh4q0wqm2"]
+[gd_scene load_steps=41 format=3 uid="uid://cudnkh4q0wqm2"]
 
-[ext_resource type="Script" path="res://scripts/Enemy/Enemy.gd" id="1_xq5uw"]
-[ext_resource type="Shader" path="res://scripts/Enemy/damageShder.gdshader" id="2_b8jfj"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_xq5uw"]
+[ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_b8jfj"]
 [ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="2_ml24s"]
-[ext_resource type="Script" path="res://scripts/Enemy/EnemyAnimatedSprite2D.gd" id="3_e3mww"]
+[ext_resource type="Script" path="res://scripts/Enemies/EnemyAnimatedSprite2D.gd" id="3_e3mww"]
 [ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="4_7htyd"]
-[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyIdle.gd" id="5_edwtq"]
-[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyChase.gd" id="6_7udfh"]
-[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyAttack.gd" id="7_ahfcf"]
-[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyDeath.gd" id="8_ggru3"]
-[ext_resource type="Script" path="res://scripts/Enemy/Enemy States/EnemyStun.gd" id="10_xqlkf"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyIdle.gd" id="5_edwtq"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyChase.gd" id="6_7udfh"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyAttack.gd" id="7_ahfcf"]
+[ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeDeath.gd" id="9_teb81"]
+[ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeStun.gd" id="10_naw5n"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyRangeAttack.gd" id="11_rxyjb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4pjsy"]
 resource_local_to_scene = true
@@ -189,7 +190,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_tcnww")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -232,10 +233,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rk53v"]
-radius = 6.00333
+radius = 8.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mc8br"]
-radius = 8.8
+radius = 7.4
 
 [node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["enemy"]]
 scale = Vector2(5, 5)
@@ -245,9 +246,7 @@ fsm = NodePath("State Machine")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_4pjsy")
 sprite_frames = SubResource("SpriteFrames_5jic6")
-animation = &"Jump"
-frame = 3
-frame_progress = 0.0192241
+animation = &"Walk"
 script = ExtResource("3_e3mww")
 
 [node name="damage" type="AnimationPlayer" parent="AnimatedSprite2D"]
@@ -280,10 +279,13 @@ script = ExtResource("6_7udfh")
 script = ExtResource("7_ahfcf")
 
 [node name="Death" type="Node" parent="State Machine"]
-script = ExtResource("8_ggru3")
+script = ExtResource("9_teb81")
 
 [node name="Stun" type="Node" parent="State Machine"]
-script = ExtResource("10_xqlkf")
+script = ExtResource("10_naw5n")
+
+[node name="RangeAttack" type="Node" parent="State Machine"]
+script = ExtResource("11_rxyjb")
 
 [connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Hit Box" to="State Machine/Attack" method="_on_hit_box_body_exited"]

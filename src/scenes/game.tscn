@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=21 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
-[ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemy.tscn" id="2_h5rq2"]
+[ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ccs0dp7y6l8ob" path="res://assets/UI/Mixer.png" id="8_3r8l3"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://0bq3mr4k2yu0" path="res://scenes/npc.tscn" id="13_7i4wi"]
+[ext_resource type="PackedScene" uid="uid://diot35kru5y3u" path="res://scenes/Enemies/fire_slime.tscn" id="15_yt066"]
 
 [node name="Game" type="Node2D"]
 
@@ -204,6 +205,9 @@ scale = Vector2(1, 1)
 [node name="Slime29" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
 position = Vector2(665.5, 445)
 scale = Vector2(1, 1)
+
+[node name="Fire Slime" parent="EnemyManager" instance=ExtResource("15_yt066")]
+position = Vector2(495, 368)
 
 [node name="NPCManager" type="Node" parent="."]
 

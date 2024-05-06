@@ -5,39 +5,32 @@ extends Control
 signal dialogue_done
 
 var dialogue = []
-var current_dialogue_id = 0
-var d_active = false
+var current_line = 0
 
 func _ready():
-	self.visible = true
-	
-func start():
-	if d_active:
-		return
-	d_active = true
-	self.visible = true
+	self.visible = false
 	dialogue = load_dialogue()
-	current_dialogue_id = -1
-	next_script()
 
 func load_dialogue():
 	var file = FileAccess.open("res://scripts/Dialogue/redSlimeDialogue.json", FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
 	return content
 
-func _input(event):
-	if !d_active:
-		return
-	if event.is_action_pressed("interact"):
-		next_script()
+func next_line():
+	if current_line < len(dialogue):
+		print("here")
+		self.visible = true
+		$name.text = dialogue[current_line]["name"]
+		$text.text = dialogue[current_line]["text"]
+		current_line += 1
+	else:
+		end_dialogue()
 
-func next_script():
-	current_dialogue_id += 1
-	if current_dialogue_id >= len(dialogue):
-		d_active = false
-		self.visible = false
-		dialogue_done.emit()
-		return
-		
-	$name.text = dialogue[current_dialogue_id]["name"]
-	$text.text = dialogue[current_dialogue_id]["text"]
+func end_dialogue():
+	self.visible = false
+	current_line = 0
+	dialogue_done.emit()
+
+	
+
+
