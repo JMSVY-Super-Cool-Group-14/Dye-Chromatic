@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3qh1ibgyx6gv"
-path="res://.godot/imported/hub.png-ea8890c4325134bef4045958b8537e01.ctex"
+uid="uid://dw00w2odx33lq"
+path="res://.godot/imported/sensed-default.png-2597fcc46f42f6a6d552717df4eeb6b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/levels/hub.png"
-dest_files=["res://.godot/imported/hub.png-ea8890c4325134bef4045958b8537e01.ctex"]
+source_file="res://assets/sprites/sensed-default.png"
+dest_files=["res://.godot/imported/sensed-default.png-2597fcc46f42f6a6d552717df4eeb6b9.ctex"]
 
 [params]
 

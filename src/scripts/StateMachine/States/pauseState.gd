@@ -4,11 +4,13 @@ signal unpause
 
 func _enter_state():
 	get_tree().paused = true
-	$"../../UI/PauseMenu".visible = true
+	$"../../Pause".visible = true
+	$"../../UI".visible = false
 
 func _exit_state():
 	get_tree().paused = false
-	$"../../UI/PauseMenu".visible = false
+	$"../../Pause".visible = false
+	$"../../UI".visible = true
 
 func _state_update(_delta: float):
 	if Input.is_action_just_pressed("pause"):

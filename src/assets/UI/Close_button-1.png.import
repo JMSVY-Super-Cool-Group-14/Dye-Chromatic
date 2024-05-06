@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://01uvc6cl7jb"
-path="res://.godot/imported/colourSelectCircle.png-cdf070be45891d585564f5180f2116a5.ctex"
+uid="uid://dfrbbwbi8dxtf"
+path="res://.godot/imported/Close_button-1.png-6e96b43f047162133995276d2244c35b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI/colourSelectCircle.png"
-dest_files=["res://.godot/imported/colourSelectCircle.png-cdf070be45891d585564f5180f2116a5.ctex"]
+source_file="res://assets/UI/Close_button-1.png"
+dest_files=["res://.godot/imported/Close_button-1.png-6e96b43f047162133995276d2244c35b.ctex"]
 
 [params]
 

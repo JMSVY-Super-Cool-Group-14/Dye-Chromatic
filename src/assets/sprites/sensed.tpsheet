@@ -1,0 +1,93 @@
+{
+	"textures": [
+		{
+			"image": "alert-default.png",
+			"size": {
+				"w": 1149,
+				"h": 454
+			},
+			"sprites": [
+				{
+					"filename": "Sensed-1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 229,
+						"h": 454
+					},
+					"margin": {
+						"x": 305,
+						"y": 179,
+						"w": 678,
+						"h": 433
+					}
+				},
+				{
+					"filename": "Sensed-5.png",
+					"region": {
+						"x": 229,
+						"y": 0,
+						"w": 229,
+						"h": 454
+					},
+					"margin": {
+						"x": 305,
+						"y": 179,
+						"w": 678,
+						"h": 433
+					}
+				},
+				{
+					"filename": "Sensed-2.png",
+					"region": {
+						"x": 458,
+						"y": 0,
+						"w": 230,
+						"h": 429
+					},
+					"margin": {
+						"x": 304,
+						"y": 205,
+						"w": 677,
+						"h": 458
+					}
+				},
+				{
+					"filename": "Sensed-4.png",
+					"region": {
+						"x": 688,
+						"y": 0,
+						"w": 230,
+						"h": 429
+					},
+					"margin": {
+						"x": 304,
+						"y": 205,
+						"w": 677,
+						"h": 458
+					}
+				},
+				{
+					"filename": "Sensed-3.png",
+					"region": {
+						"x": 918,
+						"y": 0,
+						"w": 231,
+						"h": 397
+					},
+					"margin": {
+						"x": 304,
+						"y": 237,
+						"w": 676,
+						"h": 490
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:e96e03a0c4a8df2c6e4d822a4a0a81d5:3604ccdc6dd805d17e91609b6a604415:dd2bbf8eec52f8dee8d33b4ce774bd39$"
+	}
+}

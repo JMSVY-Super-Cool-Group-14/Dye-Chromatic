@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1a3wnx2wk3ms"]
+[gd_scene load_steps=6 format=3 uid="uid://d1a3wnx2wk3ms"]
 
+[ext_resource type="Theme" uid="uid://cheonynu1k4d3" path="res://assets/UI/options.tres" id="1_amv88"]
 [ext_resource type="Script" path="res://scripts/ui/VolumeSlider.gd" id="1_tn4p4"]
 [ext_resource type="Script" path="res://scripts/ui/AudioOptions.gd" id="2_28sjw"]
+[ext_resource type="PackedScene" uid="uid://d1jgc0wg6vxjh" path="res://scenes/ui/input_button.tscn" id="4_15pbd"]
+[ext_resource type="Script" path="res://scripts/ui/input_settings.gd" id="4_33oaj"]
 
 [node name="Options" type="TabContainer"]
 custom_minimum_size = Vector2(300, 300)
-current_tab = 1
+offset_right = 300.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+theme = ExtResource("1_amv88")
+current_tab = 2
 
 [node name="Audio" type="VBoxContainer" parent="."]
 visible = false
@@ -63,6 +70,7 @@ script = ExtResource("1_tn4p4")
 bus_name = "Effects"
 
 [node name="Video" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Video"]
@@ -84,6 +92,23 @@ popup/item_0/text = "1024x600"
 popup/item_0/id = 0
 popup/item_1/text = "2048x1200"
 popup/item_1/id = 1
+
+[node name="Input" type="VBoxContainer" parent="."]
+layout_mode = 2
+script = ExtResource("4_33oaj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Input"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Actions" type="VBoxContainer" parent="Input/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InputButton" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [connection signal="pressed" from="Video/VBoxContainer/CheckBox" to="Video/VBoxContainer" method="_on_check_box_pressed"]
 [connection signal="item_selected" from="Video/VBoxContainer/OptionButton" to="Video/VBoxContainer" method="_on_option_button_item_selected"]

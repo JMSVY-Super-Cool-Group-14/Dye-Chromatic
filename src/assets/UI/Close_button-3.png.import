@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3qh1ibgyx6gv"
-path="res://.godot/imported/hub.png-ea8890c4325134bef4045958b8537e01.ctex"
+uid="uid://rfq3lvjdr58g"
+path="res://.godot/imported/Close_button-3.png-d71b32cbf1d534bda33f306973b0f71a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/levels/hub.png"
-dest_files=["res://.godot/imported/hub.png-ea8890c4325134bef4045958b8537e01.ctex"]
+source_file="res://assets/UI/Close_button-3.png"
+dest_files=["res://.godot/imported/Close_button-3.png-d71b32cbf1d534bda33f306973b0f71a.ctex"]
 
 [params]
 
