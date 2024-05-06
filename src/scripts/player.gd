@@ -4,7 +4,7 @@ signal hp_change(hp)
 signal colour_change(leftColour, rightColour, currentColour)
 
 var DELAY = 0.25
-var colourSwitchDelay = 0.2
+var colourSwitchDelay = 0.1
 @export var maxHP = 100
 @export var hp = 10
 @export var hpRegen = 2
@@ -13,7 +13,12 @@ var timePassed = 0
 var attackDelta = 0
 var colourSwitchDelta = 0
 @export var magentaCooldown = 5
-var magentaDelta = 0 	# set to 5 so it is not on cooldown at start
+var magentaDelta = 0 	# set to 0 so it is not on cooldown at start
+@export var blueCooldown = 1
+var blueDelta = 0 	# set to 0 so it is not on cooldown at start
+var blueUltDelta = 0
+@export var blueUltDamage = 70
+@export var blueUltCooldown = 30
 @export var meleeRange = 22
 var velocity = Vector2.ZERO
 var leftColourSelect = ["grey", "red", "green", "blue"]
@@ -36,10 +41,11 @@ var colourWheel = {
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
 @onready var fsm = $"../FiniteStateMachine"
+@onready var blueUlt = $"BlueUlt/CollisionShape2D"
 var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
-
+var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
@@ -50,6 +56,8 @@ func _process(delta):
 	attackDelta += delta
 	timePassed += delta
 	magentaDelta -= delta
+	blueDelta -= delta
+	blueUltDelta -= delta
 	colourSwitchDelta += delta
 	
 	if timePassed > hpRegenDelay and hp < maxHP:
@@ -113,9 +121,11 @@ func attack_input(event):
 			elif event.is_action("melee_attack"):
 				melee_attack(currentColour)
 				attackDelta = 0
-			elif event.is_action_pressed("special_attack") and magentaDelta <= 0:
+			elif event.is_action_pressed("special_attack"):
 				colour_special()
-				magentaDelta = magentaCooldown
+			elif event.is_action_pressed("ultimate_attack"):
+				colour_ultimate()
+
 
 		else:
 			if event.is_action_pressed("ranged_attack"):
@@ -125,13 +135,13 @@ func attack_input(event):
 			elif event.is_action_pressed("melee_attack"):
 				melee_attack(currentColour)
 				attackDelta = 0
-			elif event.is_action_pressed("special_attack") and magentaDelta <= 0:
+			elif event.is_action_pressed("special_attack"):
 				colour_special()
-				magentaDelta = magentaCooldown
-	
+			elif event.is_action_pressed("ultimate_attack"):
+				colour_ultimate()
 	
 func fire_projectile(target_pos: Vector2, colour: String):
-	print("attempting ranged " + colour)
+
 	var projectile = projectile_scene.instantiate()
 	add_child(projectile)
 	projectile.set_colour(colourWheel[colour])
@@ -144,7 +154,6 @@ func fire_projectile(target_pos: Vector2, colour: String):
 		projectile.set_direction(direction)
 	
 func melee_attack(colour: String):
-	print("attempting melee " + colour)
 	var melee_strike = melee_scene.instantiate()
 	add_child(melee_strike)
 	slow(0.9, 0.2)
@@ -242,15 +251,51 @@ func colour_special():
 			print("greenSpecial")
 		"blue":
 			print("blueSpecial")
+			if blueDelta <= 0:
+				blueDelta = blueCooldown
+				var blue_special = special_blue_scene.instantiate()
+				add_child(blue_special)
+				blue_special.global_position = global_position
+				slow(0.7, 0.1)
+				if fsm.get_controller():
+					blue_special.set_direction(rangedTarget)
+				else:
+					var mouse_pos = get_global_mouse_position()
+					var direction = (mouse_pos - global_position).normalized()
+					blue_special.set_direction(direction)
 		"yellow":
 			print("yellowSpecial")
 		"magenta":
-			var magenta_special = special_magenta_scene.instantiate()
-			add_child(magenta_special)
-			magenta_special.teleport(facingDirection)
-			slow(0.5, 0.5)
+			if magentaDelta <= 0:
+				magentaDelta = magentaCooldown
+				var magenta_special = special_magenta_scene.instantiate()
+				add_child(magenta_special)
+				magenta_special.teleport(facingDirection)
+				slow(0.5, 0.5)
 		"cyan":
 			print("cyanSpecial")
+
+func colour_ultimate():
+	match currentColour:
+		"grey":
+			print("greyUlt")
+		"red":
+			print("redUlt")
+		"green":
+			print("greenUltt")
+		"blue":
+			print("blueUlt")
+			if blueUltDelta <= 0:
+				blueUlt.set_disabled(false)
+				await get_tree().create_timer(0.1).timeout
+				blueUlt.set_disabled(true)
+				blueUltDelta = blueUltCooldown
+		"yellow":
+			print("yellowUlt")
+		"magenta":
+			print("magentaUlt")
+		"cyan":
+			print("cyanUlt")
 
 func slow(slow_amount: float, slow_duration: float):
 	var original_speed = speed
@@ -269,3 +314,11 @@ func take_DOT_damage(damage: float, duration: float):
 		hp -= tick
 		hp_change.emit(hp)
 		
+func _on_blue_ult_body_entered(body):
+	if body.is_in_group("enemy"):
+		body.fsm.take_DOT_damage(blueUltDamage, 7)
+		var attack_type = "blueUlt"
+		body.recieve_knockeback(self.global_position, 0, attack_type)
+	
+	
+
