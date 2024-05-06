@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=45 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -210,6 +210,8 @@ radius = 214.0
 height = 1020.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugejp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq8ff"]
 
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
