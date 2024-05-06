@@ -232,6 +232,10 @@ shape = SubResource("CapsuleShape2D_ewgi6")
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+limit_left = 45
+limit_top = 30
+limit_right = 825
+limit_bottom = 770
 script = ExtResource("34_oibyl")
 
 [node name="DialogueBox" parent="PlayerCam" instance=ExtResource("41_wthe5")]
