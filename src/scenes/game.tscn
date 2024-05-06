@@ -2,12 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bpid23vf3dspu" path="res://assets/legacy/Pixel Art Top Down - Basic/Texture/TX Tileset Grass.png" id="1_ihwfy"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemy.tscn" id="2_h5rq2"]
-=======
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
->>>>>>> Stashed changes
-[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/Player.tscn" id="2_mpbna"]
+[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
@@ -822,6 +818,9 @@ scale = Vector2(1, 1)
 position = Vector2(665.5, 445)
 scale = Vector2(1, 1)
 
+[node name="Fire Slime" parent="EnemyManager" instance=ExtResource("15_yt066")]
+position = Vector2(495, 368)
+
 [node name="NPCManager" type="Node" parent="."]
 
 [node name="NPC" parent="NPCManager" instance=ExtResource("13_7i4wi")]
@@ -831,6 +830,3 @@ position = Vector2(193, 310)
 stream = ExtResource("12_aedne")
 volume_db = -10.0
 autoplay = true
-
-[node name="Fire Slime" parent="." instance=ExtResource("15_yt066")]
-position = Vector2(495, 368)

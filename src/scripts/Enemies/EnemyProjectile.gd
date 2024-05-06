@@ -1,6 +1,7 @@
 extends projectile
 
 func _ready():
+	print("here")
 	super()
 	
 func _process(delta: float):

@@ -1,5 +1,5 @@
 extends FiniteStateMachine
-
+class_name npcStateMachine
 
 func interact():
 	pass

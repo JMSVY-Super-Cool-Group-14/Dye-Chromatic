@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://0bq3mr4k2yu0"]
+[gd_scene load_steps=21 format=3 uid="uid://0bq3mr4k2yu0"]
 
 [ext_resource type="Script" path="res://scripts/NPC/NPC.gd" id="1_k40a6"]
 [ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="2_5n3qe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/NPC/NPCIdle.gd" id="4_pyyip"]
 [ext_resource type="Script" path="res://scripts/NPC/NPCWalking.gd" id="5_pst2m"]
 [ext_resource type="Script" path="res://scripts/NPC/NPCInteract.gd" id="6_od0pn"]
+[ext_resource type="PackedScene" uid="uid://dvrm22g12ndy7" path="res://scripts/Dialogue/dialogueBox.tscn" id="7_3mub8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8g4ya"]
 atlas = ExtResource("2_5n3qe")
@@ -96,9 +97,8 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kolx"]
 radius = 23.0
 
-[node name="NPC" type="CharacterBody2D" node_paths=PackedStringArray("fsm")]
+[node name="NPC" type="CharacterBody2D"]
 script = ExtResource("1_k40a6")
-fsm = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
@@ -113,6 +113,7 @@ shape = SubResource("CircleShape2D_5oev7")
 [node name="ChatArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChatArea"]
+visibility_layer = 3
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_3kolx")
 
@@ -129,5 +130,9 @@ script = ExtResource("5_pst2m")
 [node name="Interacting" type="Node" parent="StateMachine"]
 script = ExtResource("6_od0pn")
 
+[node name="DialogueBox" parent="." instance=ExtResource("7_3mub8")]
+d_file = "res://scripts/Dialogue/redSlimeDialogue.json"
+
 [connection signal="body_entered" from="ChatArea" to="." method="_on_chat_area_body_entered"]
 [connection signal="body_exited" from="ChatArea" to="." method="_on_chat_area_body_exited"]
+[connection signal="dialogue_done" from="DialogueBox" to="." method="_on_dialogue_box_dialogue_done"]

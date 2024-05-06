@@ -18,7 +18,7 @@ signal attacking
 func fire_projectile():
 	if !cooldown:
 		attacking.emit()
-		print("attack")
+		print("enemy attack")
 		cooldown = true
 		get_tree().create_timer(attack_speed).timeout.connect(func(): cooldown = false)
 		var projectile = projectile_scene.instantiate()
@@ -39,7 +39,7 @@ func _state_physics_update(delta : float):
 		if sm.health <= 0:
 			sm._change_state($"../Death")
 		
-		if direction.length() > 30:
+		if direction.length() > 20:
 			sm._change_state($"../Chase")
 
 			

@@ -3,7 +3,7 @@ class_name enemyChase
 
 
 @export var move_speed := 40.0
-@export var detect_range := 50.0
+
 
 @onready var enemy = $"../.."
 @onready var player = $"../../../../Player"
@@ -26,11 +26,11 @@ func _state_physics_update(delta : float):
 		if sm.health <= 0:
 			sm._change_state($"../Death")
 			
-		if direction.length() > 70:
+		if direction.length() > sm.chase_range:
 			print("Out of range")
 			sm._change_state($"../Idle")
 		
-		if direction.length() <= 10:
+		if direction.length() <= sm.attack_range:
 			print("Attack range")
 			sm._change_state($"../Attack")
 		

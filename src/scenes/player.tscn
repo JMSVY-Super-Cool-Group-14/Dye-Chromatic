@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=44 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -40,7 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://dyxxmbruridks" path="res://assets/sprites/mc_basic.sprites/walk_back/walk_b6.tres" id="31_tl005"]
 [ext_resource type="Script" path="res://scripts/PlayerAnimated.gd" id="33_pu3a3"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="34_oibyl"]
-[ext_resource type="PackedScene" uid="uid://dvrm22g12ndy7" path="res://scripts/Dialogue/dialogueBox.tscn" id="41_wthe5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bgi2u"]
 animations = [{
@@ -212,7 +211,7 @@ height = 1020.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugejp"]
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -224,6 +223,7 @@ frame_progress = 0.0637815
 script = ExtResource("33_pu3a3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 3
 position = Vector2(-1.90735e-06, -1.90735e-06)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("CapsuleShape2D_ewgi6")
@@ -231,10 +231,6 @@ shape = SubResource("CapsuleShape2D_ewgi6")
 [node name="PlayerCam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 script = ExtResource("34_oibyl")
-
-[node name="DialogueBox" parent="PlayerCam" instance=ExtResource("41_wthe5")]
-z_index = 2
-z_as_relative = false
 
 [node name="MeleeRange" type="Area2D" parent="."]
 

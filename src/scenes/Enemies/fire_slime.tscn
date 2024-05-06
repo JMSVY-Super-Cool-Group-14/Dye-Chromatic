@@ -180,6 +180,7 @@ shape = SubResource("CircleShape2D_mc8br")
 
 [node name="State Machine" type="Node" parent="."]
 script = ExtResource("21_rns0m")
+melee = false
 
 [node name="Idle" type="Node" parent="State Machine"]
 script = ExtResource("22_y3m78")
