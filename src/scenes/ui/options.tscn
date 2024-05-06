@@ -7,13 +7,15 @@
 [ext_resource type="Script" path="res://scripts/ui/input_settings.gd" id="4_33oaj"]
 
 [node name="Options" type="TabContainer"]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(440, 500)
 offset_right = 300.0
 offset_bottom = 300.0
 size_flags_horizontal = 4
 theme = ExtResource("1_amv88")
+current_tab = 2
 
 [node name="Audio" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="Master" type="VBoxContainer" parent="Audio"]
@@ -21,7 +23,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Audio/Master"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "Master Volume"
 vertical_alignment = 2
@@ -38,7 +40,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Audio/Music"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "Music Volume"
 vertical_alignment = 2
@@ -55,7 +57,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Audio/Effects"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "SFX Volume"
 vertical_alignment = 2
@@ -92,7 +94,6 @@ popup/item_1/text = "2048x1200"
 popup/item_1/id = 1
 
 [node name="Input" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 2
 script = ExtResource("4_33oaj")
 
@@ -107,7 +108,6 @@ size_flags_vertical = 3
 
 [node name="InputButton" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [connection signal="pressed" from="Video/VBoxContainer/CheckBox" to="Video/VBoxContainer" method="_on_check_box_pressed"]
 [connection signal="item_selected" from="Video/VBoxContainer/OptionButton" to="Video/VBoxContainer" method="_on_option_button_item_selected"]

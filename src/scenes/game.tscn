@@ -59,7 +59,7 @@ texture = ExtResource("6_iepwv")
 
 [node name="Label" type="Label" parent="UI/Health"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 
 [node name="ColourControl" type="Control" parent="UI"]
 custom_minimum_size = Vector2(260, 140)
@@ -159,50 +159,6 @@ scale = Vector2(1, 1)
 
 [node name="Slime27" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
 position = Vector2(685.6, 416.5)
-scale = Vector2(1, 1)
-
-[node name="Slime50" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(717.1, 508.4)
-scale = Vector2(1, 1)
-
-[node name="Slime49" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(714.4, 525.8)
-scale = Vector2(1, 1)
-
-[node name="Slime48" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(736.9, 497)
-scale = Vector2(1, 1)
-
-[node name="Slime47" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(694, 507.8)
-scale = Vector2(1, 1)
-
-[node name="Slime46" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(696.1, 529.1)
-scale = Vector2(1, 1)
-
-[node name="Slime45" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(733.9, 527.6)
-scale = Vector2(1, 1)
-
-[node name="Slime44" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(727.3, 538.1)
-scale = Vector2(1, 1)
-
-[node name="Slime43" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(749.8, 512)
-scale = Vector2(1, 1)
-
-[node name="Slime42" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(741.1, 539.6)
-scale = Vector2(1, 1)
-
-[node name="Slime41" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(764.5, 527)
-scale = Vector2(1, 1)
-
-[node name="Slime40" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
-position = Vector2(792.7, 528.5)
 scale = Vector2(1, 1)
 
 [node name="Slime39" parent="EnemyManager" instance=ExtResource("2_h5rq2")]

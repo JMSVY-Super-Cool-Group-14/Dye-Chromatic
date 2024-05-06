@@ -25,6 +25,7 @@ layout_mode = 2
 
 [node name="Action" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Action Name"
 
 [node name="Space" type="Control" parent="MarginContainer/HBoxContainer"]
@@ -33,4 +34,5 @@ size_flags_horizontal = 3
 
 [node name="InputKey" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Input Key"
