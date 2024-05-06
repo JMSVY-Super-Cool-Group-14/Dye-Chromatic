@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
-[ext_resource type="Texture2D" uid="uid://c3qh1ibgyx6gv" path="res://assets/levels/hub.png" id="4_yusat"]
+[ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="Texture2D" uid="uid://wiqos5odnqfm" path="res://assets/legacy/heart32.png" id="6_iepwv"]
 [ext_resource type="Texture2D" uid="uid://01uvc6cl7jb" path="res://assets/UI/colourSelectCircle.png" id="7_45d4h"]
@@ -69,9 +69,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -117.0
+offset_left = -120.0
 offset_top = -140.0
-offset_right = 143.0
+offset_right = 140.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
