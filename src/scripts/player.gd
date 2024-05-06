@@ -4,7 +4,7 @@ signal hp_change(hp)
 signal colour_change(leftColour, rightColour, currentColour)
 
 var DELAY = 0.25
-var colourSwitchDelay = 0.2
+var colourSwitchDelay = 0.1
 @export var maxHP = 100
 @export var hp = 10
 @export var hpRegen = 2
@@ -13,9 +13,12 @@ var timePassed = 0
 var attackDelta = 0
 var colourSwitchDelta = 0
 @export var magentaCooldown = 5
-var magentaDelta = 0 	# set to 5 so it is not on cooldown at start
+var magentaDelta = 0 	# set to 0 so it is not on cooldown at start
 @export var blueCooldown = 1
-var blueDelta = 0 	# set to 5 so it is not on cooldown at start
+var blueDelta = 0 	# set to 0 so it is not on cooldown at start
+var blueUltDelta = 0
+@export var blueUltDamage = 70
+@export var blueUltCooldown = 30
 @export var meleeRange = 22
 var velocity = Vector2.ZERO
 var leftColourSelect = ["grey", "red", "green", "blue"]
@@ -38,6 +41,7 @@ var colourWheel = {
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
 @onready var fsm = $"../FiniteStateMachine"
+@onready var blueUlt = $"BlueUlt/CollisionShape2D"
 var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
@@ -53,6 +57,7 @@ func _process(delta):
 	timePassed += delta
 	magentaDelta -= delta
 	blueDelta -= delta
+	blueUltDelta -= delta
 	colourSwitchDelta += delta
 	
 	if timePassed > hpRegenDelay and hp < maxHP:
@@ -118,6 +123,8 @@ func attack_input(event):
 				attackDelta = 0
 			elif event.is_action_pressed("special_attack"):
 				colour_special()
+			elif event.is_action_pressed("ultimate_attack"):
+				colour_ultimate()
 
 
 		else:
@@ -130,8 +137,8 @@ func attack_input(event):
 				attackDelta = 0
 			elif event.is_action_pressed("special_attack"):
 				colour_special()
-
-	
+			elif event.is_action_pressed("ultimate_attack"):
+				colour_ultimate()
 	
 func fire_projectile(target_pos: Vector2, colour: String):
 
@@ -268,6 +275,28 @@ func colour_special():
 		"cyan":
 			print("cyanSpecial")
 
+func colour_ultimate():
+	match currentColour:
+		"grey":
+			print("greyUlt")
+		"red":
+			print("redUlt")
+		"green":
+			print("greenUltt")
+		"blue":
+			print("blueUlt")
+			if blueUltDelta <= 0:
+				blueUlt.set_disabled(false)
+				await get_tree().create_timer(0.1).timeout
+				blueUlt.set_disabled(true)
+				blueUltDelta = blueUltCooldown
+		"yellow":
+			print("yellowUlt")
+		"magenta":
+			print("magentaUlt")
+		"cyan":
+			print("cyanUlt")
+
 func slow(slow_amount: float, slow_duration: float):
 	var original_speed = speed
 	speed = speed * abs(1 - slow_amount)
@@ -285,3 +314,11 @@ func take_DOT_damage(damage: float, duration: float):
 		hp -= tick
 		hp_change.emit(hp)
 		
+func _on_blue_ult_body_entered(body):
+	if body.is_in_group("enemy"):
+		body.fsm.take_DOT_damage(blueUltDamage, 7)
+		var attack_type = "blueUlt"
+		body.recieve_knockeback(self.global_position, 0, attack_type)
+	
+	
+
