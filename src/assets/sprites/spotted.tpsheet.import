@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://c8dm8ukrv6f0e"
+path="res://.godot/imported/spotted.tpsheet-341e9b6fd9316f99709fc5581a9d52fe.res"
+
+[deps]
+
+files=["res://assets/sprites/spotted.sprites/Spotted-1.tres", "res://assets/sprites/spotted.sprites/Spotted-2.tres", "res://assets/sprites/spotted.sprites/Spotted-3.tres", "res://assets/sprites/spotted.sprites/Spotted-4.tres", "res://assets/sprites/spotted.sprites/Spotted-5.tres", "res://assets/sprites/spotted.sprites/Spotted-6.tres"]
+
+source_file="res://assets/sprites/spotted.tpsheet"
+dest_files=["res://.godot/imported/spotted.tpsheet-341e9b6fd9316f99709fc5581a9d52fe.res", "res://assets/sprites/spotted.sprites/Spotted-1.tres", "res://assets/sprites/spotted.sprites/Spotted-2.tres", "res://assets/sprites/spotted.sprites/Spotted-3.tres", "res://assets/sprites/spotted.sprites/Spotted-4.tres", "res://assets/sprites/spotted.sprites/Spotted-5.tres", "res://assets/sprites/spotted.sprites/Spotted-6.tres"]
+
+[params]
+

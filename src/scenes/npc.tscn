@@ -1,66 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://0bq3mr4k2yu0"]
+[gd_scene load_steps=13 format=3 uid="uid://0bq3mr4k2yu0"]
 
 [ext_resource type="Script" path="res://scripts/NPC/NPC.gd" id="1_k40a6"]
-[ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="2_5n3qe"]
+[ext_resource type="Texture2D" uid="uid://cveiythofjma6" path="res://assets/sprites/bear.sprites/Bear-still-1.tres" id="2_8mucu"]
 [ext_resource type="Script" path="res://scripts/StateMachine/NPCStateMachine.gd" id="2_gsyok"]
+[ext_resource type="Texture2D" uid="uid://cy2yanjijiu86" path="res://assets/sprites/bear.sprites/Bear-still-2.tres" id="3_d4wwh"]
+[ext_resource type="Texture2D" uid="uid://c8lwagawwsd3t" path="res://assets/sprites/bear.sprites/Bear-move-1.tres" id="4_kxwq5"]
 [ext_resource type="Script" path="res://scripts/NPC/NPCIdle.gd" id="4_pyyip"]
+[ext_resource type="Texture2D" uid="uid://bkyw72j0yw3np" path="res://assets/sprites/bear.sprites/Bear-move-2.tres" id="5_nkp7n"]
 [ext_resource type="Script" path="res://scripts/NPC/NPCWalking.gd" id="5_pst2m"]
 [ext_resource type="Script" path="res://scripts/NPC/NPCInteract.gd" id="6_od0pn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8g4ya"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tc3of"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kc6ld"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_62tsx"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p16ll"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_526r2"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0hi5y"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lp7ys"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7u45h"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3op8"]
-atlas = ExtResource("2_5n3qe")
-region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ligmd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8g4ya")
+"texture": ExtResource("2_8mucu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tc3of")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kc6ld")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_62tsx")
+"texture": ExtResource("3_d4wwh")
 }],
 "loop": true,
 "name": &"Idle",
@@ -68,22 +25,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p16ll")
+"texture": ExtResource("4_kxwq5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_526r2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0hi5y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lp7ys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7u45h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e3op8")
+"texture": ExtResource("5_nkp7n")
 }],
 "loop": true,
 "name": &"Walk",
@@ -101,10 +46,9 @@ script = ExtResource("1_k40a6")
 fsm = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_ligmd")
-animation = &"Idle"
+animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
