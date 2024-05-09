@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=15 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]

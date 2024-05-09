@@ -47,5 +47,10 @@ func _on_body_entered(body):
 		body.recieve_knockeback(projectile_velocity, damage, attack_type)
 		queue_free()	#remove projectile instance
 
+	elif body.is_in_group("player"):
+		print("player hit")
+		body.take_fixed_damage(damage)
+		queue_free()
+
 func set_colour(colour: Color):
 	$Sprite2D.self_modulate = colour
