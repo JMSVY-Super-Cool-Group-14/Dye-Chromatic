@@ -357,6 +357,8 @@ func _on_melee_range_body_entered(body):
 	if body.is_in_group("enemy"):
 		if comboDamage:
 			body.fsm.take_damage(meleeDamage*2)
+			body.recieve_knockeback(self.global_position, meleeDamage, "melee")
 			comboDamage = false
 		else:
 			body.fsm.take_damage(meleeDamage)
+			body.recieve_knockeback(self.global_position, meleeDamage, "melee")
