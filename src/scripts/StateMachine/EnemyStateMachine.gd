@@ -8,6 +8,7 @@ class_name enemyStateMachine
 @export var chase_range := 60.0
 @export var melee = true
 
+
 signal took_dmg
 
 func take_damage(dmg):

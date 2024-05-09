@@ -3,14 +3,18 @@ extends Area2D
 signal hp_change(hp)
 signal colour_change(leftColour, rightColour, currentColour)
 
-var DELAY = 0.25
+var attackCooldown = 0.3
 var colourSwitchDelay = 0.1
 @export var maxHP = 100
 @export var hp = 10
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
+var combo1 = false
+var combo2 = false
 var timePassed = 0
 var attackDelta = 0
+var comboDelta = 0
+var comboDamage = false
 var colourSwitchDelta = 0
 @export var magentaCooldown = 5
 var magentaDelta = 0 	# set to 0 so it is not on cooldown at start
@@ -19,7 +23,7 @@ var blueDelta = 0 	# set to 0 so it is not on cooldown at start
 var blueUltDelta = 0
 @export var blueUltDamage = 70
 @export var blueUltCooldown = 30
-@export var meleeRange = 22
+@export var meleeRange = 18
 var velocity = Vector2.ZERO
 var leftColourSelect = ["grey", "red", "green", "blue"]
 var rightColourSelect = ["grey", "red", "green", "blue"]
@@ -40,6 +44,11 @@ var colourWheel = {
 @onready var rangedTarget = Vector2.ZERO
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
+@onready var meleeNode = $"MeleeRange"
+@onready var meleeAnimate1 = $"MeleeRange/MeleeAnimate1/MeleePlayer1"
+@onready var meleeAnimate2 = $"MeleeRange/MeleeAnimate2/MeleePlayer2"
+@onready var meleeHitbox = $"MeleeRange/MeleeHitbox"
+var meleeDamage = 50
 @onready var fsm = $"../FiniteStateMachine"
 @onready var blueUlt = $"BlueUlt/CollisionShape2D"
 var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
@@ -59,6 +68,7 @@ func _process(delta):
 	blueDelta -= delta
 	blueUltDelta -= delta
 	colourSwitchDelta += delta
+	comboDelta += delta
 	
 	if timePassed > hpRegenDelay and hp < maxHP:
 		print("Regenerate health! Health is: ")
@@ -81,9 +91,7 @@ func _process(delta):
 		key_move()
 	
 	# Facing direction check
-	if velocity.length() <= 0:
-		pass
-	else:
+	if velocity.length() > 0:
 		facingDirection = velocity
 	
 	# Actual moving of object
@@ -113,13 +121,13 @@ func _input(event):
 	attack_input(event)
 			
 func attack_input(event):
-	if attackDelta > DELAY:
+	if attackDelta > attackCooldown:
 		if fsm.get_controller():
 			if event.is_action_pressed("ranged_attack") and rangedTarget!=Vector2.ZERO:
 				fire_projectile(rangedTarget, currentColour)
 				attackDelta = 0
 			elif event.is_action("melee_attack"):
-				melee_attack(currentColour)
+				melee_attack()
 				attackDelta = 0
 			elif event.is_action_pressed("special_attack"):
 				colour_special()
@@ -133,7 +141,7 @@ func attack_input(event):
 				fire_projectile(mouse_pos, currentColour)
 				attackDelta = 0
 			elif event.is_action_pressed("melee_attack"):
-				melee_attack(currentColour)
+				melee_attack()
 				attackDelta = 0
 			elif event.is_action_pressed("special_attack"):
 				colour_special()
@@ -153,14 +161,36 @@ func fire_projectile(target_pos: Vector2, colour: String):
 		var direction = (target_pos - global_position).normalized()
 		projectile.set_direction(direction)
 	
-func melee_attack(colour: String):
+func melee_attack_old():
 	var melee_strike = melee_scene.instantiate()
 	add_child(melee_strike)
 	slow(0.9, 0.2)
 	melee_strike.set_angle(facingDirection)
-	melee_strike.set_colour(colourWheel[colour])
+	melee_strike.set_colour(colourWheel[currentColour])
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
 	
+func melee_attack():
+		
+	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
+	meleeNode.global_rotation = facingDirection.angle() + PI/2
+	slow(0.9, 0.2)
+	
+	if combo1 == true and comboDelta < attackCooldown*5:
+		meleeAnimate2.play("attack2")
+		combo1 = false
+		combo2 = true
+		comboDelta = 0
+	elif combo2 == true and comboDelta < attackCooldown*5:
+		comboDamage = true
+		meleeAnimate1.play("attack1")
+		meleeAnimate2.play("attack2")
+		combo2 = false
+	else:
+		meleeAnimate1.play("attack1")
+		combo1 = true
+		comboDelta = 0
+	
+
 func colour_reset():
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
@@ -286,6 +316,7 @@ func colour_ultimate():
 		"blue":
 			print("blueUlt")
 			if blueUltDelta <= 0:
+				slow(0.8, 0.5)
 				blueUlt.set_disabled(false)
 				await get_tree().create_timer(0.1).timeout
 				blueUlt.set_disabled(true)
@@ -322,3 +353,10 @@ func _on_blue_ult_body_entered(body):
 	
 	
 
+func _on_melee_range_body_entered(body):
+	if body.is_in_group("enemy"):
+		if comboDamage:
+			body.fsm.take_damage(meleeDamage*2)
+			comboDamage = false
+		else:
+			body.fsm.take_damage(meleeDamage)
