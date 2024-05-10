@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=56 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://ui4hssfnydx4" path="res://assets/sprites/slash.sprites/Slash-2.tres" id="42_ge6ck"]
 [ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
 [ext_resource type="Texture2D" uid="uid://l2nvsqvjk3wm" path="res://assets/sprites/slash.sprites/Slash-4.tres" id="44_6dvai"]
+[ext_resource type="Texture2D" uid="uid://bg1h6s2vbpvvn" path="res://assets/UI/targetLockTemp.png" id="45_ar07b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bgi2u"]
 animations = [{
@@ -378,6 +379,11 @@ disabled = true
 position = Vector2(0, -112)
 scale = Vector2(19.04, 13.08)
 shape = SubResource("RectangleShape2D_15o0i")
+
+[node name="TargetLock" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("45_ar07b")
 
 [connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
 [connection signal="body_entered" from="BlueUlt" to="." method="_on_blue_ult_body_entered"]

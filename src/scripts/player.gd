@@ -53,6 +53,7 @@ var colourWheel = {
 @onready var meleeAnimate1 = $"MeleeRange/MeleeAnimate1/MeleePlayer1"
 @onready var meleeAnimate2 = $"MeleeRange/MeleeAnimate2/MeleePlayer2"
 @onready var meleeHitbox = $"MeleeRange/MeleeHitbox"
+@onready var targetLockArt = $"TargetLock"
 var meleeDamage = 50
 @onready var fsm = $"../FiniteStateMachine"
 @onready var blueUlt = $"BlueUlt/CollisionShape2D"
@@ -107,10 +108,12 @@ func _process(delta):
 		facingDirection = velocity
 	elif lockedOn and targetLock != null:
 		facingDirection = (targetLock.global_transform.origin - self.global_transform.origin).normalized()
+		targetLockArt.global_position = targetLock.global_position
 	elif targetLock == null:
 		# In event of locked enemy being dead
 		print("Target dead! Reset Lock-on.")
 		targetLock = 0
+		targetLockArt.visible = false
 		lockedOn = false
 	
 	# Actual moving of object
@@ -151,10 +154,12 @@ func lock_on(event):
 			$DetectRange.global_position = self.global_position + facingDirection.normalized()*meleeRange
 			$DetectRange.global_rotation = facingDirection.angle()
 			lockedOn = true
+			targetLockArt.visible = true
 			print("locked on to: ")
 			print(targetLock)
 	elif event.is_action_pressed("lock_on"):
 		lockedOn = false
+		targetLockArt.visible = false
 		print("Reset Lock-on")
 	
 func attack_input(event):
