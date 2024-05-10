@@ -11,6 +11,9 @@ var colourSwitchDelay = 0.1
 @export var hpRegenDelay = 10
 var combo1 = false
 var combo2 = false
+var isSprinting = false
+var lockedOn = false
+var targetLock = Vector2.ZERO
 var timePassed = 0
 var attackDelta = 0
 var comboDelta = 0
@@ -42,8 +45,10 @@ var colourWheel = {
 @onready var rightColour = "grey"
 @onready var currentColour = "grey"
 @onready var rangedTarget = Vector2.ZERO
+@export var field_of_view := 45.0
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
+@export var sprintSpeed = 160
 @onready var meleeNode = $"MeleeRange"
 @onready var meleeAnimate1 = $"MeleeRange/MeleeAnimate1/MeleePlayer1"
 @onready var meleeAnimate2 = $"MeleeRange/MeleeAnimate2/MeleePlayer2"
@@ -83,6 +88,13 @@ func _process(delta):
 	elif Input.is_action_just_pressed("right_colour"):
 		colour_reset()
 	
+	if Input.is_action_pressed("sprint"):
+		speed = sprintSpeed
+		isSprinting = true
+	elif Input.is_action_just_released("sprint"):
+		speed = 100
+		isSprinting = false
+	
 	# Movement
 	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -91,8 +103,15 @@ func _process(delta):
 		key_move()
 	
 	# Facing direction check
-	if velocity.length() > 0:
+	if velocity.length() > 0 and !lockedOn:
 		facingDirection = velocity
+	elif lockedOn and targetLock != null:
+		facingDirection = (targetLock.global_transform.origin - self.global_transform.origin).normalized()
+	elif targetLock == null:
+		# In event of locked enemy being dead
+		print("Target dead! Reset Lock-on.")
+		targetLock = 0
+		lockedOn = false
 	
 	# Actual moving of object
 	position += velocity * delta * speed
@@ -114,12 +133,30 @@ func key_move():
 		velocity.y += 1
 		
 func _input(event):
-	# Handle colour input
-	colour_input(event)
+	if !isSprinting:
+		# Handle colour input
+		colour_input(event)
 	
-	# Handle attack input
-	attack_input(event)
+		# Handle attack input
+		attack_input(event)
+		
+		#Handle lock on target input
+		lock_on(event)
+		
 			
+func lock_on(event):
+	if event.is_action_pressed("lock_on") and lockedOn==false:
+		targetLock = get_nearest_enemy()
+		if targetLock != null:
+			$DetectRange.global_position = self.global_position + facingDirection.normalized()*meleeRange
+			$DetectRange.global_rotation = facingDirection.angle()
+			lockedOn = true
+			print("locked on to: ")
+			print(targetLock)
+	elif event.is_action_pressed("lock_on"):
+		lockedOn = false
+		print("Reset Lock-on")
+	
 func attack_input(event):
 	if attackDelta > attackCooldown:
 		if fsm.get_controller():
@@ -173,7 +210,7 @@ func melee_attack():
 		
 	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
 	meleeNode.global_rotation = facingDirection.angle() + PI/2
-	slow(0.9, 0.2)
+	slow(0.95, 0.2)
 	
 	if combo1 == true and comboDelta < attackCooldown*5:
 		meleeAnimate2.play("attack2")
@@ -350,8 +387,6 @@ func _on_blue_ult_body_entered(body):
 		body.fsm.take_DOT_damage(blueUltDamage, 7)
 		var attack_type = "blueUlt"
 		body.recieve_knockeback(self.global_position, 0, attack_type)
-	
-	
 
 func _on_melee_range_body_entered(body):
 	if body.is_in_group("enemy"):
@@ -362,3 +397,24 @@ func _on_melee_range_body_entered(body):
 		else:
 			body.fsm.take_damage(meleeDamage)
 			body.recieve_knockeback(self.global_position, meleeDamage, "melee")
+
+func get_nearest_enemy() -> enemy:
+	var nearest_enemy = null
+	var front_enemies := []
+	
+	for target in $DetectRange.get_overlapping_bodies():
+		#get enemies in front of the player
+		#to find out, look for angle to enemy using dot product
+		var angle_to_node = rad_to_deg(acos(facingDirection.dot(global_position.direction_to(target.global_position))))
+		if angle_to_node < field_of_view and target.is_in_group("enemy"):
+			front_enemies.append(target)
+	
+	if !front_enemies.is_empty():
+		nearest_enemy = front_enemies[0]
+		
+		for target in front_enemies:
+			#get enemies based on the closest distance
+			if global_position.distance_to(target.global_position) < global_position.distance_to(nearest_enemy.global_position):
+				nearest_enemy = target
+
+	return nearest_enemy
