@@ -123,7 +123,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_avw83"]
 resource_name = "damage"
-length = 0.6
+length = 0.26
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -132,10 +132,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/quantity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.15, 0.25, 0.3, 0.4, 0.45, 0.55),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pc2el"]
@@ -180,6 +180,9 @@ shape = SubResource("CircleShape2D_mc8br")
 
 [node name="State Machine" type="Node" parent="."]
 script = ExtResource("21_rns0m")
+attack_range = 100.0
+detection_range = 200.0
+chase_range = 210.0
 melee = false
 
 [node name="Idle" type="Node" parent="State Machine"]

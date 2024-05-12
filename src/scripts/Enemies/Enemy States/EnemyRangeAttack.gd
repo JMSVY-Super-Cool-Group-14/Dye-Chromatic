@@ -22,9 +22,11 @@ func fire_projectile():
 		cooldown = true
 		get_tree().create_timer(attack_speed).timeout.connect(func(): cooldown = false)
 		var projectile = projectile_scene.instantiate()
-		add_child(projectile)
+		$"../..".add_child(projectile)
+		
 		projectile.global_position = enemy.global_position
-		projectile.set_direction(player.global_position)
+		var direction = player.global_position - enemy.global_position
+		projectile.set_direction(direction)
 		
 func _enter_state():
 	enemy.velocity = Vector2.ZERO
@@ -39,7 +41,7 @@ func _state_physics_update(delta : float):
 		if sm.health <= 0:
 			sm._change_state($"../Death")
 		
-		if direction.length() > 20:
+		if direction.length() > sm.attack_range:
 			sm._change_state($"../Chase")
 
 			
