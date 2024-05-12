@@ -8,13 +8,20 @@ class_name enemyChase
 @onready var enemy = $"../.."
 @onready var player = $"../../../../Player"
 @onready var sm = $".."
+@onready var alert = $"../../Alerted"
+@onready var confused = $"../../Confused"
 
 
 func _enter_state():
-	print("Chase")
+	confused.visible = false
+	alert.visible = true
+	alert.play("default")
 
 func _exit_state():
-	pass
+	alert.visible = false
+	confused.visible = true
+	confused.play("default")
+	get_tree().create_timer(2).timeout.connect(func(): confused.visible = false)
 	
 func _state_physics_update(delta : float):
 	if player != null:
