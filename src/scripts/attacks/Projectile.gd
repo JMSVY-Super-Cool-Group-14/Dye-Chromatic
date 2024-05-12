@@ -51,5 +51,10 @@ func _on_body_entered(body):
 		body.take_fixed_damage(damage)
 		queue_free()
 
+	elif body.is_in_group("player"):
+		print("player hit")
+		body.take_fixed_damage(damage)
+		queue_free()
+
 func set_colour(colour: Color):
 	$Sprite2D.self_modulate = colour

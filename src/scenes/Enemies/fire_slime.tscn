@@ -202,5 +202,3 @@ script = ExtResource("10_e6us1")
 
 [connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Hit Box" to="State Machine/RangeAttack" method="_on_hit_box_body_exited"]
-[connection signal="took_dmg" from="State Machine" to="." method="_on_state_machine_took_dmg"]
-[connection signal="took_dmg" from="State Machine" to="AnimatedSprite2D" method="_on_state_machine_took_dmg"]

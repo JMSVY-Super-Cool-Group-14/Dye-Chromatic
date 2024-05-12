@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=56 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -40,6 +40,11 @@
 [ext_resource type="Texture2D" uid="uid://dyxxmbruridks" path="res://assets/sprites/mc_basic.sprites/walk_back/walk_b6.tres" id="31_tl005"]
 [ext_resource type="Script" path="res://scripts/PlayerAnimated.gd" id="33_pu3a3"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="34_oibyl"]
+[ext_resource type="Texture2D" uid="uid://dex3d2e5spbo6" path="res://assets/sprites/slash.sprites/Slash-1.tres" id="41_044ym"]
+[ext_resource type="Texture2D" uid="uid://ui4hssfnydx4" path="res://assets/sprites/slash.sprites/Slash-2.tres" id="42_ge6ck"]
+[ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
+[ext_resource type="Texture2D" uid="uid://l2nvsqvjk3wm" path="res://assets/sprites/slash.sprites/Slash-4.tres" id="44_6dvai"]
+[ext_resource type="Texture2D" uid="uid://bg1h6s2vbpvvn" path="res://assets/UI/targetLockTemp.png" id="45_ar07b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bgi2u"]
 animations = [{
@@ -211,6 +216,102 @@ height = 1020.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugejp"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbfnq"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": null
+}, {
+"duration": 0.1,
+"texture": ExtResource("41_044ym")
+}, {
+"duration": 0.1,
+"texture": ExtResource("42_ge6ck")
+}, {
+"duration": 0.1,
+"texture": ExtResource("43_yem7g")
+}, {
+"duration": 0.1,
+"texture": ExtResource("44_6dvai")
+}, {
+"duration": 0.1,
+"texture": null
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_81yjo"]
+resource_name = "attack1"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeleeAnimate1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1, 1.8, 2.6, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeHitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtfsg"]
+_data = {
+"attack1": SubResource("Animation_81yjo")
+}
+
+[sub_resource type="Animation" id="Animation_l0y56"]
+resource_name = "attack2"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1, 1.8, 2.6, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MeleeHitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2r1e6"]
+_data = {
+"attack2": SubResource("Animation_l0y56")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq8ff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15o0i"]
+
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
 
@@ -219,7 +320,6 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_bgi2u")
 animation = &"melee_up"
 autoplay = "idle"
-frame_progress = 0.0637815
 script = ExtResource("33_pu3a3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
@@ -233,8 +333,57 @@ zoom = Vector2(5, 5)
 script = ExtResource("34_oibyl")
 
 [node name="MeleeRange" type="Area2D" parent="."]
+position = Vector2(0, -61)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
-scale = Vector2(8.68829, 5.42599)
+[node name="MeleeHitbox" type="CollisionShape2D" parent="MeleeRange"]
+scale = Vector2(6.12829, 4.58599)
 shape = SubResource("CapsuleShape2D_ugejp")
 disabled = true
+
+[node name="MeleeAnimate1" type="AnimatedSprite2D" parent="MeleeRange"]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_jbfnq")
+animation = &"attack"
+frame = 5
+
+[node name="MeleePlayer1" type="AnimationPlayer" parent="MeleeRange/MeleeAnimate1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qtfsg")
+}
+speed_scale = 12.0
+
+[node name="MeleeAnimate2" type="AnimatedSprite2D" parent="MeleeRange"]
+rotation = 1.5708
+scale = Vector2(0.2, -0.2)
+sprite_frames = SubResource("SpriteFrames_jbfnq")
+animation = &"attack"
+
+[node name="MeleePlayer2" type="AnimationPlayer" parent="MeleeRange/MeleeAnimate2"]
+libraries = {
+"": SubResource("AnimationLibrary_2r1e6")
+}
+speed_scale = 12.0
+
+[node name="BlueUlt" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueUlt"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_aq8ff")
+disabled = true
+
+[node name="DetectRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange"]
+position = Vector2(0, -112)
+scale = Vector2(19.04, 13.08)
+shape = SubResource("RectangleShape2D_15o0i")
+
+[node name="TargetLock" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("45_ar07b")
+
+[connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
+[connection signal="body_entered" from="BlueUlt" to="." method="_on_blue_ult_body_entered"]
