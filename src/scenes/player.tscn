@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=55 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -43,7 +43,6 @@
 [ext_resource type="Texture2D" uid="uid://dex3d2e5spbo6" path="res://assets/sprites/slash.sprites/Slash-1.tres" id="41_044ym"]
 [ext_resource type="Texture2D" uid="uid://dd8kffk53yyw4" path="res://assets/UI/Arrow.png" id="41_har5f"]
 [ext_resource type="Texture2D" uid="uid://ui4hssfnydx4" path="res://assets/sprites/slash.sprites/Slash-2.tres" id="42_ge6ck"]
-[ext_resource type="Script" path="res://scenes/playerDirection.gd" id="42_yn3n2"]
 [ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
 [ext_resource type="Texture2D" uid="uid://l2nvsqvjk3wm" path="res://assets/sprites/slash.sprites/Slash-4.tres" id="44_6dvai"]
 
@@ -340,7 +339,6 @@ position = Vector2(0, 61)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("41_har5f")
 offset = Vector2(0, -1500)
-script = ExtResource("42_yn3n2")
 
 [node name="MeleeHitbox" type="CollisionShape2D" parent="MeleeRange"]
 scale = Vector2(6.12829, 4.58599)
