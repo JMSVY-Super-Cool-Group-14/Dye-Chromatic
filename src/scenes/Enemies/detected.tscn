@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://iv7lrg5rl3c"]
+
+[ext_resource type="Texture2D" uid="uid://by3xjc0rv0nus" path="res://assets/sprites/spotted.sprites/Spotted-1.tres" id="1_r0j6n"]
+[ext_resource type="Texture2D" uid="uid://dudglwf1oftfg" path="res://assets/sprites/spotted.sprites/Spotted-2.tres" id="2_wdjxu"]
+[ext_resource type="Texture2D" uid="uid://svqre5ew6roy" path="res://assets/sprites/spotted.sprites/Spotted-3.tres" id="3_673p2"]
+[ext_resource type="Texture2D" uid="uid://byaonk7q8w64f" path="res://assets/sprites/spotted.sprites/Spotted-4.tres" id="4_yy0cw"]
+[ext_resource type="Texture2D" uid="uid://0k3xxjbnohfv" path="res://assets/sprites/spotted.sprites/Spotted-5.tres" id="5_6e1xo"]
+[ext_resource type="Texture2D" uid="uid://bq5jox6cb6gj8" path="res://assets/sprites/spotted.sprites/Spotted-6.tres" id="6_3wi88"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_medwl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r0j6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wdjxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_673p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yy0cw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6e1xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3wi88")
+}],
+"loop": false,
+"name": &"alerted",
+"speed": 5.0
+}]
+
+[node name="Detected" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(14, -988)
+sprite_frames = SubResource("SpriteFrames_medwl")
+animation = &"alerted"
+frame = 5
+frame_progress = 1.0

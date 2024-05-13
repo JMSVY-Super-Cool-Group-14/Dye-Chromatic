@@ -16,7 +16,6 @@ signal attacking
 func attack():
 	if !cooldown:
 		attacking.emit()
-		print("attack")
 		cooldown = true
 		get_tree().create_timer(attack_speed).timeout.connect(func(): cooldown = false)
 		player.take_fixed_damage(attack_dmg)
