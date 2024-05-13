@@ -15,7 +15,6 @@ func _enter_state():
 	free = false
 	get_tree().create_timer(stun_time).timeout.connect(func(): free = true)
 	
-
 func _state_update(delta : float):
 	if free:
 		$".."._change_state($"../Chase")
