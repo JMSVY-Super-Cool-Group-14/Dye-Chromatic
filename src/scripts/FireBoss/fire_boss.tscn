@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqshflfh0xvtq"]
+[gd_scene load_steps=6 format=3 uid="uid://bqshflfh0xvtq"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/FireBossStateMachine.gd" id="1_fiec5"]
+[ext_resource type="Script" path="res://scripts/FireBoss/Phase1.gd" id="2_atfl2"]
 [ext_resource type="Script" path="res://FireBossWaiting.gd" id="2_ij35r"]
+[ext_resource type="Script" path="res://scripts/FireBoss/Melee.gd" id="3_7fuaq"]
+[ext_resource type="Script" path="res://scripts/FireBoss/P1orbAttack.gd" id="4_tm0ay"]
 
 [node name="Fire Boss" type="CharacterBody2D"]
 
@@ -15,6 +18,13 @@ script = ExtResource("1_fiec5")
 [node name="Waiting" type="Node" parent="StateMachine"]
 script = ExtResource("2_ij35r")
 
-[node name="Attack 1" type="Node" parent="StateMachine"]
+[node name="Phase1" type="Node" parent="StateMachine"]
+script = ExtResource("2_atfl2")
 
-[node name="Attack 2" type="Node" parent="StateMachine"]
+[node name="P1orbAttack" type="Node" parent="StateMachine"]
+script = ExtResource("4_tm0ay")
+
+[node name="P1lineAttack" type="Node" parent="StateMachine"]
+
+[node name="Melee" type="Node" parent="StateMachine"]
+script = ExtResource("3_7fuaq")
