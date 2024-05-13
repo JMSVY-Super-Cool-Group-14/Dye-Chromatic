@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvrm22g12ndy7"]
+
+[ext_resource type="Script" path="res://scripts/Dialogue/dialoguePlayer.gd" id="1_t0tea"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_pxaay"]
+specular_color = Color(0.305882, 0.305882, 0.305882, 1)
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -7.0
+offset_top = 14.0
+offset_right = 35.0
+offset_bottom = 54.0
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_t0tea")
+d_file = "<null>"
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.215686, 0.215686, 0.215686, 0.784314)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.0
+anchor_top = 10.175
+anchor_right = 21.15
+anchor_bottom = 12.2
+offset_left = -295.0
+offset_top = -585.0
+offset_right = -729.3
+offset_bottom = -578.0
+texture = SubResource("CanvasTexture_pxaay")
+
+[node name="name" type="Label" parent="."]
+layout_mode = 0
+offset_left = -121.0
+offset_top = -176.0
+offset_right = 145.0
+offset_bottom = -148.0
+text = "Name:"
+
+[node name="text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -107.0
+offset_top = -160.0
+offset_right = 153.0
+offset_bottom = -93.0
+text = "text here..."
+scroll_active = false

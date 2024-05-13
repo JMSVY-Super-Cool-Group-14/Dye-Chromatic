@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "slash.png",
+			"size": {
+				"w": 1814,
+				"h": 1774
+			},
+			"sprites": [
+				{
+					"filename": "Slash-1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Slash-2.png",
+					"region": {
+						"x": 907,
+						"y": 0,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Slash-3.png",
+					"region": {
+						"x": 0,
+						"y": 887,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Slash-4.png",
+					"region": {
+						"x": 907,
+						"y": 887,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:bf9aa5638a2e582676145fefedc62121:3a156850256afafa14b03e403c18a95a:f941fdce5fdcdb0fd56fbfbce9dc983c$"
+	}
+}

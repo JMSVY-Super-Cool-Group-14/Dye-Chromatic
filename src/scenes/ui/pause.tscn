@@ -1,15 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4ingjm58w0lb"]
+[gd_scene load_steps=5 format=3 uid="uid://b4ingjm58w0lb"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause.gd" id="1_6jqpd"]
 [ext_resource type="PackedScene" uid="uid://d1a3wnx2wk3ms" path="res://scenes/ui/options.tscn" id="1_ivqsh"]
+[ext_resource type="Theme" uid="uid://84plhwxqoe37" path="res://assets/UI/ui_theme.tres" id="2_bok2n"]
+[ext_resource type="Theme" uid="uid://kgtpsi6v0g3v" path="res://assets/UI/close.tres" id="4_5yh3v"]
 
 [node name="PauseMenu" type="Panel"]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_6jqpd")
 
 [node name="Center" type="CenterContainer" parent="."]
@@ -20,6 +16,7 @@ use_top_left = true
 
 [node name="Buttons" type="VBoxContainer" parent="Center"]
 layout_mode = 2
+theme = ExtResource("2_bok2n")
 alignment = 1
 
 [node name="Resume" type="Button" parent="Center/Buttons"]
@@ -56,6 +53,7 @@ layout_mode = 2
 
 [node name="Close" type="Button" parent="Center/Options"]
 layout_mode = 2
+theme = ExtResource("4_5yh3v")
 text = "Close"
 
 [connection signal="pressed" from="Center/Buttons/Resume" to="." method="_on_resume_pressed"]

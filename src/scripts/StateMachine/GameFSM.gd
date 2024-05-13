@@ -15,7 +15,7 @@ func _ready():
 	# Connect signals
 	Input.joy_connection_changed.connect(connection_changed)
 	$Pause.unpause.connect(func(): _change_state($InGame))
-	$"../UI/PauseMenu".unpause.connect(func(): _change_state($InGame))
+	$"../Pause/PauseMenu".unpause.connect(func(): _change_state($InGame))
 	$InGame.pause.connect(func(): _change_state($Pause))
 	player.hp_change.connect(hp_changed)
 	player.colour_change.connect(colour_changed)

@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://drqe0x83kfvk4"]
+
+[ext_resource type="Texture2D" uid="uid://dw00w2odx33lq" path="res://assets/sprites/sensed-default.png" id="1_alwdv"]
+
+[resource]
+atlas = ExtResource("1_alwdv")
+region = Rect2(229, 0, 229, 454)
+margin = Rect2(305, 179, 678, 433)

@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://bojwea06wocgc"
+path="res://.godot/imported/sensed.tpsheet-82682a977f585527bfd729f18deac0cd.res"
+
+[deps]
+
+files=["res://assets/sprites/sensed.sprites/Sensed-1.tres", "res://assets/sprites/sensed.sprites/Sensed-5.tres", "res://assets/sprites/sensed.sprites/Sensed-2.tres", "res://assets/sprites/sensed.sprites/Sensed-4.tres", "res://assets/sprites/sensed.sprites/Sensed-3.tres"]
+
+source_file="res://assets/sprites/sensed.tpsheet"
+dest_files=["res://.godot/imported/sensed.tpsheet-82682a977f585527bfd729f18deac0cd.res", "res://assets/sprites/sensed.sprites/Sensed-1.tres", "res://assets/sprites/sensed.sprites/Sensed-5.tres", "res://assets/sprites/sensed.sprites/Sensed-2.tres", "res://assets/sprites/sensed.sprites/Sensed-4.tres", "res://assets/sprites/sensed.sprites/Sensed-3.tres"]
+
+[params]
+

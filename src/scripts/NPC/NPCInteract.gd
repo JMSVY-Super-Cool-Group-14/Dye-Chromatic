@@ -2,10 +2,11 @@ extends State
 class_name npcInteract
 
 @onready var npc = $"../.."
+@onready var dialogue_box = $"../../DialogueBox"
 
 func _enter_state():
 	npc.velocity = Vector2.ZERO
-	print("hello there")
+	dialogue_box.visible = true
 	
 func talking():
 	pass

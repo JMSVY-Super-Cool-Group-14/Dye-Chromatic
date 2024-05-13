@@ -13,13 +13,15 @@ func _process(delta):
 	if !projectile_val && !melee_val:
 		walk_idle()
 	
-	# Animation check
-	if Input.is_action_just_pressed("ranged_attack"):
-		projectile_val = true
-		proj()
-	elif Input.is_action_just_pressed("melee_attack"):
-		melee_val = true
-		melee()
+	if player.isSprinting == false:
+		# Animation check
+		if Input.is_action_just_pressed("ranged_attack"):
+			projectile_val = true
+			proj()
+		elif Input.is_action_just_pressed("melee_attack"):
+			melee_val = true
+			melee()
+	
 
 func end_attack():
 	projectile_val = false

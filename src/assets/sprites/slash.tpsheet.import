@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://bl2qe0l0lypsm"
+path="res://.godot/imported/slash.tpsheet-3bd1f7a8241cc3223cf579dcb2e20ef9.res"
+
+[deps]
+
+files=["res://assets/sprites/slash.sprites/Slash-1.tres", "res://assets/sprites/slash.sprites/Slash-2.tres", "res://assets/sprites/slash.sprites/Slash-3.tres", "res://assets/sprites/slash.sprites/Slash-4.tres"]
+
+source_file="res://assets/sprites/slash.tpsheet"
+dest_files=["res://.godot/imported/slash.tpsheet-3bd1f7a8241cc3223cf579dcb2e20ef9.res", "res://assets/sprites/slash.sprites/Slash-1.tres", "res://assets/sprites/slash.sprites/Slash-2.tres", "res://assets/sprites/slash.sprites/Slash-3.tres", "res://assets/sprites/slash.sprites/Slash-4.tres"]
+
+[params]
+
