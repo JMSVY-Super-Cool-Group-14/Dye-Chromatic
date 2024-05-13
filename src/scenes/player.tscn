@@ -345,7 +345,6 @@ rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_jbfnq")
 animation = &"attack"
-frame = 5
 
 [node name="MeleePlayer1" type="AnimationPlayer" parent="MeleeRange/MeleeAnimate1"]
 root_node = NodePath("../..")

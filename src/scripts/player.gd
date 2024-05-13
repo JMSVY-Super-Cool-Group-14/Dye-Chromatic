@@ -2,6 +2,7 @@ extends Area2D
 
 signal hp_change(hp)
 signal colour_change(leftColour, rightColour, currentColour)
+signal stamina_change(stamina)
 
 var attackCooldown = 0.3
 var colourSwitchDelay = 0.1
@@ -9,6 +10,9 @@ var colourSwitchDelay = 0.1
 @export var hp = 10
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
+@export var maxStamina = 100
+@onready var stamina = maxStamina
+@export var staminaRegen = 0.1
 var combo1 = false
 var combo2 = false
 var isSprinting = false
@@ -19,13 +23,17 @@ var attackDelta = 0
 var comboDelta = 0
 var comboDamage = false
 var colourSwitchDelta = 0
-@export var magentaCooldown = 5
+
+var meleeCost = 10
+var rangedCost = 10
+var blueSpecialCost = 40
+var blueUltCost = 70
+var magentaSpecialCost = 40
+var abilityCooldown = 0.5
 var magentaDelta = 0 	# set to 0 so it is not on cooldown at start
-@export var blueCooldown = 1
 var blueDelta = 0 	# set to 0 so it is not on cooldown at start
 var blueUltDelta = 0
 @export var blueUltDamage = 70
-@export var blueUltCooldown = 30
 @export var meleeRange = 18
 var velocity = Vector2.ZERO
 var leftColourSelect = ["grey", "red", "green", "blue"]
@@ -76,12 +84,18 @@ func _process(delta):
 	colourSwitchDelta += delta
 	comboDelta += delta
 	
+	if stamina < maxStamina:
+		stamina += staminaRegen
+	stamina_change.emit(int(stamina))
+	
 	if timePassed > hpRegenDelay and hp < maxHP:
 		print("Regenerate health! Health is: ")
 		print(hp)
 		hp += hpRegen
 		timePassed = 0
 		hp_change.emit(hp)
+	
+	
 	
 	# Colour Reset
 	if Input.is_action_just_pressed("left_colour"):
@@ -176,7 +190,6 @@ func attack_input(event):
 			elif event.is_action_pressed("ultimate_attack"):
 				colour_ultimate()
 
-
 		else:
 			if event.is_action_pressed("ranged_attack"):
 				var mouse_pos = get_global_mouse_position()
@@ -191,17 +204,18 @@ func attack_input(event):
 				colour_ultimate()
 	
 func fire_projectile(target_pos: Vector2, colour: String):
-
-	var projectile = projectile_scene.instantiate()
-	add_child(projectile)
-	projectile.set_colour(colourWheel[colour])
-	projectile.global_position = global_position
-	slow(0.7, 0.1)
-	if fsm.get_controller():
-		projectile.set_direction(target_pos)
-	else:
-		var direction = (target_pos - global_position).normalized()
-		projectile.set_direction(direction)
+	if stamina > rangedCost:
+		stamina -= rangedCost
+		var projectile = projectile_scene.instantiate()
+		add_child(projectile)
+		projectile.set_colour(colourWheel[colour])
+		projectile.global_position = global_position
+		slow(0.7, 0.1)
+		if fsm.get_controller():
+			projectile.set_direction(target_pos)
+		else:
+			var direction = (target_pos - global_position).normalized()
+			projectile.set_direction(direction)
 	
 func melee_attack_old():
 	var melee_strike = melee_scene.instantiate()
@@ -212,25 +226,26 @@ func melee_attack_old():
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
 	
 func melee_attack():
+	if stamina > meleeCost:
+		stamina -= meleeCost
+		meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
+		meleeNode.global_rotation = facingDirection.angle() + PI/2
+		slow(0.95, 0.2)
 		
-	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
-	meleeNode.global_rotation = facingDirection.angle() + PI/2
-	slow(0.95, 0.2)
-	
-	if combo1 == true and comboDelta < attackCooldown*5:
-		meleeAnimate2.play("attack2")
-		combo1 = false
-		combo2 = true
-		comboDelta = 0
-	elif combo2 == true and comboDelta < attackCooldown*5:
-		comboDamage = true
-		meleeAnimate1.play("attack1")
-		meleeAnimate2.play("attack2")
-		combo2 = false
-	else:
-		meleeAnimate1.play("attack1")
-		combo1 = true
-		comboDelta = 0
+		if combo1 == true and comboDelta < attackCooldown*5:
+			meleeAnimate2.play("attack2")
+			combo1 = false
+			combo2 = true
+			comboDelta = 0
+		elif combo2 == true and comboDelta < attackCooldown*5:
+			comboDamage = true
+			meleeAnimate1.play("attack1")
+			meleeAnimate2.play("attack2")
+			combo2 = false
+		else:
+			meleeAnimate1.play("attack1")
+			combo1 = true
+			comboDelta = 0
 	
 
 func colour_reset():
@@ -323,8 +338,9 @@ func colour_special():
 			print("greenSpecial")
 		"blue":
 			print("blueSpecial")
-			if blueDelta <= 0:
-				blueDelta = blueCooldown
+			if blueDelta <= 0 and stamina > blueSpecialCost:
+				stamina -= blueSpecialCost
+				blueDelta = abilityCooldown
 				var blue_special = special_blue_scene.instantiate()
 				add_child(blue_special)
 				blue_special.global_position = global_position
@@ -338,8 +354,9 @@ func colour_special():
 		"yellow":
 			print("yellowSpecial")
 		"magenta":
-			if magentaDelta <= 0:
-				magentaDelta = magentaCooldown
+			if magentaDelta <= 0 and stamina > magentaSpecialCost:
+				stamina -= magentaSpecialCost
+				magentaDelta = abilityCooldown
 				var magenta_special = special_magenta_scene.instantiate()
 				add_child(magenta_special)
 				magenta_special.teleport(facingDirection)
@@ -357,12 +374,13 @@ func colour_ultimate():
 			print("greenUltt")
 		"blue":
 			print("blueUlt")
-			if blueUltDelta <= 0:
+			if blueUltDelta <= 0 and stamina > blueUltCost:
+				blueUltDelta = abilityCooldown
+				stamina -= blueUltCost
 				slow(0.8, 0.5)
 				blueUlt.set_disabled(false)
 				await get_tree().create_timer(0.1).timeout
 				blueUlt.set_disabled(true)
-				blueUltDelta = blueUltCooldown
 		"yellow":
 			print("yellowUlt")
 		"magenta":
