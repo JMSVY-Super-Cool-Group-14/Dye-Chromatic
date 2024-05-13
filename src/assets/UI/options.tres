@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cheonynu1k4d3"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cheonynu1k4d3"]
 
+[ext_resource type="FontFile" uid="uid://dw7l1jcx8cvqr" path="res://assets/UI/fonts/Inter-Medium.otf" id="1_b4tks"]
 [ext_resource type="Texture2D" uid="uid://cxrvvhdto2f5i" path="res://assets/UI/Slider.png" id="1_xiiyc"]
 [ext_resource type="Texture2D" uid="uid://btba77xp6fk30" path="res://assets/UI/Menu-board.png" id="2_jweec"]
 [ext_resource type="Texture2D" uid="uid://dh0a5g51qrg0v" path="res://assets/UI/Menu-tab-1.png" id="3_ukqh7"]
@@ -87,6 +88,7 @@ texture = ExtResource("4_ro31d")
 expand_margin_bottom = 2.0
 
 [resource]
+CheckBox/fonts/font = ExtResource("1_b4tks")
 CheckBox/styles/focus = SubResource("StyleBoxFlat_mlj64")
 CheckBox/styles/hover = SubResource("StyleBoxFlat_mlj64")
 CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_goaeh")
@@ -95,10 +97,12 @@ CheckBox/styles/pressed = SubResource("StyleBoxFlat_goaeh")
 HSlider/icons/grabber = ExtResource("1_xiiyc")
 HSlider/icons/grabber_highlight = ExtResource("1_xiiyc")
 Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_b4tks")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_dgjkf")
 TabContainer/colors/font_hovered_color = Color(0.654902, 0.654902, 0.654902, 1)
 TabContainer/colors/font_selected_color = Color(0, 0, 0, 1)
 TabContainer/colors/font_unselected_color = Color(0.192157, 0.192157, 0.192157, 1)
+TabContainer/fonts/font = ExtResource("1_b4tks")
 TabContainer/styles/panel = SubResource("StyleBoxTexture_syulg")
 TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_gvhs7")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_gvhs7")

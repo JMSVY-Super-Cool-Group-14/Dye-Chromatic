@@ -6,7 +6,7 @@ signal colour_change(leftColour, rightColour, currentColour)
 var attackCooldown = 0.3
 var colourSwitchDelay = 0.1
 @export var maxHP = 100
-@export var hp = 10
+@export var hp = 100
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
 var combo1 = false
@@ -89,6 +89,9 @@ func _process(delta):
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	else:
 		key_move()
+	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
+	meleeNode.global_rotation = facingDirection.angle() + PI/2
+	
 	
 	# Facing direction check
 	if velocity.length() > 0:
@@ -170,9 +173,6 @@ func melee_attack_old():
 	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
 	
 func melee_attack():
-		
-	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
-	meleeNode.global_rotation = facingDirection.angle() + PI/2
 	slow(0.9, 0.2)
 	
 	if combo1 == true and comboDelta < attackCooldown*5:

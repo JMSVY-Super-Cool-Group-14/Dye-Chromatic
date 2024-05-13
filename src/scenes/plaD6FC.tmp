@@ -41,7 +41,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerAnimated.gd" id="33_pu3a3"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="34_oibyl"]
 [ext_resource type="Texture2D" uid="uid://dex3d2e5spbo6" path="res://assets/sprites/slash.sprites/Slash-1.tres" id="41_044ym"]
-[ext_resource type="Texture2D" uid="uid://dd8kffk53yyw4" path="res://assets/UI/Arrow.png" id="41_har5f"]
+[ext_resource type="Texture2D" uid="uid://dugrw8maurpr8" path="res://assets/legacy/Indicator.png" id="41_im20b"]
 [ext_resource type="Texture2D" uid="uid://ui4hssfnydx4" path="res://assets/sprites/slash.sprites/Slash-2.tres" id="42_ge6ck"]
 [ext_resource type="Script" path="res://scenes/playerDirection.gd" id="42_yn3n2"]
 [ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
@@ -337,9 +337,9 @@ position = Vector2(0, -61)
 [node name="DirectionIndicator" type="Sprite2D" parent="MeleeRange"]
 z_index = 1
 position = Vector2(0, 61)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("41_har5f")
-offset = Vector2(0, -1500)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("41_im20b")
+offset = Vector2(0, -600)
 script = ExtResource("42_yn3n2")
 
 [node name="MeleeHitbox" type="CollisionShape2D" parent="MeleeRange"]
