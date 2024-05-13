@@ -211,6 +211,10 @@ height = 1020.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugejp"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq8ff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15o0i"]
+
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
 
