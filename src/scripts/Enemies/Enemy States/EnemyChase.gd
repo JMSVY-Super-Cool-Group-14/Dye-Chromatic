@@ -29,16 +29,13 @@ func _state_physics_update(delta : float):
 
 		enemy.velocity = direction.normalized() * move_speed
 		
-		
 		if sm.health <= 0:
 			sm._change_state($"../Death")
 			
 		if direction.length() > sm.chase_range:
-			print("Out of range")
 			sm._change_state($"../Idle")
 		
 		if direction.length() <= sm.attack_range:
-			print("Attack range")
 			sm._change_state($"../Attack")
 		
 

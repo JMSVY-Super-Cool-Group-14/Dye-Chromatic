@@ -18,7 +18,6 @@ signal attacking
 func fire_projectile():
 	if !cooldown:
 		attacking.emit()
-		print("enemy attack")
 		cooldown = true
 		get_tree().create_timer(attack_speed).timeout.connect(func(): cooldown = false)
 		var projectile = projectile_scene.instantiate()

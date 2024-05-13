@@ -12,11 +12,9 @@ func _state_physics_update(delta : float):
 			sm._change_state($"../Death")
 			
 		if direction.length() > 70:
-			print("Out of range")
 			sm._change_state($"../Idle")
 		
 		if direction.length() <= 30:
-			print("Attack range")
 			sm._change_state($"../RangeAttack")
 		
 
