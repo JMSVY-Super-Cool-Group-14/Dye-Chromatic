@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "bear.png",
+			"size": {
+				"w": 1916,
+				"h": 1198
+			},
+			"sprites": [
+				{
+					"filename": "Bear-move-2.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 614,
+						"h": 1198
+					},
+					"margin": {
+						"x": 672,
+						"y": 514,
+						"w": 1434,
+						"h": 850
+					}
+				},
+				{
+					"filename": "Bear-move-1.png",
+					"region": {
+						"x": 614,
+						"y": 0,
+						"w": 651,
+						"h": 1192
+					},
+					"margin": {
+						"x": 672,
+						"y": 528,
+						"w": 1397,
+						"h": 856
+					}
+				},
+				{
+					"filename": "Bear-still-1.png",
+					"region": {
+						"x": 614,
+						"y": 0,
+						"w": 651,
+						"h": 1192
+					},
+					"margin": {
+						"x": 672,
+						"y": 528,
+						"w": 1397,
+						"h": 856
+					}
+				},
+				{
+					"filename": "Bear-still-2.png",
+					"region": {
+						"x": 1265,
+						"y": 0,
+						"w": 651,
+						"h": 1192
+					},
+					"margin": {
+						"x": 672,
+						"y": 528,
+						"w": 1397,
+						"h": 856
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:04576d71a5fd7d41b4611e924513093b:8845f4bcbfe79019fa25a1f1c89dd0ae:a0095da992a88144b53174f9496eb736$"
+	}
+}

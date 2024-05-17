@@ -1,0 +1,108 @@
+{
+	"textures": [
+		{
+			"image": "spotted.png",
+			"size": {
+				"w": 1814,
+				"h": 1774
+			},
+			"sprites": [
+				{
+					"filename": "Spotted-1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Spotted-2.png",
+					"region": {
+						"x": 907,
+						"y": 0,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Spotted-3.png",
+					"region": {
+						"x": 0,
+						"y": 887,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Spotted-4.png",
+					"region": {
+						"x": 0,
+						"y": 887,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Spotted-5.png",
+					"region": {
+						"x": 0,
+						"y": 887,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Spotted-6.png",
+					"region": {
+						"x": 0,
+						"y": 887,
+						"w": 907,
+						"h": 887
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:2a73ab0b1cab28308615ac543df31f41:2265530a52bab0e05cdf96e8f1e1a12b:79403b41d2a5788044def35a6d264081$"
+	}
+}

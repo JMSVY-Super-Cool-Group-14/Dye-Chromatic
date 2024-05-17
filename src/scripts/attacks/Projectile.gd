@@ -1,4 +1,5 @@
 extends Area2D
+class_name projectile
 
 var projectile_velocity = Vector2.ZERO
 var speed = 200
@@ -45,6 +46,15 @@ func _on_body_entered(body):
 		body.fsm.take_damage(damage)
 		body.recieve_knockeback(projectile_velocity, damage, attack_type)
 		queue_free()	#remove projectile instance
+	if body.is_in_group("player"):
+		print("player hit")
+		body.take_fixed_damage(damage)
+		queue_free()
+
+	elif body.is_in_group("player"):
+		print("player hit")
+		body.take_fixed_damage(damage)
+		queue_free()
 
 func set_colour(colour: Color):
 	$Sprite2D.self_modulate = colour

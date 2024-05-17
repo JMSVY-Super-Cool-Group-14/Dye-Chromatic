@@ -1,7 +1,7 @@
 {
 	"textures": [
 		{
-			"image": "alert-default.png",
+			"image": "sensed-default.png",
 			"size": {
 				"w": 1149,
 				"h": 454
