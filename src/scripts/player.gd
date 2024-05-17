@@ -46,7 +46,7 @@ var colourWheel = {
 	"yellow" : Color(1, 1, 0),
 	"magenta" : Color(1, 0, 1), 
 	"cyan" : Color(0, 1, 1)
-		}
+}
 @onready var leftIndex = 0
 @onready var rightIndex = 0
 @onready var leftColour = "grey"
@@ -69,6 +69,13 @@ var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
+
+# Boundary limits
+@export var min_x = 50
+@export var max_x = 950
+@export var min_y = 50
+@export var max_y = 550
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
@@ -87,15 +94,11 @@ func _process(delta):
 	if stamina < maxStamina:
 		stamina += staminaRegen
 	stamina_change.emit(int(stamina))
-	
 	if timePassed > hpRegenDelay and hp < maxHP:
-		print("Regenerate health! Health is: ")
-		print(hp)
+		print("Regenerate health! Health is: ", hp)
 		hp += hpRegen
 		timePassed = 0
 		hp_change.emit(hp)
-	
-	
 	
 	# Colour Reset
 	if Input.is_action_just_pressed("left_colour"):
@@ -111,6 +114,7 @@ func _process(delta):
 		isSprinting = false
 	
 	# Movement
+
 	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
@@ -131,8 +135,14 @@ func _process(delta):
 		lockedOn = false
 	
 	# Actual moving of object
+
+	if velocity.length() > 0:
+		facingDirection = velocity
+
 	position += velocity * delta * speed
-	position = position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	# Clamp the position within defined boundaries
+	position.x = clamp(position.x, min_x, max_x)
+	position.y = clamp(position.y, min_y, max_y)
 	
 func start(pos):
 	position = pos

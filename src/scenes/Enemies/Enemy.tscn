@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cudnkh4q0wqm2"]
+[gd_scene load_steps=40 format=3 uid="uid://xlqobgtc5o2q"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_xq5uw"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_b8jfj"]
