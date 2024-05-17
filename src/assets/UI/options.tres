@@ -70,7 +70,7 @@ content_margin_right = 8.0
 content_margin_bottom = 0.0
 texture = ExtResource("3_ukqh7")
 expand_margin_bottom = 2.0
-modulate_color = Color(1, 1, 1, 0.611765)
+modulate_color = Color(0.690196, 0.345098, 0.219608, 0.815686)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_agxqs"]
 content_margin_left = 8.0

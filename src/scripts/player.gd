@@ -6,7 +6,7 @@ signal colour_change(leftColour, rightColour, currentColour)
 var attackCooldown = 0.3
 var colourSwitchDelay = 0.1
 @export var maxHP = 100
-@export var hp = 100
+@export var hp = 1
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
 var combo1 = false
