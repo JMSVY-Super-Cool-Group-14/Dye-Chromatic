@@ -314,6 +314,8 @@ _data = {
 
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
+min_x = 10
+min_y = 0
 max_y = 800
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -331,10 +333,10 @@ shape = SubResource("CapsuleShape2D_ewgi6")
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
-limit_left = 45
-limit_top = 30
-limit_right = 825
-limit_bottom = 770
+limit_left = 0
+limit_top = 0
+limit_right = 820
+limit_bottom = 820
 script = ExtResource("34_oibyl")
 
 [node name="MeleeRange" type="Area2D" parent="."]

@@ -80,7 +80,7 @@ func _process(delta):
 	last_player_position = player.position
 
 func set_limits():
-	limit_left = -1000
-	limit_right = 1000
-	limit_top = -1000
-	limit_bottom = 1000
+	limit_left = 0
+	limit_right = 820
+	limit_top = 0
+	limit_bottom = 820
