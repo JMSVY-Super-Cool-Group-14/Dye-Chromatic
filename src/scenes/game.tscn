@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
-[ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
+[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ccs0dp7y6l8ob" path="res://assets/UI/Mixer.png" id="8_3r8l3"]
 [ext_resource type="Texture2D" uid="uid://da3mga4yaglrn" path="res://assets/UI/staminaBarTemp3.png" id="9_4l2kl"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
-[ext_resource type="PackedScene" uid="uid://0bq3mr4k2yu0" path="res://scenes/npc.tscn" id="13_7i4wi"]
+[ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
 [ext_resource type="PackedScene" uid="uid://diot35kru5y3u" path="res://scenes/Enemies/fire_slime.tscn" id="15_yt066"]
 
 [node name="Game" type="Node2D"]
@@ -154,6 +154,7 @@ texture = ExtResource("4_yusat")
 z_index = 1
 position = Vector2(231, 255)
 scale = Vector2(0.4, 0.4)
+max_x = 815
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_aedne")

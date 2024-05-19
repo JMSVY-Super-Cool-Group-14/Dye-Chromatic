@@ -30,8 +30,8 @@ var blueSpecialCost = 40
 var blueUltCost = 70
 var magentaSpecialCost = 40
 var abilityCooldown = 0.5
-var magentaDelta = 0 	# set to 0 so it is not on cooldown at start
-var blueDelta = 0 	# set to 0 so it is not on cooldown at start
+var magentaDelta = 0
+var blueDelta = 0
 var blueUltDelta = 0
 @export var blueUltDamage = 70
 @export var meleeRange = 18
@@ -46,7 +46,7 @@ var colourWheel = {
 	"yellow" : Color(1, 1, 0),
 	"magenta" : Color(1, 0, 1), 
 	"cyan" : Color(0, 1, 1)
-		}
+}
 @onready var leftIndex = 0
 @onready var rightIndex = 0
 @onready var leftColour = "grey"
@@ -69,6 +69,13 @@ var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
+
+# Boundary limits
+@export var min_x = 55
+@export var max_x = 800
+@export var min_y = 40
+@export var max_y = 500
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
@@ -89,13 +96,10 @@ func _process(delta):
 	stamina_change.emit(int(stamina))
 	
 	if timePassed > hpRegenDelay and hp < maxHP:
-		print("Regenerate health! Health is: ")
-		print(hp)
+		print("Regenerate health! Health is: ", hp)
 		hp += hpRegen
 		timePassed = 0
 		hp_change.emit(hp)
-	
-	
 	
 	# Colour Reset
 	if Input.is_action_just_pressed("left_colour"):
@@ -132,7 +136,16 @@ func _process(delta):
 	
 	# Actual moving of object
 	position += velocity * delta * speed
-	position = position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	
+	# Print debug information
+	print("Position before clamping: ", position)
+	
+	# Clamp the position within defined boundaries
+	position.x = clamp(position.x, min_x, max_x)
+	position.y = clamp(position.y, min_y, max_y)
+	
+	# Print debug information
+	print("Position after clamping: ", position)
 	
 func start(pos):
 	position = pos
@@ -162,10 +175,10 @@ func _input(event):
 		
 			
 func lock_on(event):
-	if event.is_action_pressed("lock_on") and lockedOn==false:
+	if event.is_action_pressed("lock_on") and lockedOn == false:
 		targetLock = get_nearest_enemy()
 		if targetLock != null:
-			$DetectRange.global_position = self.global_position + facingDirection.normalized()*meleeRange
+			$DetectRange.global_position = self.global_position + facingDirection.normalized() * meleeRange
 			$DetectRange.global_rotation = facingDirection.angle()
 			lockedOn = true
 			targetLockArt.visible = true
@@ -179,7 +192,7 @@ func lock_on(event):
 func attack_input(event):
 	if attackDelta > attackCooldown:
 		if fsm.get_controller():
-			if event.is_action_pressed("ranged_attack") and rangedTarget!=Vector2.ZERO:
+			if event.is_action_pressed("ranged_attack") and rangedTarget != Vector2.ZERO:
 				fire_projectile(rangedTarget, currentColour)
 				attackDelta = 0
 			elif event.is_action("melee_attack"):
@@ -223,21 +236,21 @@ func melee_attack_old():
 	slow(0.9, 0.2)
 	melee_strike.set_angle(facingDirection)
 	melee_strike.set_colour(colourWheel[currentColour])
-	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
+	melee_strike.global_position = global_position + facingDirection.normalized() * meleeRange
 	
 func melee_attack():
 	if stamina > meleeCost:
 		stamina -= meleeCost
-		meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
-		meleeNode.global_rotation = facingDirection.angle() + PI/2
+		meleeNode.global_position = global_position + facingDirection.normalized() * meleeRange
+		meleeNode.global_rotation = facingDirection.angle() + PI / 2
 		slow(0.95, 0.2)
 		
-		if combo1 == true and comboDelta < attackCooldown*5:
+		if combo1 == true and comboDelta < attackCooldown * 5:
 			meleeAnimate2.play("attack2")
 			combo1 = false
 			combo2 = true
 			comboDelta = 0
-		elif combo2 == true and comboDelta < attackCooldown*5:
+		elif combo2 == true and comboDelta < attackCooldown * 5:
 			comboDamage = true
 			meleeAnimate1.play("attack1")
 			meleeAnimate2.play("attack2")
@@ -286,19 +299,19 @@ func colour_input(event):
 
 	if colourSwitchDelta > colourSwitchDelay:
 		colourSwitchDelta = 0
-		if event.is_action_pressed("left_colour") :
+		if event.is_action_pressed("left_colour"):
 			# So we dont have same colour on both sides
-			leftIndex = (leftIndex+1) % 4
-			if leftIndex == rightIndex:	
-				leftIndex = (leftIndex+1) % 4
+			leftIndex = (leftIndex + 1) % 4
+			if leftIndex == rightIndex:    
+				leftIndex = (leftIndex + 1) % 4
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 			else:
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 		elif event.is_action_pressed("right_colour"):
 			# So we dont have same colour on both sides
-			rightIndex = (rightIndex+1) % 4
+			rightIndex = (rightIndex + 1) % 4
 			if rightIndex == leftIndex:
-				rightIndex = (rightIndex+1) % 4
+				rightIndex = (rightIndex + 1) % 4
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 			else:
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
@@ -306,7 +319,7 @@ func colour_input(event):
 func set_colour(left, right):
 	leftColour = left
 	rightColour = right
-	if leftColour!="grey" and rightColour!="grey":
+	if leftColour != "grey" and rightColour != "grey":
 		match [leftColour, rightColour]:
 			["red", "green"]:
 				currentColour = "yellow"
@@ -320,7 +333,7 @@ func set_colour(left, right):
 				currentColour = "magenta"
 			["blue", "green"]:
 				currentColour = "cyan"
-	elif left=="grey":
+	elif left == "grey":
 		currentColour = rightColour
 	elif right == "grey":
 		currentColour = leftColour
@@ -371,7 +384,7 @@ func colour_ultimate():
 		"red":
 			print("redUlt")
 		"green":
-			print("greenUltt")
+			print("greenUlt")
 		"blue":
 			print("blueUlt")
 			if blueUltDelta <= 0 and stamina > blueUltCost:
@@ -414,7 +427,7 @@ func _on_blue_ult_body_entered(body):
 func _on_melee_range_body_entered(body):
 	if body.is_in_group("enemy"):
 		if comboDamage:
-			body.fsm.take_damage(meleeDamage*2)
+			body.fsm.take_damage(meleeDamage * 2)
 			body.recieve_knockeback(self.global_position, meleeDamage, "melee")
 			comboDamage = false
 		else:

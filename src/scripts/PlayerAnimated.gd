@@ -1,19 +1,21 @@
 extends AnimatedSprite2D
 
-@onready var player:Area2D = $"../"
+@onready var player: Area2D = $"../"
 var projectile_val = false
 var melee_val = false
 
-# Called when the node enters the scene tree for the first time.
+@export var speed = 200
+var velocity = Vector2.ZERO
+
 func _ready():
 	animation_looped.connect(end_attack)
+	set_process(true)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):	
-	if !projectile_val && !melee_val:
+func _process(delta):
+	if !projectile_val and !melee_val:
 		walk_idle()
-	
-	if player.isSprinting == false:
+
+	if !player.isSprinting:
 		# Animation check
 		if Input.is_action_just_pressed("ranged_attack"):
 			projectile_val = true
@@ -22,18 +24,35 @@ func _process(delta):
 			melee_val = true
 			melee()
 	
+	# Handle player movement
+	velocity = Vector2.ZERO
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
+
+	velocity = velocity.normalized() * speed * delta
+	player.position += velocity
+
+	# Debugging information
+	print("Player Position: ", player.position)
+	print("Viewport Size: ", get_viewport().size)
 
 func end_attack():
 	projectile_val = false
 	melee_val = false
 
-func walk_idle():	
+func walk_idle():
 	if player.velocity.length() <= 0:
 		animation = "idle"
 		return
 	
 	# Walking animation
-	if player.velocity.x > 0.25 || player.velocity.x < -0.25:
+	if player.velocity.x > 0.25 or player.velocity.x < -0.25:
 		animation = "walk_right"
 		flip_h = false
 		if player.velocity.x < 0:
@@ -41,12 +60,12 @@ func walk_idle():
 	elif player.velocity.y > 0:
 		animation = "walk_down"
 	elif player.velocity.y < 0:
-		animation = "walk_up"	
-		
+		animation = "walk_up"
+
 func melee():
 	print("Melee animation")
 	# Melee animation
-	if player.velocity.x > 0.25 || player.velocity.x < -0.25:
+	if player.velocity.x > 0.25 or player.velocity.x < -0.25:
 		animation = "melee_right"
 		flip_h = false
 		if player.velocity.x < 0:
@@ -58,7 +77,7 @@ func melee():
 
 func proj():
 	print("Projectile animation")
-	#Projectile animation
+	# Projectile animation
 	if player.rangedTarget.x != 0:
 		animation = "proj_right"
 		flip_h = false

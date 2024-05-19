@@ -314,6 +314,7 @@ _data = {
 
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
+max_y = 800
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -349,7 +350,6 @@ rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_jbfnq")
 animation = &"attack"
-frame = 5
 
 [node name="MeleePlayer1" type="AnimationPlayer" parent="MeleeRange/MeleeAnimate1"]
 root_node = NodePath("../..")
