@@ -39,7 +39,6 @@ func _state_physics_update(delta : float):
 			sm._change_state($"../Death")
 	
 		if direction.length() < sm.detection_range:
-			print("In range")
 			sm._change_state($"../Chase")
 		
 		if direction.length() <= sm.attack_range:

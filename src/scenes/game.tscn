@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=16 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
-[ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
+[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="Texture2D" uid="uid://01uvc6cl7jb" path="res://assets/UI/colourSelectCircle.png" id="7_45d4h"]
 [ext_resource type="Texture2D" uid="uid://ccs0dp7y6l8ob" path="res://assets/UI/Mixer.png" id="8_3r8l3"]
+[ext_resource type="Texture2D" uid="uid://da3mga4yaglrn" path="res://assets/UI/staminaBarTemp3.png" id="9_4l2kl"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
-[ext_resource type="PackedScene" uid="uid://0bq3mr4k2yu0" path="res://scenes/npc.tscn" id="13_7i4wi"]
-[ext_resource type="PackedScene" uid="uid://diot35kru5y3u" path="res://scenes/Enemies/fire_slime.tscn" id="15_yt066"]
+[ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
 
 [node name="Game" type="Node2D"]
 
@@ -125,9 +125,28 @@ grow_vertical = 0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_3r8l3")
 
+[node name="Stamina" type="HBoxContainer" parent="UI"]
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 421.0
+offset_bottom = 166.0
+tooltip_text = "welcome
+"
+
+[node name="StaminaArt" type="TextureRect" parent="UI/Stamina"]
+modulate = Color(0.141176, 0.807843, 0, 1)
+layout_mode = 2
+texture = ExtResource("9_4l2kl")
+stretch_mode = 3
+
+[node name="StaminaLabel" type="Label" parent="UI/Stamina"]
+layout_mode = 2
+text = "hello"
+uppercase = true
+
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 2048.0
-offset_bottom = 2048.0
+offset_right = 1646.0
+offset_bottom = 1710.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_yusat")
 
@@ -213,7 +232,6 @@ position = Vector2(495, 368)
 [node name="NPCManager" type="Node" parent="."]
 
 [node name="NPC" parent="NPCManager" instance=ExtResource("13_7i4wi")]
-position = Vector2(193, 310)
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_aedne")

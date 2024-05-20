@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cudnkh4q0wqm2"]
+[gd_scene load_steps=40 format=3 uid="uid://xlqobgtc5o2q"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_xq5uw"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_b8jfj"]
@@ -11,6 +11,17 @@
 [ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeDeath.gd" id="9_teb81"]
 [ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeStun.gd" id="10_naw5n"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyRangeAttack.gd" id="11_rxyjb"]
+[ext_resource type="Texture2D" uid="uid://by3xjc0rv0nus" path="res://assets/sprites/spotted.sprites/Spotted-1.tres" id="12_66kjt"]
+[ext_resource type="Texture2D" uid="uid://dudglwf1oftfg" path="res://assets/sprites/spotted.sprites/Spotted-2.tres" id="13_fwx24"]
+[ext_resource type="Texture2D" uid="uid://svqre5ew6roy" path="res://assets/sprites/spotted.sprites/Spotted-3.tres" id="14_baox4"]
+[ext_resource type="Texture2D" uid="uid://byaonk7q8w64f" path="res://assets/sprites/spotted.sprites/Spotted-4.tres" id="15_rrqde"]
+[ext_resource type="Texture2D" uid="uid://0k3xxjbnohfv" path="res://assets/sprites/spotted.sprites/Spotted-5.tres" id="16_av8p4"]
+[ext_resource type="Texture2D" uid="uid://bq5jox6cb6gj8" path="res://assets/sprites/spotted.sprites/Spotted-6.tres" id="17_62p8v"]
+[ext_resource type="Texture2D" uid="uid://brda7gfc2rwna" path="res://assets/sprites/sensed.sprites/Sensed-1.tres" id="18_m7636"]
+[ext_resource type="Texture2D" uid="uid://di1j3a3nkpw6o" path="res://assets/sprites/sensed.sprites/Sensed-2.tres" id="19_e2215"]
+[ext_resource type="Texture2D" uid="uid://dasqnkttr5f44" path="res://assets/sprites/sensed.sprites/Sensed-3.tres" id="20_d5cw8"]
+[ext_resource type="Texture2D" uid="uid://2gs2beowu7e2" path="res://assets/sprites/sensed.sprites/Sensed-4.tres" id="21_i6qf5"]
+[ext_resource type="Texture2D" uid="uid://drqe0x83kfvk4" path="res://assets/sprites/sensed.sprites/Sensed-5.tres" id="22_8i4iw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4pjsy"]
 resource_local_to_scene = true
@@ -238,6 +249,55 @@ radius = 8.2
 [sub_resource type="CircleShape2D" id="CircleShape2D_mc8br"]
 radius = 7.4
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2mvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_66kjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fwx24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_baox4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rrqde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_av8p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_62p8v")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5b251"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_m7636")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_e2215")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_d5cw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_i6qf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_8i4iw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["enemy"]]
 scale = Vector2(5, 5)
 script = ExtResource("1_xq5uw")
@@ -286,6 +346,19 @@ script = ExtResource("10_naw5n")
 
 [node name="RangeAttack" type="Node" parent="State Machine"]
 script = ExtResource("11_rxyjb")
+
+[node name="Alerted" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -30.8)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_q2mvy")
+
+[node name="Confused" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -22.2)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_5b251")
+frame_progress = 0.942786
 
 [connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Hit Box" to="State Machine/Attack" method="_on_hit_box_body_exited"]

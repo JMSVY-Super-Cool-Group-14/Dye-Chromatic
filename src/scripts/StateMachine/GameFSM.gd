@@ -5,6 +5,7 @@ extends FiniteStateMachine
 @export var speed:int = 100
 var control_avail:bool
 var hp
+var stam
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +22,7 @@ func _ready():
 	$InGame.pause.connect(func(): _change_state($Pause))
 	player.hp_change.connect(hp_changed)
 	player.colour_change.connect(colour_changed)
+	player.stamina_change.connect(stamina_changed)
 
 func _change_state(new_state: State):
 	super(new_state)
@@ -49,6 +51,11 @@ func hp_changed(health:int):
 		print("You Died!")
 		_change_state($GameOver)
 
+func stamina_changed(stamina: int):
+	stam = stamina
+	$"../UI/Stamina/StaminaLabel".text = str(stamina)
+	
+	
 func colour_changed(left, right, current):
 	var combined = $"../UI/ColourControl/CombinedColour"
 	var leftColour = $"../UI/ColourControl/LeftColour"

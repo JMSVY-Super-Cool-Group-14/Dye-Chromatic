@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://0bq3mr4k2yu0"]
+[gd_scene load_steps=20 format=3 uid="uid://cltk5bmay0b2k"]
 
 [ext_resource type="Script" path="res://scripts/NPC/NPC.gd" id="1_k40a6"]
 [ext_resource type="Texture2D" uid="uid://cveiythofjma6" path="res://assets/sprites/bear.sprites/Bear-still-1.tres" id="2_8mucu"]
