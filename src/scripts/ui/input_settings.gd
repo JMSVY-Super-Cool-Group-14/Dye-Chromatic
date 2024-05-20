@@ -17,22 +17,22 @@ var input_actions = {
 	"move_up": "Move Up",
 	"move_right": "Move Right",
 	"move_left": "Move Left",
-	"aim_down": "Aim Down",
-	"aim_up": "Aim Up",
-	"aim_left": "Aim Left",
-	"aim_right": "Aim Right",
 	"ranged_attack": "Projectile",
 	"melee_attack": "Melee",
 	"left_colour": "Toggle Colour Left",
 	"right_colour": "Toggle Colour Right",
 	"pause": "Pause",
 	"special_attack": "Special",
-	"interact": "Interact",
-	"ultimate_attack": "Ultimate"
+	"interact": "Interact"
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Check for controller
+	control_avail = Input.get_connected_joypads().size() > 0
+	Input.joy_connection_changed.connect(connection_changed)
+	
+	regex.compile("")
 	_create_actions()
 
 func _create_actions():
@@ -47,16 +47,19 @@ func _create_actions():
 		
 		var events = InputMap.action_get_events(input_actions.keys()[n])
 		if events.size() > 0:
-			input_label.text = events[0].as_text().split(" (")[0]
+			if control_avail:
+				input_label.text = events[1].as_text().split(" (")[1].split(",")[0]
+			else:
+				input_label.text = events[0].as_text().split(" (")[0]
 		else:
 			input_label.text = ""
 			
 		actions.add_child(button)
-		button.pressed.connect(_on_button_pressed.bind(button, input_actions.keys()[n]))
+		button.pressed.connect(_on_button_pressed.bind(button, input_actions.values()[n]))
 
 func _input(event):
 	if remapping:
-		if event is InputEventKey && event.pressed:
+		if event.pressed:
 			InputMap.action_erase_events(action_to_remap)
 			InputMap.action_add_event(action_to_remap, event)
 			_update_action_list(remapping_button, event)
@@ -68,7 +71,7 @@ func _input(event):
 			accept_event()
 
 func _update_action_list(button, event):
-	button.find_child("InputKey").text = event.as_text().trim_suffix(" (Physical)")
+	button.find_child("InputKey").text = event.as_text().split(" (")[0]
 
 func _on_button_pressed(button, action):
 	if !remapping:
@@ -76,6 +79,11 @@ func _on_button_pressed(button, action):
 		action_to_remap = action
 		remapping_button = button
 		button.find_child("InputKey").text = "Press key..."
+
+func connection_changed(_device, connected):
+	control_avail = connected
+	print("Connection changed", control_avail)
+
 
 func _on_default_pressed():
 	_create_actions()

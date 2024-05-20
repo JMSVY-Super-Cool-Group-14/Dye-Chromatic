@@ -154,21 +154,6 @@ layout_mode = 2
 [node name="InputButton11" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
 layout_mode = 2
 
-[node name="InputButton12" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton13" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton14" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton15" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton16" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
 [node name="Default" type="Button" parent="Input/ScrollContainer/Actions"]
 layout_mode = 2
 text = "Reset to Defaults"
