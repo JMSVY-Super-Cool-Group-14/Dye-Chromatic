@@ -1,10 +1,13 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cheonynu1k4d3"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cheonynu1k4d3"]
 
 [ext_resource type="FontFile" uid="uid://dw7l1jcx8cvqr" path="res://assets/UI/fonts/Inter-Medium.otf" id="1_b4tks"]
 [ext_resource type="Texture2D" uid="uid://cxrvvhdto2f5i" path="res://assets/UI/Slider.png" id="1_xiiyc"]
 [ext_resource type="Texture2D" uid="uid://btba77xp6fk30" path="res://assets/UI/Menu-board.png" id="2_jweec"]
 [ext_resource type="Texture2D" uid="uid://dh0a5g51qrg0v" path="res://assets/UI/Menu-tab-1.png" id="3_ukqh7"]
 [ext_resource type="Texture2D" uid="uid://bfpv77q1ly1xg" path="res://assets/UI/Menu-tab-2.png" id="4_ro31d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrb0b"]
+bg_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlj64"]
 content_margin_left = 8.0
@@ -88,6 +91,8 @@ texture = ExtResource("4_ro31d")
 expand_margin_bottom = 2.0
 
 [resource]
+Button/styles/focus = SubResource("StyleBoxFlat_lrb0b")
+Button/styles/hover = SubResource("StyleBoxFlat_lrb0b")
 CheckBox/fonts/font = ExtResource("1_b4tks")
 CheckBox/styles/focus = SubResource("StyleBoxFlat_mlj64")
 CheckBox/styles/hover = SubResource("StyleBoxFlat_mlj64")

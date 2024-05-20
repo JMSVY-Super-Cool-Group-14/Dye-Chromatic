@@ -17,14 +17,14 @@ var input_actions = {
 	"move_up": "Move Up",
 	"move_right": "Move Right",
 	"move_left": "Move Left",
-	"ranged_attack": "Projectile",
-	"melee_attack": "Melee",
-	"left_colour": "Toggle Colour Left",
-	"right_colour": "Toggle Colour Right",
 	"aim_down": "Aim Down",
 	"aim_up": "Aim Up",
 	"aim_left": "Aim Left",
 	"aim_right": "Aim Right",
+	"ranged_attack": "Projectile",
+	"melee_attack": "Melee",
+	"left_colour": "Toggle Colour Left",
+	"right_colour": "Toggle Colour Right",
 	"pause": "Pause",
 	"special_attack": "Special",
 	"interact": "Interact",
@@ -42,24 +42,22 @@ func _ready():
 
 func _create_actions():
 	InputMap.load_from_project_settings()
-	for item in actions.get_children():
-		item.queue_free()
-		
-	for action in input_actions:
-		var button = input_button.instantiate()
+	var buttons = actions.get_children()
+	for n in buttons.size()-1:
+		var button = buttons[n]
 		var action_label = button.find_child("Action")
 		var input_label = button.find_child("InputKey")
 		
-		action_label.text = input_actions[action]
+		action_label.text = input_actions.values()[n]
 		
-		var events = InputMap.action_get_events(action)
+		var events = InputMap.action_get_events(input_actions.keys()[n])
 		if events.size() > 0:
-			input_label.text = events[0].as_text().trim_suffix(" (Physical)")
+			input_label.text = events[0].as_text().split(" (")[0]
 		else:
 			input_label.text = ""
 			
 		actions.add_child(button)
-		button.pressed.connect(_on_button_pressed.bind(button, action))
+		button.pressed.connect(_on_button_pressed.bind(button, input_actions.values()[n]))
 
 func _input(event):
 	if remapping:

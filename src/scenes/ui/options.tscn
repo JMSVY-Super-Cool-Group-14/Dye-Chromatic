@@ -12,8 +12,10 @@ offset_right = 300.0
 offset_bottom = 300.0
 size_flags_horizontal = 4
 theme = ExtResource("1_amv88")
+current_tab = 1
 
 [node name="Audio" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="Volume" type="Label" parent="Audio"]
@@ -73,7 +75,6 @@ script = ExtResource("1_tn4p4")
 bus_name = "Effects"
 
 [node name="Video" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Video"]
@@ -113,20 +114,16 @@ script = ExtResource("4_33oaj")
 [node name="ScrollContainer" type="ScrollContainer" parent="Input"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("Actions/InputButton")
-focus_mode = 2
 
 [node name="Actions" type="VBoxContainer" parent="Input/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Input" type="Label" parent="Input/ScrollContainer/Actions"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Input Mapping"
-
 [node name="InputButton" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
+layout_mode = 2
+
+[node name="InputButton2" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
 layout_mode = 2
 
 [node name="Default" type="Button" parent="Input/ScrollContainer/Actions"]
