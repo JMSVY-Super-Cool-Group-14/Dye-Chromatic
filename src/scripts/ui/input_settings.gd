@@ -82,6 +82,7 @@ func _on_button_pressed(button, action):
 
 func connection_changed(_device, connected):
 	control_avail = connected
+	_create_actions()
 	print("Connection changed", control_avail)
 
 

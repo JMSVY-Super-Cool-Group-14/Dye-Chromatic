@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=14 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
-[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemy.tscn" id="2_h5rq2"]
+[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
@@ -225,9 +225,6 @@ scale = Vector2(1, 1)
 [node name="Slime29" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
 position = Vector2(665.5, 445)
 scale = Vector2(1, 1)
-
-[node name="Fire Slime" parent="EnemyManager" instance=ExtResource("15_yt066")]
-position = Vector2(495, 368)
 
 [node name="NPCManager" type="Node" parent="."]
 
