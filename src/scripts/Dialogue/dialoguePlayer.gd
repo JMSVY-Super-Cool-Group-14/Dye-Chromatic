@@ -1,9 +1,8 @@
 extends Control
 
-@export_file("*.json") var d_file
-
 signal dialogue_done
 
+@onready var d_file:String = $"../".d_file
 var dialogue = []
 var current_line = 0
 
@@ -12,7 +11,7 @@ func _ready():
 	dialogue = load_dialogue()
 
 func load_dialogue():
-	var file = FileAccess.open("res://scripts/Dialogue/redSlimeDialogue.json", FileAccess.READ)
+	var file = FileAccess.open(d_file, FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
 	return content
 
