@@ -7,7 +7,7 @@ signal stamina_change(stamina)
 var attackCooldown = 0.3
 var colourSwitchDelay = 0.1
 @export var maxHP = 100
-@export var hp = 1
+@export var hp = 100
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
 @export var maxStamina = 100
