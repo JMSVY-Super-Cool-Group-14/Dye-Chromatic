@@ -29,8 +29,8 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-shadow_size = 1
-shadow_offset = Vector2(0, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gatjw"]
 bg_color = Color(1, 0, 0, 0.894118)
@@ -38,8 +38,8 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-shadow_size = 1
-shadow_offset = Vector2(0, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4pjsy"]
 resource_local_to_scene = true
@@ -322,11 +322,11 @@ script = ExtResource("1_xq5uw")
 fsm = NodePath("State Machine")
 
 [node name="HPbar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(60, 2)
-offset_right = 60.0
-offset_bottom = 2.0
+custom_minimum_size = Vector2(100, 8)
+offset_right = 100.0
+offset_bottom = 12.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(-30, -20)
+pivot_offset = Vector2(-50, -30)
 theme_override_styles/background = SubResource("StyleBoxFlat_4ot47")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gatjw")
 step = 1.0
