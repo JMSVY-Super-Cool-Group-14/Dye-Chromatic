@@ -33,11 +33,6 @@ var input_actions = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Check for controller
-	control_avail = Input.get_connected_joypads().size() > 0
-	Input.joy_connection_changed.connect(connection_changed)
-	
-	regex.compile("")
 	_create_actions()
 
 func _create_actions():
@@ -57,7 +52,7 @@ func _create_actions():
 			input_label.text = ""
 			
 		actions.add_child(button)
-		button.pressed.connect(_on_button_pressed.bind(button, input_actions.values()[n]))
+		button.pressed.connect(_on_button_pressed.bind(button, input_actions.keys()[n]))
 
 func _input(event):
 	if remapping:
@@ -82,6 +77,5 @@ func _on_button_pressed(button, action):
 		remapping_button = button
 		button.find_child("InputKey").text = "Press key..."
 
-func connection_changed(_device, connected):
-	control_avail = connected
-	print("Connection changed", control_avail)
+func _on_default_pressed():
+	_create_actions()
