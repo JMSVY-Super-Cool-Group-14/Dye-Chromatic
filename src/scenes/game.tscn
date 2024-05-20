@@ -1,14 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=14 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
-[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemy.tscn" id="2_h5rq2"]
+[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
-[ext_resource type="Texture2D" uid="uid://wiqos5odnqfm" path="res://assets/legacy/heart32.png" id="6_iepwv"]
 [ext_resource type="Texture2D" uid="uid://01uvc6cl7jb" path="res://assets/UI/colourSelectCircle.png" id="7_45d4h"]
 [ext_resource type="Texture2D" uid="uid://ccs0dp7y6l8ob" path="res://assets/UI/Mixer.png" id="8_3r8l3"]
 [ext_resource type="Texture2D" uid="uid://da3mga4yaglrn" path="res://assets/UI/staminaBarTemp3.png" id="9_4l2kl"]
@@ -48,19 +47,21 @@ focus_mode = 2
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="Health" type="HBoxContainer" parent="UI"]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 57.0
-offset_bottom = 52.0
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
 
-[node name="Heart" type="TextureRect" parent="UI/Health"]
+[node name="HPbar" type="ProgressBar" parent="UI/MarginContainer"]
+custom_minimum_size = Vector2(800, 20)
 layout_mode = 2
-texture = ExtResource("6_iepwv")
-
-[node name="Label" type="Label" parent="UI/Health"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
+size_flags_vertical = 4
+step = 1.0
+show_percentage = false
 
 [node name="ColourControl" type="Control" parent="UI"]
 custom_minimum_size = Vector2(260, 140)
@@ -224,9 +225,6 @@ scale = Vector2(1, 1)
 [node name="Slime29" parent="EnemyManager" instance=ExtResource("2_h5rq2")]
 position = Vector2(665.5, 445)
 scale = Vector2(1, 1)
-
-[node name="Fire Slime" parent="EnemyManager" instance=ExtResource("15_yt066")]
-position = Vector2(495, 368)
 
 [node name="NPCManager" type="Node" parent="."]
 

@@ -7,7 +7,7 @@ signal stamina_change(stamina)
 var attackCooldown = 0.3
 var colourSwitchDelay = 0.1
 @export var maxHP = 100
-@export var hp = 10
+@export var hp = 1
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
 @export var maxStamina = 100
@@ -120,6 +120,9 @@ func _process(delta):
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	else:
 		key_move()
+	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
+	meleeNode.global_rotation = facingDirection.angle() + PI/2
+	
 	
 	# Facing direction check
 	if velocity.length() > 0 and !lockedOn:

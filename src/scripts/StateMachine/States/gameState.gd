@@ -10,7 +10,7 @@ func _enter_state():
 
 func _exit_state():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
+
 func _state_update(_delta: float):
 	if Input.is_action_just_pressed("pause"):
 		emit_signal("pause")
