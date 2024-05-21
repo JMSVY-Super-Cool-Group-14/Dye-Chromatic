@@ -4,9 +4,6 @@ extends AnimatedSprite2D
 var projectile_val = false
 var melee_val = false
 
-@export var speed = 200
-var velocity = Vector2.ZERO
-
 func _ready():
 	animation_looped.connect(end_attack)
 	set_process(true)
@@ -23,22 +20,7 @@ func _process(delta):
 		elif Input.is_action_just_pressed("melee_attack"):
 			melee_val = true
 			melee()
-	
-	# Handle player movement
-	velocity = Vector2.ZERO
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
-
-	velocity = velocity.normalized() * speed * delta
-	player.position += velocity
-
-	# Debugging information
+	# Only debug information should be here, movement is removed
 	print("Player Position: ", player.position)
 	print("Viewport Size: ", get_viewport().size)
 
@@ -64,7 +46,6 @@ func walk_idle():
 
 func melee():
 	print("Melee animation")
-	# Melee animation
 	if player.velocity.x > 0.25 or player.velocity.x < -0.25:
 		animation = "melee_right"
 		flip_h = false
@@ -77,7 +58,6 @@ func melee():
 
 func proj():
 	print("Projectile animation")
-	# Projectile animation
 	if player.rangedTarget.x != 0:
 		animation = "proj_right"
 		flip_h = false

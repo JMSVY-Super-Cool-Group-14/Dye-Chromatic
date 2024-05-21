@@ -70,17 +70,9 @@ var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
 
-# Boundary limits
-@export var min_x = 55
-@export var max_x = 800
-@export var min_y = 40
-@export var max_y = 500
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$AnimatedSprite2D.play()
 	attackDelta += delta
@@ -101,7 +93,6 @@ func _process(delta):
 		timePassed = 0
 		hp_change.emit(hp)
 	
-	# Colour Reset
 	if Input.is_action_just_pressed("left_colour"):
 		colour_reset()
 	elif Input.is_action_just_pressed("right_colour"):
@@ -114,39 +105,25 @@ func _process(delta):
 		speed = 100
 		isSprinting = false
 	
-	# Movement
 	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	else:
 		key_move()
 	
-	# Facing direction check
 	if velocity.length() > 0 and !lockedOn:
 		facingDirection = velocity
 	elif lockedOn and targetLock != null:
 		facingDirection = (targetLock.global_transform.origin - self.global_transform.origin).normalized()
 		targetLockArt.global_position = targetLock.global_position
 	elif targetLock == null:
-		# In event of locked enemy being dead
 		print("Target dead! Reset Lock-on.")
 		targetLock = 0
 		targetLockArt.visible = false
 		lockedOn = false
 	
-	# Actual moving of object
 	position += velocity * delta * speed
-	
-	# Print debug information
-	print("Position before clamping: ", position)
-	
-	# Clamp the position within defined boundaries
-	position.x = clamp(position.x, min_x, max_x)
-	position.y = clamp(position.y, min_y, max_y)
-	
-	# Print debug information
-	print("Position after clamping: ", position)
-	
+
 func start(pos):
 	position = pos
 	show()
@@ -164,16 +141,10 @@ func key_move():
 		
 func _input(event):
 	if !isSprinting:
-		# Handle colour input
 		colour_input(event)
-	
-		# Handle attack input
 		attack_input(event)
-		
-		#Handle lock on target input
 		lock_on(event)
 		
-			
 func lock_on(event):
 	if event.is_action_pressed("lock_on") and lockedOn == false:
 		targetLock = get_nearest_enemy()
@@ -259,25 +230,21 @@ func melee_attack():
 			meleeAnimate1.play("attack1")
 			combo1 = true
 			comboDelta = 0
-	
 
 func colour_reset():
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
 	
-	# Multiple wait checks for redundancy
 	await get_tree().create_timer(0.2).timeout
 	
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
 	
-	# Multiple wait checks for redundancy
 	await get_tree().create_timer(0.2).timeout
 	
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
 	
-	# Multiple wait checks for redundancy
 	await get_tree().create_timer(0.2).timeout
 	
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
@@ -293,14 +260,10 @@ func colour_reset():
 		rightIndex = 0
 		set_colour(leftColour, "grey")
 
-
 func colour_input(event):
-	# Toggle colours selected
-
 	if colourSwitchDelta > colourSwitchDelay:
 		colourSwitchDelta = 0
 		if event.is_action_pressed("left_colour"):
-			# So we dont have same colour on both sides
 			leftIndex = (leftIndex + 1) % 4
 			if leftIndex == rightIndex:    
 				leftIndex = (leftIndex + 1) % 4
@@ -308,7 +271,6 @@ func colour_input(event):
 			else:
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 		elif event.is_action_pressed("right_colour"):
-			# So we dont have same colour on both sides
 			rightIndex = (rightIndex + 1) % 4
 			if rightIndex == leftIndex:
 				rightIndex = (rightIndex + 1) % 4
@@ -339,7 +301,6 @@ func set_colour(left, right):
 		currentColour = leftColour
 	
 	colour_change.emit(leftColour, rightColour, currentColour)
-
 
 func colour_special():
 	match currentColour:
@@ -439,8 +400,6 @@ func get_nearest_enemy() -> enemy:
 	var front_enemies := []
 	
 	for target in $DetectRange.get_overlapping_bodies():
-		#get enemies in front of the player
-		#to find out, look for angle to enemy using dot product
 		var angle_to_node = rad_to_deg(acos(facingDirection.dot(global_position.direction_to(target.global_position))))
 		if angle_to_node < field_of_view and target.is_in_group("enemy"):
 			front_enemies.append(target)
@@ -449,7 +408,6 @@ func get_nearest_enemy() -> enemy:
 		nearest_enemy = front_enemies[0]
 		
 		for target in front_enemies:
-			#get enemies based on the closest distance
 			if global_position.distance_to(target.global_position) < global_position.distance_to(nearest_enemy.global_position):
 				nearest_enemy = target
 
