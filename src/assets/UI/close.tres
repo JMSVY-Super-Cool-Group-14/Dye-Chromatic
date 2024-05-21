@@ -11,6 +11,7 @@ expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 20.0
+modulate_color = Color(0.980392, 0.686275, 0.431373, 0.658824)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uyk5w"]
 texture = ExtResource("2_4pwp7")
@@ -30,8 +31,8 @@ expand_margin_bottom = 20.0
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_focus_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
-Button/colors/font_hover_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/styles/focus = SubResource("StyleBoxTexture_iciw6")
 Button/styles/hover = SubResource("StyleBoxTexture_iciw6")

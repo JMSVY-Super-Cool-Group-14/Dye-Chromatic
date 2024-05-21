@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=13 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
+[ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="3_5h11r"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
@@ -22,6 +23,9 @@ root = NodePath("..")
 
 [node name="Pause" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_h2nxd")
+
+[node name="PauseSound" type="AudioStreamPlayer2D" parent="FiniteStateMachine/Pause"]
+stream = ExtResource("3_5h11r")
 
 [node name="InGame" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_6d48n")

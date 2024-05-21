@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cltk5bmay0b2k"]
+[gd_scene load_steps=15 format=3 uid="uid://cltk5bmay0b2k"]
 
 [ext_resource type="Script" path="res://scripts/NPC/NPC.gd" id="1_k40a6"]
 [ext_resource type="Texture2D" uid="uid://cveiythofjma6" path="res://assets/sprites/bear.sprites/Bear-still-1.tres" id="2_8mucu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/NPC/NPCWalking.gd" id="5_pst2m"]
 [ext_resource type="Script" path="res://scripts/NPC/NPCInteract.gd" id="6_od0pn"]
 [ext_resource type="PackedScene" uid="uid://dvrm22g12ndy7" path="res://scripts/Dialogue/dialogueBox.tscn" id="7_3mub8"]
+[ext_resource type="AudioStream" uid="uid://bery1n8kx15bq" path="res://assets/audio/sfx/woom.mp3" id="11_tje25"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ligmd"]
 animations = [{
@@ -76,6 +77,12 @@ script = ExtResource("6_od0pn")
 
 [node name="DialogueBox" parent="." instance=ExtResource("7_3mub8")]
 pivot_offset = Vector2(0, -30)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_tje25")
+volume_db = -10.0
+pitch_scale = 1.5
+bus = &"Effects"
 
 [connection signal="body_entered" from="ChatArea" to="." method="_on_chat_area_body_entered"]
 [connection signal="body_exited" from="ChatArea" to="." method="_on_chat_area_body_exited"]
