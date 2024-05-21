@@ -8,6 +8,7 @@ func _enter_state():
 	get_tree().paused = true
 	$"../../Pause".visible = true
 	$"../../UI".visible = false
+	state_machine._save()
 	sfx.play()
 
 func _exit_state():

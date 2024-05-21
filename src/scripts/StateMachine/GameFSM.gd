@@ -4,6 +4,9 @@ extends FiniteStateMachine
 @onready var hpbar = $"../UI/MarginContainer/VBoxContainer/HPbar"
 @onready var staminabar = $"../UI/MarginContainer/VBoxContainer/Staminabar"
 @export var speed:int = 100
+
+var check_point_pos:Vector2 = Vector2(231, 235)
+var check_point:Area2D = null
 var control_avail:bool
 var hp
 var stam
@@ -12,10 +15,10 @@ var stam
 func _ready():
 	super()
 	control_avail = Input.get_connected_joypads().size() > 0
-	hp = player.hp
-	hpbar.max_value = player.maxHP
-	hpbar.value = hp
+	
+	
 	staminabar.max_value = player.maxStamina
+	load_game()
 	
 	# Connect signals
 	Input.joy_connection_changed.connect(connection_changed)
@@ -64,3 +67,41 @@ func colour_changed(left, right, current):
 	combined.self_modulate = player.colourWheel[current]
 	leftColour.self_modulate = player.colourWheel[left]
 	rightColour.self_modulate = player.colourWheel[right]
+
+func save_checkpoint(pos:Vector2, obj:Area2D):
+	check_point_pos = pos
+	check_point = obj
+
+func load_game():
+	if FileAccess.file_exists("user://savegame.save"):
+		var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+		while save_game.get_position() < save_game.get_length():
+			var json_string = save_game.get_line()
+
+			# Creates the helper class to interact with JSON
+			var json = JSON.new()
+
+			# Check if there is any error while parsing the JSON string, skip in case of failure
+			var parse_result = json.parse(json_string)
+			if not parse_result == OK:
+				print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+				continue
+				
+			# Get the data from the JSON object
+			var node_data = json.get_data()
+			player.hp = node_data["hp"]
+			player.position = Vector2(node_data["checkpoint_x"], node_data["checkpoint_y"]) 
+
+	hp = player.hp
+	hpbar.max_value = player.maxHP
+	hpbar.value = hp
+
+func _save():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_dict = {
+		"checkpoint_x": check_point_pos.x,
+		"checkpoint_y": check_point_pos.y,
+		"hp": player.hp
+	}
+	var json_string = JSON.stringify(save_dict)
+	save_game.store_line(json_string)

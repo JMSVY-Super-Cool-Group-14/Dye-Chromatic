@@ -339,6 +339,7 @@ script = ExtResource("34_oibyl")
 
 [node name="MeleeRange" type="Area2D" parent="."]
 position = Vector2(0, -61)
+collision_mask = 3
 
 [node name="DirectionIndicator" type="Sprite2D" parent="MeleeRange"]
 position = Vector2(0, 61)
@@ -378,6 +379,7 @@ libraries = {
 speed_scale = 12.0
 
 [node name="BlueUlt" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlueUlt"]
 scale = Vector2(15, 15)
@@ -385,6 +387,7 @@ shape = SubResource("CircleShape2D_aq8ff")
 disabled = true
 
 [node name="DetectRange" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange"]
 position = Vector2(0, -112)

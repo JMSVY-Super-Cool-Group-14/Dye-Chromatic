@@ -31,7 +31,7 @@ stream = ExtResource("3_5h11r")
 [node name="InGame" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_6d48n")
 
-[node name="Checkpoint_Town" parent="FiniteStateMachine/InGame" node_paths=PackedStringArray("state_machine") instance=ExtResource("5_uwfma")]
+[node name="Checkpoint" parent="FiniteStateMachine/InGame" node_paths=PackedStringArray("state_machine") instance=ExtResource("5_uwfma")]
 position = Vector2(500, 500)
 state_machine = NodePath("../..")
 

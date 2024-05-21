@@ -59,7 +59,6 @@ theme = ExtResource("4_0cg5a")
 
 [node name="Continue" type="Button" parent="Center/Buttons"]
 layout_mode = 2
-focus_mode = 0
 disabled = true
 text = "Continue"
 
@@ -173,6 +172,7 @@ text = "ver 0.4"
 
 [connection signal="focus_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Center/Buttons/Continue" to="." method="_on_continue_pressed"]
 [connection signal="focus_entered" from="Center/Buttons/NewGame" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/NewGame" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Center/Buttons/NewGame" to="." method="_on_new_game_pressed"]

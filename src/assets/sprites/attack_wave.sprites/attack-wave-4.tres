@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cxxaf2df505xr"]
+
+[ext_resource type="Texture2D" uid="uid://bjurf6nx6qwdw" path="res://assets/sprites/attack_wave.png" id="1_p06iq"]
+
+[resource]
+atlas = ExtResource("1_p06iq")
+region = Rect2(1, 481, 561, 434)
+margin = Rect2(99, 110, 219, 208)
