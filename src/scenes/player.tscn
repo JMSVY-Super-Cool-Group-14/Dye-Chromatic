@@ -388,6 +388,7 @@ limit_top = 0
 limit_right = 820
 limit_bottom = 820
 script = ExtResource("34_oibyl")
+player_path = NodePath("..")
 
 [node name="PlayerBoundaries" type="Node2D" parent="."]
 script = ExtResource("46_imbkd")

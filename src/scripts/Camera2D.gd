@@ -1,12 +1,13 @@
 extends Camera2D
 
 @export var centered_on_player = true
-@onready var player: Area2D = get_parent()
+@export var player_path: NodePath  # Path to the player node
 @export var camera_speed = 100
 @export var zoom_speed = 3
 @export var min_zoom = Vector2(1.5, 1.5)
 @export var max_zoom = Vector2(3, 3)
 var last_player_position = Vector2()
+var player: Area2D
 
 # Standard Camera Settings
 @export var DEFAULT_ZOOM = Vector2(2.5, 2.5)
@@ -16,10 +17,12 @@ var last_player_position = Vector2()
 @export var smoothing_speed = 5.0
 
 func _ready():
-	player = get_parent()
-	if not player:
-		push_error("Player node not found as parent.")
+	if player_path:
+		player = get_node(player_path) as Area2D
+	else:
+		push_error("Player node path is not set.")
 		return
+
 	last_player_position = player.position
 	zoom = DEFAULT_ZOOM
 	make_current()
