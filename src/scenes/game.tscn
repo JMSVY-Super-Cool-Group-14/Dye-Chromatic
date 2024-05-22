@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
 [ext_resource type="PackedScene" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
+[ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
+[ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
 [ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scripts/FireBoss/fire_boss.tscn" id="16_c4v32"]
@@ -38,7 +40,7 @@ stream = ExtResource("3_5h11r")
 script = ExtResource("3_6d48n")
 
 [node name="Checkpoint_Town" parent="FiniteStateMachine/InGame" node_paths=PackedStringArray("state_machine") instance=ExtResource("5_uwfma")]
-position = Vector2(500, 500)
+position = Vector2(510, 530)
 state_machine = NodePath("../..")
 
 [node name="GameOver" type="Node" parent="FiniteStateMachine"]

@@ -17,7 +17,6 @@ func load_dialogue():
 
 func next_line():
 	if current_line < len(dialogue):
-		print("here")
 		self.visible = true
 		$name.text = dialogue[current_line]["name"]
 		$text.text = dialogue[current_line]["text"]
