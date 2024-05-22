@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
-[ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
+[ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
 [ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
