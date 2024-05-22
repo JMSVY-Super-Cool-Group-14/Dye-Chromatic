@@ -4,6 +4,7 @@ signal unpause
 
 @onready var buttons = $"Center/Buttons"
 @onready var options = $"Center/Options"
+@onready var sfx = $"PauseSound"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,3 +29,6 @@ func _on_options_pressed():
 
 func _on_resume_pressed():
 	emit_signal("unpause")
+
+func _on_focus_entered():
+	sfx.play()

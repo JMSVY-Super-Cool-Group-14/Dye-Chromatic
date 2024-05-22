@@ -1,5 +1,5 @@
 extends enemyStun
-	
+
 func _enter_state():
 	super()
 	

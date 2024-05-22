@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://d0qrw42ps47os"
+path="res://.godot/imported/attack_wave.tpsheet-e5c43340d005d808e8f3115640f566a7.res"
+
+[deps]
+
+files=["res://assets/sprites/attack_wave.sprites/attack-wave-5.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-4.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-3.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-6.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-2.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-1.tres"]
+
+source_file="res://assets/sprites/attack_wave.tpsheet"
+dest_files=["res://.godot/imported/attack_wave.tpsheet-e5c43340d005d808e8f3115640f566a7.res", "res://assets/sprites/attack_wave.sprites/attack-wave-5.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-4.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-3.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-6.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-2.tres", "res://assets/sprites/attack_wave.sprites/attack-wave-1.tres"]
+
+[params]
+

@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=14 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
 [ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
+[ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="3_5h11r"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
-[ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
+[ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
 
@@ -28,8 +30,15 @@ root = NodePath("..")
 [node name="Pause" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_h2nxd")
 
+[node name="PauseSound" type="AudioStreamPlayer2D" parent="FiniteStateMachine/Pause"]
+stream = ExtResource("3_5h11r")
+
 [node name="InGame" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("3_6d48n")
+
+[node name="Checkpoint_Town" parent="FiniteStateMachine/InGame" node_paths=PackedStringArray("state_machine") instance=ExtResource("5_uwfma")]
+position = Vector2(500, 500)
+state_machine = NodePath("../..")
 
 [node name="GameOver" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("4_v8r73")
@@ -128,7 +137,9 @@ scale = Vector2(1, 1)
 
 [node name="NPCManager" type="Node" parent="."]
 
-[node name="NPC" parent="NPCManager" instance=ExtResource("13_7i4wi")]
+[node name="Bjorn" parent="NPCManager" instance=ExtResource("13_7i4wi")]
+position = Vector2(100, 200)
+d_file = "res://scripts/Dialogue/bjornDialogue.json"
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_aedne")

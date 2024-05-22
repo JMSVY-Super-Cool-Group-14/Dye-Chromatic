@@ -21,8 +21,8 @@ func _process(delta):
 			melee_val = true
 			melee()
 	# Only debug information should be here, movement is removed
-	print("Player Position: ", player.position)
-	print("Viewport Size: ", get_viewport().size)
+	#print("Player Position: ", player.position)
+	#print("Viewport Size: ", get_viewport().size)
 
 func end_attack():
 	projectile_val = false

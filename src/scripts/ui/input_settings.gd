@@ -53,8 +53,7 @@ func _create_actions():
 				input_label.text = events[0].as_text().split(" (")[0]
 		else:
 			input_label.text = ""
-			
-		actions.add_child(button)
+		
 		button.pressed.connect(_on_button_pressed.bind(button, input_actions.values()[n]))
 
 func _input(event):

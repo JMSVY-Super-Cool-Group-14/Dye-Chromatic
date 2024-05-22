@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://btk8ogqxdov64"]
+
+[ext_resource type="Texture2D" uid="uid://bfekvf8wgno7h" path="res://assets/sprites/fire_boss.png" id="1_v5kxb"]
+
+[resource]
+atlas = ExtResource("1_v5kxb")
+region = Rect2(1274, 2041, 1271, 2014)
+margin = Rect2(448, 67, 777, 367)

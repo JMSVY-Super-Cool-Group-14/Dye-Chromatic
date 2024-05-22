@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://bqjpjlvvl6cu7"
+path="res://.godot/imported/fire_boss.tpsheet-ace668d810e3449922c9f9d5a1b4710b.res"
+
+[deps]
+
+files=["res://assets/sprites/fire_boss.sprites/Fireboss-still-2.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-still-4.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-2.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-4.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-1.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-still-1.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-3.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-still-3.tres"]
+
+source_file="res://assets/sprites/fire_boss.tpsheet"
+dest_files=["res://.godot/imported/fire_boss.tpsheet-ace668d810e3449922c9f9d5a1b4710b.res", "res://assets/sprites/fire_boss.sprites/Fireboss-still-2.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-still-4.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-2.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-4.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-1.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-still-1.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-move-3.tres", "res://assets/sprites/fire_boss.sprites/Fireboss-still-3.tres"]
+
+[params]
+

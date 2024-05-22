@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4ingjm58w0lb"]
+[gd_scene load_steps=6 format=3 uid="uid://b4ingjm58w0lb"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause.gd" id="1_6jqpd"]
 [ext_resource type="PackedScene" uid="uid://d1a3wnx2wk3ms" path="res://scenes/ui/options.tscn" id="1_ivqsh"]
 [ext_resource type="Theme" uid="uid://84plhwxqoe37" path="res://assets/UI/ui_theme.tres" id="2_bok2n"]
 [ext_resource type="Theme" uid="uid://kgtpsi6v0g3v" path="res://assets/UI/close.tres" id="4_5yh3v"]
+[ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="5_0iqs0"]
 
 [node name="PauseMenu" type="Panel"]
 script = ExtResource("1_6jqpd")
@@ -56,8 +57,16 @@ layout_mode = 2
 theme = ExtResource("4_5yh3v")
 text = "Close"
 
+[node name="PauseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0iqs0")
+
+[connection signal="focus_entered" from="Center/Buttons/Resume" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Center/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="focus_entered" from="Center/Buttons/Options" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Center/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="Center/Buttons/ExitMenu" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Center/Buttons/ExitMenu" to="." method="_on_exit_menu_pressed"]
+[connection signal="focus_entered" from="Center/Buttons/ExitGame" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Center/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="focus_entered" from="Center/Options/Close" to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Center/Options/Close" to="." method="_close_option"]
