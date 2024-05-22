@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=59 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
 [ext_resource type="Texture2D" uid="uid://l2nvsqvjk3wm" path="res://assets/sprites/slash.sprites/Slash-4.tres" id="44_6dvai"]
 [ext_resource type="Texture2D" uid="uid://bg1h6s2vbpvvn" path="res://assets/UI/targetLockTemp.png" id="45_ar07b"]
+[ext_resource type="Texture2D" uid="uid://ckbt0whe5vfti" path="res://assets/sprites/attacks/Ults/Bubble.png" id="45_f8d0u"]
 [ext_resource type="Script" path="res://scenes/PlayerBoundaries.gd" id="46_imbkd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bgi2u"]
@@ -313,6 +314,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_aq8ff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15o0i"]
+size = Vector2(20, 36.75)
 
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
@@ -374,16 +376,21 @@ speed_scale = 12.0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlueUlt"]
-scale = Vector2(15, 15)
+scale = Vector2(22, 22)
 shape = SubResource("CircleShape2D_aq8ff")
 disabled = true
+
+[node name="BubbleSprite" type="Sprite2D" parent="BlueUlt"]
+visible = false
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("45_f8d0u")
 
 [node name="DetectRange" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange"]
-position = Vector2(0, -112)
-scale = Vector2(19.04, 13.08)
+position = Vector2(0, 0.5)
+scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_15o0i")
 
 [node name="TargetLock" type="Sprite2D" parent="."]
