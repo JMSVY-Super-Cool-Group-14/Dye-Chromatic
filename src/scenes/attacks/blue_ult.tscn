@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2fiy5bmjgag0"]
+
+[ext_resource type="Script" path="res://scripts/attacks/blue_ult.gd" id="1_8aeil"]
+[ext_resource type="Texture2D" uid="uid://ckbt0whe5vfti" path="res://assets/sprites/attacks/Ults/Bubble.png" id="1_vcjjk"]
+
+[node name="BlueUlt" type="Area2D"]
+script = ExtResource("1_8aeil")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.439216)
+texture = ExtResource("1_vcjjk")
