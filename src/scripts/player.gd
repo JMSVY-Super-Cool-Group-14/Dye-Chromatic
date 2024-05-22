@@ -111,8 +111,12 @@ func _process(delta):
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	else:
 		key_move()
-	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
-	meleeNode.global_rotation = facingDirection.angle() + PI/2
+	
+	if rangedTarget.x < 0.6 and rangedTarget.y < 0.6:
+		rangedTarget = facingDirection
+
+	meleeNode.global_position = global_position + rangedTarget.normalized()*meleeRange
+	meleeNode.global_rotation = rangedTarget.angle() + PI/2
 	
 	
 	if velocity.length() > 0 and !lockedOn:
