@@ -4,6 +4,7 @@ extends FiniteStateMachine
 @export var health = 300
 var max_health = health
 var varience = 0
+var phase3 = false
 
 var melee_range = 30
 

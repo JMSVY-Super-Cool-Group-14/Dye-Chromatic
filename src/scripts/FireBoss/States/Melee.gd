@@ -5,11 +5,8 @@ class_name bossMelee
 @onready var player = $"../../../Player"
 @onready var sm = $".."
 
-
-@export var orbAmount = 7
-@export var orbLines = 6
-@export var orbSpeed = 50
-@export var orbDamage = 0
+@export var speed = 50
+@export var damage = 0
 
 
 var melee_scene = preload("res://scripts/FireBoss/BossMelee.tscn")
@@ -25,6 +22,7 @@ func spawnHand():
 	
 
 func _enter_state():
+	print("hand")
 	spawnHand()
 	await get_tree().create_timer(1).timeout
 	finished = true

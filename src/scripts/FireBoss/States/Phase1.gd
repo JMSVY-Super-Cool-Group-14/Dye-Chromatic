@@ -17,7 +17,6 @@ func _choose_attack():
 	elif attack1:
 		attack1 = false
 		sm._change_state($"../P1orbAttack")
-		
 	else:
 		attack1 = true
 		sm._change_state($"../P1lineAttack")
@@ -29,7 +28,6 @@ func _enter_state():
 		_choose_attack()
 
 func _state_update(delta : float):
-	print("P1")
 	if sm.health <= sm.max_health * 0.7:
 		new_phase = true
 		sm._change_state($"../Phase2")

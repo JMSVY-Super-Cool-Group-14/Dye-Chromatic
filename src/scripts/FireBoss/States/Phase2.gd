@@ -26,7 +26,7 @@ func _enter_state():
 
 func _state_update(delta : float):
 	if sm.health < sm.health * 0.35:
-		sm._changew_state($"../Phase3")
+		sm._change_state($"../Phase3")
 	
 	
 func _state_physics_update(delta : float):

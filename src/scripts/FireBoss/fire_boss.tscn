@@ -1,14 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqshflfh0xvtq"]
+[gd_scene load_steps=21 format=3 uid="uid://bqshflfh0xvtq"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/FireBossStateMachine.gd" id="1_fiec5"]
-[ext_resource type="Texture2D" uid="uid://c48sgcrb1d28u" path="res://assets/sprites/fire_enemy.sprites/still/Fire_still-1.tres" id="1_h5chh"]
 [ext_resource type="Script" path="res://scripts/FireBoss/fire_boss.gd" id="1_suwo4"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Phase1.gd" id="2_atfl2"]
-[ext_resource type="Texture2D" uid="uid://c5a40ju2rgr2o" path="res://assets/sprites/fire_enemy.sprites/still/Fire_still-2.tres" id="2_cyqar"]
+[ext_resource type="Texture2D" uid="uid://b4mko2eq02air" path="res://assets/sprites/fire_boss.sprites/Fireboss-move-1.tres" id="2_ix4hx"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Melee.gd" id="3_7fuaq"]
+[ext_resource type="Texture2D" uid="uid://c008dd0mmhlgl" path="res://assets/sprites/fire_boss.sprites/Fireboss-move-2.tres" id="3_gm4u3"]
+[ext_resource type="Texture2D" uid="uid://ssfjrb72mhun" path="res://assets/sprites/fire_boss.sprites/Fireboss-move-3.tres" id="4_rvjuv"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/P1orbAttack.gd" id="4_tm0ay"]
+[ext_resource type="Texture2D" uid="uid://btk8ogqxdov64" path="res://assets/sprites/fire_boss.sprites/Fireboss-move-4.tres" id="5_h6d4i"]
+[ext_resource type="Texture2D" uid="uid://ej1wj41l7lf7" path="res://assets/sprites/fire_boss.sprites/Fireboss-still-1.tres" id="6_b7ha8"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Phase2.gd" id="6_j61x4"]
+[ext_resource type="Texture2D" uid="uid://dvpv52k0w3mdo" path="res://assets/sprites/fire_boss.sprites/Fireboss-still-2.tres" id="7_ekmij"]
 [ext_resource type="Script" path="res://scripts/FireBoss/P1lineAttack.gd" id="7_h74r5"]
+[ext_resource type="Texture2D" uid="uid://cmyb2xsokhpyi" path="res://assets/sprites/fire_boss.sprites/Fireboss-still-3.tres" id="8_vmsc1"]
+[ext_resource type="Texture2D" uid="uid://d0as3wuil5oxm" path="res://assets/sprites/fire_boss.sprites/Fireboss-still-4.tres" id="9_fngv0"]
 [ext_resource type="Script" path="res://scripts/FireBoss/P2orbAttack.gd" id="10_rl2ec"]
 [ext_resource type="Script" path="res://scripts/FireBoss/Phase3.gd" id="11_4iqb4"]
 [ext_resource type="Script" path="res://scripts/FireBoss/P3orbAttack.gd" id="12_dtmw4"]
@@ -18,24 +24,40 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_h5chh")
+"texture": ExtResource("2_ix4hx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_cyqar")
+"texture": ExtResource("3_gm4u3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rvjuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h6d4i")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_b7ha8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ekmij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vmsc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fngv0")
+}],
+"loop": true,
+"name": &"Still",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mlp08"]
-radius = 126.711
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8p8p8"]
-radius = 126.711
-
-[node name="Fire Boss" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["enemy"]]
-modulate = Color(0.223529, 0.223529, 0.223529, 1)
+[node name="Fire Boss" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["boss", "enemy"]]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_suwo4")
 fsm = NodePath("StateMachine")
@@ -43,9 +65,11 @@ fsm = NodePath("StateMachine")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iarbx")
+animation = &"Move"
+frame_progress = 0.167068
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mlp08")
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(200, -223.333, 260, -136.667, 286.667, -60, 260, -13.3333, 243.333, 46.6667, 323.333, 66.6667, 336.667, 0, 346.667, -250, 313.333, -320, 103.333, -416.667, 100, -450, 143.333, -470, 110, -556.667, 103.333, -520, 63.3333, -500, 3.33333, -536.667, -56.6667, -500, -100, -510, -113.333, -546.667, -133.333, -473.333, -83.3333, -456.667, -80, -406.667, -183.333, -373.333, -280, -246.667, -263.333, 70, -196.667, 60, -190, -3.33333, -220, -23.3333, -210, -113.333, -156.667, -193.333, -103.333, -133.333, -80, -73.3333, -106.667, 180, -56.6667, 290, 30, 333.333, 100, 316.667, 166.667, 183.333, 186.667, 83.3333, 136.667, -66.6667)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_fiec5")
@@ -55,9 +79,11 @@ script = ExtResource("2_atfl2")
 
 [node name="P1orbAttack" type="Node" parent="StateMachine"]
 script = ExtResource("4_tm0ay")
+orbDamage = 20
 
 [node name="P1lineAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_h74r5")
+lineDamage = 50
 
 [node name="Melee" type="Node" parent="StateMachine"]
 script = ExtResource("3_7fuaq")
@@ -82,6 +108,5 @@ script = ExtResource("13_medyo")
 
 [node name="Hit Box" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
-position = Vector2(0, 3.33333)
-shape = SubResource("CircleShape2D_8p8p8")
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hit Box"]
+polygon = PackedVector2Array(200, -223.333, 260, -136.667, 286.667, -60, 260, -13.3333, 243.333, 46.6667, 323.333, 66.6667, 336.667, 0, 346.667, -250, 313.333, -320, 103.333, -416.667, 100, -450, 143.333, -470, 110, -556.667, 103.333, -520, 63.3333, -500, 3.33333, -536.667, -56.6667, -500, -100, -510, -113.333, -546.667, -133.333, -473.333, -83.3333, -456.667, -80, -406.667, -183.333, -373.333, -280, -246.667, -263.333, 70, -196.667, 60, -190, -3.33333, -220, -23.3333, -210, -113.333, -156.667, -193.333, -103.333, -133.333, -80, -73.3333, -106.667, 180, -56.6667, 290, 30, 333.333, 100, 316.667, 166.667, 183.333, 186.667, 83.3333, 136.667, -66.6667)

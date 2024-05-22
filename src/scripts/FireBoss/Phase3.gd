@@ -24,6 +24,7 @@ func _choose_attack():
 	
 
 func _enter_state():
+	sm.phase3 = true
 	await get_tree().create_timer(switch_timer).timeout
 	if !new_phase:
 		_choose_attack()

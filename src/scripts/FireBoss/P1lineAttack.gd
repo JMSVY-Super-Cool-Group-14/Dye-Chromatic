@@ -52,7 +52,6 @@ func _exit_state():
 
 
 func _state_update(delta : float):
-	print("P1line")
 	if sm.health < sm.health * 0.7 and finished:
 		sm._change_state($"../Phase2")
 	elif finished:

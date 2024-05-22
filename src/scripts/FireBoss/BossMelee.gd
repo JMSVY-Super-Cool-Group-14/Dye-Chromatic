@@ -5,7 +5,7 @@ var velocity = Vector2.ZERO
 var speed = 100
 var range = 125
 var start_pos = Vector2.ZERO
-var damage = 0
+var damage = 50
 var pos
 var start = false
 # Called when the node enters the scene tree for the first time.
