@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cudnkh4q0wqm2"]
+[gd_scene load_steps=56 format=3 uid="uid://xlqobgtc5o2q"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_xq5uw"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_b8jfj"]
@@ -22,6 +22,24 @@
 [ext_resource type="Texture2D" uid="uid://dasqnkttr5f44" path="res://assets/sprites/sensed.sprites/Sensed-3.tres" id="20_d5cw8"]
 [ext_resource type="Texture2D" uid="uid://2gs2beowu7e2" path="res://assets/sprites/sensed.sprites/Sensed-4.tres" id="21_i6qf5"]
 [ext_resource type="Texture2D" uid="uid://drqe0x83kfvk4" path="res://assets/sprites/sensed.sprites/Sensed-5.tres" id="22_8i4iw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ot47"]
+bg_color = Color(0.996078, 0.415686, 0.356863, 0.513726)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gatjw"]
+bg_color = Color(1, 0, 0, 0.894118)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4pjsy"]
 resource_local_to_scene = true
@@ -302,6 +320,17 @@ animations = [{
 scale = Vector2(5, 5)
 script = ExtResource("1_xq5uw")
 fsm = NodePath("State Machine")
+
+[node name="HPbar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(60, 2)
+offset_right = 60.0
+offset_bottom = 2.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(-30, -25)
+theme_override_styles/background = SubResource("StyleBoxFlat_4ot47")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gatjw")
+step = 1.0
+show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_4pjsy")
