@@ -4,7 +4,7 @@ class_name npc
 @onready var sm = $"StateMachine"
 @onready var dialogue_box = $"DialogueBox"
 @onready var player = $"../../Player"
-
+@export var d_file:String
 
 var player_can_chat = false
 var interacting = false

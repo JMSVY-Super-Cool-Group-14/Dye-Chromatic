@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://xnan8nycy8g0"]
+
+[ext_resource type="Texture2D" uid="uid://b022eeu0qkkep" path="res://assets/sprites/fire_charger-0.png" id="1_ih2un"]
+
+[resource]
+atlas = ExtResource("1_ih2un")
+region = Rect2(627, 1, 624, 588)
+margin = Rect2(8, 6, 22, 58)

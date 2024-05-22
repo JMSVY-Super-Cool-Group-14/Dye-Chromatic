@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://dhjd7suflq4lh"
+path="res://.godot/imported/fire_charger.tpsheet-9e0948a5ab9b81ec6f5cca92249a65da.res"
+
+[deps]
+
+files=["res://assets/sprites/fire_charger.sprites/charger_still_front-3.tres", "res://assets/sprites/fire_charger.sprites/charger_still_front-2.tres", "res://assets/sprites/fire_charger.sprites/charger_still_front-4.tres", "res://assets/sprites/fire_charger.sprites/charger_still_front-1.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-3.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-4.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-2.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-4.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-3.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-5.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-1.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-1.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-2.tres"]
+
+source_file="res://assets/sprites/fire_charger.tpsheet"
+dest_files=["res://.godot/imported/fire_charger.tpsheet-9e0948a5ab9b81ec6f5cca92249a65da.res", "res://assets/sprites/fire_charger.sprites/charger_still_front-3.tres", "res://assets/sprites/fire_charger.sprites/charger_still_front-2.tres", "res://assets/sprites/fire_charger.sprites/charger_still_front-4.tres", "res://assets/sprites/fire_charger.sprites/charger_still_front-1.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-3.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-4.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-2.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-4.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-3.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-5.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-1.tres", "res://assets/sprites/fire_charger.sprites/charger_still_back-1.tres", "res://assets/sprites/fire_charger.sprites/charger_still_side-2.tres"]
+
+[params]
+

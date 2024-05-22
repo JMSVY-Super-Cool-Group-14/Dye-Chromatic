@@ -1,11 +1,15 @@
 extends State
 
+@onready var sfx = $PauseSound
+
 signal unpause
 
 func _enter_state():
 	get_tree().paused = true
 	$"../../Pause".visible = true
 	$"../../UI".visible = false
+	state_machine._save()
+	sfx.play()
 
 func _exit_state():
 	get_tree().paused = false

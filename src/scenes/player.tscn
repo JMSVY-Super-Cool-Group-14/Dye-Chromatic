@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=58 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
 [ext_resource type="Texture2D" uid="uid://l2nvsqvjk3wm" path="res://assets/sprites/slash.sprites/Slash-4.tres" id="44_6dvai"]
 [ext_resource type="Texture2D" uid="uid://bg1h6s2vbpvvn" path="res://assets/UI/targetLockTemp.png" id="45_ar07b"]
+[ext_resource type="Script" path="res://scenes/PlayerBoundaries.gd" id="46_imbkd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bgi2u"]
 animations = [{
@@ -329,16 +330,9 @@ position = Vector2(-1.90735e-06, -1.90735e-06)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("CapsuleShape2D_ewgi6")
 
-[node name="PlayerCam" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
-limit_left = 0
-limit_top = 0
-limit_right = 817
-limit_bottom = 770
-script = ExtResource("34_oibyl")
-
 [node name="MeleeRange" type="Area2D" parent="."]
 position = Vector2(0, -61)
+collision_mask = 3
 
 [node name="DirectionIndicator" type="Sprite2D" parent="MeleeRange"]
 position = Vector2(0, 61)
@@ -356,7 +350,6 @@ rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_jbfnq")
 animation = &"attack"
-frame = 5
 
 [node name="MeleePlayer1" type="AnimationPlayer" parent="MeleeRange/MeleeAnimate1"]
 root_node = NodePath("../..")
@@ -378,6 +371,7 @@ libraries = {
 speed_scale = 12.0
 
 [node name="BlueUlt" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlueUlt"]
 scale = Vector2(15, 15)
@@ -385,6 +379,7 @@ shape = SubResource("CircleShape2D_aq8ff")
 disabled = true
 
 [node name="DetectRange" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange"]
 position = Vector2(0, -112)
@@ -395,6 +390,18 @@ shape = SubResource("RectangleShape2D_15o0i")
 visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("45_ar07b")
+
+[node name="PlayerCam" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+limit_left = 0
+limit_top = 0
+limit_right = 820
+limit_bottom = 820
+script = ExtResource("34_oibyl")
+player_path = NodePath("..")
+
+[node name="PlayerBoundaries" type="Node2D" parent="."]
+script = ExtResource("46_imbkd")
 
 [connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
 [connection signal="body_entered" from="BlueUlt" to="." method="_on_blue_ult_body_entered"]

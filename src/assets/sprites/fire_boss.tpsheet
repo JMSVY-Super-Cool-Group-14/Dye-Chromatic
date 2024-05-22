@@ -1,0 +1,138 @@
+{
+	"textures": [
+		{
+			"image": "fire_boss.png",
+			"size": {
+				"w": 3819,
+				"h": 4056
+			},
+			"sprites": [
+				{
+					"filename": "Fireboss-still-2.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 1271,
+						"h": 2049
+					},
+					"margin": {
+						"x": 449,
+						"y": 56,
+						"w": 777,
+						"h": 332
+					}
+				},
+				{
+					"filename": "Fireboss-still-4.png",
+					"region": {
+						"x": 1274,
+						"y": 1,
+						"w": 1271,
+						"h": 2038
+					},
+					"margin": {
+						"x": 448,
+						"y": 62,
+						"w": 777,
+						"h": 343
+					}
+				},
+				{
+					"filename": "Fireboss-move-2.png",
+					"region": {
+						"x": 1274,
+						"y": 2041,
+						"w": 1271,
+						"h": 2014
+					},
+					"margin": {
+						"x": 448,
+						"y": 67,
+						"w": 777,
+						"h": 367
+					}
+				},
+				{
+					"filename": "Fireboss-move-4.png",
+					"region": {
+						"x": 1274,
+						"y": 2041,
+						"w": 1271,
+						"h": 2014
+					},
+					"margin": {
+						"x": 448,
+						"y": 67,
+						"w": 777,
+						"h": 367
+					}
+				},
+				{
+					"filename": "Fireboss-move-1.png",
+					"region": {
+						"x": 2547,
+						"y": 1,
+						"w": 1271,
+						"h": 2024
+					},
+					"margin": {
+						"x": 448,
+						"y": 81,
+						"w": 777,
+						"h": 357
+					}
+				},
+				{
+					"filename": "Fireboss-still-1.png",
+					"region": {
+						"x": 2547,
+						"y": 1,
+						"w": 1271,
+						"h": 2024
+					},
+					"margin": {
+						"x": 448,
+						"y": 81,
+						"w": 777,
+						"h": 357
+					}
+				},
+				{
+					"filename": "Fireboss-move-3.png",
+					"region": {
+						"x": 2547,
+						"y": 2027,
+						"w": 1271,
+						"h": 2024
+					},
+					"margin": {
+						"x": 448,
+						"y": 57,
+						"w": 777,
+						"h": 357
+					}
+				},
+				{
+					"filename": "Fireboss-still-3.png",
+					"region": {
+						"x": 2547,
+						"y": 2027,
+						"w": 1271,
+						"h": 2024
+					},
+					"margin": {
+						"x": 448,
+						"y": 57,
+						"w": 777,
+						"h": 357
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c4604e518d71d07024678f3dd558f2d0:a510dca0ce7ff6636c8febc3ad786c59:dcad54489f3c48ffc6cb27bdeee943a7$"
+	}
+}

@@ -30,8 +30,8 @@ var blueSpecialCost = 40
 var blueUltCost = 70
 var magentaSpecialCost = 40
 var abilityCooldown = 0.5
-var magentaDelta = 0 	# set to 0 so it is not on cooldown at start
-var blueDelta = 0 	# set to 0 so it is not on cooldown at start
+var magentaDelta = 0
+var blueDelta = 0
 var blueUltDelta = 0
 @export var blueUltDamage = 70
 @export var meleeRange = 18
@@ -70,17 +70,9 @@ var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
 
-# Boundary limits
-@export var min_x = 50
-@export var max_x = 950
-@export var min_y = 50
-@export var max_y = 550
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$AnimatedSprite2D.play()
 	attackDelta += delta
@@ -114,7 +106,6 @@ func _process(delta):
 		isSprinting = false
 	
 	# Movement
-
 	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
@@ -124,29 +115,19 @@ func _process(delta):
 	meleeNode.global_rotation = facingDirection.angle() + PI/2
 	
 	
-	# Facing direction check
 	if velocity.length() > 0 and !lockedOn:
 		facingDirection = velocity
 	elif lockedOn and targetLock != null:
 		facingDirection = (targetLock.global_transform.origin - self.global_transform.origin).normalized()
 		targetLockArt.global_position = targetLock.global_position
 	elif targetLock == null:
-		# In event of locked enemy being dead
 		print("Target dead! Reset Lock-on.")
 		targetLock = 0
 		targetLockArt.visible = false
 		lockedOn = false
 	
-	# Actual moving of object
-
-	if velocity.length() > 0:
-		facingDirection = velocity
-
 	position += velocity * delta * speed
-	# Clamp the position within defined boundaries
-	position.x = clamp(position.x, min_x, max_x)
-	position.y = clamp(position.y, min_y, max_y)
-	
+
 func start(pos):
 	position = pos
 	show()
@@ -164,21 +145,15 @@ func key_move():
 		
 func _input(event):
 	if !isSprinting:
-		# Handle colour input
 		colour_input(event)
-	
-		# Handle attack input
 		attack_input(event)
-		
-		#Handle lock on target input
 		lock_on(event)
 		
-			
 func lock_on(event):
-	if event.is_action_pressed("lock_on") and lockedOn==false:
+	if event.is_action_pressed("lock_on") and lockedOn == false:
 		targetLock = get_nearest_enemy()
 		if targetLock != null:
-			$DetectRange.global_position = self.global_position + facingDirection.normalized()*meleeRange
+			$DetectRange.global_position = self.global_position + facingDirection.normalized() * meleeRange
 			$DetectRange.global_rotation = facingDirection.angle()
 			lockedOn = true
 			targetLockArt.visible = true
@@ -192,7 +167,7 @@ func lock_on(event):
 func attack_input(event):
 	if attackDelta > attackCooldown:
 		if fsm.get_controller():
-			if event.is_action_pressed("ranged_attack") and rangedTarget!=Vector2.ZERO:
+			if event.is_action_pressed("ranged_attack") and rangedTarget != Vector2.ZERO:
 				fire_projectile(rangedTarget, currentColour)
 				attackDelta = 0
 			elif event.is_action("melee_attack"):
@@ -236,21 +211,21 @@ func melee_attack_old():
 	slow(0.9, 0.2)
 	melee_strike.set_angle(facingDirection)
 	melee_strike.set_colour(colourWheel[currentColour])
-	melee_strike.global_position = global_position + facingDirection.normalized()*meleeRange
+	melee_strike.global_position = global_position + facingDirection.normalized() * meleeRange
 	
 func melee_attack():
 	if stamina > meleeCost:
 		stamina -= meleeCost
-		meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
-		meleeNode.global_rotation = facingDirection.angle() + PI/2
+		meleeNode.global_position = global_position + facingDirection.normalized() * meleeRange
+		meleeNode.global_rotation = facingDirection.angle() + PI / 2
 		slow(0.95, 0.2)
 		
-		if combo1 == true and comboDelta < attackCooldown*5:
+		if combo1 == true and comboDelta < attackCooldown * 5:
 			meleeAnimate2.play("attack2")
 			combo1 = false
 			combo2 = true
 			comboDelta = 0
-		elif combo2 == true and comboDelta < attackCooldown*5:
+		elif combo2 == true and comboDelta < attackCooldown * 5:
 			comboDamage = true
 			meleeAnimate1.play("attack1")
 			meleeAnimate2.play("attack2")
@@ -259,25 +234,21 @@ func melee_attack():
 			meleeAnimate1.play("attack1")
 			combo1 = true
 			comboDelta = 0
-	
 
 func colour_reset():
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
 	
-	# Multiple wait checks for redundancy
 	await get_tree().create_timer(0.2).timeout
 	
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
 	
-	# Multiple wait checks for redundancy
 	await get_tree().create_timer(0.2).timeout
 	
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
 		return
 	
-	# Multiple wait checks for redundancy
 	await get_tree().create_timer(0.2).timeout
 	
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
@@ -293,25 +264,20 @@ func colour_reset():
 		rightIndex = 0
 		set_colour(leftColour, "grey")
 
-
 func colour_input(event):
-	# Toggle colours selected
-
 	if colourSwitchDelta > colourSwitchDelay:
 		colourSwitchDelta = 0
-		if event.is_action_pressed("left_colour") :
-			# So we dont have same colour on both sides
-			leftIndex = (leftIndex+1) % 4
-			if leftIndex == rightIndex:	
-				leftIndex = (leftIndex+1) % 4
+		if event.is_action_pressed("left_colour"):
+			leftIndex = (leftIndex + 1) % 4
+			if leftIndex == rightIndex:    
+				leftIndex = (leftIndex + 1) % 4
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 			else:
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 		elif event.is_action_pressed("right_colour"):
-			# So we dont have same colour on both sides
-			rightIndex = (rightIndex+1) % 4
+			rightIndex = (rightIndex + 1) % 4
 			if rightIndex == leftIndex:
-				rightIndex = (rightIndex+1) % 4
+				rightIndex = (rightIndex + 1) % 4
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 			else:
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
@@ -319,7 +285,7 @@ func colour_input(event):
 func set_colour(left, right):
 	leftColour = left
 	rightColour = right
-	if leftColour!="grey" and rightColour!="grey":
+	if leftColour != "grey" and rightColour != "grey":
 		match [leftColour, rightColour]:
 			["red", "green"]:
 				currentColour = "yellow"
@@ -333,13 +299,12 @@ func set_colour(left, right):
 				currentColour = "magenta"
 			["blue", "green"]:
 				currentColour = "cyan"
-	elif left=="grey":
+	elif left == "grey":
 		currentColour = rightColour
 	elif right == "grey":
 		currentColour = leftColour
 	
 	colour_change.emit(leftColour, rightColour, currentColour)
-
 
 func colour_special():
 	match currentColour:
@@ -384,7 +349,7 @@ func colour_ultimate():
 		"red":
 			print("redUlt")
 		"green":
-			print("greenUltt")
+			print("greenUlt")
 		"blue":
 			print("blueUlt")
 			if blueUltDelta <= 0 and stamina > blueUltCost:
@@ -427,7 +392,7 @@ func _on_blue_ult_body_entered(body):
 func _on_melee_range_body_entered(body):
 	if body.is_in_group("enemy"):
 		if comboDamage:
-			body.fsm.take_damage(meleeDamage*2)
+			body.fsm.take_damage(meleeDamage * 2)
 			body.recieve_knockeback(self.global_position, meleeDamage, "melee")
 			comboDamage = false
 		else:
@@ -439,8 +404,6 @@ func get_nearest_enemy() -> enemy:
 	var front_enemies := []
 	
 	for target in $DetectRange.get_overlapping_bodies():
-		#get enemies in front of the player
-		#to find out, look for angle to enemy using dot product
 		var angle_to_node = rad_to_deg(acos(facingDirection.dot(global_position.direction_to(target.global_position))))
 		if angle_to_node < field_of_view and target.is_in_group("enemy"):
 			front_enemies.append(target)
@@ -449,7 +412,6 @@ func get_nearest_enemy() -> enemy:
 		nearest_enemy = front_enemies[0]
 		
 		for target in front_enemies:
-			#get enemies based on the closest distance
 			if global_position.distance_to(target.global_position) < global_position.distance_to(nearest_enemy.global_position):
 				nearest_enemy = target
 
