@@ -30,8 +30,8 @@ expand_margin_bottom = 20.0
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_focus_color = Color(0.25098, 0.25098, 0.25098, 1)
-Button/colors/font_hover_color = Color(0.25098, 0.25098, 0.25098, 1)
+Button/colors/font_focus_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+Button/colors/font_hover_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/styles/focus = SubResource("StyleBoxTexture_iciw6")
 Button/styles/hover = SubResource("StyleBoxTexture_iciw6")

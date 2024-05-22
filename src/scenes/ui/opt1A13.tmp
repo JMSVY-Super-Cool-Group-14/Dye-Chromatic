@@ -12,16 +12,9 @@ offset_right = 300.0
 offset_bottom = 300.0
 size_flags_horizontal = 4
 theme = ExtResource("1_amv88")
-current_tab = 2
 
 [node name="Audio" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 2
-
-[node name="Volume" type="Label" parent="Audio"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Volume Settings"
 
 [node name="Master" type="VBoxContainer" parent="Audio"]
 layout_mode = 2
@@ -108,56 +101,26 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="Input" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 script = ExtResource("4_33oaj")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Input"]
 layout_mode = 2
 size_flags_vertical = 3
-follow_focus = true
 
 [node name="Actions" type="VBoxContainer" parent="Input/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Input" type="Label" parent="Input/ScrollContainer/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Input Mapping"
+
 [node name="InputButton" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
 layout_mode = 2
 
-[node name="InputButton2" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton3" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton4" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton5" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton6" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton7" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton8" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton9" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton10" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="InputButton11" parent="Input/ScrollContainer/Actions" instance=ExtResource("4_15pbd")]
-layout_mode = 2
-
-[node name="Default" type="Button" parent="Input/ScrollContainer/Actions"]
-layout_mode = 2
-text = "Reset to Defaults"
-
 [connection signal="pressed" from="Video/VBoxContainer/CheckBox" to="Video/VBoxContainer" method="_on_check_box_pressed"]
 [connection signal="item_selected" from="Video/VBoxContainer/OptionButton" to="Video/VBoxContainer" method="_on_option_button_item_selected"]
-[connection signal="pressed" from="Input/ScrollContainer/Actions/Default" to="Input" method="_on_default_pressed"]

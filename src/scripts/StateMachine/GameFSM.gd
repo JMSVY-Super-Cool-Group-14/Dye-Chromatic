@@ -1,6 +1,8 @@
 extends FiniteStateMachine
 
 @onready var player = $"../Player"
+@onready var hpbar = $"../UI/MarginContainer/VBoxContainer/HPbar"
+@onready var staminabar = $"../UI/MarginContainer/VBoxContainer/Staminabar"
 @export var speed:int = 100
 var control_avail:bool
 var hp
@@ -11,7 +13,9 @@ func _ready():
 	super()
 	control_avail = Input.get_connected_joypads().size() > 0
 	hp = player.hp
-	$"../UI/Health/Label".text = str(hp)
+	hpbar.max_value = player.maxHP
+	hpbar.value = hp
+	staminabar.max_value = player.maxStamina
 	
 	# Connect signals
 	Input.joy_connection_changed.connect(connection_changed)
@@ -32,9 +36,6 @@ func _process(delta):
 func _physics_process(delta):
 	super(delta)
 
-func get_hp():
-	return hp
-
 func get_controller():
 	return control_avail
 
@@ -47,15 +48,14 @@ func connection_changed(_device, connected):
 
 func hp_changed(health:int):
 	hp = health
-	$"../UI/Health/Label".text = str(hp)
+	hpbar.value = hp
 	if hp <= 0:
 		print("You Died!")
 		_change_state($GameOver)
 
 func stamina_changed(stamina: int):
 	stam = stamina
-	$"../UI/Stamina/StaminaLabel".text = str(stamina)
-	
+	staminabar.value = stam	
 	
 func colour_changed(left, right, current):
 	var combined = $"../UI/ColourControl/CombinedColour"
@@ -64,4 +64,3 @@ func colour_changed(left, right, current):
 	combined.self_modulate = player.colourWheel[current]
 	leftColour.self_modulate = player.colourWheel[left]
 	rightColour.self_modulate = player.colourWheel[right]
-

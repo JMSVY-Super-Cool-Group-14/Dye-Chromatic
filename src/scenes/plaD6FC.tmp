@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=56 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
@@ -41,12 +41,11 @@
 [ext_resource type="Script" path="res://scripts/PlayerAnimated.gd" id="33_pu3a3"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="34_oibyl"]
 [ext_resource type="Texture2D" uid="uid://dex3d2e5spbo6" path="res://assets/sprites/slash.sprites/Slash-1.tres" id="41_044ym"]
-[ext_resource type="Texture2D" uid="uid://dd8kffk53yyw4" path="res://assets/UI/Arrow.png" id="41_har5f"]
+[ext_resource type="Texture2D" uid="uid://dugrw8maurpr8" path="res://assets/legacy/Indicator.png" id="41_im20b"]
 [ext_resource type="Texture2D" uid="uid://ui4hssfnydx4" path="res://assets/sprites/slash.sprites/Slash-2.tres" id="42_ge6ck"]
+[ext_resource type="Script" path="res://scenes/playerDirection.gd" id="42_yn3n2"]
 [ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
 [ext_resource type="Texture2D" uid="uid://l2nvsqvjk3wm" path="res://assets/sprites/slash.sprites/Slash-4.tres" id="44_6dvai"]
-[ext_resource type="Texture2D" uid="uid://bg1h6s2vbpvvn" path="res://assets/UI/targetLockTemp.png" id="45_ar07b"]
-[ext_resource type="Script" path="res://scenes/PlayerBoundaries.gd" id="46_imbkd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bgi2u"]
 animations = [{
@@ -312,8 +311,6 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aq8ff"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_15o0i"]
-
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_p4u05")
 
@@ -330,14 +327,20 @@ position = Vector2(-1.90735e-06, -1.90735e-06)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("CapsuleShape2D_ewgi6")
 
+[node name="PlayerCam" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+script = ExtResource("34_oibyl")
+
 [node name="MeleeRange" type="Area2D" parent="."]
 position = Vector2(0, -61)
 
 [node name="DirectionIndicator" type="Sprite2D" parent="MeleeRange"]
+z_index = 1
 position = Vector2(0, 61)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("41_har5f")
-offset = Vector2(0, -1500)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("41_im20b")
+offset = Vector2(0, -600)
+script = ExtResource("42_yn3n2")
 
 [node name="MeleeHitbox" type="CollisionShape2D" parent="MeleeRange"]
 scale = Vector2(6.12829, 4.58599)
@@ -349,6 +352,7 @@ rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_jbfnq")
 animation = &"attack"
+frame = 5
 
 [node name="MeleePlayer1" type="AnimationPlayer" parent="MeleeRange/MeleeAnimate1"]
 root_node = NodePath("../..")
@@ -375,30 +379,6 @@ speed_scale = 12.0
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_aq8ff")
 disabled = true
-
-[node name="DetectRange" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange"]
-position = Vector2(0, -112)
-scale = Vector2(19.04, 13.08)
-shape = SubResource("RectangleShape2D_15o0i")
-
-[node name="TargetLock" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("45_ar07b")
-
-[node name="PlayerCam" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
-limit_left = 0
-limit_top = 0
-limit_right = 820
-limit_bottom = 820
-script = ExtResource("34_oibyl")
-player_path = NodePath("..")
-
-[node name="PlayerBoundaries" type="Node2D" parent="."]
-script = ExtResource("46_imbkd")
 
 [connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
 [connection signal="body_entered" from="BlueUlt" to="." method="_on_blue_ult_body_entered"]

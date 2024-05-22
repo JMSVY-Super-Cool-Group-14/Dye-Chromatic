@@ -7,7 +7,7 @@ signal stamina_change(stamina)
 var attackCooldown = 0.3
 var colourSwitchDelay = 0.1
 @export var maxHP = 100
-@export var hp = 10
+@export var hp = 100
 @export var hpRegen = 2
 @export var hpRegenDelay = 10
 @export var maxStamina = 100
@@ -86,13 +86,13 @@ func _process(delta):
 	if stamina < maxStamina:
 		stamina += staminaRegen
 	stamina_change.emit(int(stamina))
-	
 	if timePassed > hpRegenDelay and hp < maxHP:
 		print("Regenerate health! Health is: ", hp)
 		hp += hpRegen
 		timePassed = 0
 		hp_change.emit(hp)
 	
+	# Colour Reset
 	if Input.is_action_just_pressed("left_colour"):
 		colour_reset()
 	elif Input.is_action_just_pressed("right_colour"):
@@ -105,11 +105,15 @@ func _process(delta):
 		speed = 100
 		isSprinting = false
 	
+	# Movement
 	if fsm.get_controller():
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	else:
 		key_move()
+	meleeNode.global_position = global_position + facingDirection.normalized()*meleeRange
+	meleeNode.global_rotation = facingDirection.angle() + PI/2
+	
 	
 	if velocity.length() > 0 and !lockedOn:
 		facingDirection = velocity
