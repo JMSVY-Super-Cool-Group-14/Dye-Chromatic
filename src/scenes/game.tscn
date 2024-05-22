@@ -14,6 +14,11 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="Player" parent="." instance=ExtResource("2_mpbna")]
+z_index = 1
+position = Vector2(231, 255)
+scale = Vector2(0.4, 0.4)
+
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "root")]
 process_mode = 3
 script = ExtResource("2_1y0vn")
@@ -49,11 +54,6 @@ offset_right = 1646.0
 offset_bottom = 1710.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_yusat")
-
-[node name="Player" parent="." instance=ExtResource("2_mpbna")]
-z_index = 1
-position = Vector2(231, 255)
-scale = Vector2(0.4, 0.4)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_aedne")
