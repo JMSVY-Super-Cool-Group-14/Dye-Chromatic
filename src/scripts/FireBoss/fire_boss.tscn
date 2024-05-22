@@ -1,22 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqshflfh0xvtq"]
+[gd_scene load_steps=17 format=3 uid="uid://bqshflfh0xvtq"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/FireBossStateMachine.gd" id="1_fiec5"]
-[ext_resource type="Script" path="res://scripts/FireBoss/Phase1.gd" id="2_atfl2"]
-[ext_resource type="Script" path="res://FireBossWaiting.gd" id="2_ij35r"]
-[ext_resource type="Script" path="res://scripts/FireBoss/Melee.gd" id="3_7fuaq"]
-[ext_resource type="Script" path="res://scripts/FireBoss/P1orbAttack.gd" id="4_tm0ay"]
+[ext_resource type="Texture2D" uid="uid://c48sgcrb1d28u" path="res://assets/sprites/fire_enemy.sprites/still/Fire_still-1.tres" id="1_h5chh"]
+[ext_resource type="Script" path="res://scripts/FireBoss/fire_boss.gd" id="1_suwo4"]
+[ext_resource type="Script" path="res://scripts/FireBoss/States/Phase1.gd" id="2_atfl2"]
+[ext_resource type="Texture2D" uid="uid://c5a40ju2rgr2o" path="res://assets/sprites/fire_enemy.sprites/still/Fire_still-2.tres" id="2_cyqar"]
+[ext_resource type="Script" path="res://scripts/FireBoss/States/Melee.gd" id="3_7fuaq"]
+[ext_resource type="Script" path="res://scripts/FireBoss/States/P1orbAttack.gd" id="4_tm0ay"]
+[ext_resource type="Script" path="res://scripts/FireBoss/States/Phase2.gd" id="6_j61x4"]
+[ext_resource type="Script" path="res://scripts/FireBoss/P1lineAttack.gd" id="7_h74r5"]
+[ext_resource type="Script" path="res://scripts/FireBoss/P2orbAttack.gd" id="10_rl2ec"]
+[ext_resource type="Script" path="res://scripts/FireBoss/Phase3.gd" id="11_4iqb4"]
+[ext_resource type="Script" path="res://scripts/FireBoss/P3orbAttack.gd" id="12_dtmw4"]
+[ext_resource type="Script" path="res://scripts/FireBoss/Hammer.gd" id="13_medyo"]
 
-[node name="Fire Boss" type="CharacterBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_iarbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h5chh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cyqar")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mlp08"]
+radius = 126.711
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8p8p8"]
+radius = 126.711
+
+[node name="Fire Boss" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["enemy"]]
+modulate = Color(0.223529, 0.223529, 0.223529, 1)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_suwo4")
+fsm = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_iarbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mlp08")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_fiec5")
-
-[node name="Waiting" type="Node" parent="StateMachine"]
-script = ExtResource("2_ij35r")
 
 [node name="Phase1" type="Node" parent="StateMachine"]
 script = ExtResource("2_atfl2")
@@ -25,6 +57,31 @@ script = ExtResource("2_atfl2")
 script = ExtResource("4_tm0ay")
 
 [node name="P1lineAttack" type="Node" parent="StateMachine"]
+script = ExtResource("7_h74r5")
 
 [node name="Melee" type="Node" parent="StateMachine"]
 script = ExtResource("3_7fuaq")
+
+[node name="Phase2" type="Node" parent="StateMachine"]
+script = ExtResource("6_j61x4")
+
+[node name="P2orbAttack" type="Node" parent="StateMachine"]
+script = ExtResource("10_rl2ec")
+
+[node name="P2lineAttack" type="Node" parent="StateMachine"]
+script = ExtResource("7_h74r5")
+
+[node name="Phase3" type="Node" parent="StateMachine"]
+script = ExtResource("11_4iqb4")
+
+[node name="P3orbAttack" type="Node" parent="StateMachine"]
+script = ExtResource("12_dtmw4")
+
+[node name="Hammer" type="Node" parent="StateMachine"]
+script = ExtResource("13_medyo")
+
+[node name="Hit Box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
+position = Vector2(0, 3.33333)
+shape = SubResource("CircleShape2D_8p8p8")

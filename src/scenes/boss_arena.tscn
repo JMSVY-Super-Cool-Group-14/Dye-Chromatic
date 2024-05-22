@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuc48fcaqycr4"]
+
+[ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="1_xltbh"]
+[ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scripts/FireBoss/fire_boss.tscn" id="2_csett"]
+[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="3_jph62"]
+
+[node name="BossArena" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xltbh")
+
+[node name="Fire Boss" parent="." instance=ExtResource("2_csett")]
+position = Vector2(909, 895)
+
+[node name="Player" parent="." instance=ExtResource("3_jph62")]
+position = Vector2(908, 1424)

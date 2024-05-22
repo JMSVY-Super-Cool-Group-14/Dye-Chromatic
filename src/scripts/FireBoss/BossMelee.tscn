@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1kaeu6ocxdp5"]
+
+[ext_resource type="Script" path="res://scripts/FireBoss/BossMelee.gd" id="1_jp8xi"]
+[ext_resource type="Texture2D" uid="uid://bc645dcpxpvan" path="res://assets/sprites/attacks/ranged/Bullet.png" id="2_gpjtm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmhvg"]
+radius = 0.892857
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_jp8xi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+position = Vector2(175, 170)
+rotation = 1.5708
+texture = ExtResource("2_gpjtm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+top_level = true
+z_index = 1
+scale = Vector2(1.12, 0.679998)
+shape = SubResource("CircleShape2D_fmhvg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

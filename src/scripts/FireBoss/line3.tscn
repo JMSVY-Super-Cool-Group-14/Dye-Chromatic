@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1jhh1d3emaol"]
+
+[ext_resource type="Script" path="res://scripts/FireBoss/line1.gd" id="1_gjsr4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_l8q55"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71tce"]
+size = Vector2(384, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muqwd"]
+size = Vector2(128, 32)
+
+[node name="Line" type="Area2D"]
+script = ExtResource("1_gjsr4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_l8q55")
+
+[node name="AreaLeft" type="Area2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="AreaLeft"]
+position = Vector2(40, 0)
+scale = Vector2(1.5, 1)
+offset = Vector2(40, 2.08165e-12)
+polygon = PackedVector2Array(-280, 0, -280, 32, -24, 32, -24, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLeft"]
+position = Vector2(-128, 16)
+shape = SubResource("RectangleShape2D_71tce")
+
+[node name="AreaRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaRight"]
+position = Vector2(256, 16)
+shape = SubResource("RectangleShape2D_muqwd")
+
+[node name="Polygon2D" type="Polygon2D" parent="AreaRight"]
+position = Vector2(312, 0)
+scale = Vector2(0.5, 1)
+offset = Vector2(40, 2.08165e-12)
+polygon = PackedVector2Array(-280, 0, -280, 32, -24, 32, -24, 0)
+
+[connection signal="area_entered" from="AreaLeft" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="AreaLeft" to="." method="_on_area_left_area_entered"]
+[connection signal="area_entered" from="AreaRight" to="." method="_on_area_right_area_entered"]

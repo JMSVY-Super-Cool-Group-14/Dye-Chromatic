@@ -1,13 +1,18 @@
 extends FiniteStateMachine
 
 
-@export var health = 100
+@export var health = 300
+var max_health = health
+var varience = 0
+
+var melee_range = 30
 
 func take_damage(dmg):
 	health -= dmg
+	print(health)
 
 func _ready():
-	get_node("Idle")._initialize_state(self, root)
+	get_node("Phase1")._initialize_state(self, root)
 	super()
 	
 
