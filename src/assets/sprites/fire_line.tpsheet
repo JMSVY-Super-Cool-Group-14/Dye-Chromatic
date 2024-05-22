@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "fire_line.png",
+			"size": {
+				"w": 1578,
+				"h": 1203
+			},
+			"sprites": [
+				{
+					"filename": "Fire_line-2.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 1576,
+						"h": 281
+					},
+					"margin": {
+						"x": 80,
+						"y": 108,
+						"w": 114,
+						"h": 167
+					}
+				},
+				{
+					"filename": "Fire_line-4.png",
+					"region": {
+						"x": 1,
+						"y": 284,
+						"w": 1569,
+						"h": 288
+					},
+					"margin": {
+						"x": 88,
+						"y": 97,
+						"w": 121,
+						"h": 160
+					}
+				},
+				{
+					"filename": "Fire_line-3.png",
+					"region": {
+						"x": 1,
+						"y": 574,
+						"w": 1567,
+						"h": 323
+					},
+					"margin": {
+						"x": 89,
+						"y": 62,
+						"w": 123,
+						"h": 125
+					}
+				},
+				{
+					"filename": "Fire_line-1.png",
+					"region": {
+						"x": 1,
+						"y": 899,
+						"w": 1561,
+						"h": 303
+					},
+					"margin": {
+						"x": 82,
+						"y": 85,
+						"w": 129,
+						"h": 145
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:227c75e35acc06ed4c6cf153f992b103:fab4f4ed3f2cbb1ff3e2786c5f7a7891:185cc1b1f077af15cae522cd57bd55ad$"
+	}
+}

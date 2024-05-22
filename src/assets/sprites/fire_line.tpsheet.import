@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://phe836xlkxxl"
+path="res://.godot/imported/fire_line.tpsheet-295dec66e4ff6afcd54fd46703519321.res"
+
+[deps]
+
+files=["res://assets/sprites/fire_line.sprites/Fire_line-2.tres", "res://assets/sprites/fire_line.sprites/Fire_line-4.tres", "res://assets/sprites/fire_line.sprites/Fire_line-3.tres", "res://assets/sprites/fire_line.sprites/Fire_line-1.tres"]
+
+source_file="res://assets/sprites/fire_line.tpsheet"
+dest_files=["res://.godot/imported/fire_line.tpsheet-295dec66e4ff6afcd54fd46703519321.res", "res://assets/sprites/fire_line.sprites/Fire_line-2.tres", "res://assets/sprites/fire_line.sprites/Fire_line-4.tres", "res://assets/sprites/fire_line.sprites/Fire_line-3.tres", "res://assets/sprites/fire_line.sprites/Fire_line-1.tres"]
+
+[params]
+
