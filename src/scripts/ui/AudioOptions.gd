@@ -25,6 +25,6 @@ func _on_option_button_item_selected(index):
 		return
 	
 	if index == 0:
-		DisplayServer.window_set_size(Vector2(1024,600))
+		DisplayServer.window_set_size(Vector2(1024,768))
 	elif index == 1:
-		DisplayServer.window_set_size(Vector2(2048,1200))
+		DisplayServer.window_set_size(Vector2(2048,1536))

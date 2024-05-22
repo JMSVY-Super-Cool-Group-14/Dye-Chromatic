@@ -1,20 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://chtu8ywobaimp"]
+[gd_scene load_steps=7 format=3 uid="uid://chtu8ywobaimp"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_jm7d7"]
-[ext_resource type="Texture2D" uid="uid://blc3v5glj1m0o" path="res://assets/legacy/walking_up/Indicator.png" id="1_xco4t"]
+[ext_resource type="Texture2D" uid="uid://3a11s6c0ojoc" path="res://assets/Save-1.png" id="2_00cn0"]
 [ext_resource type="AudioStream" uid="uid://cr0m6c3u4ulh5" path="res://assets/audio/sfx/ding.mp3" id="2_1lbnt"]
+[ext_resource type="Texture2D" uid="uid://tfmfp5teij2c" path="res://addons/kenney_particle_pack/star_04.png" id="2_eflgs"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tpjab"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 2, 2)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 10.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 0.0
+orbit_velocity_max = 80.0
+gravity = Vector3(0, 90, 0)
+scale_min = 0.02
+scale_max = 0.02
+hue_variation_min = -0.23
+hue_variation_max = 0.22
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa3ti"]
 size = Vector2(250, 400)
 
 [node name="Checkpoint" type="Area2D"]
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_jm7d7")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, -80)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_tpjab")
+texture = ExtResource("2_eflgs")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.2
+randomness = 0.5
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_xco4t")
+texture = ExtResource("2_00cn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xa3ti")

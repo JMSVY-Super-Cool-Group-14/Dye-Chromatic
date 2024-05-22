@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvrm22g12ndy7"]
+[gd_scene load_steps=5 format=3 uid="uid://dvrm22g12ndy7"]
 
 [ext_resource type="Script" path="res://scripts/Dialogue/dialoguePlayer.gd" id="1_t0tea"]
-[ext_resource type="Texture2D" uid="uid://be5x70hg5c3m7" path="res://assets/UI/DialogueBox.png" id="2_mhxvn"]
+[ext_resource type="Texture2D" path="res://assets/UI/DialogueBox.png" id="2_mhxvn"]
+[ext_resource type="FontFile" uid="uid://dw7l1jcx8cvqr" path="res://assets/UI/fonts/Inter-Medium.otf" id="3_fuw33"]
+[ext_resource type="FontFile" uid="uid://d31fbmc6m7tgk" path="res://assets/UI/fonts/Inter.ttf" id="4_d7epx"]
 
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
@@ -35,6 +37,7 @@ offset_top = -176.667
 offset_right = 107.667
 offset_bottom = -148.667
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fuw33")
 text = "Name:"
 
 [node name="text" type="RichTextLabel" parent="."]
@@ -44,5 +47,7 @@ offset_top = -154.0
 offset_right = 127.0
 offset_bottom = -87.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_d7epx")
+theme_override_font_sizes/normal_font_size = 12
 text = "text here..."
 scroll_active = false
