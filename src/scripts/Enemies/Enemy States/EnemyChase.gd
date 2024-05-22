@@ -6,7 +6,7 @@ class_name enemyChase
 
 
 @onready var enemy = $"../.."
-@onready var player = $"../../../../Player"
+@onready var player = $"../../../../../Player"
 @onready var sm = $".."
 @onready var alert = $"../../Alerted"
 @onready var confused = $"../../Confused"

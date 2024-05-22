@@ -3,7 +3,7 @@ class_name npc
 
 @onready var sm = $"StateMachine"
 @onready var dialogue_box = $"DialogueBox"
-@onready var player = $"../../Player"
+@onready var player = $"../../../Player"
 
 
 var player_can_chat = false

@@ -2,7 +2,7 @@ extends State
 class_name enemyStun
 
 @onready var enemy = $"../.."
-@onready var player = $"../../../../Player"
+@onready var player = $"../../../../../Player"
 @onready var sm = $".."
 
 var free = false
