@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b8sokesd0rypv"]
+[gd_scene load_steps=58 format=3 uid="uid://b8sokesd0rypv"]
 
 [ext_resource type="Texture2D" uid="uid://8ktrqxk3g2hi" path="res://assets/sprites/mc_basic.sprites/stand1.tres" id="1_7c762"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_p4u05"]
