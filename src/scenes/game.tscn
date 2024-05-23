@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
-[ext_resource type="PackedScene" uid="uid://cudnkh4q0wqm2" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
+[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="2_olm6c"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
