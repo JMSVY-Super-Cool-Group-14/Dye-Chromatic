@@ -3,7 +3,7 @@ class_name enemyProjectile
 
 var projectile_velocity = Vector2.ZERO
 var speed
-var range = 200
+var range = 400
 var start_pos = Vector2.ZERO
 var damage = 0
 var pos
@@ -30,7 +30,7 @@ func set_properties(atk_speed, atk_damge):
 	damage = atk_damge
 		
 func set_direction(direction: Vector2):
-	self.global_rotation = direction.angle()
+	self.global_rotation = direction.angle() - PI/2
 	projectile_velocity = direction.normalized() * speed
 	
 func _on_area_entered(area):

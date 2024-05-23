@@ -5,6 +5,7 @@ class_name lineAttack
 @export var lineSpeed = 50
 @export var lineDamage = 0
 @export var lineAmount = 5
+@export var spawnRate = 2
 
 @onready var boss = $"../.."
 @onready var player = $"../../../Player"
@@ -18,7 +19,7 @@ var line
 var finished = false
 
 
-func spawnLine(nr):
+func spawnLine(nr, deviation):
 	if nr == 1:
 		line = line1.instantiate()
 	elif nr == 2:
@@ -28,21 +29,26 @@ func spawnLine(nr):
 	else:
 		line == line1.instantiate()
 		
-	$"../..".add_child(line)
-	line.global_position = boss.global_position
+	$"../../..".add_child(line)
+	line.global_position = boss.global_position + Vector2(deviation,0)
+	line.set_properties(lineSpeed, lineDamage)
 	line.set_direction(Vector2(0, 1))
 	
 
 func _enter_state():
 	var rng = RandomNumberGenerator.new()
+	var randDev =  RandomNumberGenerator.new()
 	rng.randomize()
+	randDev.randomize()
 	
 	
 	for x in range(lineAmount):
 		var num = rng.randi_range(1, 4)
+		var deviation = randDev.randi_range(-300,301)
 		print(num)
-		spawnLine(num)
-		await get_tree().create_timer(2).timeout
+		print(deviation)
+		spawnLine(1, deviation)
+		await get_tree().create_timer(spawnRate).timeout
 	
 	await get_tree().create_timer(1).timeout
 	finished = true

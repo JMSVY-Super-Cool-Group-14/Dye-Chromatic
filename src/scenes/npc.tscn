@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/NPC/NPCWalking.gd" id="5_pst2m"]
 [ext_resource type="Script" path="res://scripts/NPC/NPCInteract.gd" id="6_od0pn"]
 [ext_resource type="PackedScene" uid="uid://dvrm22g12ndy7" path="res://scripts/Dialogue/dialogueBox.tscn" id="7_3mub8"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/woom.mp3" id="11_tje25"]
+[ext_resource type="AudioStream" uid="uid://bery1n8kx15bq" path="res://assets/audio/sfx/woom.mp3" id="11_tje25"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ligmd"]
 animations = [{

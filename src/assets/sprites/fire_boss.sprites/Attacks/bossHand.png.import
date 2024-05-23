@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b20oiv0epkkbf"
-path="res://.godot/imported/bossHand.png-7ea21a726e59047bb8b86ebaab1f9d73.ctex"
+path="res://.godot/imported/bossHand.png-20feef779df2cfa7ed7a15547ff33f92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bossHand.png"
-dest_files=["res://.godot/imported/bossHand.png-7ea21a726e59047bb8b86ebaab1f9d73.ctex"]
+source_file="res://assets/sprites/fire_boss.sprites/Attacks/bossHand.png"
+dest_files=["res://.godot/imported/bossHand.png-20feef779df2cfa7ed7a15547ff33f92.ctex"]
 
 [params]
 

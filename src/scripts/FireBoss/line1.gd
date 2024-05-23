@@ -38,6 +38,10 @@ func set_properties(atk_speed, atk_damge):
 	speed = atk_speed
 	damage = atk_damge
 
+func _physics_process(delta):
+	$AreaLeft/AnimatedSprite2D.play("default")
+	$AreaRight/AnimatedSprite2D.play("default")
+
 func _on_area_right_area_entered(area):
 	if area.is_in_group("player"):
 		area.take_fixed_damage(damage)

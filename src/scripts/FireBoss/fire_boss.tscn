@@ -83,7 +83,7 @@ orbDamage = 20
 
 [node name="P1lineAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_h74r5")
-lineDamage = 50
+lineDamage = 40
 
 [node name="Melee" type="Node" parent="StateMachine"]
 script = ExtResource("3_7fuaq")
@@ -96,6 +96,9 @@ script = ExtResource("10_rl2ec")
 
 [node name="P2lineAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_h74r5")
+lineSpeed = 100
+lineDamage = 45
+spawnRate = 1
 
 [node name="Phase3" type="Node" parent="StateMachine"]
 script = ExtResource("11_4iqb4")
