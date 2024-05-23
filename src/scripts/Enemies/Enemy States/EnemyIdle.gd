@@ -5,7 +5,7 @@ class_name enemyIdle
 
 
 @onready var enemy = $"../.."
-@onready var player = $"../../../../Player"
+@onready var player = $"../../../../../Player"
 @onready var sm = $".."
 
 var move_dir : Vector2

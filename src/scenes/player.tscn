@@ -46,8 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://cxxag1we6q62f" path="res://assets/sprites/slash.sprites/Slash-3.tres" id="43_yem7g"]
 [ext_resource type="Texture2D" uid="uid://l2nvsqvjk3wm" path="res://assets/sprites/slash.sprites/Slash-4.tres" id="44_6dvai"]
 [ext_resource type="Texture2D" uid="uid://bg1h6s2vbpvvn" path="res://assets/UI/targetLockTemp.png" id="45_ar07b"]
-[ext_resource type="Texture2D" uid="uid://ckbt0whe5vfti" path="res://assets/sprites/attacks/Ults/Bubble.png" id="45_f8d0u"]
-[ext_resource type="Script" path="res://scenes/PlayerBoundaries.gd" id="46_imbkd"]
+[ext_resource type="Script" path="res://scripts/PlayerBoundaries.gd" id="46_3ynba"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bgi2u"]
 animations = [{
@@ -408,7 +407,7 @@ script = ExtResource("34_oibyl")
 player_path = NodePath("..")
 
 [node name="PlayerBoundaries" type="Node2D" parent="."]
-script = ExtResource("46_imbkd")
+script = ExtResource("46_3ynba")
 
 [connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
 [connection signal="body_entered" from="BlueUlt" to="." method="_on_blue_ult_body_entered"]

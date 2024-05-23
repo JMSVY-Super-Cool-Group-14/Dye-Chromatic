@@ -4,7 +4,7 @@ class_name npcWalking
 @export var move_speed := 10.0
 
 @onready var npc = $"../.."
-@onready var player = $"../../../../Player"
+@onready var player = $"../../../../../Player"
 @onready var sm = $".."
 
 var move_dir : Vector2
