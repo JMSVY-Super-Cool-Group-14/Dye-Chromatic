@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvrm22g12ndy7"]
 
 [ext_resource type="Script" path="res://scripts/Dialogue/dialoguePlayer.gd" id="1_t0tea"]
-[ext_resource type="Texture2D" path="res://assets/UI/DialogueBox.png" id="2_mhxvn"]
+[ext_resource type="Texture2D" uid="uid://be5x70hg5c3m7" path="res://assets/UI/DialogueBox.png" id="2_mhxvn"]
 [ext_resource type="FontFile" uid="uid://dw7l1jcx8cvqr" path="res://assets/UI/fonts/Inter-Medium.otf" id="3_fuw33"]
 [ext_resource type="FontFile" uid="uid://d31fbmc6m7tgk" path="res://assets/UI/fonts/Inter.ttf" id="4_d7epx"]
 
