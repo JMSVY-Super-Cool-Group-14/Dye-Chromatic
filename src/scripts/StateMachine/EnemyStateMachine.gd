@@ -26,6 +26,11 @@ func take_DOT_damage(dmg, duration):
 	for n in range(0, dmg, tick):
 		health -= tick
 		took_dmg.emit()	
+		if health < 100:
+			hpbar.visible = true
+		elif health == 0:
+			hpbar.visible = false
+		hpbar.value = health
 		await get_tree().create_timer(1).timeout
 	
 

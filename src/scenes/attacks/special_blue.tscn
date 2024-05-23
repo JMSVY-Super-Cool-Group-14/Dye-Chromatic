@@ -1,57 +1,71 @@
-[gd_scene load_steps=9 format=3 uid="uid://du0kxr3qk03cg"]
+[gd_scene load_steps=10 format=3 uid="uid://du0kxr3qk03cg"]
 
-[ext_resource type="Texture2D" uid="uid://cfjdi5e1gnq76" path="res://assets/sprites/fire_enemy-3.png" id="1_oboju"]
 [ext_resource type="Script" path="res://scripts/attacks/special_blue.gd" id="1_qt0t1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rd5i"]
-atlas = ExtResource("1_oboju")
-region = Rect2(0, 0, 752, 684)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hii2u"]
-atlas = ExtResource("1_oboju")
-region = Rect2(752, 0, 752, 684)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6asxb"]
-atlas = ExtResource("1_oboju")
-region = Rect2(0, 684, 752, 684)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhssc"]
-atlas = ExtResource("1_oboju")
-region = Rect2(752, 684, 752, 684)
+[ext_resource type="Texture2D" uid="uid://ca01bkn4cjic1" path="res://assets/sprites/attack_wave.sprites/attack-wave-1.tres" id="2_7xkxg"]
+[ext_resource type="Texture2D" uid="uid://bclih2wf8lfif" path="res://assets/sprites/attack_wave.sprites/attack-wave-2.tres" id="3_dtk01"]
+[ext_resource type="Texture2D" uid="uid://cayfc8gvrmpnh" path="res://assets/sprites/attack_wave.sprites/attack-wave-3.tres" id="4_3c7jx"]
+[ext_resource type="Texture2D" uid="uid://cxxaf2df505xr" path="res://assets/sprites/attack_wave.sprites/attack-wave-4.tres" id="5_v5g81"]
+[ext_resource type="Texture2D" uid="uid://dm01v3ee1na5h" path="res://assets/sprites/attack_wave.sprites/attack-wave-5.tres" id="6_p1ysa"]
+[ext_resource type="Texture2D" uid="uid://b3g8fr2rphfr5" path="res://assets/sprites/attack_wave.sprites/attack-wave-6.tres" id="7_t8x5w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_livif"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7rd5i")
+"texture": ExtResource("2_7xkxg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hii2u")
+"texture": ExtResource("3_dtk01")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6asxb")
+"texture": ExtResource("4_3c7jx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yhssc")
+"texture": ExtResource("5_v5g81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p1ysa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t8x5w")
 }],
 "loop": true,
-"name": &"default",
+"name": &"start",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v5g81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p1ysa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t8x5w")
+}],
+"loop": true,
+"name": &"travel",
+"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnp1m"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2k02"]
+radius = 10.6173
+height = 115.556
 
 [node name="BlueSpecial" type="Area2D"]
 scale = Vector2(0.15, 0.1)
 script = ExtResource("1_qt0t1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 2.25)
 sprite_frames = SubResource("SpriteFrames_livif")
-frame_progress = 0.144397
+animation = &"travel"
+frame = 1
+frame_progress = 0.282577
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 70)
+position = Vector2(20, -30)
 scale = Vector2(27, 9)
-shape = SubResource("RectangleShape2D_tnp1m")
+shape = SubResource("CapsuleShape2D_v2k02")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

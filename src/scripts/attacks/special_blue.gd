@@ -1,12 +1,13 @@
 extends Area2D
 
 var velocity = Vector2.ZERO
-var speed = 70
+var speed = 120
 var range = 200
 var start_pos = Vector2.ZERO
 var damage = 10
 var pos
 var angle
+@onready var startAnimation = true
 
 @onready var fsm = $"../../FiniteStateMachine"
 var attack_type = "blueSpecial"
@@ -16,12 +17,17 @@ var attack_type = "blueSpecial"
 func _ready():
 	start_pos = global_position
 	pos = start_pos
-	$AnimatedSprite2D.self_modulate = Color(0, 0, 1)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
-	$AnimatedSprite2D.play()
+	
+	if startAnimation:
+		$AnimatedSprite2D.play("start")
+		if $AnimatedSprite2D.frame == 5:
+			startAnimation = false
+	else:
+		$AnimatedSprite2D.play("travel")
 	pos += velocity * delta
 	# Can't iterate global_position because 
 	# it also iterates with the player's position.
@@ -32,8 +38,14 @@ func _process(delta: float):
 		queue_free()
 		
 func set_direction(direction: Vector2):
-	self.global_rotation = direction.angle() - PI/2
+	self.global_rotation = direction.angle()
+	self.global_scale.x *= 2
+	self.global_scale.y *= 2.25
 	velocity = direction.normalized() * speed
+
+	if direction.x < 0:
+		self.global_scale.x *= -1
+
 	
 func _on_body_entered(body):
 

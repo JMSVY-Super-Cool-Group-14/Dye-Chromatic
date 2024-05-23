@@ -33,7 +33,7 @@ var abilityCooldown = 0.5
 var magentaDelta = 0
 var blueDelta = 0
 var blueUltDelta = 0
-@export var blueUltDamage = 70
+@export var blueUltDamage = 20
 @export var meleeRange = 18
 var velocity = Vector2.ZERO
 var leftColourSelect = ["grey", "red", "green", "blue"]
@@ -53,7 +53,7 @@ var colourWheel = {
 @onready var rightColour = "grey"
 @onready var currentColour = "grey"
 @onready var rangedTarget = Vector2.ZERO
-@export var field_of_view := 45.0
+@export var field_of_view := 360.0
 @onready var facingDirection = Vector2(0, 1)
 @export var speed = 100
 @export var sprintSpeed = 160
@@ -69,6 +69,8 @@ var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
+var blue_ult_scene = preload("res://scenes/attacks/blue_ult.tscn")
+
 
 func _ready():
 	$AnimatedSprite2D.play()
@@ -112,7 +114,7 @@ func _process(delta):
 	else:
 		key_move()
 	
-	if rangedTarget.x < 0.6 and rangedTarget.y < 0.6:
+	if rangedTarget == Vector2(0, 0):
 		rangedTarget = facingDirection
 
 	meleeNode.global_position = global_position + rangedTarget.normalized()*meleeRange
@@ -359,10 +361,15 @@ func colour_ultimate():
 			if blueUltDelta <= 0 and stamina > blueUltCost:
 				blueUltDelta = abilityCooldown
 				stamina -= blueUltCost
+				
+
 				slow(0.8, 0.5)
 				blueUlt.set_disabled(false)
+				$BlueUlt/BubbleSprite.set_visible(true)
 				await get_tree().create_timer(0.1).timeout
+				$BlueUlt/BubbleSprite.set_visible(false)
 				blueUlt.set_disabled(true)
+
 		"yellow":
 			print("yellowUlt")
 		"magenta":
@@ -389,9 +396,16 @@ func take_DOT_damage(damage: float, duration: float):
 		
 func _on_blue_ult_body_entered(body):
 	if body.is_in_group("enemy"):
-		body.fsm.take_DOT_damage(blueUltDamage, 7)
+		var ultDuration = 7
+		
+		var blueUltInstance = blue_ult_scene.instantiate()
+		add_child(blueUltInstance)
+		blueUltInstance.enemy = body
+		blueUltInstance.set_size()
+		body.fsm.take_DOT_damage(blueUltDamage, ultDuration)
 		var attack_type = "blueUlt"
 		body.recieve_knockeback(self.global_position, 0, attack_type)
+
 
 func _on_melee_range_body_entered(body):
 	if body.is_in_group("enemy"):
@@ -410,7 +424,7 @@ func get_nearest_enemy() -> enemy:
 	var front_enemies := []
 	
 	for target in $DetectRange.get_overlapping_bodies():
-		var angle_to_node = rad_to_deg(acos(facingDirection.dot(global_position.direction_to(target.global_position))))
+		var angle_to_node = rad_to_deg(acos(rangedTarget.dot(global_position.direction_to(target.global_position))))
 		if angle_to_node < field_of_view and target.is_in_group("enemy"):
 			front_enemies.append(target)
 	
