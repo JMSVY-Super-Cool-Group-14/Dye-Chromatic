@@ -401,9 +401,9 @@ texture = ExtResource("45_ar07b")
 [node name="PlayerCam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 limit_left = 0
-limit_top = 0
-limit_right = 820
-limit_bottom = 820
+limit_top = -1
+limit_right = 658
+limit_bottom = 682
 script = ExtResource("34_oibyl")
 player_path = NodePath("..")
 
