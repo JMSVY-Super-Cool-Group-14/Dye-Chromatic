@@ -1,9 +1,9 @@
 extends Node
 
-@export var min_x = 0
-@export var max_x = 658
-@export var min_y = -1
-@export var max_y = 682
+@export var min_x = 10
+@export var max_x = 810
+@export var min_y = 15
+@export var max_y = 800
 
 func _process(delta):
 	# Ensure the player's position is clamped within the defined boundaries

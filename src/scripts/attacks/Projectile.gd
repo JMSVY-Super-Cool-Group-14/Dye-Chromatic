@@ -9,7 +9,7 @@ var damage = 30
 var pos
 var angle
 
-@onready var fsm = $"../../FiniteStateMachine"
+@onready var fsm = $"/root/Game/FiniteStateMachine"
 var attack_type = "range"
 
 
