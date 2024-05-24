@@ -1,6 +1,6 @@
 extends FiniteStateMachine
 
-@onready var player = $"../Player"
+@onready var player = $"/root/Game/Areas/Global/Player"
 @onready var hpbar = $"../UI/MarginContainer/VBoxContainer/HPbar"
 @onready var staminabar = $"../UI/MarginContainer/VBoxContainer/Staminabar"
 @export var speed:int = 100
