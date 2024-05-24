@@ -10,7 +10,7 @@ class_name orbAttack
 @onready var player = $"../../../Player"
 @onready var sm = $".."
 
-var projectile_scene = preload("res://scripts/FireBoss/BossProjectile.tscn")
+var projectile_scene = preload("res://scenes/Enemies/Fire Boss/Attacks/BossProjectile.tscn")
 
 var finished = false
 

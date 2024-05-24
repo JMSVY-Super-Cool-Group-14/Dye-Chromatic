@@ -9,7 +9,7 @@ class_name bossMelee
 @export var damage = 0
 
 
-var melee_scene = preload("res://scripts/FireBoss/BossMelee.tscn")
+var melee_scene = preload("res://scenes/Enemies/Fire Boss/Attacks/BossMelee.tscn")
 
 var finished = false
 

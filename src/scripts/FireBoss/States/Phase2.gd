@@ -20,12 +20,12 @@ func _choose_attack():
 	
 
 func _enter_state():
-	print("enter p2")
+	print("P2")
 	await get_tree().create_timer(switch_timer).timeout
 	_choose_attack()
 
 func _state_update(delta : float):
-	if sm.health < sm.health * 0.35:
+	if sm.health < sm.max_health * 0.35:
 		sm._change_state($"../Phase3")
 	
 	

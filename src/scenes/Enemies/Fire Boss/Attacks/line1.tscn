@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://d280ihm4b7kiw"]
+
+[ext_resource type="Script" path="res://scripts/FireBoss/Attack Scenes/line1.gd" id="1_6mlsa"]
+[ext_resource type="Texture2D" uid="uid://cr47v6hyf3ibi" path="res://assets/sprites/fire_boss.sprites/Attacks/Fire_line-1.png" id="2_qmhl5"]
+[ext_resource type="Texture2D" uid="uid://cqx1lr556rck3" path="res://assets/sprites/fire_boss.sprites/Attacks/Fire_line-2.png" id="3_rem01"]
+[ext_resource type="Texture2D" uid="uid://dtgbl5wsqoyjj" path="res://assets/sprites/fire_boss.sprites/Attacks/Fire_line-3.png" id="4_06gix"]
+[ext_resource type="Texture2D" uid="uid://cvbl6ye6rd55j" path="res://assets/sprites/fire_boss.sprites/Attacks/Fire_line-4.png" id="5_mex5s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lysyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qmhl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rem01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_06gix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mex5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pohyv"]
+size = Vector2(778, 56)
+
+[node name="Line" type="Area2D"]
+script = ExtResource("1_6mlsa")
+
+[node name="AreaLeft" type="Area2D" parent="."]
+position = Vector2(-455, 2.08165e-12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaLeft"]
+position = Vector2(0, -24)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_lysyi")
+frame = 3
+frame_progress = 0.601615
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLeft"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_pohyv")
+
+[node name="AreaRight" type="Area2D" parent="."]
+position = Vector2(424, 2.08165e-12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaRight"]
+position = Vector2(0, -24)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_lysyi")
+frame_progress = 0.570463
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaRight"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_pohyv")
+
+[connection signal="area_entered" from="AreaLeft" to="." method="_on_area_left_area_entered"]
+[connection signal="area_entered" from="AreaLeft" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="AreaRight" to="." method="_on_area_left_area_entered"]
+[connection signal="area_entered" from="AreaRight" to="." method="_on_area_right_area_entered"]
+[connection signal="area_entered" from="AreaRight" to="." method="_on_area_2d_area_entered"]

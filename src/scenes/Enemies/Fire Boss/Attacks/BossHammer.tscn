@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://b51vrx1xyvkc1"]
+
+[ext_resource type="Script" path="res://scripts/FireBoss/Attack Scenes/BossHammer.gd" id="1_i6fgq"]
+[ext_resource type="Texture2D" uid="uid://ntsp43a2ifms" path="res://assets/sprites/fire_boss.sprites/Attacks/Hammer/Hammer-slam-1.png" id="2_qh8gt"]
+[ext_resource type="Texture2D" uid="uid://b8827y1mxaut5" path="res://assets/sprites/fire_boss.sprites/Attacks/Hammer/Hammer-slam-2.png" id="3_8p14a"]
+[ext_resource type="Texture2D" uid="uid://dqbixbveko232" path="res://assets/sprites/fire_boss.sprites/Attacks/Hammer/Hammer-slam-3.png" id="4_2hn0p"]
+[ext_resource type="Texture2D" uid="uid://c10t682gdrfsl" path="res://assets/sprites/fire_boss.sprites/Attacks/Hammer/Hammer-slam-4.png" id="5_pq5bi"]
+[ext_resource type="Texture2D" uid="uid://r2vd80il0xf4" path="res://assets/sprites/fire_boss.sprites/Attacks/Hammer/Hammer-slam-5.png" id="6_y84il"]
+[ext_resource type="Texture2D" uid="uid://dm1vjaursmdds" path="res://assets/sprites/fire_boss.sprites/Attacks/Hammer/Hammer-slam-6.png" id="7_gb8ck"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_togkh"]
+radius = 154.689
+
+[sub_resource type="Animation" id="Animation_ccxl0"]
+resource_name = "Falling"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_qh8gt"), ExtResource("3_8p14a"), ExtResource("4_2hn0p"), ExtResource("5_pq5bi"), ExtResource("6_y84il"), ExtResource("7_gb8ck")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_diyr1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_qh8gt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfy1n"]
+_data = {
+"Falling": SubResource("Animation_ccxl0"),
+"RESET": SubResource("Animation_diyr1")
+}
+
+[node name="Hammer" type="Area2D"]
+position = Vector2(1, -324)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_i6fgq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-39, 547)
+rotation = 0.598648
+skew = 0.359538
+shape = SubResource("CircleShape2D_togkh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qh8gt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_vfy1n")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

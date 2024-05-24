@@ -13,7 +13,7 @@ func take_damage(dmg):
 	print(health)
 
 func _ready():
-	get_node("Phase1")._initialize_state(self, root)
+	get_node("Phase3")._initialize_state(self, root)
 	super()
 	
 

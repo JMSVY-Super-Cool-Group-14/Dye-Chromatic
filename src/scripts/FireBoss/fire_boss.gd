@@ -27,7 +27,6 @@ func recieve_knockeback(source_pos: Vector2, dmg, attack_type):
 
 func _physics_process(delta):
 	move_and_slide()
-	print(fsm.health)
 	if self.velocity.length() > 0:
 		$AnimatedSprite2D.play("Move")
 	else:

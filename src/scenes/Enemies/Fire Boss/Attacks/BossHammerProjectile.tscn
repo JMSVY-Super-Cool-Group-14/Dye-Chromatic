@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://baado6nrkhl7r"]
+
+[ext_resource type="Script" path="res://scripts/FireBoss/Attack Scenes/BossHammerProjectile.gd" id="1_bjhu2"]
+[ext_resource type="Texture2D" uid="uid://2pnolooid8y6" path="res://assets/sprites/fire_boss.sprites/Attacks/Fire_orb.png" id="2_on6jx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hvsy"]
+radius = 73.0616
+
+[node name="Projectile" type="Area2D"]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_bjhu2")
+
+[node name="FireOrb" type="Sprite2D" parent="."]
+position = Vector2(-7, 0)
+texture = ExtResource("2_on6jx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_4hvsy")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
