@@ -27,7 +27,7 @@ var colourSwitchDelta = 0
 var isRolling = false
 var newDodgePos
 
-var dodgeCost = 25
+var dodgeCost = 15
 var sprintCost = 0.5
 var meleeCost = 10
 var rangedCost = 10
