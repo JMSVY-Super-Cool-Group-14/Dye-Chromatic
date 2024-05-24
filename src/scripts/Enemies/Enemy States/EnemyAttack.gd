@@ -5,7 +5,7 @@ class_name enemyAttack
 @export var attack_dmg := 2.0
 
 @onready var enemy = $"../.."
-@onready var player = $"../../../../../../Player"
+@onready var player = $"/root/Game/Areas/Global/Player"
 @onready var sm = $".."
 
 var cooldown = false
