@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@onready var player: Area2D = $"../"
+@onready var player: Area2D = $"/root/Game/Areas/Global/Player"
 var projectile_val = false
 var melee_val = false
 
