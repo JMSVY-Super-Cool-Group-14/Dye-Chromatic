@@ -21,9 +21,14 @@ var targetLock = Vector2.ZERO
 var timePassed = 0
 var attackDelta = 0
 var comboDelta = 0
+var dodgeDelta = 0
 var comboDamage = false
 var colourSwitchDelta = 0
+var isRolling = false
+var newDodgePos
 
+var dodgeCost = 25
+var sprintCost = 0.5
 var meleeCost = 10
 var rangedCost = 10
 var blueSpecialCost = 40
@@ -70,10 +75,12 @@ var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
 var blue_ult_scene = preload("res://scenes/attacks/blue_ult.tscn")
-
+var dodge_trail: Trail
+var sprint_trail: Trail
 
 func _ready():
 	$AnimatedSprite2D.play()
+	
 
 func _process(delta):
 	$AnimatedSprite2D.play()
@@ -84,6 +91,7 @@ func _process(delta):
 	blueUltDelta -= delta
 	colourSwitchDelta += delta
 	comboDelta += delta
+
 	
 	if stamina < maxStamina:
 		stamina += staminaRegen
@@ -100,18 +108,24 @@ func _process(delta):
 	elif Input.is_action_just_pressed("right_colour"):
 		colour_reset()
 	
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("sprint") and !isRolling and stamina > sprintCost:
 		speed = sprintSpeed
-		isSprinting = true
-	elif Input.is_action_just_released("sprint"):
+		stamina -= sprintCost
+		if !isSprinting:
+			isSprinting = true
+			make_trail()
+	elif Input.is_action_just_released("sprint") or stamina < sprintCost:
 		speed = 100
+		if sprint_trail != null:
+			
+			sprint_trail.stop()
 		isSprinting = false
 	
 	# Movement
-	if fsm.get_controller():
+	if fsm.get_controller() and !isRolling:
 		velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		rangedTarget = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
-	else:
+	elif !isRolling:
 		key_move()
 	
 	if rangedTarget == Vector2(0, 0):
@@ -132,6 +146,19 @@ func _process(delta):
 		targetLockArt.visible = false
 		lockedOn = false
 	
+	if !isRolling and Input.is_action_just_pressed("dodge") and stamina > dodgeCost:
+		isRolling = true
+		stamina -= dodgeCost
+		make_trail()
+		newDodgePos = global_position + facingDirection.normalized() * meleeRange*3
+	elif isRolling:
+		global_position = global_position.lerp(newDodgePos, 0.1)
+		dodgeDelta += delta
+		if dodgeDelta > abilityCooldown:
+			dodgeDelta = 0
+			isRolling = false
+	
+	
 	position += velocity * delta * speed
 
 func start(pos):
@@ -150,6 +177,7 @@ func key_move():
 		velocity.y += 1
 		
 func _input(event):
+	#dodge(event)
 	if !isSprinting:
 		colour_input(event)
 		attack_input(event)
@@ -240,6 +268,12 @@ func melee_attack():
 			meleeAnimate1.play("attack1")
 			combo1 = true
 			comboDelta = 0
+
+func dodge(event):
+	if event.is_action_pressed("dodge"):
+		print("roll")
+		var newPos = global_position + facingDirection.normalized() * meleeRange
+		global_position = global_position.lerp(newPos, 0.1)
 
 func colour_reset():
 	if !Input.is_action_pressed("left_colour") and !Input.is_action_pressed("right_colour"):
@@ -361,8 +395,6 @@ func colour_ultimate():
 			if blueUltDelta <= 0 and stamina > blueUltCost:
 				blueUltDelta = abilityCooldown
 				stamina -= blueUltCost
-				
-
 				slow(0.8, 0.5)
 				blueUlt.set_disabled(false)
 				$BlueUlt/BubbleSprite.set_visible(true)
@@ -434,3 +466,15 @@ func get_nearest_enemy() -> enemy:
 				nearest_enemy = target
 
 	return nearest_enemy
+
+func make_trail():
+	if isRolling:
+		dodge_trail = Trail.create()
+		add_child(dodge_trail)
+		await get_tree().create_timer(0.2).timeout
+		dodge_trail.stop()
+	else:
+		sprint_trail = Trail.create()
+		add_child(sprint_trail)
+	
+
