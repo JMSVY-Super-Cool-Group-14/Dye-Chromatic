@@ -24,6 +24,8 @@ func _ready():
 	if boundaries_base:
 		print("Connecting to boundary_hit signal")
 		boundaries_base.connect("boundary_hit", Callable(self, "_on_boundary_hit"))
+	else:
+		print("BoundariesBase node not found!")
 
 	# Initialize the timers
 	for direction in ["right", "left", "up", "down"]:
@@ -37,6 +39,7 @@ func _ready():
 func random_wander():
 	move_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	wander_time = randf_range(1, 3)
+	print("New random direction: ", move_dir)
 
 func _enter_state():
 	random_wander()
@@ -61,25 +64,27 @@ func _state_physics_update(delta : float):
 			adjusted_move_dir.y = 0
 		
 		npc.velocity = adjusted_move_dir * move_speed
+		print("Adjusted move direction: ", adjusted_move_dir)
 
 func _on_boundary_hit(character, boundary_direction):
 	if character == npc:
+		print("Boundary hit detected for ", npc.name, " with direction ", boundary_direction)
 		if boundary_direction == Vector2(1, 0):
 			move_allowed["right"] = false
 			timers["right"].start()
-			print("Boundary hit by ", npc.name, ". Pausing right movement for 5 seconds.")
+			print("Pausing right movement for 5 seconds.")
 		elif boundary_direction == Vector2(-1, 0):
 			move_allowed["left"] = false
 			timers["left"].start()
-			print("Boundary hit by ", npc.name, ". Pausing left movement for 5 seconds.")
+			print("Pausing left movement for 5 seconds.")
 		elif boundary_direction == Vector2(0, 1):
 			move_allowed["down"] = false
 			timers["down"].start()
-			print("Boundary hit by ", npc.name, ". Pausing down movement for 5 seconds.")
+			print("Pausing down movement for 5 seconds.")
 		elif boundary_direction == Vector2(0, -1):
 			move_allowed["up"] = false
 			timers["up"].start()
-			print("Boundary hit by ", npc.name, ". Pausing up movement for 5 seconds.")
+			print("Pausing up movement for 5 seconds.")
 
 func _on_timer_timeout(direction):
 	move_allowed[direction] = true
