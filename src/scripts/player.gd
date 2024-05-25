@@ -1,3 +1,4 @@
+# Player.gd
 extends Area2D
 
 signal hp_change(hp)
@@ -80,8 +81,8 @@ var sprint_trail: Trail
 
 func _ready():
 	$AnimatedSprite2D.play()
+	add_to_group("player")
 	
-
 func _process(delta):
 	$AnimatedSprite2D.play()
 	attackDelta += delta
@@ -92,7 +93,6 @@ func _process(delta):
 	colourSwitchDelta += delta
 	comboDelta += delta
 
-	
 	if stamina < maxStamina:
 		stamina += staminaRegen
 	stamina_change.emit(int(stamina))
@@ -117,7 +117,6 @@ func _process(delta):
 	elif Input.is_action_just_released("sprint") or stamina < sprintCost:
 		speed = 100
 		if sprint_trail != null:
-			
 			sprint_trail.stop()
 		isSprinting = false
 	
@@ -131,9 +130,8 @@ func _process(delta):
 	if rangedTarget == Vector2(0, 0):
 		rangedTarget = facingDirection
 
-	meleeNode.global_position = global_position + rangedTarget.normalized()*meleeRange
-	meleeNode.global_rotation = rangedTarget.angle() + PI/2
-	
+	meleeNode.global_position = global_position + rangedTarget.normalized() * meleeRange
+	meleeNode.global_rotation = rangedTarget.angle() + PI / 2
 	
 	if velocity.length() > 0 and !lockedOn:
 		facingDirection = velocity
@@ -150,14 +148,13 @@ func _process(delta):
 		isRolling = true
 		stamina -= dodgeCost
 		make_trail()
-		newDodgePos = global_position + facingDirection.normalized() * meleeRange*3
+		newDodgePos = global_position + facingDirection.normalized() * meleeRange * 3
 	elif isRolling:
 		global_position = global_position.lerp(newDodgePos, 0.1)
 		dodgeDelta += delta
 		if dodgeDelta > abilityCooldown:
 			dodgeDelta = 0
 			isRolling = false
-	
 	
 	position += velocity * delta * speed
 
@@ -177,7 +174,6 @@ func key_move():
 		velocity.y += 1
 		
 func _input(event):
-	#dodge(event)
 	if !isSprinting:
 		colour_input(event)
 		attack_input(event)
@@ -191,8 +187,7 @@ func lock_on(event):
 			$DetectRange.global_rotation = facingDirection.angle()
 			lockedOn = true
 			targetLockArt.visible = true
-			print("locked on to: ")
-			print(targetLock)
+			print("locked on to: ", targetLock)
 	elif event.is_action_pressed("lock_on"):
 		lockedOn = false
 		targetLockArt.visible = false
@@ -404,7 +399,6 @@ func colour_ultimate():
 
 		"yellow":
 			print("yellowUlt")
-		"magenta":
 			print("magentaUlt")
 		"cyan":
 			print("cyanUlt")
@@ -437,7 +431,6 @@ func _on_blue_ult_body_entered(body):
 		body.fsm.take_DOT_damage(blueUltDamage, ultDuration)
 		var attack_type = "blueUlt"
 		body.recieve_knockeback(self.global_position, 0, attack_type)
-
 
 func _on_melee_range_body_entered(body):
 	if body.is_in_group("enemy"):
@@ -476,5 +469,7 @@ func make_trail():
 	else:
 		sprint_trail = Trail.create()
 		add_child(sprint_trail)
-	
 
+func teleport(new_position: Vector2):
+	global_position = new_position
+	print("Teleported to: ", new_position)

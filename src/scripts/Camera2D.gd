@@ -1,3 +1,4 @@
+# Camera2D.gd
 extends Camera2D
 
 @export var centered_on_player = true
@@ -27,6 +28,9 @@ func _ready():
 	zoom = DEFAULT_ZOOM
 	make_current()
 	global_position = player.global_position
+
+	# Initialize limits to ensure they are set from script values
+	set_limits(0, 658.4, 0, 684)
 
 func _process(delta):
 	if not player:
@@ -74,3 +78,14 @@ func _process(delta):
 		global_position = player.position
 
 	last_player_position = player.position
+
+func set_limits(left: int, right: int, top: int, bottom: int):
+	limit_left = left
+	limit_right = right
+	limit_top = top
+	limit_bottom = bottom
+	print("Camera limits set to: ", left, right, top, bottom)
+
+func update_bounds(new_bounds: Rect2):
+	set_limits(new_bounds.position.x, new_bounds.position.x + new_bounds.size.x, new_bounds.position.y, new_bounds.position.y + new_bounds.size.y)
+	print("Camera bounds updated to: ", limit_left, limit_right, limit_top, limit_bottom)

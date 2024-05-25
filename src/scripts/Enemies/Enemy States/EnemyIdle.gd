@@ -63,7 +63,6 @@ func _state_physics_update(delta : float):
 			adjusted_move_dir.y = 0
 		
 		enemy.velocity = adjusted_move_dir * move_speed
-		print("Adjusted move direction: ", adjusted_move_dir)
 
 	if player != null:
 		var direction = player.global_position - enemy.global_position
@@ -82,7 +81,6 @@ func _state_physics_update(delta : float):
 
 func _on_boundary_hit(character, boundary_direction):
 	if character == enemy:
-		print("Boundary hit detected for ", enemy.name, " with direction ", boundary_direction)
 		if boundary_direction == Vector2(1, 0):
 			move_allowed["right"] = false
 			timers["right"].start()

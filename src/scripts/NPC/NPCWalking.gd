@@ -64,11 +64,9 @@ func _state_physics_update(delta : float):
 			adjusted_move_dir.y = 0
 		
 		npc.velocity = adjusted_move_dir * move_speed
-		print("Adjusted move direction: ", adjusted_move_dir)
 
 func _on_boundary_hit(character, boundary_direction):
 	if character == npc:
-		print("Boundary hit detected for ", npc.name, " with direction ", boundary_direction)
 		if boundary_direction == Vector2(1, 0):
 			move_allowed["right"] = false
 			timers["right"].start()

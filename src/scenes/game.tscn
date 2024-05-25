@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=18 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -14,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
+[ext_resource type="Texture2D" uid="uid://ctt64l016sbp5" path="res://assets/levels/IMG_8232.jpg" id="14_oago4"]
+[ext_resource type="Script" path="res://scripts/Teleporter.gd" id="15_22s8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42ngy"]
+size = Vector2(33.5, 24)
 
 [node name="Game" type="Node2D"]
 
@@ -148,6 +153,12 @@ offset_bottom = 1710.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_yusat")
 
+[node name="BossArea" type="TextureRect" parent="."]
+offset_top = 800.0
+offset_right = 1817.0
+offset_bottom = 2269.0
+texture = ExtResource("14_oago4")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_aedne")
 volume_db = -10.0
@@ -157,3 +168,10 @@ autoplay = true
 stream = ExtResource("12_aedne")
 volume_db = -10.0
 autoplay = true
+
+[node name="TeleporterObject" type="Area2D" parent="."]
+script = ExtResource("15_22s8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleporterObject"]
+position = Vector2(303, 16)
+shape = SubResource("RectangleShape2D_42ngy")
