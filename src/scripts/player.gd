@@ -399,6 +399,7 @@ func colour_ultimate():
 
 		"yellow":
 			print("yellowUlt")
+		"magenta":
 			print("magentaUlt")
 		"cyan":
 			print("cyanUlt")
