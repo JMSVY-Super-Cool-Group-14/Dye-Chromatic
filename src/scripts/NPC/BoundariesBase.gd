@@ -33,7 +33,6 @@ func clamp_position(character):
 		boundary_direction = Vector2(0, -1)  # Hit top boundary, move down
 
 	if boundary_direction != Vector2():
-		print("Emitting boundary_hit signal for ", character.name, " with direction ", boundary_direction)
 		emit_signal("boundary_hit", character, boundary_direction)
 	
 	pos.x = clamp(pos.x, min_x, max_x)

@@ -207,7 +207,7 @@ position = Vector2(727, 980)
 shape = SubResource("RectangleShape2D_eeoj1")
 
 [node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]
-position = Vector2(89, 2184)
+position = Vector2(-151, 2381)
 
 [node name="TeleportToBossArea" type="Area2D" parent="Teleporters"]
 script = ExtResource("15_22s8w")
