@@ -14,7 +14,7 @@ func _ready():
 	player = get_node("/root/Game/Areas/Global/Player")
 	camera = get_node("/root/Game/Areas/Global/Player/PlayerCam")
 	player_boundaries = get_node("/root/Game/Areas/Global/Player/PlayerBoundaries")
-	teleport_position_node = $TeleportPosition
+	teleport_position_node = $BaseToBossArea/PositionBossArea
 
 	# Connect the area_entered signal to the _on_area_entered function
 	connect("area_entered", Callable(self, "_on_area_entered"))
