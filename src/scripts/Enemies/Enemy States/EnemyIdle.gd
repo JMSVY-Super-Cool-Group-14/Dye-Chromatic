@@ -20,7 +20,7 @@ var timers = {}
 
 func _ready():
 	# Assuming BoundariesBase is a sibling node in the scene tree
-	var boundaries_base = get_node("/root/Game/Areas/BaseArea/NPCs/BaseZone/BoundariesBase")
+	var boundaries_base = get_node("/root/Game/Areas/BaseArea/NPCs/BaseZone/")
 	if boundaries_base:
 		print("Connecting to boundary_hit signal")
 		boundaries_base.connect("boundary_hit", Callable(self, "_on_boundary_hit"))
