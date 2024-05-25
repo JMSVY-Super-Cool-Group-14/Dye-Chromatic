@@ -6,8 +6,6 @@ class_name orbAttack
 @export var orbSpeed = 50
 @export var orbDamage = 0
 
-@onready var boss = $"../.."
-@onready var player = $"../../../Player"
 @onready var sm = $".."
 
 var projectile_scene = preload("res://scenes/Enemies/Fire Boss/Attacks/BossProjectile.tscn")

@@ -68,7 +68,7 @@ var colourWheel = {
 @onready var meleeHitbox = $"MeleeRange/MeleeHitbox"
 @onready var targetLockArt = $"TargetLock"
 var meleeDamage = 50
-@onready var fsm = $"/root/Game/FiniteStateMachine"
+@export var fsm : FiniteStateMachine
 @onready var blueUlt = $"BlueUlt/CollisionShape2D"
 var melee_scene = preload("res://scenes/attacks/meleeAttack.tscn")
 var projectile_scene = preload("res://scenes/attacks/projectile.tscn")

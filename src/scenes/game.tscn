@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=16 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -22,10 +22,11 @@
 
 [node name="Global" type="Node" parent="Areas"]
 
-[node name="Player" parent="Areas/Global" instance=ExtResource("2_mpbna")]
+[node name="Player" parent="Areas/Global" node_paths=PackedStringArray("fsm") instance=ExtResource("2_mpbna")]
 z_index = 1
 position = Vector2(231, 255)
 scale = Vector2(0.4, 0.4)
+fsm = NodePath("../../../FiniteStateMachine")
 
 [node name="BaseArea" type="Node" parent="Areas"]
 

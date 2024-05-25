@@ -1,8 +1,6 @@
 extends State
 class_name phase3
 
-@onready var boss = $"../.."
-@onready var player = $"../../../Player"
 @onready var sm = $".."
 
 

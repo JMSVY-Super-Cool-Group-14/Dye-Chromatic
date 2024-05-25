@@ -2,7 +2,6 @@ extends State
 class_name bossMelee
 
 @onready var boss = $"../.."
-@onready var player = $"../../../Player"
 @onready var sm = $".."
 
 @export var speed = 50
@@ -22,7 +21,6 @@ func spawnHand():
 	
 
 func _enter_state():
-	print("hand")
 	spawnHand()
 	await get_tree().create_timer(1).timeout
 	finished = true
@@ -38,6 +36,4 @@ func _state_update(delta : float):
 	elif finished:
 		sm._change_state($"../Phase1")
 	
-func _state_physics_update(delta : float):
-	pass
 
