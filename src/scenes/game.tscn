@@ -172,6 +172,9 @@ autoplay = true
 [node name="TeleporterObject" type="Area2D" parent="."]
 script = ExtResource("15_22s8w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleporterObject"]
+[node name="TeleportPosition" type="Node2D" parent="TeleporterObject"]
+position = Vector2(750, 1765)
+
+[node name="BaseToBoss" type="CollisionShape2D" parent="TeleporterObject"]
 position = Vector2(303, 16)
 shape = SubResource("RectangleShape2D_42ngy")
