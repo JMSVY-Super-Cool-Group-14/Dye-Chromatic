@@ -1,9 +1,12 @@
+# BoundariesBase.gd
 extends Node
 
-@export var min_x = 0
-@export var max_x = 658
-@export var min_y = -1
-@export var max_y = 682
+signal boundary_hit(character, boundary_direction)
+
+@export var min_x = 5
+@export var max_x = 650
+@export var min_y = 5
+@export var max_y = 675
 
 func _process(delta):
 	# Recursively ensure all CharacterBody2D descendants are clamped
@@ -18,11 +21,21 @@ func clamp_children(node):
 func clamp_position(character):
 	# Clamp the character's position within the defined boundaries
 	var pos = character.global_position
-	var original_pos = pos
+	var boundary_direction = Vector2()
+	
+	if pos.x < min_x:
+		boundary_direction = Vector2(1, 0)  # Hit left boundary, move right
+	elif pos.x > max_x:
+		boundary_direction = Vector2(-1, 0)  # Hit right boundary, move left
+	elif pos.y < min_y:
+		boundary_direction = Vector2(0, 1)  # Hit bottom boundary, move up
+	elif pos.y > max_y:
+		boundary_direction = Vector2(0, -1)  # Hit top boundary, move down
+
+	if boundary_direction != Vector2():
+		print("Emitting boundary_hit signal for ", character.name, " with direction ", boundary_direction)
+		emit_signal("boundary_hit", character, boundary_direction)
+	
 	pos.x = clamp(pos.x, min_x, max_x)
 	pos.y = clamp(pos.y, min_y, max_y)
 	character.global_position = pos
-
-	# Debug prints to verify clamping
-	if pos != original_pos:
-		print("Clamped position for ", character.name, " from ", original_pos, " to ", pos)
