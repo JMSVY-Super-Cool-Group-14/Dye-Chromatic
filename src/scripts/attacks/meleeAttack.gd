@@ -30,7 +30,9 @@ func _on_body_entered(body):
 		print("enemy hit melee!")
 		# insert call to enemy.takedamage function
 		body.fsm.take_damage(damage)
-		body.recieve_knockeback(self.global_position, damage, attack_type)
+		print(body.is_in_group("boss"))
+		if !body.is_in_group("boss"):
+			body.recieve_knockeback(self.global_position, damage, attack_type)
 
 func set_colour(colour: Color):
 	$Sprite2D.self_modulate = colour

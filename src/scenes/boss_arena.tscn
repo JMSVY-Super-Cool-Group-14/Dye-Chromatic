@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://cuc48fcaqycr4"]
+
+[ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="1_xltbh"]
+[ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="2_csett"]
+[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="3_jph62"]
+[ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="4_ogw1h"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="5_y271o"]
+[ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="6_2b5xv"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="7_meupa"]
+[ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="8_ehtkl"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="9_lkga5"]
+[ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="10_72gie"]
+[ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="11_3vy4x"]
+
+[node name="BossArena" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xltbh")
+
+[node name="Fire Boss" parent="." instance=ExtResource("2_csett")]
+position = Vector2(909, 895)
+
+[node name="Player" parent="." node_paths=PackedStringArray("fsm") instance=ExtResource("3_jph62")]
+position = Vector2(908, 1424)
+fsm = NodePath("../FiniteStateMachine")
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("4_ogw1h")
+
+[node name="Pause" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_y271o")
+
+[node name="PauseSound" type="AudioStreamPlayer2D" parent="FiniteStateMachine/Pause"]
+stream = ExtResource("6_2b5xv")
+
+[node name="InGame" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("7_meupa")
+
+[node name="Checkpoint_Town" parent="FiniteStateMachine/InGame" instance=ExtResource("8_ehtkl")]
+position = Vector2(510, 530)
+
+[node name="GameOver" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("9_lkga5")
+
+[node name="Pause" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="Pause" instance=ExtResource("10_72gie")]
+process_mode = 2
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+focus_mode = 2
+
+[node name="UI" parent="." instance=ExtResource("11_3vy4x")]

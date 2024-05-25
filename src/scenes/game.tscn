@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=16 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
+[ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="16_c4v32"]
 
 [node name="Game" type="Node2D"]
 
@@ -21,10 +22,11 @@
 
 [node name="Global" type="Node" parent="Areas"]
 
-[node name="Player" parent="Areas/Global" instance=ExtResource("2_mpbna")]
+[node name="Player" parent="Areas/Global" node_paths=PackedStringArray("fsm") instance=ExtResource("2_mpbna")]
 z_index = 1
 position = Vector2(231, 255)
 scale = Vector2(0.4, 0.4)
+fsm = NodePath("../../../FiniteStateMachine")
 
 [node name="BaseArea" type="Node" parent="Areas"]
 
@@ -157,3 +159,7 @@ autoplay = true
 stream = ExtResource("12_aedne")
 volume_db = -10.0
 autoplay = true
+
+[node name="Fire Boss" parent="." instance=ExtResource("16_c4v32")]
+z_index = 1
+position = Vector2(184, 138)
