@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name enemy
 
-@export var fsm : FiniteStateMachine
+@onready var fsm = $"State Machine"
 @onready var stunState = $"State Machine/Stun"
 
 func recieve_knockeback(source_pos: Vector2, dmg, attack_type):	

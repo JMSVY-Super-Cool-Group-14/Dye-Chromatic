@@ -1,27 +1,27 @@
-[gd_scene load_steps=56 format=3 uid="uid://xlqobgtc5o2q"]
+[gd_scene load_steps=56 format=3 uid="uid://b8mtefelef5v0"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_xq5uw"]
-[ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_b8jfj"]
-[ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="2_ml24s"]
-[ext_resource type="Script" path="res://scripts/Enemies/EnemyAnimatedSprite2D.gd" id="3_e3mww"]
-[ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="4_7htyd"]
-[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyIdle.gd" id="5_edwtq"]
-[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyChase.gd" id="6_7udfh"]
-[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyAttack.gd" id="7_ahfcf"]
-[ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeDeath.gd" id="9_teb81"]
-[ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeStun.gd" id="10_naw5n"]
-[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyRangeAttack.gd" id="11_rxyjb"]
-[ext_resource type="Texture2D" uid="uid://by3xjc0rv0nus" path="res://assets/sprites/spotted.sprites/Spotted-1.tres" id="12_66kjt"]
-[ext_resource type="Texture2D" uid="uid://dudglwf1oftfg" path="res://assets/sprites/spotted.sprites/Spotted-2.tres" id="13_fwx24"]
-[ext_resource type="Texture2D" uid="uid://svqre5ew6roy" path="res://assets/sprites/spotted.sprites/Spotted-3.tres" id="14_baox4"]
-[ext_resource type="Texture2D" uid="uid://byaonk7q8w64f" path="res://assets/sprites/spotted.sprites/Spotted-4.tres" id="15_rrqde"]
-[ext_resource type="Texture2D" uid="uid://0k3xxjbnohfv" path="res://assets/sprites/spotted.sprites/Spotted-5.tres" id="16_av8p4"]
-[ext_resource type="Texture2D" uid="uid://bq5jox6cb6gj8" path="res://assets/sprites/spotted.sprites/Spotted-6.tres" id="17_62p8v"]
-[ext_resource type="Texture2D" uid="uid://brda7gfc2rwna" path="res://assets/sprites/sensed.sprites/Sensed-1.tres" id="18_m7636"]
-[ext_resource type="Texture2D" uid="uid://di1j3a3nkpw6o" path="res://assets/sprites/sensed.sprites/Sensed-2.tres" id="19_e2215"]
-[ext_resource type="Texture2D" uid="uid://dasqnkttr5f44" path="res://assets/sprites/sensed.sprites/Sensed-3.tres" id="20_d5cw8"]
-[ext_resource type="Texture2D" uid="uid://2gs2beowu7e2" path="res://assets/sprites/sensed.sprites/Sensed-4.tres" id="21_i6qf5"]
-[ext_resource type="Texture2D" uid="uid://drqe0x83kfvk4" path="res://assets/sprites/sensed.sprites/Sensed-5.tres" id="22_8i4iw"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_jm5w2"]
+[ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_ohaly"]
+[ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="3_q4vvt"]
+[ext_resource type="Script" path="res://scripts/Enemies/EnemyAnimatedSprite2D.gd" id="4_qqqii"]
+[ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="5_qbksx"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyIdle.gd" id="6_60xip"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyChase.gd" id="7_dcunm"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyAttack.gd" id="8_8q823"]
+[ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeDeath.gd" id="9_2ynlu"]
+[ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeStun.gd" id="10_dog5e"]
+[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyRangeAttack.gd" id="11_6geom"]
+[ext_resource type="Texture2D" uid="uid://by3xjc0rv0nus" path="res://assets/sprites/spotted.sprites/Spotted-1.tres" id="12_6t5hd"]
+[ext_resource type="Texture2D" uid="uid://dudglwf1oftfg" path="res://assets/sprites/spotted.sprites/Spotted-2.tres" id="13_ust7k"]
+[ext_resource type="Texture2D" uid="uid://svqre5ew6roy" path="res://assets/sprites/spotted.sprites/Spotted-3.tres" id="14_r7x1b"]
+[ext_resource type="Texture2D" uid="uid://byaonk7q8w64f" path="res://assets/sprites/spotted.sprites/Spotted-4.tres" id="15_to4g0"]
+[ext_resource type="Texture2D" uid="uid://0k3xxjbnohfv" path="res://assets/sprites/spotted.sprites/Spotted-5.tres" id="16_i7bgb"]
+[ext_resource type="Texture2D" uid="uid://bq5jox6cb6gj8" path="res://assets/sprites/spotted.sprites/Spotted-6.tres" id="17_gmask"]
+[ext_resource type="Texture2D" uid="uid://brda7gfc2rwna" path="res://assets/sprites/sensed.sprites/Sensed-1.tres" id="18_t8hqh"]
+[ext_resource type="Texture2D" uid="uid://di1j3a3nkpw6o" path="res://assets/sprites/sensed.sprites/Sensed-2.tres" id="19_7rpad"]
+[ext_resource type="Texture2D" uid="uid://dasqnkttr5f44" path="res://assets/sprites/sensed.sprites/Sensed-3.tres" id="20_qxk7t"]
+[ext_resource type="Texture2D" uid="uid://2gs2beowu7e2" path="res://assets/sprites/sensed.sprites/Sensed-4.tres" id="21_0sgwb"]
+[ext_resource type="Texture2D" uid="uid://drqe0x83kfvk4" path="res://assets/sprites/sensed.sprites/Sensed-5.tres" id="22_f5hcp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ot47"]
 bg_color = Color(0.996078, 0.415686, 0.356863, 0.513726)
@@ -43,95 +43,95 @@ shadow_offset = Vector2(0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4pjsy"]
 resource_local_to_scene = true
-shader = ExtResource("2_b8jfj")
+shader = ExtResource("2_ohaly")
 shader_parameter/quantity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vqlx"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipbsa"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(32, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hha1y"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(64, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rc41"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bf6ck"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b05pl"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtevy"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1omr1"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ntmdc"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52n7w"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q762o"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bh44y"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejo23"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypp7n"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35tco"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(160, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kn565"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(192, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jvrw"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf8q7"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2xpx"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7svym"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40i0v"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcnww"]
-atlas = ExtResource("2_ml24s")
+atlas = ExtResource("3_q4vvt")
 region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5jic6"]
@@ -271,22 +271,22 @@ radius = 8.68231
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_66kjt")
+"texture": ExtResource("12_6t5hd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_fwx24")
+"texture": ExtResource("13_ust7k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_baox4")
+"texture": ExtResource("14_r7x1b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_rrqde")
+"texture": ExtResource("15_to4g0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_av8p4")
+"texture": ExtResource("16_i7bgb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_62p8v")
+"texture": ExtResource("17_gmask")
 }],
 "loop": false,
 "name": &"default",
@@ -297,28 +297,28 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_m7636")
+"texture": ExtResource("18_t8hqh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_e2215")
+"texture": ExtResource("19_7rpad")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_d5cw8")
+"texture": ExtResource("20_qxk7t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_i6qf5")
+"texture": ExtResource("21_0sgwb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_8i4iw")
+"texture": ExtResource("22_f5hcp")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Slime" type="CharacterBody2D" groups=["enemy"]]
+[node name="Charger" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(5, 5)
-script = ExtResource("1_xq5uw")
+script = ExtResource("1_jm5w2")
 
 [node name="HPbar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(60, 2)
@@ -335,7 +335,7 @@ show_percentage = false
 material = SubResource("ShaderMaterial_4pjsy")
 sprite_frames = SubResource("SpriteFrames_5jic6")
 animation = &"Walk"
-script = ExtResource("3_e3mww")
+script = ExtResource("4_qqqii")
 
 [node name="damage" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -353,27 +353,27 @@ position = Vector2(0.2, 2)
 shape = SubResource("CircleShape2D_mc8br")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("4_7htyd")
-current_state = NodePath("Idle")
+script = ExtResource("5_qbksx")
+current_state = NodePath("")
 
 [node name="Idle" type="Node" parent="State Machine"]
-script = ExtResource("5_edwtq")
+script = ExtResource("6_60xip")
 move_speed = 5.0
 
 [node name="Chase" type="Node" parent="State Machine"]
-script = ExtResource("6_7udfh")
+script = ExtResource("7_dcunm")
 
 [node name="Attack" type="Node" parent="State Machine"]
-script = ExtResource("7_ahfcf")
+script = ExtResource("8_8q823")
 
 [node name="Death" type="Node" parent="State Machine"]
-script = ExtResource("9_teb81")
+script = ExtResource("9_2ynlu")
 
 [node name="Stun" type="Node" parent="State Machine"]
-script = ExtResource("10_naw5n")
+script = ExtResource("10_dog5e")
 
 [node name="RangeAttack" type="Node" parent="State Machine"]
-script = ExtResource("11_rxyjb")
+script = ExtResource("11_6geom")
 
 [node name="Alerted" type="AnimatedSprite2D" parent="."]
 visible = false

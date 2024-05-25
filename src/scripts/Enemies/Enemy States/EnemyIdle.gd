@@ -41,7 +41,7 @@ func _state_physics_update(delta : float):
 		if direction.length() < sm.detection_range:
 			sm._change_state($"../Chase")
 		
-		if direction.length() <= sm.attack_range:
+		if direction.length() <= sm.attack_range - 10:
 			if sm.melee:
 				sm._change_state($"../Attack")
 			else:

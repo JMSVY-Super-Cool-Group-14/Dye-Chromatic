@@ -33,7 +33,7 @@ func set_properties(atk_speed, atk_damge, orb_scale=Vector2(1,1), start_position
 	pos = start_pos
 		
 func set_direction(direction: Vector2):
-	self.global_rotation = direction.angle() - PI/2
+	self.global_rotation = direction.angle()
 	projectile_velocity = direction.normalized() * speed
 	
 func _on_area_entered(area):
