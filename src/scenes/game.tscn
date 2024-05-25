@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=18 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="PackedScene" uid="uid://b42tsxmiyx5rk" path="res://scenes/Enemies/Fire.tscn" id="3_84lwp"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
+[ext_resource type="PackedScene" uid="uid://b8mtefelef5v0" path="res://scenes/Enemies/charger.tscn" id="3_ldqj7"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
@@ -37,6 +38,10 @@ fsm = NodePath("../../../FiniteStateMachine")
 script = ExtResource("1_u7rhi")
 
 [node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
+
+[node name="Charger" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
+position = Vector2(469, 329)
+scale = Vector2(1, 1)
 
 [node name="Fire" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_84lwp")]
 position = Vector2(558, 274)

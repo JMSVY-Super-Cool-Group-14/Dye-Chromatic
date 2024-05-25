@@ -26,6 +26,7 @@ func _state_update(delta : float):
 		wander_time -= delta
 	
 	else:
+		await get_tree().create_timer(2).timeout
 		random_wander()
 		
 func _state_physics_update(delta : float):

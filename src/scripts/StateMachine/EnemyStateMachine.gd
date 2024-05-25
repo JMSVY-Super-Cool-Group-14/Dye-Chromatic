@@ -12,7 +12,7 @@ class_name enemyStateMachine
 
 signal took_dmg
 
-func take_damage(dmg):
+func take_damage(dmg, atk_type):
 	health -= dmg
 	if health < 100:
 		hpbar.visible = true

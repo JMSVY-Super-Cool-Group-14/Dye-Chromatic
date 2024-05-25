@@ -8,8 +8,11 @@ var phase3 = false
 
 var melee_range = 30
 
-func take_damage(dmg):
-	health -= dmg
+func take_damage(dmg, atk_type):
+	if phase3 and atk_type == "range":
+		health -= 1
+	else:
+		health -=dmg
 	print(health)
 
 func _ready():

@@ -1,27 +1,52 @@
-[gd_scene load_steps=56 format=3 uid="uid://b8mtefelef5v0"]
+[gd_scene load_steps=59 format=3 uid="uid://b8mtefelef5v0"]
 
-[ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_jm5w2"]
+[ext_resource type="Script" path="res://scripts/Enemies/Charger/charger.gd" id="1_o44q7"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_ohaly"]
-[ext_resource type="Texture2D" uid="uid://t88m5j0qcxcy" path="res://assets/legacy/slime.png" id="3_q4vvt"]
+[ext_resource type="Texture2D" uid="uid://f05p7pjiobiw" path="res://assets/sprites/fire_charger.sprites/charger_still_front-1.tres" id="3_a754a"]
+[ext_resource type="Texture2D" uid="uid://ta7p3gpuchoo" path="res://assets/sprites/fire_charger.sprites/charger_still_front-2.tres" id="4_8g37a"]
 [ext_resource type="Script" path="res://scripts/Enemies/EnemyAnimatedSprite2D.gd" id="4_qqqii"]
+[ext_resource type="Texture2D" uid="uid://m1udhh3rf1kj" path="res://assets/sprites/fire_charger.sprites/charger_still_front-3.tres" id="5_eqif3"]
 [ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="5_qbksx"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyIdle.gd" id="6_60xip"]
+[ext_resource type="Texture2D" uid="uid://xnan8nycy8g0" path="res://assets/sprites/fire_charger.sprites/charger_still_front-4.tres" id="6_hu4n7"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyChase.gd" id="7_dcunm"]
+[ext_resource type="Texture2D" uid="uid://be58cyqqs0dbg" path="res://assets/sprites/fire_charger.sprites/charger_still_side-1.tres" id="7_svw30"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyAttack.gd" id="8_8q823"]
+[ext_resource type="Texture2D" uid="uid://b7sf1pf4lfkkf" path="res://assets/sprites/fire_charger.sprites/charger_still_side-2.tres" id="8_86tah"]
 [ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeDeath.gd" id="9_2ynlu"]
+[ext_resource type="Texture2D" uid="uid://bjd6vyoofb1mr" path="res://assets/sprites/fire_charger.sprites/charger_still_side-3.tres" id="9_umaus"]
 [ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeStun.gd" id="10_dog5e"]
+[ext_resource type="Texture2D" uid="uid://nce01bmg0dte" path="res://assets/sprites/fire_charger.sprites/charger_still_side-4.tres" id="10_obqmi"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyRangeAttack.gd" id="11_6geom"]
+[ext_resource type="Texture2D" uid="uid://dgluwuhi1r00c" path="res://assets/sprites/fire_charger.sprites/charger_still_side-5.tres" id="11_srj04"]
 [ext_resource type="Texture2D" uid="uid://by3xjc0rv0nus" path="res://assets/sprites/spotted.sprites/Spotted-1.tres" id="12_6t5hd"]
+[ext_resource type="Texture2D" uid="uid://cvn2rbhyuy5qj" path="res://assets/sprites/fire_charger.sprites/charger_still_back-1.tres" id="12_k5i8w"]
+[ext_resource type="Texture2D" uid="uid://bbvp406ea7uxy" path="res://assets/sprites/fire_charger.sprites/charger_still_back-2.tres" id="13_iax43"]
 [ext_resource type="Texture2D" uid="uid://dudglwf1oftfg" path="res://assets/sprites/spotted.sprites/Spotted-2.tres" id="13_ust7k"]
+[ext_resource type="Texture2D" uid="uid://dik8kq4rln2i1" path="res://assets/sprites/fire_charger.sprites/charger_still_back-3.tres" id="14_pw60p"]
 [ext_resource type="Texture2D" uid="uid://svqre5ew6roy" path="res://assets/sprites/spotted.sprites/Spotted-3.tres" id="14_r7x1b"]
+[ext_resource type="Texture2D" uid="uid://d1m308hg7kran" path="res://assets/sprites/fire_charger.sprites/charger_still_back-4.tres" id="15_ajxuw"]
 [ext_resource type="Texture2D" uid="uid://byaonk7q8w64f" path="res://assets/sprites/spotted.sprites/Spotted-4.tres" id="15_to4g0"]
 [ext_resource type="Texture2D" uid="uid://0k3xxjbnohfv" path="res://assets/sprites/spotted.sprites/Spotted-5.tres" id="16_i7bgb"]
+[ext_resource type="Texture2D" uid="uid://c06q80b0rlpwx" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_front-1.png" id="16_v44aq"]
 [ext_resource type="Texture2D" uid="uid://bq5jox6cb6gj8" path="res://assets/sprites/spotted.sprites/Spotted-6.tres" id="17_gmask"]
+[ext_resource type="Texture2D" uid="uid://buuobilu5bklm" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_front-2.png" id="17_nj3jo"]
+[ext_resource type="Texture2D" uid="uid://c2ayw7bdumprb" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_front-3.png" id="18_ot351"]
 [ext_resource type="Texture2D" uid="uid://brda7gfc2rwna" path="res://assets/sprites/sensed.sprites/Sensed-1.tres" id="18_t8hqh"]
 [ext_resource type="Texture2D" uid="uid://di1j3a3nkpw6o" path="res://assets/sprites/sensed.sprites/Sensed-2.tres" id="19_7rpad"]
+[ext_resource type="Texture2D" uid="uid://c4g8cyq0ilg0c" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_front-4.png" id="19_xhdg2"]
+[ext_resource type="Texture2D" uid="uid://cw5300f55dg1v" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_side-1.png" id="20_agpuk"]
 [ext_resource type="Texture2D" uid="uid://dasqnkttr5f44" path="res://assets/sprites/sensed.sprites/Sensed-3.tres" id="20_qxk7t"]
 [ext_resource type="Texture2D" uid="uid://2gs2beowu7e2" path="res://assets/sprites/sensed.sprites/Sensed-4.tres" id="21_0sgwb"]
+[ext_resource type="Texture2D" uid="uid://cxqtjiobqcroc" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_side-2.png" id="21_4pil2"]
 [ext_resource type="Texture2D" uid="uid://drqe0x83kfvk4" path="res://assets/sprites/sensed.sprites/Sensed-5.tres" id="22_f5hcp"]
+[ext_resource type="Texture2D" uid="uid://cqhpsobou4uoc" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_side-3.png" id="22_pobpd"]
+[ext_resource type="Texture2D" uid="uid://cwaf3fbrdqxqt" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_side-4.png" id="23_5kspf"]
+[ext_resource type="Texture2D" uid="uid://bbgdwh601rogw" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_side-5.png" id="24_aunjl"]
+[ext_resource type="Texture2D" uid="uid://c0n5n8coqfpge" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_back-1.png" id="25_ewo02"]
+[ext_resource type="Texture2D" uid="uid://cfonreyj5ow1l" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_back-2.png" id="26_6frux"]
+[ext_resource type="Texture2D" uid="uid://crh3gvlo16n7c" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_back-3.png" id="27_b8goc"]
+[ext_resource type="Texture2D" uid="uid://tdti4mpcwmm" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_back-4.png" id="28_ch1yt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ot47"]
 bg_color = Color(0.996078, 0.415686, 0.356863, 0.513726)
@@ -46,180 +71,124 @@ resource_local_to_scene = true
 shader = ExtResource("2_ohaly")
 shader_parameter/quantity = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vqlx"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(0, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipbsa"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(32, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hha1y"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(64, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rc41"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(96, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bf6ck"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(128, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b05pl"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtevy"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1omr1"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntmdc"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_52n7w"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q762o"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bh44y"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejo23"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ypp7n"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_35tco"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(160, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kn565"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(192, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jvrw"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wf8q7"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e2xpx"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7svym"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_40i0v"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tcnww"]
-atlas = ExtResource("3_q4vvt")
-region = Rect2(160, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5jic6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8qse"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8vqlx")
+"frames": [],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ipbsa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hha1y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0rc41")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bf6ck")
-}],
-"loop": false,
+"frames": [],
+"loop": true,
 "name": &"Death",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b05pl")
+"texture": ExtResource("3_a754a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gtevy")
+"texture": ExtResource("4_8g37a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1omr1")
+"texture": ExtResource("5_eqif3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ntmdc")
+"texture": ExtResource("6_hu4n7")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"Idle_Down",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_52n7w")
+"texture": ExtResource("7_svw30")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q762o")
+"texture": ExtResource("8_86tah")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bh44y")
+"texture": ExtResource("9_umaus")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ejo23")
+"texture": ExtResource("10_obqmi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ypp7n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_35tco")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kn565")
+"texture": ExtResource("11_srj04")
 }],
 "loop": true,
-"name": &"Jump",
+"name": &"Idle_Side",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4jvrw")
+"texture": ExtResource("12_k5i8w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wf8q7")
+"texture": ExtResource("13_iax43")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e2xpx")
+"texture": ExtResource("14_pw60p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7svym")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_40i0v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tcnww")
+"texture": ExtResource("15_ajxuw")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"Idle_Up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_v44aq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nj3jo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ot351")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_xhdg2")
+}],
+"loop": true,
+"name": &"Move_Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_agpuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_4pil2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_pobpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_5kspf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_aunjl")
+}],
+"loop": true,
+"name": &"Move_Side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_ewo02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_6frux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_b8goc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ch1yt")
+}],
+"loop": true,
+"name": &"Move_Up",
 "speed": 5.0
 }]
 
@@ -318,7 +287,7 @@ animations = [{
 
 [node name="Charger" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(5, 5)
-script = ExtResource("1_jm5w2")
+script = ExtResource("1_o44q7")
 
 [node name="HPbar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(60, 2)
@@ -333,8 +302,10 @@ show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_4pjsy")
-sprite_frames = SubResource("SpriteFrames_5jic6")
-animation = &"Walk"
+scale = Vector2(0.04, 0.04)
+sprite_frames = SubResource("SpriteFrames_c8qse")
+animation = &"Move_Down"
+frame_progress = 0.380746
 script = ExtResource("4_qqqii")
 
 [node name="damage" type="AnimationPlayer" parent="AnimatedSprite2D"]
