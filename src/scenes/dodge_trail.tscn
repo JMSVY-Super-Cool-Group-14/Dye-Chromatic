@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnptepervwere"]
+
+[ext_resource type="Script" path="res://scripts/dodgeTrail.gd" id="1_hq4m4"]
+
+[sub_resource type="Curve" id="Curve_kpi2b"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_o3gyl"]
+colors = PackedColorArray(1, 1, 1, 1, 0.31802, 0.31802, 0.31802, 1)
+
+[node name="DodgeTrail" type="Line2D"]
+top_level = true
+points = PackedVector2Array(0, 0, 20, 0)
+width_curve = SubResource("Curve_kpi2b")
+gradient = SubResource("Gradient_o3gyl")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("1_hq4m4")
