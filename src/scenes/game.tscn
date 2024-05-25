@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=21 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -15,8 +15,12 @@
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
 [ext_resource type="Texture2D" uid="uid://ctt64l016sbp5" path="res://assets/levels/IMG_8232.jpg" id="14_oago4"]
-[ext_resource type="Script" path="res://scripts/Teleporter.gd" id="15_22s8w"]
+[ext_resource type="Script" path="res://scripts/TeleporterBossArea.gd" id="15_22s8w"]
 [ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="16_c4v32"]
+[ext_resource type="Script" path="res://scripts/TeleporterBoss.gd" id="17_y0q0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeoj1"]
+size = Vector2(131, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42ngy"]
 size = Vector2(33.5, 24)
@@ -175,12 +179,24 @@ autoplay = true
 z_index = 1
 position = Vector2(184, 138)
 
-[node name="TeleporterObject" type="Area2D" parent="."]
+[node name="Teleporters" type="Node2D" parent="."]
+
+[node name="TeleportToBoss" type="Area2D" parent="Teleporters"]
+script = ExtResource("17_y0q0e")
+
+[node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
+position = Vector2(727, 980)
+shape = SubResource("RectangleShape2D_eeoj1")
+
+[node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]
+position = Vector2(668, 563)
+
+[node name="TeleportToBossArea" type="Area2D" parent="Teleporters"]
 script = ExtResource("15_22s8w")
 
-[node name="TeleportPosition" type="Node2D" parent="TeleporterObject"]
-position = Vector2(750, 1765)
-
-[node name="BaseToBoss" type="CollisionShape2D" parent="TeleporterObject"]
+[node name="BaseToBossArea" type="CollisionShape2D" parent="Teleporters/TeleportToBossArea"]
 position = Vector2(303, 16)
 shape = SubResource("RectangleShape2D_42ngy")
+
+[node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
+position = Vector2(447, 1749)
