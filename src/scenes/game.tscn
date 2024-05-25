@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=19 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
 [ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
-[ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="16_c4v32"]
 [ext_resource type="Texture2D" uid="uid://ctt64l016sbp5" path="res://assets/levels/IMG_8232.jpg" id="14_oago4"]
 [ext_resource type="Script" path="res://scripts/Teleporter.gd" id="15_22s8w"]
+[ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="16_c4v32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42ngy"]
 size = Vector2(33.5, 24)
@@ -174,6 +174,7 @@ autoplay = true
 [node name="Fire Boss" parent="." instance=ExtResource("16_c4v32")]
 z_index = 1
 position = Vector2(184, 138)
+
 [node name="TeleporterObject" type="Area2D" parent="."]
 script = ExtResource("15_22s8w")
 

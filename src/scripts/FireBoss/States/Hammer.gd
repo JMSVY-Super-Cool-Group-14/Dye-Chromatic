@@ -2,7 +2,7 @@ extends State
 class_name hammerAttack
 
 @onready var boss = $"../.."
-@onready var player = $"../../../Player"
+@onready var player = $"/root/Game/Areas/Global/Player"
 @onready var sm = $".."
 
 var hammerDamage = 50
