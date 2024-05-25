@@ -170,6 +170,7 @@ texture = ExtResource("14_oago4")
 offset_top = 2400.0
 offset_right = 1674.0
 offset_bottom = 3801.0
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("15_5hiwj")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -184,7 +185,7 @@ autoplay = true
 
 [node name="Fire Boss" parent="." instance=ExtResource("16_c4v32")]
 z_index = 1
-position = Vector2(184, 138)
+position = Vector2(569, 2681)
 
 [node name="Teleporters" type="Node2D" parent="."]
 
