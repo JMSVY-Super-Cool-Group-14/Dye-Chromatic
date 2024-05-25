@@ -1,8 +1,8 @@
 # Teleporter.gd
 extends Area2D
 
-@export var new_camera_bounds = Rect2(Vector2(0, 800), Vector2(1817, 800 + 1469))
-@export var new_player_bounds = Rect2(Vector2(10, 810), Vector2(1807, 790 + 1469))  # Custom values for player bounds
+@export var new_camera_bounds = Rect2(Vector2(0, 2400), Vector2(1674, 2400 + 1401))
+@export var new_player_bounds = Rect2(Vector2(10, 2410), Vector2(1664, 2390 + 1401))  # Custom values for player bounds
 
 @onready var player: Area2D
 @onready var camera: Camera2D
