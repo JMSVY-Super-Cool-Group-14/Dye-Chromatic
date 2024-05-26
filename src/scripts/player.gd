@@ -42,8 +42,8 @@ var blueUltDelta = 0
 @export var blueUltDamage = 20
 @export var meleeRange = 18
 var velocity = Vector2.ZERO
-var leftColourSelect = ["grey", "red", "green", "blue"]
-var rightColourSelect = ["grey", "red", "green", "blue"]
+var leftColourSelect = ["grey"]
+var rightColourSelect = ["grey"]
 var colourWheel = {
 	"grey" : Color(0.5, 0.5, 0.5),
 	"red" : Color(1, 0, 0),
@@ -76,6 +76,16 @@ var projectile_scene = preload("res://scenes/attacks/projectile.tscn")
 var special_magenta_scene = preload("res://scenes/attacks/special_magenta.tscn")
 var special_blue_scene = preload("res://scenes/attacks/special_blue.tscn")
 var blue_ult_scene = preload("res://scenes/attacks/blue_ult.tscn")
+
+# Shaders
+var noRedShader = preload("res://assets/shaders/noRed.gdshader")
+var noGreenShader = preload("res://assets/shaders/noGreen.gdshader")
+var noBlueShader = preload("res://assets/shaders/noBlue.gdshader")
+var noBlueRedShader = preload("res://assets/shaders/noBlueRed.gdshader")
+var noBlueGreenShader = preload("res://assets/shaders/noBlueGreen.gdshader")
+var noGreenRedShader = preload("res://assets/shaders/noGreenRed.gdshader")
+var noColourShader = preload("res://assets/shaders/noColour.gdshader")
+
 var dodge_trail: Trail
 var sprint_trail: Trail
 
@@ -174,6 +184,16 @@ func key_move():
 		velocity.y += 1
 		
 func _input(event):
+	
+	if event.is_action_pressed("addBlue"):
+		if !leftColourSelect.has("blue"):
+			addColour("blue")
+	if event.is_action_pressed("addGreen"):
+		if !leftColourSelect.has("green"):
+			addColour("green")
+	if event.is_action_pressed("addRed"):
+		if !leftColourSelect.has("red"):
+			addColour("red")
 	if !isSprinting:
 		colour_input(event)
 		attack_input(event)
@@ -302,17 +322,19 @@ func colour_reset():
 func colour_input(event):
 	if colourSwitchDelta > colourSwitchDelay:
 		colourSwitchDelta = 0
+		var totalColours = leftColourSelect.size()
+		print(totalColours)
 		if event.is_action_pressed("left_colour"):
-			leftIndex = (leftIndex + 1) % 4
+			leftIndex = (leftIndex + 1) % totalColours
 			if leftIndex == rightIndex:    
-				leftIndex = (leftIndex + 1) % 4
+				leftIndex = (leftIndex + 1) % totalColours
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 			else:
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 		elif event.is_action_pressed("right_colour"):
-			rightIndex = (rightIndex + 1) % 4
+			rightIndex = (rightIndex + 1) % totalColours
 			if rightIndex == leftIndex:
-				rightIndex = (rightIndex + 1) % 4
+				rightIndex = (rightIndex + 1) % totalColours
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
 			else:
 				set_colour(leftColourSelect[leftIndex], rightColourSelect[rightIndex])
@@ -476,3 +498,53 @@ func make_trail():
 func teleport(new_position: Vector2):
 	global_position = new_position
 	print("Teleported to: ", new_position)
+
+func addColour(colour: String):
+	leftColourSelect.append(colour)
+	rightColourSelect.append(colour)
+	drainColour(colour)
+
+func drainColour(colour: Color):
+	var world = get_tree().root.get_child(0)
+	for area in world.get_children():
+		if area is TextureRect:
+			loadShader(area)
+
+func loadShader(area):
+	print(area)
+	if leftColourSelect.has("blue"):
+		
+		if leftColourSelect.has("red"):
+			
+			# drainAll
+			if leftColourSelect.has("green"):
+				area.material.shader = noColourShader
+			
+			# drainBlueRed
+			else:
+				area.material.shader = noBlueRedShader
+		
+		# drainBlueGreen
+		elif leftColourSelect.has("green"):
+			area.material.shader = noBlueGreenShader
+		
+		# drainBlue
+		else:
+			area.material.shader = noBlueShader
+			
+	elif leftColourSelect.has("red"):
+		
+		# drainGreenRed
+		if leftColourSelect.has("green"):
+			area.material.shader = noGreenRedShader
+		
+		# drainRed
+		else:
+			area.material.shader = noRedShader
+	
+	# drainGreen
+	elif leftColourSelect.has("green"):
+		area.material.shader = noGreenShader
+	
+	else:
+		area.material.shader = null
