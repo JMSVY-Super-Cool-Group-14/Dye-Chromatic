@@ -44,6 +44,7 @@ func _state_update(delta : float):
 	if wander_time > 0:
 		wander_time -= delta
 	else:
+		enemy.velocity = Vector2.ZERO
 		await get_tree().create_timer(2).timeout
 		random_wander()
 

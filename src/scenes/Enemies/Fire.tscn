@@ -1,9 +1,8 @@
-[gd_scene load_steps=51 format=3 uid="uid://b42tsxmiyx5rk"]
+[gd_scene load_steps=50 format=3 uid="uid://b42tsxmiyx5rk"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy.gd" id="1_twuhi"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_uvs56"]
 [ext_resource type="Texture2D" uid="uid://dovf0jfxl0eq5" path="res://assets/sprites/fire_enemy.sprites/attack/Fire_attack-1.tres" id="3_glln1"]
-[ext_resource type="Script" path="res://scripts/Enemies/EnemyAnimatedSprite2D.gd" id="4_561e0"]
 [ext_resource type="Texture2D" uid="uid://crd7dcqjax8bx" path="res://assets/sprites/fire_enemy.sprites/attack/Fire_attack-2.tres" id="4_taro1"]
 [ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="5_0jsj4"]
 [ext_resource type="Texture2D" uid="uid://biu5heh4r38y0" path="res://assets/sprites/fire_enemy.sprites/die/Fire_die-1.tres" id="5_moerr"]
@@ -253,7 +252,6 @@ material = SubResource("ShaderMaterial_4pjsy")
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_bffp0")
 animation = &"Attack"
-script = ExtResource("4_561e0")
 
 [node name="damage" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {

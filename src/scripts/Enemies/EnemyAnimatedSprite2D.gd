@@ -3,15 +3,26 @@ extends AnimatedSprite2D
 @onready var charger = $".."
 var charging_val = false
 var last_move = "down"
+var main_dir
+var dir_value
+
+@onready var shield = $"../Shield"
+@onready var hit_box = $"../Hit Box"
+
+
 
 
 func _ready():
 	animation_looped.connect(end_attack)
 	set_process(true)
+	print(shield)
+	print(hit_box)
 
 func _process(delta):
-	if !charging_val:
-		walk_idle()
+	if !charging_val and int(delta) % 5 == 0:
+		var velocity = charger.velocity.normalized()
+		walk_idle(velocity)
+		
 
 	# Only debug information should be here, movement is removed
 	#print("Player Position: ", player.position)
@@ -20,33 +31,36 @@ func _process(delta):
 func end_attack():
 	charging_val = false
 
-func walk_idle():
+func walk_idle(velocity):
 	if charger.velocity.length() <= 0:
 		if last_move == "down":
-			animation = "Idle_Down"
+			self.play("Idle_Down")
 		elif last_move == "up":
-			animation = "Idle_Up"
+			self.play("Idle_Up")
 		elif last_move == "right":
-			animation == "Idle_side"
+			self.play("Idle_Side")
 			flip_h == true
 		elif last_move == "left":
-			animation = "Idle_side"
+			self.play("Idle_Side")
 			flip_h = false
 		return
 	
 	# Walking animation
-	if charger.velocity.x > 0.25 or charger.velocity.x < -0.25:
-		animation = "Move_Side"
+
+	
+	if velocity.x > 0.25:
+		self.play("Move_Side")
 		flip_h = true
 		last_move = "right"
-		if charger.velocity.x < 0:
-			flip_h = false
-			last_move = "left"
-	elif charger.velocity.y > 0:
-		animation = "Move_Down"
+	elif velocity.x < -0.25:
+		self.play("Move_Side")
+		flip_h = false
+		last_move = "left"
+	elif velocity.y > 0:
+		self.play("Move_Down")
 		last_move = "down"
-	elif charger.velocity.y < 0:
-		animation = "Move_Up"
+	elif velocity.y < 0:
+		self.play("Move_Up")
 		last_move = "up"
 
 	

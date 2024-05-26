@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b8mtefelef5v0"]
+[gd_scene load_steps=58 format=3 uid="uid://b8mtefelef5v0"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Charger/charger.gd" id="1_o44q7"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_ohaly"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/Enemies/EnemyAnimatedSprite2D.gd" id="4_qqqii"]
 [ext_resource type="Texture2D" uid="uid://m1udhh3rf1kj" path="res://assets/sprites/fire_charger.sprites/charger_still_front-3.tres" id="5_eqif3"]
 [ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="5_qbksx"]
-[ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyIdle.gd" id="6_60xip"]
 [ext_resource type="Texture2D" uid="uid://xnan8nycy8g0" path="res://assets/sprites/fire_charger.sprites/charger_still_front-4.tres" id="6_hu4n7"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyChase.gd" id="7_dcunm"]
 [ext_resource type="Texture2D" uid="uid://be58cyqqs0dbg" path="res://assets/sprites/fire_charger.sprites/charger_still_side-1.tres" id="7_svw30"]
@@ -47,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://cfonreyj5ow1l" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_back-2.png" id="26_6frux"]
 [ext_resource type="Texture2D" uid="uid://crh3gvlo16n7c" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_back-3.png" id="27_b8goc"]
 [ext_resource type="Texture2D" uid="uid://tdti4mpcwmm" path="res://assets/sprites/fire_charger.sprites/move/charger_charge_back-4.png" id="28_ch1yt"]
+[ext_resource type="Script" path="res://scripts/Enemies/Charger/Idle.gd" id="31_g3aob"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ot47"]
 bg_color = Color(0.996078, 0.415686, 0.356863, 0.513726)
@@ -231,10 +231,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rk53v"]
-radius = 9.6318
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mc8br"]
-radius = 8.68231
+radius = 12.8062
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q2mvy"]
 animations = [{
@@ -304,8 +301,7 @@ show_percentage = false
 material = SubResource("ShaderMaterial_4pjsy")
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_c8qse")
-animation = &"Move_Down"
-frame_progress = 0.380746
+animation = &"Move_Up"
 script = ExtResource("4_qqqii")
 
 [node name="damage" type="AnimationPlayer" parent="AnimatedSprite2D"]
@@ -314,22 +310,46 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -1.4)
 shape = SubResource("CircleShape2D_rk53v")
+
+[node name="Shield" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="front" type="CollisionPolygon2D" parent="Shield"]
+visible = false
+polygon = PackedVector2Array(-11, -7.4, -12, -6.2, -11.2, 5, -5.8, 9.4, 8, 9.2, 11.6, 3.6, 12, -7.4, 10.4, -9, 10.4, -7, 6.2, -3.6, -0.2, -2.4, -6, -3.4)
+
+[node name="side" type="CollisionPolygon2D" parent="Shield"]
+visible = false
+polygon = PackedVector2Array(-3.8, -10.2, -8, -8, -9.2, -6.6, -7.8, 8.2, -3.4, 10.6, 2, 10.4, 4.6, 6.4, 3.6, -4.2, -0.2, -2.4, -6.2, -3.8, -3.8, -6.6)
+
+[node name="back" type="CollisionPolygon2D" parent="Shield"]
+visible = false
+polygon = PackedVector2Array(-9, -1, -6.8, -5.4, 3.6, -6.4, 9.2, -3.2, 8.6, -1.8, 8.2, 11.2, 10.4, 7.4, 11.8, -4.4, 3.8, -7.6, -0.6, -8.2, -8.2, -6.2, -11.4, -3.4, -9.8, 9.6, -6.2, 12.2)
 
 [node name="Hit Box" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
-position = Vector2(0.2, 2)
-shape = SubResource("CircleShape2D_mc8br")
+[node name="front" type="CollisionPolygon2D" parent="Hit Box"]
+visible = false
+polygon = PackedVector2Array(-8, -5.6, -6.4, -7.8, -3.2, -8.8, 4.4, -8.8, 8.8, -6.2)
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+[node name="side" type="CollisionPolygon2D" parent="Hit Box"]
+visible = false
+polygon = PackedVector2Array(-3.2, -6.2, 1.4, -9, 8, -8.8, 13, -3.2, 12.6, 6.2, 10.6, 8.4, 2.6, 10, 5, 6.4, 3.8, -4.4, 0.2, -3, -5.8, -4)
+
+[node name="back" type="CollisionPolygon2D" parent="Hit Box"]
+visible = false
+polygon = PackedVector2Array(-6.6, 10.2, -2.2, 12.4, 4.8, 11.8, 7.6, 9.4, 8.4, -2.4, 3.8, -6, -6.6, -5.4, -8.6, -1)
+
+[node name="State Machine" type="Node" parent="."]
 script = ExtResource("5_qbksx")
-current_state = NodePath("")
+attack_range = 50.0
+detection_range = 100.0
+chase_range = 120.0
 
 [node name="Idle" type="Node" parent="State Machine"]
-script = ExtResource("6_60xip")
-move_speed = 5.0
+script = ExtResource("31_g3aob")
 
 [node name="Chase" type="Node" parent="State Machine"]
 script = ExtResource("7_dcunm")
@@ -359,6 +379,7 @@ scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_5b251")
 frame_progress = 0.942786
 
+[connection signal="area_entered" from="Shield" to="State Machine" method="_on_shield_area_entered"]
 [connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Hit Box" to="State Machine/Attack" method="_on_hit_box_body_exited"]
 [connection signal="took_dmg" from="State Machine" to="." method="_on_state_machine_took_dmg"]

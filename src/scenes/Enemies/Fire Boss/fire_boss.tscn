@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bqshflfh0xvtq"]
+[gd_scene load_steps=28 format=3 uid="uid://bqshflfh0xvtq"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/FireBossStateMachine.gd" id="1_fiec5"]
 [ext_resource type="Script" path="res://scripts/FireBoss/fire_boss.gd" id="1_suwo4"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/FireBoss/States/P3orbAttack.gd" id="12_dtmw4"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Hammer.gd" id="13_medyo"]
 [ext_resource type="Texture2D" uid="uid://gicoqath6q3k" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-pool-4.png" id="13_n4puw"]
+[ext_resource type="Script" path="res://scripts/FireBoss/States/Waiting.gd" id="15_d828u"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Retrieve.gd" id="24_ocux1"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/P3Melee.gd" id="25_2vk8h"]
 
@@ -96,6 +97,9 @@ animation = &"Still_Pool"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_fiec5")
+
+[node name="Waiting" type="Node" parent="StateMachine"]
+script = ExtResource("15_d828u")
 
 [node name="Phase1" type="Node" parent="StateMachine"]
 script = ExtResource("2_atfl2")
