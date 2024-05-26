@@ -9,7 +9,7 @@ var angle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_pos = global_position
+	start_pos = global_position + Vector2(0, 90)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
