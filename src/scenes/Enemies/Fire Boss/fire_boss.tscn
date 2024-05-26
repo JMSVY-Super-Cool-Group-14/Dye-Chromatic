@@ -1,20 +1,28 @@
-[gd_scene load_steps=28 format=3 uid="uid://bqshflfh0xvtq"]
+[gd_scene load_steps=36 format=3 uid="uid://bqshflfh0xvtq"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/FireBossStateMachine.gd" id="1_fiec5"]
 [ext_resource type="Script" path="res://scripts/FireBoss/fire_boss.gd" id="1_suwo4"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Phase1.gd" id="2_atfl2"]
 [ext_resource type="Texture2D" uid="uid://b4mko2eq02air" path="res://assets/sprites/fire_boss.sprites/move/Fireboss-move-1.tres" id="2_ix4hx"]
+[ext_resource type="Texture2D" uid="uid://lqslxudotttt" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-1.png" id="2_p5qlr"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Melee.gd" id="3_7fuaq"]
+[ext_resource type="Texture2D" uid="uid://663iodny6aw3" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-2.png" id="3_616sm"]
 [ext_resource type="Texture2D" uid="uid://c008dd0mmhlgl" path="res://assets/sprites/fire_boss.sprites/move/Fireboss-move-2.tres" id="3_gm4u3"]
+[ext_resource type="Texture2D" uid="uid://cqwxeioh6tq7" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-3.png" id="4_eg0xj"]
 [ext_resource type="Texture2D" uid="uid://ssfjrb72mhun" path="res://assets/sprites/fire_boss.sprites/move/Fireboss-move-3.tres" id="4_rvjuv"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/P1orbAttack.gd" id="4_tm0ay"]
 [ext_resource type="Texture2D" uid="uid://btk8ogqxdov64" path="res://assets/sprites/fire_boss.sprites/move/Fireboss-move-4.tres" id="5_h6d4i"]
+[ext_resource type="Texture2D" uid="uid://b7v0ddh7vbhk1" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-4.png" id="5_q72vt"]
 [ext_resource type="Texture2D" uid="uid://ej1wj41l7lf7" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-1.tres" id="6_b7ha8"]
+[ext_resource type="Texture2D" uid="uid://b0jx1i1p3v8rh" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-5.png" id="6_eoql6"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Phase2.gd" id="6_j61x4"]
 [ext_resource type="Texture2D" uid="uid://dvpv52k0w3mdo" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-2.tres" id="7_ekmij"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/P1lineAttack.gd" id="7_h74r5"]
+[ext_resource type="Texture2D" uid="uid://btd6sl2uwupkr" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-6.png" id="7_tsa7q"]
+[ext_resource type="Texture2D" uid="uid://cw51hw8r5xwgf" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-7.png" id="8_8lvc0"]
 [ext_resource type="Texture2D" uid="uid://cmyb2xsokhpyi" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-3.tres" id="8_vmsc1"]
 [ext_resource type="Texture2D" uid="uid://d0as3wuil5oxm" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-4.tres" id="9_fngv0"]
+[ext_resource type="Texture2D" uid="uid://dbfubhxvwp2hr" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-die-8.png" id="9_wt2s0"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/P2orbAttack.gd" id="10_rl2ec"]
 [ext_resource type="Texture2D" uid="uid://bo8j08xu8a2y1" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-pool-1.png" id="10_t1vx6"]
 [ext_resource type="Texture2D" uid="uid://da1itkw443n34" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-pool-2.png" id="11_0s7tj"]
@@ -29,6 +37,35 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iarbx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p5qlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_616sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eg0xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q72vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eoql6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tsa7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8lvc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wt2s0")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_ix4hx")
@@ -93,16 +130,16 @@ polygon = PackedVector2Array(200, -223.333, 260, -136.667, 286.667, -60, 260, -1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iarbx")
-animation = &"Still_Pool"
+animation = &"Death"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_fiec5")
 
-[node name="Waiting" type="Node" parent="StateMachine"]
-script = ExtResource("15_d828u")
-
 [node name="Phase1" type="Node" parent="StateMachine"]
 script = ExtResource("2_atfl2")
+
+[node name="Waiting" type="Node" parent="StateMachine"]
+script = ExtResource("15_d828u")
 
 [node name="P1orbAttack" type="Node" parent="StateMachine"]
 script = ExtResource("4_tm0ay")
