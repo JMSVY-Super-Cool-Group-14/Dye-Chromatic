@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=25 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -19,6 +19,12 @@
 [ext_resource type="Script" path="res://scripts/TeleporterBossArea.gd" id="15_22s8w"]
 [ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="16_c4v32"]
 [ext_resource type="Script" path="res://scripts/TeleporterBoss.gd" id="17_y0q0e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh2in"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3x2uq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1yhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eeoj1"]
 size = Vector2(131, 99)
@@ -155,18 +161,21 @@ focus_mode = 2
 [node name="UI" parent="." instance=ExtResource("6_evkas")]
 
 [node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_sh2in")
 offset_right = 1646.0
 offset_bottom = 1710.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_yusat")
 
 [node name="BossArea" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_3x2uq")
 offset_top = 800.0
 offset_right = 1817.0
 offset_bottom = 2269.0
 texture = ExtResource("14_oago4")
 
 [node name="Boss" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_q1yhp")
 offset_top = 2400.0
 offset_right = 1674.0
 offset_bottom = 3801.0
