@@ -16,6 +16,11 @@ void fragment() {
 	else if (textColour.r > textColour.g+offset && textColour.r > textColour.b+offset){
 		COLOR = vec4(0.6, 0.6, 0.6, 1);
 	}
+	
+	// make blue+red (purple) into grey
+	else if (textColour.b > textColour.g+offset && textColour.r > textColour.g+offset){
+		COLOR = vec4(0.6, 0.6, 0.6, 1);
+	}
 		
 }
 

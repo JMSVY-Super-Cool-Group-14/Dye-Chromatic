@@ -17,6 +17,11 @@ void fragment() {
 	else if (textColour.g > textColour.r+offset && textColour.g > textColour.b+offset){
 		COLOR = vec4(0.6, 0.6, 0.6, 1);
 	}
+	
+	// make blue+green (cyan) into grey
+	else if (textColour.b > textColour.r+offset && textColour.g > textColour.r+offset){
+		COLOR = vec4(0.6, 0.6, 0.6, 1);
+	}
 		
 }
 

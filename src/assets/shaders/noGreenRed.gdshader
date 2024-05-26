@@ -12,7 +12,13 @@ void fragment() {
 	else if (textColour.r > textColour.b+offset && textColour.r > textColour.g+offset){
 		COLOR = vec4(0.6, 0.6, 0.6, 1);
 	}
-		
+	
+	
+	// make green+red (yellow) into grey
+	else if (textColour.g > textColour.b+offset && textColour.r > textColour.b+offset){
+		COLOR = vec4(0.6, 0.6, 0.6, 1);
+	}
+	
 }
 
 //void light() {

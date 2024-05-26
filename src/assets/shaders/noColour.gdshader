@@ -7,7 +7,8 @@ void vertex() {
 
 void fragment() {
 	vec4 textColour = texture(TEXTURE, UV);
-	float offset = 0.0078;
+	float offset = 0.05
+	;
 	// Why not make all grey? Because we need outlines 
 	// of objects to still remain. These are black and 
 	// colours should be balanced rgb and thus should
@@ -25,6 +26,21 @@ void fragment() {
 	
 	// make red into grey
 	else if (textColour.r > textColour.b+offset && textColour.r > textColour.g+offset){
+		COLOR = vec4(0.6, 0.6, 0.6, 1);
+	}
+	
+	// make blue+red (purple) into grey
+	else if (textColour.b > textColour.g+offset && textColour.r > textColour.g+offset){
+		COLOR = vec4(0.6, 0.6, 0.6, 1);
+	}
+	
+	// make blue+green (cyan) into grey
+	else if (textColour.b > textColour.r+offset && textColour.g > textColour.r+offset){
+		COLOR = vec4(0.6, 0.6, 0.6, 1);
+	}
+	
+	// make green+red (yellow) into grey
+	else if (textColour.g > textColour.b+offset && textColour.r > textColour.b+offset){
 		COLOR = vec4(0.6, 0.6, 0.6, 1);
 	}
 		
