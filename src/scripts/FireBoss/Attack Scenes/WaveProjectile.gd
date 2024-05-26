@@ -3,26 +3,25 @@ class_name bossProjectile
 
 var projectile_velocity = Vector2.ZERO
 var speed = 10
-var range = 400
-var start_pos = Vector2.ZERO
+var start_pos
 var damage = 0
-var pos
 var angle
 var player
 var exited = false
+var range = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = $"../../Areas/Global/Player"
-	pos = global_position
+	start_pos = global_position
+	get_tree().create_timer(5).timeout.connect(func(): range = true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	update_direction_to_player()
-	pos += projectile_velocity * delta
-	self.global_position = pos
+	global_position += projectile_velocity * delta
 
-	if (global_position.distance_to(start_pos) > range):
+	if range:
 		queue_free()
 
 func set_properties(atk_speed, atk_damge, orb_scale=Vector2(1,1)):
@@ -47,7 +46,7 @@ func _on_area_entered(area):
 
 func _on_body_entered(body):
 	if body.is_in_group("boss") and exited:
-		body.fsm.take_damage(damage)
+		body.fsm.take_damage(damage, "orb")
 		queue_free()
 
 

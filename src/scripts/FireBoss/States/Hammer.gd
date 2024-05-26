@@ -1,6 +1,7 @@
 extends State
 class_name hammerAttack
 
+
 @onready var boss = $"../.."
 @onready var player = $"/root/Game/Areas/Global/Player"
 @onready var sm = $".."
@@ -14,8 +15,9 @@ var finished = false
 
 func _enter_state():
 	var hammer = hammer_scene.instantiate()
-	$"../..".add_child(hammer)
+	$"../../..".add_child(hammer)
 	hammer.global_position = player.global_position +Vector2(0,-70)
+	sm.hammer_location = hammer.global_position
 	hammer.set_properties(hammerDamage)
 	finished = true
 	

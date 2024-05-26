@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=24 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -203,7 +203,7 @@ position = Vector2(569, 2681)
 script = ExtResource("17_y0q0e")
 
 [node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
-position = Vector2(727, 980)
+position = Vector2(223, 368)
 shape = SubResource("RectangleShape2D_eeoj1")
 
 [node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]

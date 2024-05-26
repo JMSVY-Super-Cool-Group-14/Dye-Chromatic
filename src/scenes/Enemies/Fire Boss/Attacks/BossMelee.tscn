@@ -4,15 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://b20oiv0epkkbf" path="res://assets/sprites/fire_boss.sprites/Attacks/bossHand.png" id="2_072tq"]
 
 [node name="Projectile" type="Area2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_t4jv5")
 
 [node name="BossHand" type="Sprite2D" parent="."]
-position = Vector2(1507, 831)
+position = Vector2(2000, 831)
 rotation = 1.8326
 texture = ExtResource("2_072tq")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(493, -1.04082e-11)
+scale = Vector2(1, 1)
 polygon = PackedVector2Array(1422, 203, 1314, 211, 1156, 268, 1124, 319, 1258, 679, 1293, 1365, 1334, 1393, 1375, 1377, 1379, 1373, 1401, 1103, 1502, 1408, 1583, 1469, 1614, 1445, 1544, 1036, 1608, 1044, 1708, 1414, 1810, 1420, 1704, 987, 1716, 954, 1792, 1093, 1871, 1332, 1943, 1342, 1898, 1038, 1792, 775, 1877, 803, 1918, 879, 2026, 907, 2035, 864, 2010, 842, 1894, 613, 1606, 489)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

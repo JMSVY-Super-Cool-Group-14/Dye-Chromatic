@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqshflfh0xvtq"]
+[gd_scene load_steps=27 format=3 uid="uid://bqshflfh0xvtq"]
 
 [ext_resource type="Script" path="res://scripts/StateMachine/FireBossStateMachine.gd" id="1_fiec5"]
 [ext_resource type="Script" path="res://scripts/FireBoss/fire_boss.gd" id="1_suwo4"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" path="res://scripts/FireBoss/States/P3orbAttack.gd" id="12_dtmw4"]
 [ext_resource type="Script" path="res://scripts/FireBoss/States/Hammer.gd" id="13_medyo"]
 [ext_resource type="Texture2D" uid="uid://gicoqath6q3k" path="res://assets/sprites/fire_boss.sprites/still/Fireboss-still-pool-4.png" id="13_n4puw"]
+[ext_resource type="Script" path="res://scripts/FireBoss/States/Retrieve.gd" id="24_ocux1"]
+[ext_resource type="Script" path="res://scripts/FireBoss/States/P3Melee.gd" id="25_2vk8h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iarbx"]
 animations = [{
@@ -79,6 +81,7 @@ animations = [{
 }]
 
 [node name="Fire Boss" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["boss", "enemy"]]
+z_index = 2
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_suwo4")
 fsm = NodePath("StateMachine")
@@ -91,15 +94,8 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iarbx")
 animation = &"Still_Pool"
 
-[node name="Phase3Collision" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(200, -223.333, 260, -136.667, 286.667, -60, 260, -13.3333, 243.333, 46.6667, 323.333, 66.6667, 336.667, 0, 346.667, -250, 313.333, -320, 103.333, -416.667, 100, -450, 143.333, -470, 110, -556.667, 103.333, -520, 63.3333, -500, 3.33333, -536.667, -56.6667, -500, -100, -510, -113.333, -546.667, -133.333, -473.333, -83.3333, -456.667, -80, -406.667, -183.333, -373.333, -280, -246.667, -263.333, 70, -196.667, 60, -190, -3.33333, -220, -23.3333, -210, -113.333, -156.667, -193.333, -103.333, -133.333, -80, -73.3333, -106.667, 180, -56.6667, 290, 30, 333.333, 100, 316.667, 166.667, 183.333, 186.667, 83.3333, 136.667, -66.6667)
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_fiec5")
-
-[node name="Phase3" type="Node" parent="StateMachine"]
-script = ExtResource("11_4iqb4")
 
 [node name="Phase1" type="Node" parent="StateMachine"]
 script = ExtResource("2_atfl2")
@@ -118,11 +114,18 @@ script = ExtResource("6_j61x4")
 
 [node name="P2orbAttack" type="Node" parent="StateMachine"]
 script = ExtResource("10_rl2ec")
+orbAmount = null
+orbLines = null
+orbSpeed = null
+orbDamage = null
+scale = null
 
 [node name="P2lineAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_h74r5")
-lineSpeed = 100
-spawnRate = 1
+lineSpeed = 120
+
+[node name="Phase3" type="Node" parent="StateMachine"]
+script = ExtResource("11_4iqb4")
 
 [node name="P3orbAttack" type="Node" parent="StateMachine"]
 script = ExtResource("12_dtmw4")
@@ -130,11 +133,13 @@ script = ExtResource("12_dtmw4")
 [node name="Hammer" type="Node" parent="StateMachine"]
 script = ExtResource("13_medyo")
 
-[node name="Hit Box" type="Area2D" parent="."]
+[node name="Retrieve" type="Node" parent="StateMachine"]
+script = ExtResource("24_ocux1")
 
-[node name="Phase3CollisionBox" type="CollisionPolygon2D" parent="Hit Box"]
-visible = false
-polygon = PackedVector2Array(200, -223.333, 260, -136.667, 286.667, -60, 260, -13.3333, 243.333, 46.6667, 323.333, 66.6667, 336.667, 0, 346.667, -250, 313.333, -320, 103.333, -416.667, 100, -450, 143.333, -470, 110, -556.667, 103.333, -520, 63.3333, -500, 3.33333, -536.667, -56.6667, -500, -100, -510, -113.333, -546.667, -133.333, -473.333, -83.3333, -456.667, -80, -406.667, -183.333, -373.333, -280, -246.667, -263.333, 70, -196.667, 60, -190, -3.33333, -220, -23.3333, -210, -113.333, -156.667, -193.333, -103.333, -133.333, -80, -73.3333, -106.667, 180, -56.6667, 290, 30, 333.333, 100, 316.667, 166.667, 183.333, 186.667, 83.3333, 136.667, -66.6667)
+[node name="P3Melee" type="Node" parent="StateMachine"]
+script = ExtResource("25_2vk8h")
+
+[node name="Hit Box" type="Area2D" parent="."]
 
 [node name="StartCollision" type="CollisionPolygon2D" parent="Hit Box"]
 polygon = PackedVector2Array(200, -223.333, 260, -136.667, 286.667, -60, 260, -13.3333, 243.333, 46.6667, 323.333, 66.6667, 336.667, 0, 346.667, -250, 313.333, -320, 103.333, -416.667, 100, -450, 143.333, -470, 110, -556.667, 103.333, -520, 63.3333, -500, 3.33333, -536.667, -56.6667, -500, -100, -510, -113.333, -546.667, -133.333, -473.333, -83.3333, -456.667, -80, -406.667, -183.333, -373.333, -280, -246.667, -263.333, 70, -196.667, 60, -190, -3.33333, -220, -23.3333, -210, -113.333, -156.667, -193.333, -103.333, -133.333, -80, -73.3333, 136.667, -66.6667)

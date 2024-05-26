@@ -274,13 +274,12 @@ rotation = 0.598648
 skew = 0.404916
 shape = SubResource("CircleShape2D_mc8br")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+[node name="State Machine" type="Node" parent="."]
 script = ExtResource("5_0jsj4")
 attack_range = 100.0
 detection_range = 150.0
 chase_range = 160.0
 melee = false
-current_state = NodePath("")
 
 [node name="Idle" type="Node" parent="State Machine"]
 script = ExtResource("6_0pkp1")

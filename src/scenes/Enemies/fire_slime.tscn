@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://1nkgo1u7d1ck"]
+[gd_scene load_steps=47 format=3 uid="uid://diot35kru5y3u"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/FireSlime/fire_slime.gd" id="1_r53rm"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_glx85"]

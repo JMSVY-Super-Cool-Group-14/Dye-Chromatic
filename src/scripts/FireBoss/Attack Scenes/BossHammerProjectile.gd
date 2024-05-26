@@ -3,20 +3,19 @@ extends Area2D
 var projectile_velocity = Vector2.ZERO
 var speed = 100
 var range = 400
-var start_pos = Vector2.ZERO
+var start_pos
 var damage = 0
-var pos
 var angle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_pos = $"../Hammer".global_position + Vector2(0, 80)
-	pos = start_pos
+	start_pos = global_position
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
-	pos += projectile_velocity * delta
-	self.global_position = pos
+	self.global_position += projectile_velocity * delta
+	
 
 	if (global_position.distance_to(start_pos) > range):
 		queue_free()
