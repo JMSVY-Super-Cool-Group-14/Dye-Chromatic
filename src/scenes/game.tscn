@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
 [ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
-[ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
 [ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
 [ext_resource type="Texture2D" uid="uid://ctt64l016sbp5" path="res://assets/levels/IMG_8232.jpg" id="14_oago4"]
 [ext_resource type="Texture2D" uid="uid://don6o3j52r45l" path="res://assets/levels/bossArea.png" id="15_5hiwj"]
 [ext_resource type="Script" path="res://scripts/Teleporter.gd" id="15_22s8w"]
 [ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="16_c4v32"]
+[ext_resource type="AudioStream" uid="uid://da1c03rm4k7pf" path="res://assets/audio/Music/CityV2.wav" id="17_m8wl1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh2in"]
 
@@ -143,7 +143,7 @@ stream = ExtResource("3_5h11r")
 script = ExtResource("3_6d48n")
 
 [node name="Checkpoint_Town" parent="FiniteStateMachine/InGame" node_paths=PackedStringArray("state_machine") instance=ExtResource("5_uwfma")]
-position = Vector2(510, 530)
+position = Vector2(480, 980)
 state_machine = NodePath("../..")
 
 [node name="GameOver" type="Node" parent="FiniteStateMachine"]
@@ -176,6 +176,7 @@ material = SubResource("ShaderMaterial_3x2uq")
 offset_top = 800.0
 offset_right = 1817.0
 offset_bottom = 2269.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_oago4")
 
 [node name="Boss" type="TextureRect" parent="."]
@@ -186,13 +187,10 @@ offset_bottom = 3801.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15_5hiwj")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_aedne")
-volume_db = -10.0
-autoplay = true
+[node name="Music" type="Node" parent="."]
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_aedne")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("17_m8wl1")
 volume_db = -10.0
 autoplay = true
 
@@ -206,11 +204,11 @@ position = Vector2(569, 2681)
 script = ExtResource("15_22s8w")
 
 [node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
-position = Vector2(726, 944)
+position = Vector2(364, 871)
 shape = SubResource("RectangleShape2D_eeoj1")
 
 [node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]
-position = Vector2(-151, 2381)
+position = Vector2(217, 2481)
 
 [node name="TeleportToBossArea" type="Area2D" parent="Teleporters"]
 script = ExtResource("15_22s8w")
@@ -220,4 +218,4 @@ position = Vector2(303, 16)
 shape = SubResource("RectangleShape2D_42ngy")
 
 [node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
-position = Vector2(447, 1749)
+position = Vector2(80, 1480)

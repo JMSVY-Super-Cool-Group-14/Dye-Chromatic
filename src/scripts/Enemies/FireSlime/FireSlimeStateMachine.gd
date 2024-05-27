@@ -1,7 +1,7 @@
 extends enemyStateMachine
 
-func take_damage(dmg):
-	super(dmg)
+func take_damage(dmg, atk_type):
+	super(dmg, atk_type)
 
 func _ready():
 	super()

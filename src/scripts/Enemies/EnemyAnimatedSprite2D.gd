@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 @onready var charger = $".."
+@onready var sm = $"../State Machine"
 var charging_val = false
 var last_move = "down"
 var main_dir
@@ -19,9 +20,9 @@ func _ready():
 	print(hit_box)
 
 func _process(delta):
-	if !charging_val and int(delta) % 5 == 0:
+	if !charging_val and int(delta) % 5 == 0 and !sm.current_state.name != "Death":
 		var velocity = charger.velocity.normalized()
-		walk_idle(velocity)
+		# walk_idle(velocity)
 		
 
 	# Only debug information should be here, movement is removed

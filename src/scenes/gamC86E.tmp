@@ -1,0 +1,221 @@
+[gd_scene load_steps=25 format=3 uid="uid://cdbtgk1s6v0xp"]
+
+[ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
+[ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
+[ext_resource type="PackedScene" uid="uid://xlqobgtc5o2q" path="res://scenes/Enemies/Enemy.tscn" id="2_h5rq2"]
+[ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
+[ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="3_5h11r"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
+[ext_resource type="PackedScene" uid="uid://b8mtefelef5v0" path="res://scenes/Enemies/charger.tscn" id="3_ldqj7"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
+[ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
+[ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
+[ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
+[ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
+[ext_resource type="AudioStream" uid="uid://0k711k5iu0hv" path="res://assets/audio/Music/Project.wav" id="12_aedne"]
+[ext_resource type="PackedScene" uid="uid://cltk5bmay0b2k" path="res://scenes/npc.tscn" id="13_7i4wi"]
+[ext_resource type="Texture2D" uid="uid://ctt64l016sbp5" path="res://assets/levels/IMG_8232.jpg" id="14_oago4"]
+[ext_resource type="Texture2D" uid="uid://don6o3j52r45l" path="res://assets/levels/bossArea.png" id="15_5hiwj"]
+[ext_resource type="Script" path="res://scripts/Teleporter.gd" id="15_22s8w"]
+[ext_resource type="PackedScene" uid="uid://bqshflfh0xvtq" path="res://scenes/Enemies/Fire Boss/fire_boss.tscn" id="16_c4v32"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh2in"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3x2uq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1yhp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeoj1"]
+size = Vector2(131, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42ngy"]
+size = Vector2(33.5, 24)
+
+[node name="Game" type="Node2D"]
+
+[node name="Areas" type="Node" parent="."]
+
+[node name="Global" type="Node" parent="Areas"]
+
+[node name="Player" parent="Areas/Global" node_paths=PackedStringArray("fsm") instance=ExtResource("2_mpbna")]
+z_index = 1
+position = Vector2(231, 255)
+scale = Vector2(0.4, 0.4)
+fsm = NodePath("../../../FiniteStateMachine")
+
+[node name="BaseArea" type="Node" parent="Areas"]
+
+[node name="NPCs" type="Node" parent="Areas/BaseArea"]
+
+[node name="BaseZone" type="Node" parent="Areas/BaseArea/NPCs"]
+script = ExtResource("1_u7rhi")
+
+[node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
+
+[node name="Charger" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
+position = Vector2(469, 329)
+scale = Vector2(1, 1)
+
+[node name="Slime3" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(496.6, 432.1)
+scale = Vector2(1, 1)
+
+[node name="Slime11" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(406, 441.4)
+scale = Vector2(1, 1)
+
+[node name="Slime15" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(593.6, 498.5)
+scale = Vector2(1, 1)
+
+[node name="Slime24" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(545.9, 497)
+scale = Vector2(1, 1)
+
+[node name="Slime27" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(685.6, 416.5)
+scale = Vector2(1, 1)
+
+[node name="Slime39" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(784.6, 498.5)
+scale = Vector2(1, 1)
+
+[node name="Slime38" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(618.1, 426.4)
+scale = Vector2(1, 1)
+
+[node name="Slime37" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(615.4, 443.8)
+scale = Vector2(1, 1)
+
+[node name="Slime36" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(637.9, 415)
+scale = Vector2(1, 1)
+
+[node name="Slime35" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(595, 425.8)
+scale = Vector2(1, 1)
+
+[node name="Slime34" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(597.1, 447.1)
+scale = Vector2(1, 1)
+
+[node name="Slime33" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(634.9, 445.6)
+scale = Vector2(1, 1)
+
+[node name="Slime32" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(628.3, 456.1)
+scale = Vector2(1, 1)
+
+[node name="Slime31" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(650.8, 430)
+scale = Vector2(1, 1)
+
+[node name="Slime30" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(642.1, 457.6)
+scale = Vector2(1, 1)
+
+[node name="Slime29" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+position = Vector2(665.5, 445)
+scale = Vector2(1, 1)
+
+[node name="NPCManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
+
+[node name="Bjorn" parent="Areas/BaseArea/NPCs/BaseZone/NPCManagerBase" instance=ExtResource("13_7i4wi")]
+position = Vector2(100, 200)
+d_file = "res://scripts/Dialogue/bjornDialogue.json"
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "root")]
+process_mode = 3
+script = ExtResource("2_1y0vn")
+current_state = NodePath("InGame")
+root = NodePath("..")
+
+[node name="Pause" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_h2nxd")
+
+[node name="PauseSound" type="AudioStreamPlayer2D" parent="FiniteStateMachine/Pause"]
+stream = ExtResource("3_5h11r")
+
+[node name="InGame" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_6d48n")
+
+[node name="Checkpoint_Town" parent="FiniteStateMachine/InGame" node_paths=PackedStringArray("state_machine") instance=ExtResource("5_uwfma")]
+position = Vector2(480, 980)
+state_machine = NodePath("../..")
+
+[node name="GameOver" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_v8r73")
+
+[node name="Pause" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="Pause" instance=ExtResource("5_kufwq")]
+process_mode = 2
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+focus_mode = 2
+
+[node name="UI" parent="." instance=ExtResource("6_evkas")]
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_sh2in")
+offset_right = 1646.0
+offset_bottom = 1710.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_yusat")
+
+[node name="BossArea" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_3x2uq")
+offset_top = 800.0
+offset_right = 1817.0
+offset_bottom = 2269.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_oago4")
+
+[node name="Boss" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_q1yhp")
+offset_top = 2400.0
+offset_right = 1674.0
+offset_bottom = 3801.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_5hiwj")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("12_aedne")
+volume_db = -10.0
+autoplay = true
+
+[node name="Fire Boss" parent="." instance=ExtResource("16_c4v32")]
+z_index = 1
+position = Vector2(569, 2681)
+
+[node name="Teleporters" type="Node2D" parent="."]
+
+[node name="TeleportToBoss" type="Area2D" parent="Teleporters"]
+script = ExtResource("15_22s8w")
+
+[node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
+position = Vector2(364, 871)
+shape = SubResource("RectangleShape2D_eeoj1")
+
+[node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]
+position = Vector2(217, 2481)
+
+[node name="TeleportToBossArea" type="Area2D" parent="Teleporters"]
+script = ExtResource("15_22s8w")
+
+[node name="BaseToBossArea" type="CollisionShape2D" parent="Teleporters/TeleportToBossArea"]
+position = Vector2(303, 16)
+shape = SubResource("RectangleShape2D_42ngy")
+
+[node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
+position = Vector2(80, 1480)

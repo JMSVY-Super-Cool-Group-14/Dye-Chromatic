@@ -21,12 +21,11 @@ func take_damage(dmg, atk_type):
 		took_dmg.emit()
 	if health < 100:
 		hpbar.visible = true
-	elif health == 0:
+	elif health <= 0:
 		hpbar.visible = false
 	hpbar.value = health
 	shield_hit = false
-	
-	
+
 func take_DOT_damage(dmg, duration):
 	var tick = dmg / duration
 	for n in range(0, dmg, tick):
