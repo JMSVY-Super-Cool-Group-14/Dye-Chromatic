@@ -1,5 +1,4 @@
-# PlayerBoundaries.gd
-extends Node
+extends Node2D
 
 @export var min_x = 0 + 10
 @export var max_x = 658.4 - 10

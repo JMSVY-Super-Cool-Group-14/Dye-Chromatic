@@ -9,10 +9,10 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	if !projectile_val and !melee_val:
+	if not projectile_val and not melee_val:
 		walk_idle()
 
-	if !player.isSprinting:
+	if not player.isSprinting:
 		# Animation check
 		if Input.is_action_just_pressed("ranged_attack"):
 			projectile_val = true

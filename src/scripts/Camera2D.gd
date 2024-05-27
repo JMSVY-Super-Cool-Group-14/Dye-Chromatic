@@ -1,4 +1,3 @@
-# Camera2D.gd
 extends Camera2D
 
 @export var centered_on_player = true

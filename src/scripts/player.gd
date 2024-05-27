@@ -1,4 +1,3 @@
-# Player.gd
 extends Area2D
 
 signal hp_change(hp)
@@ -476,3 +475,61 @@ func make_trail():
 func teleport(new_position: Vector2):
 	global_position = new_position
 	print("Teleported to: ", new_position)
+
+func addColour(colour: String):
+	leftColourSelect.append(colour)
+	rightColourSelect.append(colour)
+	drainColour(colour)
+
+func drainColour(colour: Color):
+	var world = get_tree().root.get_child(0)
+	for area in world.get_children():
+		if area is TextureRect:
+			loadShader(area)
+
+func loadShader(area):
+	print(area)
+	if leftColourSelect.has("blue"):
+		
+		if leftColourSelect.has("red"):
+			
+			# drainAll
+			if leftColourSelect.has("green"):
+				area.material.shader = noColourShader
+			
+			# drainBlueRed
+			else:
+				area.material.shader = noBlueRedShader
+		
+		# drainBlueGreen
+		elif leftColourSelect.has("green"):
+			area.material.shader = noBlueGreenShader
+		
+		# drainBlue
+		else:
+			area.material.shader = noBlueShader
+			
+	elif leftColourSelect.has("red"):
+		
+		# drainGreenRed
+		if leftColourSelect.has("green"):
+			area.material.shader = noGreenRedShader
+		
+		# drainRed
+		else:
+			area.material.shader = noRedShader
+	
+	# drainGreen
+	elif leftColourSelect.has("green"):
+		area.material.shader = noGreenShader
+	
+	else:
+		area.material.shader = null
+
+func _on_area_entered(area):
+	if area.name == "TestCollision":
+		velocity = Vector2.ZERO
+
+func _on_area_exited(area):
+	# Optionally handle area exit if needed
+	pass
