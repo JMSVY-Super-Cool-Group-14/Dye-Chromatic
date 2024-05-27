@@ -143,7 +143,7 @@ stream = ExtResource("3_5h11r")
 script = ExtResource("3_6d48n")
 
 [node name="Checkpoint_Town" parent="FiniteStateMachine/InGame" node_paths=PackedStringArray("state_machine") instance=ExtResource("5_uwfma")]
-position = Vector2(480, 980)
+position = Vector2(800, 1250)
 state_machine = NodePath("../..")
 
 [node name="GameOver" type="Node" parent="FiniteStateMachine"]
@@ -184,7 +184,7 @@ material = SubResource("ShaderMaterial_q1yhp")
 offset_top = 2400.0
 offset_right = 1674.0
 offset_bottom = 3801.0
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("15_5hiwj")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -207,11 +207,11 @@ position = Vector2(569, 2681)
 script = ExtResource("15_22s8w")
 
 [node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
-position = Vector2(364, 871)
+position = Vector2(726, 944)
 shape = SubResource("RectangleShape2D_eeoj1")
 
 [node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]
-position = Vector2(217, 2481)
+position = Vector2(-151, 2381)
 
 [node name="TeleportToBossArea" type="Area2D" parent="Teleporters"]
 script = ExtResource("15_22s8w")
@@ -221,4 +221,4 @@ position = Vector2(303, 16)
 shape = SubResource("RectangleShape2D_42ngy")
 
 [node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
-position = Vector2(80, 1480)
+position = Vector2(447, 1749)
