@@ -27,6 +27,10 @@ func recieve_knockeback(source_pos: Vector2, dmg, attack_type):
 
 func _physics_process(delta):
 	move_and_slide()
+	if fsm.health <= 0:
+		print("DEEEEEAD")
+		self.velocity = Vector2.ZERO
+		$AnimatedSprite2D.play("Death")
 	if !fsm.phase3:
 		$AnimatedSprite2D.play("Still_Pool")
 	

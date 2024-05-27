@@ -8,6 +8,7 @@ class_name enemyStateMachine
 @export var detection_range := 50.0
 @export var chase_range := 60.0
 @export var melee = true
+@export var damage = 30
 
 var shield_hit = false
 
@@ -58,3 +59,5 @@ func _process(delta):
 func _on_shield_area_entered(area):
 	if area.is_in_group("attacks"):
 		shield_hit = true
+	elif area.is_in_group("player"):
+		area.take_fixed_damage(damage)

@@ -1,21 +1,29 @@
-[gd_scene load_steps=58 format=3 uid="uid://b8mtefelef5v0"]
+[gd_scene load_steps=66 format=3 uid="uid://b8mtefelef5v0"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/Charger/charger.gd" id="1_o44q7"]
 [ext_resource type="Shader" path="res://scripts/Enemies/damageShder.gdshader" id="2_ohaly"]
 [ext_resource type="Texture2D" uid="uid://f05p7pjiobiw" path="res://assets/sprites/fire_charger.sprites/charger_still_front-1.tres" id="3_a754a"]
+[ext_resource type="Texture2D" uid="uid://jyxwm4qnefnx" path="res://assets/sprites/fire_charger.sprites/move/charger_die-1.png" id="3_olupc"]
 [ext_resource type="Texture2D" uid="uid://ta7p3gpuchoo" path="res://assets/sprites/fire_charger.sprites/charger_still_front-2.tres" id="4_8g37a"]
+[ext_resource type="Texture2D" uid="uid://cd8vhfma3ish4" path="res://assets/sprites/fire_charger.sprites/move/charger_die-2.png" id="4_fo2jy"]
 [ext_resource type="Script" path="res://scripts/Enemies/EnemyAnimatedSprite2D.gd" id="4_qqqii"]
+[ext_resource type="Texture2D" uid="uid://b7e0vluqjf6t5" path="res://assets/sprites/fire_charger.sprites/move/charger_die-3.png" id="5_36cox"]
 [ext_resource type="Texture2D" uid="uid://m1udhh3rf1kj" path="res://assets/sprites/fire_charger.sprites/charger_still_front-3.tres" id="5_eqif3"]
 [ext_resource type="Script" path="res://scripts/StateMachine/EnemyStateMachine.gd" id="5_qbksx"]
+[ext_resource type="Texture2D" uid="uid://hd6o4vur44f2" path="res://assets/sprites/fire_charger.sprites/move/charger_die-4.png" id="6_8x33k"]
 [ext_resource type="Texture2D" uid="uid://xnan8nycy8g0" path="res://assets/sprites/fire_charger.sprites/charger_still_front-4.tres" id="6_hu4n7"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyChase.gd" id="7_dcunm"]
+[ext_resource type="Texture2D" uid="uid://bghcixsco8b4s" path="res://assets/sprites/fire_charger.sprites/move/charger_die-5.png" id="7_jnhqw"]
 [ext_resource type="Texture2D" uid="uid://be58cyqqs0dbg" path="res://assets/sprites/fire_charger.sprites/charger_still_side-1.tres" id="7_svw30"]
+[ext_resource type="Texture2D" uid="uid://yi1kmoironln" path="res://assets/sprites/fire_charger.sprites/move/charger_die-6.png" id="8_7d4sc"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyAttack.gd" id="8_8q823"]
 [ext_resource type="Texture2D" uid="uid://b7sf1pf4lfkkf" path="res://assets/sprites/fire_charger.sprites/charger_still_side-2.tres" id="8_86tah"]
+[ext_resource type="Texture2D" uid="uid://dm1mvlxw5o12f" path="res://assets/sprites/fire_charger.sprites/move/charger_die-7.png" id="9_1kyhm"]
 [ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeDeath.gd" id="9_2ynlu"]
 [ext_resource type="Texture2D" uid="uid://bjd6vyoofb1mr" path="res://assets/sprites/fire_charger.sprites/charger_still_side-3.tres" id="9_umaus"]
 [ext_resource type="Script" path="res://scripts/Enemies/FireSlime/FireSlimeStun.gd" id="10_dog5e"]
 [ext_resource type="Texture2D" uid="uid://nce01bmg0dte" path="res://assets/sprites/fire_charger.sprites/charger_still_side-4.tres" id="10_obqmi"]
+[ext_resource type="Texture2D" uid="uid://bsfuggkvmnf6r" path="res://assets/sprites/fire_charger.sprites/move/charger_die-8.png" id="10_ohsqj"]
 [ext_resource type="Script" path="res://scripts/Enemies/Enemy States/EnemyRangeAttack.gd" id="11_6geom"]
 [ext_resource type="Texture2D" uid="uid://dgluwuhi1r00c" path="res://assets/sprites/fire_charger.sprites/charger_still_side-5.tres" id="11_srj04"]
 [ext_resource type="Texture2D" uid="uid://by3xjc0rv0nus" path="res://assets/sprites/spotted.sprites/Spotted-1.tres" id="12_6t5hd"]
@@ -78,8 +86,32 @@ animations = [{
 "name": &"Attack",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_olupc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fo2jy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_36cox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8x33k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jnhqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7d4sc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1kyhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ohsqj")
+}],
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -301,7 +333,7 @@ show_percentage = false
 material = SubResource("ShaderMaterial_4pjsy")
 scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_c8qse")
-animation = &"Move_Up"
+animation = &"Death"
 script = ExtResource("4_qqqii")
 
 [node name="damage" type="AnimationPlayer" parent="AnimatedSprite2D"]
@@ -314,10 +346,8 @@ position = Vector2(0, -1.4)
 shape = SubResource("CircleShape2D_rk53v")
 
 [node name="Shield" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="front" type="CollisionPolygon2D" parent="Shield"]
-visible = false
 polygon = PackedVector2Array(-11, -7.4, -12, -6.2, -11.2, 5, -5.8, 9.4, 8, 9.2, 11.6, 3.6, 12, -7.4, 10.4, -9, 10.4, -7, 6.2, -3.6, -0.2, -2.4, -6, -3.4)
 
 [node name="side" type="CollisionPolygon2D" parent="Shield"]
@@ -331,7 +361,6 @@ polygon = PackedVector2Array(-9, -1, -6.8, -5.4, 3.6, -6.4, 9.2, -3.2, 8.6, -1.8
 [node name="Hit Box" type="Area2D" parent="."]
 
 [node name="front" type="CollisionPolygon2D" parent="Hit Box"]
-visible = false
 polygon = PackedVector2Array(-8, -5.6, -6.4, -7.8, -3.2, -8.8, 4.4, -8.8, 8.8, -6.2)
 
 [node name="side" type="CollisionPolygon2D" parent="Hit Box"]

@@ -39,13 +39,13 @@ func _exit_state():
 	boss.velocity = Vector2.ZERO
 
 func _state_update(delta : float):
-	pass
+	if sm.health <= 0:
+		sm._change_state($"../Death")
 	
 func _state_physics_update(delta : float):
 	var direction = player.global_position - boss.global_position
 	boss.velocity = direction.normalized() * sm.move_speed
 	
-	if sm.health <= 0:
-		$"AnimatedSprite2D".play("Death")
+	
 		
 
