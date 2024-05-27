@@ -156,15 +156,10 @@ script = ExtResource("6_j61x4")
 
 [node name="P2orbAttack" type="Node" parent="StateMachine"]
 script = ExtResource("10_rl2ec")
-orbAmount = null
-orbLines = null
-orbSpeed = null
-orbDamage = null
-scale = null
 
 [node name="P2lineAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_h74r5")
-lineSpeed = 120
+lineSpeed = 100
 
 [node name="Phase3" type="Node" parent="StateMachine"]
 script = ExtResource("11_4iqb4")

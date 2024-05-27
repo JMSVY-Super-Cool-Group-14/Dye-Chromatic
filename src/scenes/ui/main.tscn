@@ -168,7 +168,7 @@ offset_right = 295.0
 offset_bottom = -22.0
 grow_vertical = 0
 mouse_filter = 1
-text = "ver 0.6"
+text = "ver 0.7"
 
 [connection signal="focus_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]

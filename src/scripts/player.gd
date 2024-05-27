@@ -320,7 +320,6 @@ func colour_input(event):
 	if colourSwitchDelta > colourSwitchDelay:
 		colourSwitchDelta = 0
 		var totalColours = leftColourSelect.size()
-		print(totalColours)
 		if event.is_action_pressed("left_colour"):
 			leftIndex = (leftIndex + 1) % totalColours
 			if leftIndex == rightIndex:

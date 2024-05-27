@@ -233,7 +233,6 @@ animations = [{
 }]
 
 [node name="Fire" type="CharacterBody2D" groups=["enemy"]]
-scale = Vector2(5, 5)
 script = ExtResource("1_twuhi")
 
 [node name="HPbar" type="ProgressBar" parent="."]

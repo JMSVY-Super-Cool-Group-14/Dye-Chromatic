@@ -1,7 +1,9 @@
 extends FiniteStateMachine
 
+signal phase3_start
+
 @export var move_speed = 40.0
-@export var health = 100
+@export var health = 1500
 var max_health = health
 var varience = 0
 var phase3 = false
@@ -23,9 +25,11 @@ func _ready():
 	
 
 func _change_state(new_state: State):
-	print(current_state)
 	super(new_state)
 	print(current_state)
+	
+	if current_state.name == "Phase3":
+		phase3_start.emit()
 
 func _process(delta):
 	super(delta)

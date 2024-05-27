@@ -8,12 +8,13 @@ class_name npc
 
 var player_can_chat = false
 var interacting = false
-
+var count = 0
 
 func start_interact():
 	sm._change_state($"StateMachine/Interacting")
+	
 	#Sprite turn towards player
-
+	
 func end_interact():
 	sm._change_state($"StateMachine/Idle")
 	
@@ -22,6 +23,13 @@ func _process(delta):
 		sm._change_state($"StateMachine/Interacting")
 		interacting = true
 		dialogue_box.next_line()
+		
+		# Add colour
+		count += 1
+		if count == 1:
+			print("Added blue")
+			player.addColour("blue")
+
 		
 func _physics_process(delta):
 	move_and_slide()
@@ -46,4 +54,3 @@ func _on_dialogue_box_dialogue_done():
 func end_interaction():
 	if interacting:
 		dialogue_box.end_dialogue()
-	

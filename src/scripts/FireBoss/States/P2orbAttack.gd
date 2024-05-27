@@ -2,7 +2,7 @@ extends orbAttack
 
 func _enter_state():
 	orbSpeed = 150
-	orbDamage = 0
+	orbDamage = 15
 	orbAmount = 7
 	orbLines = 5
 	scale = Vector2(1,1)

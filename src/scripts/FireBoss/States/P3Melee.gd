@@ -5,7 +5,7 @@ extends State
 @onready var sm = $".."
 
 @export var speed = 50
-@export var damage = 0
+@export var damage = 30
 
 
 var melee_scene = preload("res://scenes/Enemies/Fire Boss/Attacks/BossMelee.tscn")
