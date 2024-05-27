@@ -34,8 +34,8 @@ func _physics_process(delta):
 	if fsm.health <= 0:
 		self.velocity = Vector2.ZERO
 		$AnimatedSprite2D.play("Death")
-		if $AnimatedSprite2D.frame == 7:
-			queue_free()
+	
+		$AnimatedSprite2D.animation_finished.connect(free)
 	if $AnimatedSprite2D.animation == "Idle_Down" or $AnimatedSprite2D.animation == "Move_Down":
 		collision_boxes("front")
 	elif $AnimatedSprite2D.animation == "Idle_Up" or $AnimatedSprite2D.animation == "Move_Up":
@@ -45,9 +45,5 @@ func _physics_process(delta):
 	elif ($AnimatedSprite2D.animation == "Idle_Side" or $AnimatedSprite2D.animation == "Move_Side") and $AnimatedSprite2D.flip_h == true:
 		collision_boxes("side", true)
 		
-		
-func _state_physics_update():
-	if sm.health <= 0:
-			sm._change_state($"../Death")
-
-
+func free():
+	queue_free()
