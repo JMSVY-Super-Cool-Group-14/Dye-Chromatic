@@ -400,12 +400,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("45_ar07b")
 
 [node name="PlayerCam" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = -1
-limit_right = 658
-limit_bottom = 684
 script = ExtResource("34_oibyl")
-player_path = NodePath("..")
 
 [node name="PlayerBoundaries" type="Node2D" parent="."]
 script = ExtResource("48_7bn30")

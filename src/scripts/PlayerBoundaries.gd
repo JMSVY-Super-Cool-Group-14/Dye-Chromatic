@@ -1,26 +1,44 @@
 extends Node
 
-@export var min_x = 10
-@export var max_x = 648.4
-@export var min_y = 10
-@export var max_y = 674
+@export var texture_rect_path: NodePath = NodePath("/root/Game/Background")  # Path to the TextureRect node
+@export var player_path: NodePath = NodePath("/root/Game/Areas/Global/Player")  # Path to the Player node
+
+# Define the boundaries with initial values
+var min_x: float
+var max_x: float
+var min_y: float
+var max_y: float
+
+@onready var player: CharacterBody2D = get_node(player_path)  # Get the player node using the specified path
+@onready var texture_rect: TextureRect = get_node(texture_rect_path)
+
+@export var boundary_offset: float = 10.0  # Offset for the boundaries
 
 func _ready():
-	# Initialize boundaries to ensure they are set from script values
-	print("Initial player boundaries: ", min_x, max_x, min_y, max_y)
+	# Initialize boundaries based on the texture size
+	update_bounds_from_texture()
 	clamp_player_position()
 
-func clamp_player_position():
-	var player_position = get_parent().position
+func _process(delta: float) -> void:
+	clamp_player_position()
+
+func clamp_player_position() -> void:
+	var player_position = player.global_position
 	player_position.x = clamp(player_position.x, min_x, max_x)
 	player_position.y = clamp(player_position.y, min_y, max_y)
-	get_parent().position = player_position
-	print("Player position after clamping: ", player_position)
+	player.global_position = player_position
 
-func update_bounds(new_bounds: Rect2):
-	min_x = new_bounds.position.x
-	max_x = new_bounds.position.x + new_bounds.size.x
-	min_y = new_bounds.position.y
-	max_y = new_bounds.position.y + new_bounds.size.y
-	print("Player boundaries updated to: ", min_x, max_x, min_y, max_y)
+func update_bounds_from_texture() -> void:
+	var texture_size = texture_rect.texture.get_size() * texture_rect.scale
+	min_x = texture_rect.global_position.x + boundary_offset
+	max_x = texture_rect.global_position.x + texture_size.x - boundary_offset
+	min_y = texture_rect.global_position.y + boundary_offset
+	max_y = texture_rect.global_position.y + texture_size.y - boundary_offset
+	clamp_player_position()
+
+func update_bounds(new_bounds: Rect2) -> void:
+	min_x = new_bounds.position.x + boundary_offset
+	max_x = new_bounds.position.x + new_bounds.size.x - boundary_offset
+	min_y = new_bounds.position.y + boundary_offset
+	max_y = new_bounds.position.y + new_bounds.size.y - boundary_offset
 	clamp_player_position()

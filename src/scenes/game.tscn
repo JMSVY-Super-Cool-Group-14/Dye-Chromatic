@@ -45,7 +45,7 @@ size = Vector2(33.5, 24)
 [node name="Player" parent="Areas/Global" node_paths=PackedStringArray("fsm") instance=ExtResource("2_mpbna")]
 position = Vector2(231, 255)
 scale = Vector2(0.4, 0.4)
-collision_mask = 2
+collision_mask = 10
 fsm = NodePath("../../../FiniteStateMachine")
 
 [node name="BaseArea" type="Node" parent="Areas"]
@@ -59,7 +59,6 @@ script = ExtResource("1_u7rhi")
 
 [node name="Charger" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
 position = Vector2(469, 329)
-scale = Vector2(1, 1)
 
 [node name="Slime3" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(496.6, 432.1)
@@ -130,6 +129,8 @@ scale = Vector2(1, 1)
 
 [node name="Bjorn" parent="Areas/BaseArea/NPCs/BaseZone/NPCManagerBase" instance=ExtResource("13_7i4wi")]
 position = Vector2(100, 200)
+collision_layer = 4
+collision_mask = 0
 d_file = "res://scripts/Dialogue/bjornDialogue.json"
 
 [node name="BaseArea2" type="Node" parent="Areas"]
@@ -180,7 +181,7 @@ focus_mode = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2(0.4, 0.4)
-collision_layer = 2
+collision_layer = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(125, -55)
