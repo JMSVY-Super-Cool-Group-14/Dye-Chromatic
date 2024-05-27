@@ -39,6 +39,8 @@ func _exit_state():
 func _state_update(delta : float):
 	if finished:
 		sm._change_state($"../Phase3")
+	if sm.health <= 0:
+		sm._change_state($"../Death")
 	
 func _state_physics_update(delta : float):
 	if move:

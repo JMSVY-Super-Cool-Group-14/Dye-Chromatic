@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=25 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]

@@ -26,9 +26,8 @@ func _exit_state():
 	finished = false
 	
 func _state_update(delta : float):
-	print(finished)
 	if sm.health <= 0:
-		$"AnimatedSprite2D".play("Death")
+		sm._change_state($"../Death")
 	if finished:
 		sm._change_state($"../Phase3")
 	

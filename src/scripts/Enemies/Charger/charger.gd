@@ -3,6 +3,7 @@ extends enemy
 @onready var shield = $Shield
 @onready var hit_box = $"Hit Box"
 
+@onready var sm = $".."
 
 
 func collision_boxes(dir, right=false):
@@ -33,7 +34,7 @@ func _physics_process(delta):
 	if fsm.health <= 0:
 		self.velocity = Vector2.ZERO
 		$AnimatedSprite2D.play("Death")
-		if $AnimatedSprite2D.frame == 4:
+		if $AnimatedSprite2D.frame == 7:
 			queue_free()
 	if $AnimatedSprite2D.animation == "Idle_Down" or $AnimatedSprite2D.animation == "Move_Down":
 		collision_boxes("front")
@@ -45,6 +46,8 @@ func _physics_process(delta):
 		collision_boxes("side", true)
 		
 		
-
+func _state_physics_update():
+	if sm.health <= 0:
+			sm._change_state($"../Death")
 
 
