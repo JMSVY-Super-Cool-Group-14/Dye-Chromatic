@@ -29,7 +29,7 @@ func _on_body_entered(body):
 			Input.start_joy_vibration(0, 1, 1, 0.15)
 		print("enemy hit melee!")
 		# insert call to enemy.takedamage function
-		body.fsm.take_damage(damage)
+		body.fsm.take_damage(damage, attack_type)
 		print(body.is_in_group("boss"))
 		if !body.is_in_group("boss"):
 			body.recieve_knockeback(self.global_position, damage, attack_type)

@@ -3,8 +3,8 @@ class_name bossMeleeScene
 
 var velocity = Vector2.ZERO
 var speed = 100
-var range = 125
-var start_pos = Vector2.ZERO
+var range = 200
+var start_pos
 var damage = 50
 var pos
 var start = false
@@ -31,7 +31,9 @@ func set_properties(atk_speed, atk_damge):
 	damage = atk_damge
 		
 func set_direction(direction: Vector2):
+	self.global_rotation = direction.angle() - PI
 	velocity = direction.normalized() * speed
+	
 	
 func _on_area_entered(area):
 	if area.is_in_group("player"):

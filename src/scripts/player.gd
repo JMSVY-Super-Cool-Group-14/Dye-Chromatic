@@ -457,12 +457,12 @@ func _on_blue_ult_body_entered(body):
 func _on_melee_range_body_entered(body):
 	if body.is_in_group("enemy"):
 		if comboDamage:
-			body.fsm.take_damage(meleeDamage * 2)
+			body.fsm.take_damage(meleeDamage * 2, "melee")
 			if !body.is_in_group("boss"):
 				body.recieve_knockeback(self.global_position, meleeDamage, "melee")
 			comboDamage = false
 		else:
-			body.fsm.take_damage(meleeDamage)
+			body.fsm.take_damage(meleeDamage, "melee")
 			if !body.is_in_group("boss"):
 				body.recieve_knockeback(self.global_position, meleeDamage, "melee")
 

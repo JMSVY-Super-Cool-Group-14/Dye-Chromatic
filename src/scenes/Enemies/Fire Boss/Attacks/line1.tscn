@@ -30,10 +30,13 @@ animations = [{
 size = Vector2(778, 56)
 
 [node name="Line" type="Area2D"]
+z_index = 1
+z_as_relative = false
+scale = Vector2(2, 2.5)
 script = ExtResource("1_6mlsa")
 
 [node name="AreaLeft" type="Area2D" parent="."]
-position = Vector2(-455, 2.08165e-12)
+position = Vector2(-900, -300)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaLeft"]
 position = Vector2(0, -24)
@@ -47,7 +50,7 @@ position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_pohyv")
 
 [node name="AreaRight" type="Area2D" parent="."]
-position = Vector2(424, 2.08165e-12)
+position = Vector2(900, -300)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaRight"]
 position = Vector2(0, -24)
@@ -59,8 +62,25 @@ frame_progress = 0.570463
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_pohyv")
 
+[node name="AreaMiddle" type="Area2D" parent="."]
+position = Vector2(2.08165e-12, -300)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaMiddle"]
+position = Vector2(0, -24)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_lysyi")
+frame_progress = 0.570463
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMiddle"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_pohyv")
+
 [connection signal="area_entered" from="AreaLeft" to="." method="_on_area_left_area_entered"]
 [connection signal="area_entered" from="AreaLeft" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="AreaRight" to="." method="_on_area_left_area_entered"]
 [connection signal="area_entered" from="AreaRight" to="." method="_on_area_right_area_entered"]
+[connection signal="area_entered" from="AreaRight" to="." method="_on_area_left_area_entered"]
 [connection signal="area_entered" from="AreaRight" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="AreaMiddle" to="." method="_on_area_right_area_entered"]
+[connection signal="area_entered" from="AreaMiddle" to="." method="_on_area_left_area_entered"]
+[connection signal="area_entered" from="AreaMiddle" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="AreaMiddle" to="." method="_on_area_middle_area_entered"]

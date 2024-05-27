@@ -210,11 +210,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fire Slime" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["enemy"]]
+[node name="Fire Slime" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(-1, 9)
 scale = Vector2(5, 5)
 script = ExtResource("1_r53rm")
-fsm = NodePath("State Machine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_4pjsy")

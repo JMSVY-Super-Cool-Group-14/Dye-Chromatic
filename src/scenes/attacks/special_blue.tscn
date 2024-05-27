@@ -52,7 +52,7 @@ animations = [{
 radius = 10.6173
 height = 115.556
 
-[node name="BlueSpecial" type="Area2D"]
+[node name="BlueSpecial" type="Area2D" groups=["attacks"]]
 scale = Vector2(0.15, 0.1)
 script = ExtResource("1_qt0t1")
 

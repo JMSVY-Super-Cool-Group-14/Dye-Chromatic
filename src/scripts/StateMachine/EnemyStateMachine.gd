@@ -9,17 +9,22 @@ class_name enemyStateMachine
 @export var chase_range := 60.0
 @export var melee = true
 
+var shield_hit = false
+
 
 signal took_dmg
 
-func take_damage(dmg):
-	health -= dmg
+func take_damage(dmg, atk_type):
+	if !shield_hit:
+		health -= dmg
+		took_dmg.emit()
 	if health < 100:
 		hpbar.visible = true
 	elif health == 0:
 		hpbar.visible = false
 	hpbar.value = health
-	took_dmg.emit()
+	shield_hit = false
+	
 	
 func take_DOT_damage(dmg, duration):
 	var tick = dmg / duration
@@ -44,10 +49,12 @@ func _ready():
 
 func _change_state(new_state: State):
 	super(new_state)
+	print(new_state)
 
 func _process(delta):
 	super(delta)
 	
 	
-	
-	
+func _on_shield_area_entered(area):
+	if area.is_in_group("attacks"):
+		shield_hit = true
