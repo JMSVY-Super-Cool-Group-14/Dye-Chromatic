@@ -13,55 +13,50 @@ extends Camera2D
 var player: CharacterBody2D
 var background: TextureRect
 var centered_on_player := true
-var last_player_position := Vector2.ZERO
 
 func _ready():
-	player = get_node(player_path) as CharacterBody2D
+	player = get_node_or_null(player_path) as CharacterBody2D
 	if not player:
 		push_error("Player node is not of type CharacterBody2D.")
 		return
-	
-	background = get_node(texture_rect_path) as TextureRect
+
+	background = get_node_or_null(texture_rect_path) as TextureRect
 	if not background:
 		push_error("Background node is not of type TextureRect.")
 		return
 
-	set_default_zoom()
+	init_camera_settings()
 	make_current()
-	set_background_limits()
+	update_camera_limits()
 
 func _process(delta):
 	if not player:
 		return
 
-	# Check for manual movement
-	if (Input.is_action_pressed("move_camera_left") or 
-		Input.is_action_pressed("move_camera_right") or 
-		Input.is_action_pressed("move_camera_up") or 
-		Input.is_action_pressed("move_camera_down")):
-		centered_on_player = false
-	else:
-		centered_on_player = true
+	handle_camera_movement(delta)
+	handle_zoom(delta)
 
-	# If centered on player, follow player
+	if Input.is_action_just_pressed("reset_camera"):
+		reset_camera()
+
+	check_for_player_movement()
+
+func init_camera_settings():
+	zoom = DEFAULT_ZOOM
+	global_position = player.global_position
+	print("Camera initialized with zoom: ", zoom, " and position: ", global_position)
+
+func handle_camera_movement(delta):
 	if centered_on_player:
 		if smoothing_enabled:
 			global_position = global_position.lerp(player.global_position, smoothing_speed * delta)
 		else:
 			global_position = player.global_position
 	else:
-		handle_manual_camera_movement(delta)
+		manual_camera_control(delta)
 
-	handle_zoom(delta)
-
-	if Input.is_action_just_pressed("reset_camera"):
-		set_default_zoom()
-		centered_on_player = true  # Re-center the camera on the player when resetting
-
-	last_player_position = player.global_position
-
-func handle_manual_camera_movement(delta):
-	var movement_speed = 100  # Adjust as needed
+func manual_camera_control(delta):
+	var movement_speed = 100
 	if Input.is_action_pressed("move_camera_left"):
 		global_position.x -= movement_speed * delta
 	if Input.is_action_pressed("move_camera_right"):
@@ -81,23 +76,34 @@ func handle_zoom(delta):
 		zoom.x = min(zoom.x, max_zoom.x)
 		zoom.y = min(zoom.y, max_zoom.y)
 
-func set_default_zoom():
+func reset_camera():
 	zoom = DEFAULT_ZOOM
-	if player:
-		global_position = player.global_position
-	print("Default zoom set to: ", zoom)
-	print("Default position set to: ", global_position)
+	global_position = player.global_position
+	centered_on_player = true
+	print("Camera reset to default settings.")
 
-func set_background_limits():
+func update_camera_limits():
 	if not background or not background.texture:
 		return
 
-	var bg_texture_size = background.texture.get_size()
-	var bg_scale = background.scale
+	# Calculate the scaled size of the texture
+	var bg_texture_size = background.texture.get_size() * background.scale
 
-	limit_left = 0
-	limit_right = bg_texture_size.x * bg_scale.x
-	limit_top = 0
-	limit_bottom = bg_texture_size.y * bg_scale.y
+	# Calculate the position of the top-left corner if the origin is at the center
+	var bg_position = background.global_position
 
-	print("Camera limits set to: ", limit_left, limit_right, limit_top, limit_bottom)
+	limit_left = bg_position.x
+	limit_right = bg_position.x + bg_texture_size.x
+	limit_top = bg_position.y
+	limit_bottom = bg_position.y + bg_texture_size.y
+
+	print("Dynamic camera limits set to: ", limit_left, ", ", limit_right, ", ", limit_top, ", ", limit_bottom)
+
+func check_for_player_movement():
+	if (Input.is_action_pressed("move_camera_left") or
+		Input.is_action_pressed("move_camera_right") or
+		Input.is_action_pressed("move_camera_up") or
+		Input.is_action_pressed("move_camera_down")):
+		centered_on_player = false
+	else:
+		centered_on_player = player.global_position != global_position
