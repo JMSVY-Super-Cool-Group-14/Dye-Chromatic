@@ -3,7 +3,7 @@ extends State
 @export var orbAmount = 7
 @export var orbLines = 6
 @export var orbSpeed = 100
-@export var orbDamage = 0
+@export var orbDamage = 30
 
 @onready var boss = $"../.."
 @onready var player = $"../../../Areas/Global/Player"

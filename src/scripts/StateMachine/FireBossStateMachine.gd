@@ -1,7 +1,7 @@
 extends FiniteStateMachine
 
 @export var move_speed = 40.0
-@export var health = 100
+@export var health = 1500
 var max_health = health
 var varience = 0
 var phase3 = false

@@ -4,7 +4,7 @@ var projectile_velocity = Vector2.ZERO
 var speed = 100
 var range = 400
 var start_pos
-var damage = 0
+var damage = 7
 var angle
 
 # Called when the node enters the scene tree for the first time.

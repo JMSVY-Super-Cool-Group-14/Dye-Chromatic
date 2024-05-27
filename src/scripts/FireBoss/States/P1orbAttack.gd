@@ -4,7 +4,7 @@ class_name orbAttack
 @export var orbAmount = 5
 @export var orbLines = 4
 @export var orbSpeed = 50
-@export var orbDamage = 0
+@export var orbDamage = 10
 @export var scale = Vector2(0.9, 0.9)
 
 @onready var sm = $".."

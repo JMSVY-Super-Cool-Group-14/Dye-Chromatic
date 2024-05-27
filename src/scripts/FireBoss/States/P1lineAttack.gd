@@ -3,7 +3,7 @@ class_name lineAttack
 
 
 @export var lineSpeed = 50
-@export var lineDamage = 0
+@export var lineDamage = 15
 @export var lineAmount = 5
 @export var spawnRate = 3
 
