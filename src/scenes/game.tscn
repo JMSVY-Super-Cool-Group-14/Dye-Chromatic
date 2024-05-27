@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=29 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -57,71 +57,32 @@ script = ExtResource("1_u7rhi")
 
 [node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
 
-[node name="Charger" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
-position = Vector2(469, 329)
-
-[node name="Slime3" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(496.6, 432.1)
-scale = Vector2(1, 1)
-
-[node name="Slime11" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(406, 441.4)
-scale = Vector2(1, 1)
-
-[node name="Slime15" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(593.6, 498.5)
-scale = Vector2(1, 1)
-
-[node name="Slime24" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(545.9, 497)
-scale = Vector2(1, 1)
-
-[node name="Slime27" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(685.6, 416.5)
-scale = Vector2(1, 1)
-
-[node name="Slime39" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(784.6, 498.5)
-scale = Vector2(1, 1)
-
-[node name="Slime38" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(618.1, 426.4)
-scale = Vector2(1, 1)
-
-[node name="Slime37" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(615.4, 443.8)
-scale = Vector2(1, 1)
-
-[node name="Slime36" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(637.9, 415)
-scale = Vector2(1, 1)
-
 [node name="Slime35" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(595, 425.8)
+position = Vector2(455, 515)
 scale = Vector2(1, 1)
 
 [node name="Slime34" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(597.1, 447.1)
+position = Vector2(463, 559)
 scale = Vector2(1, 1)
 
 [node name="Slime33" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(634.9, 445.6)
+position = Vector2(503, 529)
 scale = Vector2(1, 1)
 
 [node name="Slime32" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(628.3, 456.1)
+position = Vector2(494, 486)
 scale = Vector2(1, 1)
 
 [node name="Slime31" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(650.8, 430)
+position = Vector2(539, 502)
 scale = Vector2(1, 1)
 
 [node name="Slime30" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(642.1, 457.6)
+position = Vector2(504, 576)
 scale = Vector2(1, 1)
 
 [node name="Slime29" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
-position = Vector2(665.5, 445)
+position = Vector2(555, 554)
 scale = Vector2(1, 1)
 
 [node name="NPCManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
