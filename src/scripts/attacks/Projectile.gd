@@ -43,7 +43,7 @@ func _on_body_entered(body):
 			Input.start_joy_vibration(0, 1, 1, 0.15)
 		print("enemy hit!")
 		# insert call to enemy take damage function
-		body.fsm.take_damage(damage)
+		body.fsm.take_damage(damage, attack_type)
 		body.recieve_knockeback(projectile_velocity, damage, attack_type)
 		queue_free()	#remove projectile instance
 	if body.is_in_group("player"):

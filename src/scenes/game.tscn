@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=26 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="3_5h11r"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
+[ext_resource type="PackedScene" uid="uid://b8mtefelef5v0" path="res://scenes/Enemies/charger.tscn" id="3_ldqj7"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
@@ -51,6 +52,10 @@ fsm = NodePath("../../../FiniteStateMachine")
 script = ExtResource("1_u7rhi")
 
 [node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
+
+[node name="Charger" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
+position = Vector2(469, 329)
+scale = Vector2(1, 1)
 
 [node name="Slime3" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(496.6, 432.1)
@@ -201,7 +206,7 @@ position = Vector2(569, 2681)
 script = ExtResource("15_22s8w")
 
 [node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
-position = Vector2(727, 980)
+position = Vector2(726, 944)
 shape = SubResource("RectangleShape2D_eeoj1")
 
 [node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]

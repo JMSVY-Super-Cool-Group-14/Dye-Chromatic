@@ -25,12 +25,10 @@ func _process(delta: float):
 	if (global_position.distance_to(start_pos) > range):
 		queue_free()
 
-func set_properties(atk_speed, atk_damge, orb_scale=Vector2(1,1), start_position=Vector2.ZERO):
+func set_properties(atk_speed, atk_damge, orb_scale=Vector2(1,1)):
 	speed = atk_speed
 	damage = atk_damge
 	self.scale *= orb_scale
-	start_pos = start_position
-	pos = start_pos
 		
 func set_direction(direction: Vector2):
 	self.global_rotation = direction.angle() - PI/2

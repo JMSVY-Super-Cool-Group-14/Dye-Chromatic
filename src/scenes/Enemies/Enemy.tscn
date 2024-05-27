@@ -262,10 +262,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rk53v"]
-radius = 8.2
+radius = 9.6318
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mc8br"]
-radius = 7.4
+radius = 8.68231
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q2mvy"]
 animations = [{
@@ -316,10 +316,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("fsm") groups=["enemy"]]
+[node name="Slime" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(5, 5)
 script = ExtResource("1_xq5uw")
-fsm = NodePath("State Machine")
 
 [node name="HPbar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(60, 2)

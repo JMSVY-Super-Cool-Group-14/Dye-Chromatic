@@ -11,6 +11,8 @@ class_name enemyChase
 @onready var alert = $"../../Alerted"
 @onready var confused = $"../../Confused"
 
+var outOfRange = false
+
 
 func _enter_state():
 	confused.visible = false
@@ -19,9 +21,10 @@ func _enter_state():
 
 func _exit_state():
 	alert.visible = false
-	confused.visible = true
-	confused.play("default")
-	get_tree().create_timer(2).timeout.connect(func(): confused.visible = false)
+	if outOfRange:
+		confused.visible = true
+		confused.play("default")
+		get_tree().create_timer(2).timeout.connect(func(): confused.visible = false)
 	
 func _state_physics_update(delta : float):
 	if player != null:
@@ -33,9 +36,14 @@ func _state_physics_update(delta : float):
 			sm._change_state($"../Death")
 			
 		if direction.length() > sm.chase_range:
+			outOfRange = true
 			sm._change_state($"../Idle")
 		
-		if direction.length() <= sm.attack_range:
-			sm._change_state($"../Attack")
+		if direction.length() <= sm.attack_range - 10:
+			if sm.melee:
+				sm._change_state($"../Attack")
+			else:
+				sm._change_state($"../RangeAttack")
+		
 		
 

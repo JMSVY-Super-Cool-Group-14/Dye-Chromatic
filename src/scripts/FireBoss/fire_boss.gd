@@ -27,11 +27,15 @@ func recieve_knockeback(source_pos: Vector2, dmg, attack_type):
 
 func _physics_process(delta):
 	move_and_slide()
-	if self.velocity.length() > 0:
-		$AnimatedSprite2D.play("Move")
-	else:
-		$AnimatedSprite2D.play("Still")
+	if !fsm.phase3:
+		$AnimatedSprite2D.play("Still_Pool")
 	
+	elif fsm.phase3:
+		if self.velocity.length() <= 0:
+			$AnimatedSprite2D.play("Still")
+		
+		else:
+			$AnimatedSprite2D.play("Move")
 	
 func _on_state_machine_took_dmg():
 	$AnimatedSprite2D/damage.play("damage")
