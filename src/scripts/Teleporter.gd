@@ -18,8 +18,8 @@ func _ready():
 		new_player_bounds = Rect2(Vector2(10, 2410), Vector2(1664, 2410 + 1401))
 		teleport_target_path = "BossAreaToBoss/PositionBoss"
 	elif name == "TeleportToBossArea":
-		new_camera_bounds = Rect2(Vector2(0, 800), Vector2(1817, 800 + 1469))
-		new_player_bounds = Rect2(Vector2(10, 810), Vector2(1807, 810 + 1469))
+		new_camera_bounds = Rect2(Vector2(0, 800), Vector2(1817*0.5, 736))
+		new_player_bounds = Rect2(Vector2(10, 810*0.5), Vector2(1807*0.5, 810 + 300))
 		teleport_target_path = "BaseToBossArea/PositionBossArea"
 
 	teleport_position_node = get_node(teleport_target_path)
