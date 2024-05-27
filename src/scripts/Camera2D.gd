@@ -8,7 +8,7 @@ extends Camera2D
 @export var min_zoom = Vector2(1.5, 1.5)
 @export var max_zoom = Vector2(3, 3)
 var last_player_position = Vector2()
-var player: Area2D
+var player: CharacterBody2D
 
 # Standard Camera Settings
 @export var DEFAULT_ZOOM = Vector2(2.5, 2.5)
@@ -19,7 +19,7 @@ var player: Area2D
 
 func _ready():
 	if player_path:
-		player = get_node(player_path) as Area2D
+		player = get_node(player_path) as CharacterBody2D
 	else:
 		push_error("Player node path is not set.")
 		return
@@ -50,7 +50,7 @@ func _process(delta):
 
 	if centered_on_player:
 		if smoothing_enabled:
-			global_position = lerp(global_position, player.global_position, smoothing_speed * delta)
+			global_position = global_position.lerp(player.global_position, smoothing_speed * delta)
 		else:
 			global_position = player.global_position
 	else:

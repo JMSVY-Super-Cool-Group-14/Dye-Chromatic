@@ -39,9 +39,9 @@ size = Vector2(33.5, 24)
 [node name="Global" type="Node" parent="Areas"]
 
 [node name="Player" parent="Areas/Global" node_paths=PackedStringArray("fsm") instance=ExtResource("2_mpbna")]
-z_index = 1
 position = Vector2(231, 255)
 scale = Vector2(0.4, 0.4)
+collision_mask = 2
 fsm = NodePath("../../../FiniteStateMachine")
 
 [node name="BaseArea" type="Node" parent="Areas"]
@@ -74,6 +74,7 @@ position = Vector2(545.9, 497)
 scale = Vector2(1, 1)
 
 [node name="Slime27" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+visible = false
 position = Vector2(685.6, 416.5)
 scale = Vector2(1, 1)
 
@@ -163,6 +164,14 @@ anchor_bottom = 0.5
 focus_mode = 2
 
 [node name="UI" parent="." instance=ExtResource("6_evkas")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(125, -55)
+polygon = PackedVector2Array(172.5, 1010, 817.5, 680, 1050, 735, 880, 832.5)
 
 [node name="Background" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_sh2in")

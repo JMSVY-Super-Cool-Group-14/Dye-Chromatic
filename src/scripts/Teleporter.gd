@@ -6,7 +6,7 @@ var new_player_bounds: Rect2
 var teleport_target_path: NodePath
 
 # Dynamic node references
-@onready var player: Area2D = get_node("/root/Game/Areas/Global/Player")
+@onready var player: CharacterBody2D = get_node("/root/Game/Areas/Global/Player")
 @onready var camera: Camera2D = get_node("/root/Game/Areas/Global/Player/PlayerCam")
 @onready var player_boundaries: Node = get_node("/root/Game/Areas/Global/Player/PlayerBoundaries")
 @onready var teleport_position_node: Node2D

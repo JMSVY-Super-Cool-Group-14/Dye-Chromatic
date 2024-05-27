@@ -316,7 +316,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15o0i"]
 size = Vector2(20, 36.75)
 
-[node name="Player" type="Area2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 3
 script = ExtResource("1_p4u05")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
