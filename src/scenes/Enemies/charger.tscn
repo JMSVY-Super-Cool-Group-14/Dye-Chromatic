@@ -315,7 +315,6 @@ animations = [{
 }]
 
 [node name="Charger" type="CharacterBody2D" groups=["enemy"]]
-scale = Vector2(5, 5)
 script = ExtResource("1_o44q7")
 
 [node name="HPbar" type="ProgressBar" parent="."]

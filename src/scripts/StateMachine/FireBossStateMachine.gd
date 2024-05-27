@@ -23,9 +23,7 @@ func _ready():
 	
 
 func _change_state(new_state: State):
-	print(current_state)
 	super(new_state)
-	print(current_state)
 
 func _process(delta):
 	super(delta)

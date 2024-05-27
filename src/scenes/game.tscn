@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=26 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8sokesd0rypv" path="res://scenes/player.tscn" id="2_mpbna"]
 [ext_resource type="AudioStream" uid="uid://cjq6mt8wdij7u" path="res://assets/audio/sfx/bop.mp3" id="3_5h11r"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/gameState.gd" id="3_6d48n"]
+[ext_resource type="PackedScene" uid="uid://b42tsxmiyx5rk" path="res://scenes/Enemies/Fire.tscn" id="3_84lwp"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/pauseState.gd" id="3_h2nxd"]
 [ext_resource type="PackedScene" uid="uid://b8mtefelef5v0" path="res://scenes/Enemies/charger.tscn" id="3_ldqj7"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
@@ -55,7 +56,6 @@ script = ExtResource("1_u7rhi")
 
 [node name="Charger" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
 position = Vector2(469, 329)
-scale = Vector2(1, 1)
 
 [node name="Slime3" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(496.6, 432.1)
@@ -126,6 +126,15 @@ scale = Vector2(1, 1)
 [node name="Bjorn" parent="Areas/BaseArea/NPCs/BaseZone/NPCManagerBase" instance=ExtResource("13_7i4wi")]
 position = Vector2(100, 200)
 d_file = "res://scripts/Dialogue/bjornDialogue.json"
+
+[node name="BaseArea2" type="Node" parent="Areas"]
+
+[node name="NPCs" type="Node" parent="Areas/BaseArea2"]
+
+[node name="BaseZone" type="Node" parent="Areas/BaseArea2/NPCs"]
+script = ExtResource("1_u7rhi")
+
+[node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea2/NPCs/BaseZone"]
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "root")]
 process_mode = 3
@@ -219,3 +228,36 @@ shape = SubResource("RectangleShape2D_42ngy")
 
 [node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
 position = Vector2(80, 1480)
+
+[node name="Fire" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(587, 1106)
+
+[node name="Fire2" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(575, 1213)
+
+[node name="Fire3" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(636, 1134)
+
+[node name="Fire4" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(627, 1225)
+
+[node name="Charger" parent="." instance=ExtResource("3_ldqj7")]
+position = Vector2(730, 1223)
+
+[node name="Charger2" parent="." instance=ExtResource("3_ldqj7")]
+position = Vector2(725, 1136)
+
+[node name="Fire5" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(458, 1408)
+
+[node name="Charger3" parent="." instance=ExtResource("3_ldqj7")]
+position = Vector2(203, 1433)
+
+[node name="Fire6" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(349, 1299)
+
+[node name="Fire7" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(109, 1124)
+
+[node name="Fire8" parent="." instance=ExtResource("3_84lwp")]
+position = Vector2(384, 1067)
