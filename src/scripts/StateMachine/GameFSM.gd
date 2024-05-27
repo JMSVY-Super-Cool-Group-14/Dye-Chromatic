@@ -1,23 +1,27 @@
 extends FiniteStateMachine
 
+# References to game objects
 @onready var player = $"/root/Game/Areas/Global/Player"
 @onready var hpbar = $"../UI/MarginContainer/VBoxContainer/HPbar"
 @onready var staminabar = $"../UI/MarginContainer/VBoxContainer/Staminabar"
-@export var speed:int = 100
 @onready var camera: Camera2D = get_node("/root/Game/Areas/Global/Player/PlayerCam")
 @onready var player_boundaries: Node = get_node("/root/Game/Areas/Global/Player/PlayerBoundaries")
+@onready var audio =  $"/root/Game/Music/AudioStreamPlayer2D"
 
+@export var speed:int = 100
+var control_avail:bool
+
+# Saved variables
 var check_point_pos:Vector2 = Vector2(231, 235)
 var check_point:Area2D = null
-var control_avail:bool
 var hp
 var stam
+var area:String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super()
 	control_avail = Input.get_connected_joypads().size() > 0
-	
 	
 	staminabar.max_value = player.maxStamina
 	load_game()
@@ -112,3 +116,8 @@ func _save():
 	}
 	var json_string = JSON.stringify(save_dict)
 	save_game.store_line(json_string)
+
+func set_area(location):
+		if location == "PositionBossArea":
+			audio.stream = load("res://assets/audio/Music/Mountain_V1.wav")
+			audio.play()
