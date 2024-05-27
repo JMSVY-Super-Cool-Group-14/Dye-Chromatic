@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://cltk5bmay0b2k"]
+
+[ext_resource type="Script" path="res://scripts/NPC/NPC.gd" id="1_k40a6"]
+[ext_resource type="Texture2D" uid="uid://cveiythofjma6" path="res://assets/sprites/bear.sprites/Bear-still-1.tres" id="2_8mucu"]
+[ext_resource type="Script" path="res://scripts/StateMachine/NPCStateMachine.gd" id="2_gsyok"]
+[ext_resource type="Texture2D" uid="uid://cy2yanjijiu86" path="res://assets/sprites/bear.sprites/Bear-still-2.tres" id="3_d4wwh"]
+[ext_resource type="Texture2D" uid="uid://c8lwagawwsd3t" path="res://assets/sprites/bear.sprites/Bear-move-1.tres" id="4_kxwq5"]
+[ext_resource type="Script" path="res://scripts/NPC/NPCIdle.gd" id="4_pyyip"]
+[ext_resource type="Texture2D" uid="uid://bkyw72j0yw3np" path="res://assets/sprites/bear.sprites/Bear-move-2.tres" id="5_nkp7n"]
+[ext_resource type="Script" path="res://scripts/NPC/NPCWalking.gd" id="5_pst2m"]
+[ext_resource type="Script" path="res://scripts/NPC/NPCInteract.gd" id="6_od0pn"]
+[ext_resource type="PackedScene" uid="uid://dvrm22g12ndy7" path="res://scripts/Dialogue/dialogueBox.tscn" id="7_3mub8"]
+[ext_resource type="AudioStream" uid="uid://bery1n8kx15bq" path="res://assets/audio/sfx/woom.mp3" id="11_tje25"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ligmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8mucu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d4wwh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kxwq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nkp7n")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5oev7"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3kolx"]
+radius = 23.0
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_k40a6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_ligmd")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_5oev7")
+
+[node name="ChatArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatArea"]
+visibility_layer = 3
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_3kolx")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("2_gsyok")
+current_state = NodePath("Walking")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_pyyip")
+
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource("5_pst2m")
+
+[node name="Interacting" type="Node" parent="StateMachine"]
+script = ExtResource("6_od0pn")
+
+[node name="DialogueBox" parent="." instance=ExtResource("7_3mub8")]
+pivot_offset = Vector2(0, -30)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_tje25")
+volume_db = -10.0
+pitch_scale = 1.5
+bus = &"Effects"
+
+[connection signal="body_entered" from="ChatArea" to="." method="_on_chat_area_body_entered"]
+[connection signal="body_exited" from="ChatArea" to="." method="_on_chat_area_body_exited"]
+[connection signal="dialogue_done" from="DialogueBox" to="." method="_on_dialogue_box_dialogue_done"]
