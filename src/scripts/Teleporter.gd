@@ -1,28 +1,32 @@
-# Teleporter.gd
 extends Area2D
 
-@export var new_camera_bounds = Rect2(Vector2(0, 800), Vector2(1817, 800 + 1469))
-@export var new_player_bounds = Rect2(Vector2(10, 810), Vector2(1807, 790 + 1469))  # Custom values for player bounds
+# Default configurations set based on node names
+var new_camera_bounds: Rect2
+var new_player_bounds: Rect2
+var teleport_target_path: NodePath
 
-@onready var player: Area2D
-@onready var camera: Camera2D
-@onready var player_boundaries: Node
+# Dynamic node references
+@onready var player: Area2D = get_node("/root/Game/Areas/Global/Player")
+@onready var camera: Camera2D = get_node("/root/Game/Areas/Global/Player/PlayerCam")
+@onready var player_boundaries: Node = get_node("/root/Game/Areas/Global/Player/PlayerBoundaries")
 @onready var teleport_position_node: Node2D
 
 func _ready():
-	# Adjust the paths to the nodes based on the new hierarchy
-	player = get_node("/root/Game/Areas/Global/Player")
-	camera = get_node("/root/Game/Areas/Global/Player/PlayerCam")
-	player_boundaries = get_node("/root/Game/Areas/Global/Player/PlayerBoundaries")
-	teleport_position_node = $TeleportPosition
+	# Configure teleporters based on their unique names
+	if name == "TeleportToBoss":
+		new_camera_bounds = Rect2(Vector2(0, 2400), Vector2(1674, 2400 + 1401))
+		new_player_bounds = Rect2(Vector2(10, 2410), Vector2(1664, 2410 + 1401))
+		teleport_target_path = "BossAreaToBoss/PositionBoss"
+	elif name == "TeleportToBossArea":
+		new_camera_bounds = Rect2(Vector2(0, 800), Vector2(1817, 800 + 1469))
+		new_player_bounds = Rect2(Vector2(10, 810), Vector2(1807, 810 + 1469))
+		teleport_target_path = "BaseToBossArea/PositionBossArea"
 
-	# Connect the area_entered signal to the _on_area_entered function
+	teleport_position_node = get_node(teleport_target_path)
 	connect("area_entered", Callable(self, "_on_area_entered"))
-	
-	print("Teleporter ready, waiting for player to enter...")
+	print("Teleporter ready with default settings, waiting for player to enter...")
 
 func _on_area_entered(area):
-	print("area_entered signal received with area: ", area)
 	if area.is_in_group("player"):
 		print("Player detected in teleporter area")
 		player.teleport(teleport_position_node.global_position)
