@@ -58,7 +58,7 @@ func connection_changed(_device, connected):
 func hp_changed(health:int):
 	hp = health
 	hpbar.value = hp
-	if hp <= 0:
+	if hp <= 0 and current_state.name != "GameOver":
 		print("You Died!")
 		_change_state($GameOver)
 
@@ -98,9 +98,9 @@ func load_game():
 			player.hp = node_data["hp"]
 			
 			if node_data["checkpoint"] != null:
-				player.teleport(Vector2(node_data["checkpoint_x"], node_data["checkpoint_y"]))
-				camera.update_bounds(Rect2(Vector2(0, 800), Vector2(1817, 800 + 1469)))
-				player_boundaries.update_bounds(Rect2(Vector2(10, 810), Vector2(1807, 810 + 1469)))
+				set_player(Rect2(Vector2(0, 800), Vector2(1817*0.5, 735)), Rect2(Vector2(10, 810*0.5), Vector2(1807*0.5, 810 + 300)), Vector2(node_data["checkpoint_x"], node_data["checkpoint_y"]))
+			
+			set_area(node_data["location"])
 
 	hp = player.hp
 	hpbar.max_value = player.maxHP
@@ -112,12 +112,19 @@ func _save():
 		"checkpoint_x": check_point_pos.x,
 		"checkpoint_y": check_point_pos.y,
 		"hp": player.hp,
-		"checkpoint": check_point
+		"checkpoint": check_point,
+		"location": area
 	}
 	var json_string = JSON.stringify(save_dict)
 	save_game.store_line(json_string)
 
 func set_area(location):
-		if location == "PositionBossArea":
-			audio.stream = load("res://assets/audio/Music/Mountain_V1.wav")
-			audio.play()
+	if location == "PositionBossArea" || "PositionBoss":
+		audio.stream = load("res://assets/audio/Music/Mountain_V1.wav")
+		audio.play()
+	area = location
+
+func set_player(camera_bounds:Rect2, player_bounds:Rect2, pos:Vector2) -> void:
+	player.teleport(pos)
+	camera.update_bounds(camera_bounds)
+	player_boundaries.update_bounds(player_bounds)

@@ -22,6 +22,10 @@ func _ready():
 		new_camera_bounds = Rect2(Vector2(0, 800), Vector2(1817 * 0.5, 735))
 		new_player_bounds = Rect2(Vector2(10, 810 * 0.5), Vector2(1807 * 0.5, 300))
 		teleport_target_path = "BaseToBossArea/PositionBossArea"
+	elif name == "TeleportToHub":
+		new_camera_bounds = Rect2(Vector2(0, 0), Vector2(1646*0.4, 1710*0.4))
+		new_player_bounds = Rect2(Vector2(10, 10), Vector2(1636*0.4, 1700*0.4))
+		teleport_target_path = "BaseToHub/PositionHub"
 
 	teleport_position_node = get_node(teleport_target_path)
 	connect("area_entered", Callable(self, "_on_area_entered"))

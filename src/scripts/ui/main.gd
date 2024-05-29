@@ -11,12 +11,7 @@ func _ready():
 		$"Center/Buttons/NewGame".grab_focus()
 	else:
 		$"Center/Buttons/Continue".disabled = false
-		print("Continue available")
 		$"Center/Buttons/Continue".grab_focus()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_mouse_entered():
 	bop.play(0.0)
@@ -28,7 +23,7 @@ func _on_new_game_pressed():
 	#Delete savefile
 	if FileAccess.file_exists("user://savegame.save"):
 		var dir = DirAccess.open("user://")
-		dir.remove_absolute("user://savegame.save") 
+		DirAccess.remove_absolute("user://savegame.save") 
 	
 	start()
 
@@ -53,5 +48,4 @@ func _on_options_pressed():
 
 func start():
 	Input.start_joy_vibration(0, 1, 1, 0.15)
-	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

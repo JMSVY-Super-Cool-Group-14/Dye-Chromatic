@@ -17,6 +17,12 @@ func _enter_state():
 func _restart():
 	remove_child(game_over)
 	state_machine._change_state($"../InGame")
+	
+	if state_machine.check_point == null:
+		state_machine.set_player(Rect2(Vector2(0, 0), Vector2(1646*0.4, 1710*0.4)), Rect2(Vector2(10, 10), Vector2(1636*0.4, 1700*0.4)), state_machine.check_point_pos)
+	else:
+		state_machine.set_player(Rect2(Vector2(0, 800), Vector2(1817*0.5, 1469*0.5)), Rect2(Vector2(10, 810), Vector2(1807*0.5, 1459*0.5)), state_machine.check_point_pos)
+
 	player.position = state_machine.check_point_pos
 	player.hp = player.maxHP
 	player.stamina = player.maxStamina

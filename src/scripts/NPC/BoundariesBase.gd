@@ -3,10 +3,10 @@ extends Node
 
 signal boundary_hit(character, boundary_direction)
 
-@export var min_x = 10
-@export var max_x = 1664
-@export var min_y = 2410
-@export var max_y = 2410+1401
+@export var min_x = 5
+@export var max_x = 650
+@export var min_y = 5
+@export var max_y = 675
 
 func _process(delta):
 	# Recursively ensure all CharacterBody2D descendants are clamped

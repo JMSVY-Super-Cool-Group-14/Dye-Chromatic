@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bho251jfd673i"]
+[gd_scene load_steps=8 format=3 uid="uid://bho251jfd673i"]
 
 [ext_resource type="Script" path="res://scripts/ui/main.gd" id="1_7l160"]
 [ext_resource type="Texture2D" uid="uid://3mifqk1c2ic3" path="res://assets/UI/Title.png" id="2_cflg0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1a3wnx2wk3ms" path="res://scenes/ui/options.tscn" id="3_fy3ta"]
 [ext_resource type="Theme" uid="uid://84plhwxqoe37" path="res://assets/UI/ui_theme.tres" id="4_0cg5a"]
 [ext_resource type="Theme" uid="uid://kgtpsi6v0g3v" path="res://assets/UI/close.tres" id="6_a81vt"]
+[ext_resource type="FontFile" uid="uid://b5u6yej7600u7" path="res://assets/UI/fonts/Inter-Black.otf" id="7_y7il6"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_7l160")
@@ -107,6 +108,8 @@ layout_mode = 2
 [node name="Team" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_y7il6")
+theme_override_font_sizes/font_size = 20
 text = "Team JMSVY Super Cool Group 14"
 horizontal_alignment = 1
 
@@ -129,7 +132,7 @@ text = "Developer
 Developer
 Developer, Music
 Developer, UI Artist
-Art Director, Character Design"
+Art Director, Lead Artist"
 
 [node name="Assets" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -146,12 +149,14 @@ alignment = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Mystic Woods
-TexturePacker"
+TexturePacker
+Particle Pack"
 
 [node name="Link" type="Label" parent="Center/Credits/VScrollBar/VBoxContainer/AssetList"]
 layout_mode = 2
-text = "https://game-endeavor.itch.io/mystic-woods
-https://www.codeandweb.com/texturepacker"
+text = "game-endeavor.itch.io/mystic-woods
+www.codeandweb.com/texturepacker
+www.kenney.nl"
 
 [node name="Close" type="Button" parent="Center/Credits"]
 layout_mode = 2
@@ -168,7 +173,7 @@ offset_right = 295.0
 offset_bottom = -22.0
 grow_vertical = 0
 mouse_filter = 1
-text = "ver 0.7"
+text = "Demo ver 0.8"
 
 [connection signal="focus_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="Center/Buttons/Continue" to="." method="_on_mouse_entered"]

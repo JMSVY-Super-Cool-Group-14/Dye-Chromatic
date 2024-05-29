@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=30 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b8mtefelef5v0" path="res://scenes/Enemies/charger.tscn" id="3_ldqj7"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
+[ext_resource type="Script" path="res://scripts/Enemies/BoundariesBase_Enemy.gd" id="5_fgt24"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
 [ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
@@ -34,7 +35,7 @@
 size = Vector2(131, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42ngy"]
-size = Vector2(33.5, 24)
+size = Vector2(79.75, 24)
 
 [node name="Game" type="Node2D"]
 
@@ -138,7 +139,7 @@ d_file = "res://scripts/Dialogue/bjornDialogue.json"
 [node name="NPCs" type="Node" parent="Areas/BaseArea2"]
 
 [node name="BaseZone" type="Node" parent="Areas/BaseArea2/NPCs"]
-script = ExtResource("1_u7rhi")
+script = ExtResource("5_fgt24")
 
 [node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea2/NPCs/BaseZone"]
 
@@ -234,7 +235,7 @@ autoplay = true
 
 [node name="Fire Boss" parent="." instance=ExtResource("16_c4v32")]
 z_index = 1
-position = Vector2(569, 2681)
+position = Vector2(569, 2600)
 
 [node name="Teleporters" type="Node2D" parent="."]
 
@@ -257,6 +258,16 @@ shape = SubResource("RectangleShape2D_42ngy")
 
 [node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
 position = Vector2(80, 1480)
+
+[node name="TeleportToHub" type="Area2D" parent="Teleporters"]
+script = ExtResource("15_22s8w")
+
+[node name="BaseToHub" type="CollisionShape2D" parent="Teleporters/TeleportToHub"]
+position = Vector2(377, 1539)
+shape = SubResource("RectangleShape2D_42ngy")
+
+[node name="PositionHub" type="Node2D" parent="Teleporters/TeleportToHub/BaseToHub"]
+position = Vector2(-62, -1594)
 
 [node name="Fire" parent="." instance=ExtResource("3_84lwp")]
 position = Vector2(587, 1106)
