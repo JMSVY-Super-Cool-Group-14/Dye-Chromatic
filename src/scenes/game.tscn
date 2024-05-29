@@ -185,7 +185,7 @@ autoplay = true
 
 [node name="Fire Boss" parent="." instance=ExtResource("16_c4v32")]
 z_index = 1
-position = Vector2(569, 2681)
+position = Vector2(569, 2600)
 
 [node name="Teleporters" type="Node2D" parent="."]
 
@@ -217,7 +217,7 @@ position = Vector2(377, 1539)
 shape = SubResource("RectangleShape2D_42ngy")
 
 [node name="PositionHub" type="Node2D" parent="Teleporters/TeleportToHub/BaseToHub"]
-position = Vector2(-73, -1478)
+position = Vector2(-62, -1594)
 
 [node name="Fire" parent="." instance=ExtResource("3_84lwp")]
 position = Vector2(587, 1106)
