@@ -19,8 +19,6 @@ Add-ons:
 - TexturePacker
 - Kenney Particle Pack
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Team
 - Mert Demirsü 
 - Simon William Grady Hocker
