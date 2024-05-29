@@ -35,7 +35,7 @@
 size = Vector2(131, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42ngy"]
-size = Vector2(33.5, 24)
+size = Vector2(79.75, 24)
 
 [node name="Game" type="Node2D"]
 
@@ -208,6 +208,16 @@ shape = SubResource("RectangleShape2D_42ngy")
 
 [node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
 position = Vector2(80, 1480)
+
+[node name="TeleportToHub" type="Area2D" parent="Teleporters"]
+script = ExtResource("15_22s8w")
+
+[node name="BaseToHub" type="CollisionShape2D" parent="Teleporters/TeleportToHub"]
+position = Vector2(377, 1539)
+shape = SubResource("RectangleShape2D_42ngy")
+
+[node name="PositionHub" type="Node2D" parent="Teleporters/TeleportToHub/BaseToHub"]
+position = Vector2(-73, -1478)
 
 [node name="Fire" parent="." instance=ExtResource("3_84lwp")]
 position = Vector2(587, 1106)
