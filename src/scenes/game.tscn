@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cdbtgk1s6v0xp"]
+[gd_scene load_steps=30 format=3 uid="uid://cdbtgk1s6v0xp"]
 
 [ext_resource type="Script" path="res://scripts/NPC/BoundariesBase.gd" id="1_u7rhi"]
 [ext_resource type="Script" path="res://scripts/StateMachine/GameFSM.gd" id="2_1y0vn"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b8mtefelef5v0" path="res://scenes/Enemies/charger.tscn" id="3_ldqj7"]
 [ext_resource type="Script" path="res://scripts/StateMachine/States/overState.gd" id="4_v8r73"]
 [ext_resource type="Texture2D" uid="uid://bvyxih57vqebm" path="res://assets/levels/hub.png" id="4_yusat"]
+[ext_resource type="Script" path="res://scripts/Enemies/BoundariesBase_Enemy.gd" id="5_fgt24"]
 [ext_resource type="PackedScene" uid="uid://b4ingjm58w0lb" path="res://scenes/ui/pause.tscn" id="5_kufwq"]
 [ext_resource type="PackedScene" uid="uid://chtu8ywobaimp" path="res://scenes/checkpoint.tscn" id="5_uwfma"]
 [ext_resource type="PackedScene" uid="uid://b8neim667ht02" path="res://scenes/ui/game_ui.tscn" id="6_evkas"]
@@ -96,7 +97,7 @@ d_file = "res://scripts/Dialogue/bjornDialogue.json"
 [node name="NPCs" type="Node" parent="Areas/BaseArea2"]
 
 [node name="BaseZone" type="Node" parent="Areas/BaseArea2/NPCs"]
-script = ExtResource("1_u7rhi")
+script = ExtResource("5_fgt24")
 
 [node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea2/NPCs/BaseZone"]
 
