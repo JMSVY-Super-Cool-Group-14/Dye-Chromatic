@@ -29,11 +29,15 @@ func _ready():
 	make_current()
 	update_camera_limits()
 
-func _process(delta):
+func _physics_process(delta):
 	if not player:
 		return
 
-	handle_camera_movement(delta)
+	if centered_on_player:
+		handle_camera_movement(delta)
+	else:
+		manual_camera_control(delta)
+
 	handle_zoom(delta)
 
 	if Input.is_action_just_pressed("reset_camera"):
@@ -47,13 +51,10 @@ func init_camera_settings():
 	print("Camera initialized with zoom: ", zoom, " and position: ", global_position)
 
 func handle_camera_movement(delta):
-	if centered_on_player:
-		if smoothing_enabled:
-			global_position = global_position.lerp(player.global_position, smoothing_speed * delta)
-		else:
-			global_position = player.global_position
+	if smoothing_enabled:
+		global_position = global_position.lerp(player.global_position, smoothing_speed * delta)
 	else:
-		manual_camera_control(delta)
+		global_position = player.global_position
 
 func manual_camera_control(delta):
 	var movement_speed = 100
@@ -86,10 +87,7 @@ func update_camera_limits():
 	if not background or not background.texture:
 		return
 
-	# Calculate the scaled size of the texture
 	var bg_texture_size = background.texture.get_size() * background.scale
-
-	# Calculate the position of the top-left corner if the origin is at the center
 	var bg_position = background.global_position
 
 	limit_left = bg_position.x
@@ -106,4 +104,4 @@ func check_for_player_movement():
 		Input.is_action_pressed("move_camera_down")):
 		centered_on_player = false
 	else:
-		centered_on_player = player.global_position != global_position
+		centered_on_player = true
