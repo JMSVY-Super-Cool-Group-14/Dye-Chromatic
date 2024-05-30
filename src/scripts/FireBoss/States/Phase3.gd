@@ -3,7 +3,7 @@ class_name phase3
 
 @onready var sm = $".."
 @onready var boss = $"../.."
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 
 
 var switch_timer = 2

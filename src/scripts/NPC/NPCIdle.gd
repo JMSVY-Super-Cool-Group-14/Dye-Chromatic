@@ -4,7 +4,7 @@ class_name npcIdle
 @export var walking_break := 3.0
 
 @onready var npc = $"../.."
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 @onready var sm = $".."
 
 func _enter_state():

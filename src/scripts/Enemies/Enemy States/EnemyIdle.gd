@@ -5,7 +5,7 @@ class_name enemyIdle
 @export var move_speed := 10.0
 
 @onready var enemy = $"../.."
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 @onready var sm = $".."
 
 var move_dir : Vector2
@@ -20,7 +20,7 @@ var timers = {}
 
 func _ready():
 	# Assuming BoundariesBase is a sibling node in the scene tree
-	var boundaries_base = get_node("/root/Game/Areas/BaseArea/NPCs/BaseZone/")
+	var boundaries_base = get_node("/root/Game/Areas/BaseArea/NPCs/AnyAreaOfBaseArea")
 	if boundaries_base:
 		boundaries_base.connect("boundary_hit", Callable(self, "_on_boundary_hit"))
 

@@ -6,7 +6,7 @@ extends State
 @export var orbDamage = 30
 
 @onready var boss = $"../.."
-@onready var player = $"../../../Areas/Global/Player"
+@onready var player = $"../../../Player"
 @onready var sm = $".."
 
 var projectile_scene = preload("res://scenes/Enemies/Fire Boss/Attacks/Waveprojectile.tscn")

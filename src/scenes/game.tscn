@@ -39,109 +39,191 @@ size = Vector2(79.75, 24)
 
 [node name="Game" type="Node2D"]
 
-[node name="Areas" type="Node" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_sh2in")
+offset_right = 1646.0
+offset_bottom = 1710.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_yusat")
 
-[node name="Global" type="Node" parent="Areas"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+collision_layer = 8
 
-[node name="Player" parent="Areas/Global" node_paths=PackedStringArray("fsm") instance=ExtResource("2_mpbna")]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/StaticBody2D"]
+position = Vector2(125, -55)
+polygon = PackedVector2Array(172.5, 1010, 817.5, 680, 1050, 735, 880, 832.5)
+
+[node name="BossArea" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_3x2uq")
+offset_top = 800.0
+offset_right = 1817.0
+offset_bottom = 2269.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_oago4")
+
+[node name="Boss" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_q1yhp")
+offset_top = 2400.0
+offset_right = 1674.0
+offset_bottom = 3801.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("16_qg0ps")
+
+[node name="Tiles" type="TextureRect" parent="Boss"]
+layout_mode = 0
+offset_left = 73.2857
+offset_top = -4.0
+offset_right = 1604.29
+offset_bottom = 1413.0
+texture = ExtResource("17_lgeue")
+
+[node name="Hammer" type="TextureRect" parent="Boss"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("18_0cue2")
+script = ExtResource("19_e631g")
+
+[node name="Teleporters" type="Node2D" parent="."]
+
+[node name="TeleportToBoss" type="Area2D" parent="Teleporters"]
+script = ExtResource("15_22s8w")
+teleport_target_path = NodePath("PositionBoss")
+
+[node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
+position = Vector2(364, 871)
+shape = SubResource("RectangleShape2D_eeoj1")
+
+[node name="PositionBoss" type="Marker2D" parent="Teleporters/TeleportToBoss"]
+position = Vector2(586, 3321)
+
+[node name="TeleportToBossArea" type="Area2D" parent="Teleporters"]
+script = ExtResource("15_22s8w")
+teleport_target_path = NodePath("PositionBossArea")
+
+[node name="BaseToBossArea" type="CollisionShape2D" parent="Teleporters/TeleportToBossArea"]
+position = Vector2(303, 16)
+shape = SubResource("RectangleShape2D_42ngy")
+
+[node name="PositionBossArea" type="Marker2D" parent="Teleporters/TeleportToBossArea"]
+position = Vector2(367, 1277)
+
+[node name="TeleportToHub" type="Area2D" parent="Teleporters"]
+script = ExtResource("15_22s8w")
+teleport_target_path = NodePath("PositionHub")
+
+[node name="BaseToHub" type="CollisionShape2D" parent="Teleporters/TeleportToHub"]
+position = Vector2(377, 1539)
+shape = SubResource("RectangleShape2D_42ngy")
+
+[node name="PositionHub" type="Marker2D" parent="Teleporters/TeleportToHub"]
+position = Vector2(265, 313)
+
+[node name="Player" parent="." node_paths=PackedStringArray("fsm") instance=ExtResource("2_mpbna")]
 position = Vector2(231, 255)
 scale = Vector2(0.4, 0.4)
 collision_mask = 10
-fsm = NodePath("../../../FiniteStateMachine")
+fsm = NodePath("../FiniteStateMachine")
+
+[node name="Areas" type="Node" parent="."]
 
 [node name="BaseArea" type="Node" parent="Areas"]
 
 [node name="NPCs" type="Node" parent="Areas/BaseArea"]
 
-[node name="BaseZone" type="Node" parent="Areas/BaseArea/NPCs"]
+[node name="AnyAreaOfBaseArea" type="Node" parent="Areas/BaseArea/NPCs"]
 script = ExtResource("1_u7rhi")
 
-[node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
+[node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea"]
 
-[node name="Charger" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
+[node name="Charger" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("3_ldqj7")]
 position = Vector2(469, 329)
 
-[node name="Slime3" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime3" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(496.6, 432.1)
 scale = Vector2(1, 1)
 
-[node name="Slime11" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime11" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(406, 441.4)
 scale = Vector2(1, 1)
 
-[node name="Slime15" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime15" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(593.6, 498.5)
 scale = Vector2(1, 1)
 
-[node name="Slime24" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime24" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(545.9, 497)
 scale = Vector2(1, 1)
 
-[node name="Slime27" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime27" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 visible = false
 position = Vector2(685.6, 416.5)
 scale = Vector2(1, 1)
 
-[node name="Slime39" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime39" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(784.6, 498.5)
 scale = Vector2(1, 1)
 
-[node name="Slime38" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime38" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(618.1, 426.4)
 scale = Vector2(1, 1)
 
-[node name="Slime37" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime37" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(615.4, 443.8)
 scale = Vector2(1, 1)
 
-[node name="Slime36" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime36" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(637.9, 415)
 scale = Vector2(1, 1)
 
-[node name="Slime35" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime35" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(455, 515)
 scale = Vector2(1, 1)
 
-[node name="Slime34" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime34" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(463, 559)
 scale = Vector2(1, 1)
 
-[node name="Slime33" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime33" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(503, 529)
 scale = Vector2(1, 1)
 
-[node name="Slime32" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime32" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(494, 486)
 scale = Vector2(1, 1)
 
-[node name="Slime31" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime31" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(539, 502)
 scale = Vector2(1, 1)
 
-[node name="Slime30" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime30" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(504, 576)
 scale = Vector2(1, 1)
 
-[node name="Slime29" parent="Areas/BaseArea/NPCs/BaseZone/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
+[node name="Slime29" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/EnemyManagerBase" instance=ExtResource("2_h5rq2")]
 position = Vector2(555, 554)
 scale = Vector2(1, 1)
 
-[node name="NPCManagerBase" type="Node" parent="Areas/BaseArea/NPCs/BaseZone"]
+[node name="NPCManagerBase" type="Node" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea"]
 
-[node name="Bjorn" parent="Areas/BaseArea/NPCs/BaseZone/NPCManagerBase" instance=ExtResource("13_7i4wi")]
+[node name="Bjorn" parent="Areas/BaseArea/NPCs/AnyAreaOfBaseArea/NPCManagerBase" instance=ExtResource("13_7i4wi")]
 position = Vector2(100, 200)
 collision_layer = 4
 collision_mask = 0
 d_file = "res://scripts/Dialogue/bjornDialogue.json"
 
-[node name="BaseArea2" type="Node" parent="Areas"]
+[node name="BossArea" type="Node" parent="Areas"]
 
-[node name="NPCs" type="Node" parent="Areas/BaseArea2"]
+[node name="BossRoom" type="Node" parent="Areas/BossArea"]
 
-[node name="BaseZone" type="Node" parent="Areas/BaseArea2/NPCs"]
+[node name="NPCs" type="Node" parent="Areas/BossArea/BossRoom"]
+
+[node name="BaseZone" type="Node" parent="Areas/BossArea/BossRoom/NPCs"]
 script = ExtResource("5_fgt24")
 
-[node name="EnemyManagerBase" type="Node" parent="Areas/BaseArea2/NPCs/BaseZone"]
+[node name="EnemyManagerBase" type="Node" parent="Areas/BossArea/BossRoom/NPCs/BaseZone"]
+
+[node name="BossEntrance" type="Node" parent="Areas/BossArea"]
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "root")]
 process_mode = 3
@@ -180,52 +262,6 @@ focus_mode = 2
 
 [node name="UI" parent="." instance=ExtResource("6_evkas")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-scale = Vector2(0.4, 0.4)
-collision_layer = 8
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(125, -55)
-polygon = PackedVector2Array(172.5, 1010, 817.5, 680, 1050, 735, 880, 832.5)
-
-[node name="Background" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_sh2in")
-offset_right = 1646.0
-offset_bottom = 1710.0
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_yusat")
-
-[node name="BossArea" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_3x2uq")
-offset_top = 800.0
-offset_right = 1817.0
-offset_bottom = 2269.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("14_oago4")
-
-[node name="Boss" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_q1yhp")
-offset_top = 2400.0
-offset_right = 1674.0
-offset_bottom = 3801.0
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("16_qg0ps")
-
-[node name="Tiles" type="TextureRect" parent="Boss"]
-layout_mode = 0
-offset_left = 73.2857
-offset_top = -4.0
-offset_right = 1604.29
-offset_bottom = 1413.0
-texture = ExtResource("17_lgeue")
-
-[node name="Hammer" type="TextureRect" parent="Boss"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("18_0cue2")
-script = ExtResource("19_e631g")
-
 [node name="Music" type="Node" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Music"]
@@ -236,38 +272,6 @@ autoplay = true
 [node name="Fire Boss" parent="." instance=ExtResource("16_c4v32")]
 z_index = 1
 position = Vector2(569, 2600)
-
-[node name="Teleporters" type="Node2D" parent="."]
-
-[node name="TeleportToBoss" type="Area2D" parent="Teleporters"]
-script = ExtResource("15_22s8w")
-
-[node name="BossAreaToBoss" type="CollisionShape2D" parent="Teleporters/TeleportToBoss"]
-position = Vector2(364, 871)
-shape = SubResource("RectangleShape2D_eeoj1")
-
-[node name="PositionBoss" type="Node2D" parent="Teleporters/TeleportToBoss/BossAreaToBoss"]
-position = Vector2(217, 2481)
-
-[node name="TeleportToBossArea" type="Area2D" parent="Teleporters"]
-script = ExtResource("15_22s8w")
-
-[node name="BaseToBossArea" type="CollisionShape2D" parent="Teleporters/TeleportToBossArea"]
-position = Vector2(303, 16)
-shape = SubResource("RectangleShape2D_42ngy")
-
-[node name="PositionBossArea" type="Node2D" parent="Teleporters/TeleportToBossArea/BaseToBossArea"]
-position = Vector2(80, 1480)
-
-[node name="TeleportToHub" type="Area2D" parent="Teleporters"]
-script = ExtResource("15_22s8w")
-
-[node name="BaseToHub" type="CollisionShape2D" parent="Teleporters/TeleportToHub"]
-position = Vector2(377, 1539)
-shape = SubResource("RectangleShape2D_42ngy")
-
-[node name="PositionHub" type="Node2D" parent="Teleporters/TeleportToHub/BaseToHub"]
-position = Vector2(-62, -1594)
 
 [node name="Fire" parent="." instance=ExtResource("3_84lwp")]
 position = Vector2(587, 1106)

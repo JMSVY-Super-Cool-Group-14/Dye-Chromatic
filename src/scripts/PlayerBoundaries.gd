@@ -1,7 +1,7 @@
 extends Node
 
 @export var texture_rect_path: NodePath = NodePath("/root/Game/Background")  # Path to the TextureRect node
-@export var player_path: NodePath = NodePath("/root/Game/Areas/Global/Player")  # Path to the Player node
+@export var player_path: NodePath = NodePath("/root/Game/Player")  # Path to the Player node
 
 # Define the boundaries with initial values
 var min_x: float

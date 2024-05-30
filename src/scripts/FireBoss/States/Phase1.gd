@@ -2,7 +2,7 @@ extends State
 class_name phase1
 
 @onready var boss = $"../.."
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 @onready var sm = $".."
 
 

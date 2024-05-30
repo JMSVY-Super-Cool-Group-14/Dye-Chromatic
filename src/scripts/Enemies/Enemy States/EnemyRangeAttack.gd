@@ -5,7 +5,7 @@ class_name enemyRangeAttack
 @export var attack_dmg := 2.0
 
 @onready var enemy = $"../.."
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 @onready var sm = $".."
 
 var projectile_scene = preload("res://scenes/Enemies/Enemyprojectile.tscn")

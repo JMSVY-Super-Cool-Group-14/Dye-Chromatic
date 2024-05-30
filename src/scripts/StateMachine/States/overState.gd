@@ -1,6 +1,6 @@
 extends State
 
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 @onready var UI = $"../..//UI"
 
 const end_screen = preload("res://scenes/ui/death_screen.tscn")

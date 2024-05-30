@@ -8,7 +8,7 @@ extends Camera2D
 @export var smoothing_speed := 5.0
 
 @export var texture_rect_path: NodePath = NodePath("/root/Game/Background")
-@export var player_path: NodePath = NodePath("/root/Game/Areas/Global/Player")
+@export var player_path: NodePath = NodePath("/root/Game/Player")
 
 var player: CharacterBody2D
 var background: TextureRect

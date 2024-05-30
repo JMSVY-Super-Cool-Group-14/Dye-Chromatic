@@ -1,11 +1,11 @@
 extends FiniteStateMachine
 
 # References to game objects
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 @onready var hpbar = $"../UI/MarginContainer/VBoxContainer/HPbar"
 @onready var staminabar = $"../UI/MarginContainer/VBoxContainer/Staminabar"
-@onready var camera: Camera2D = get_node("/root/Game/Areas/Global/Player/PlayerCam")
-@onready var player_boundaries: Node = get_node("/root/Game/Areas/Global/Player/PlayerBoundaries")
+@onready var camera: Camera2D = get_node("/root/Game/Player/PlayerCam")
+@onready var player_boundaries: Node = get_node("/root/Game/Player/PlayerBoundaries")
 @onready var audio =  $"/root/Game/Music/AudioStreamPlayer2D"
 
 @export var speed:int = 100

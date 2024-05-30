@@ -1,7 +1,7 @@
 extends State
 
 @onready var boss = $"../.."
-@onready var player = $"../../../Areas/Global/Player"
+@onready var player = $"../../../Player"
 @onready var sm = $".."
 
 @export var speed = 50

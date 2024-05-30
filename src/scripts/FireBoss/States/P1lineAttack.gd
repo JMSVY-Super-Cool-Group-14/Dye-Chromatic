@@ -8,7 +8,7 @@ class_name lineAttack
 @export var spawnRate = 3
 
 @onready var boss = $"../.."
-@onready var player = $"/root/Game/Areas/Global/Player"
+@onready var player = $"/root/Game/Player"
 @onready var sm = $".."
 
 var line1 = preload("res://scenes/Enemies/Fire Boss/Attacks/line1.tscn")
